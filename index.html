@@ -18,6 +18,15 @@
 
     <header>
         <h1>OPORTO</h1>
+        <select id="lang-selector" class="lang-select" onchange="changeLanguage()">
+            <option value="pt">🇵🇹 PT</option>
+            <option value="en">🇬🇧 EN</option>
+            <option value="es">🇪🇸 ES</option>
+            <option value="fr">🇫🇷 FR</option>
+            <option value="de">🇩🇪 DE</option>
+            <option value="it">🇮🇹 IT</option>
+            <option value="zh">🇨🇳 ZH</option>
+        </select>
     </header>
 
     <main>
@@ -32,29 +41,29 @@
 
     <div id="location-modal" class="modal hidden">
         <div class="modal-content">
-            <span id="close-modal" class="close">&times;</span>
+            <span id="close-modal" class="close">×</span>
             <h2 id="modal-title">Título</h2>
             <img id="modal-image" src="" alt="Local">
             
             <div id="modal-actions" class="actions-bar">
                 <button id="btn-map" class="action-btn" onclick="openMap()">📍 Como Chegar</button>
-                <button id="btn-audio" class="action-btn hidden" onclick="toggleAudio()">🔊 Ouvir Textos</button>
+                <button id="btn-audio" class="action-btn" onclick="toggleAudio()">🔊 Ouvir Textos</button>
             </div>
 
-            <div id="modal-tabs" class="tabs hidden">
-                <button class="tab-btn active" onclick="openTab(event, 'tab-resumo')">Resumo</button>
-                <button class="tab-btn" onclick="openTab(event, 'tab-historia')">História</button>
-                <button class="tab-btn" onclick="openTab(event, 'tab-curiosidades')">Curiosidades</button>
+            <div id="modal-tabs" class="tabs">
+                <button id="tab-btn-resumo" class="tab-btn active" onclick="openTab(event, 'tab-resumo')">Resumo</button>
+                <button id="tab-btn-historia" class="tab-btn" onclick="openTab(event, 'tab-historia')">História</button>
+                <button id="tab-btn-curiosidades" class="tab-btn" onclick="openTab(event, 'tab-curiosidades')">Curiosidades</button>
             </div>
 
             <div id="tab-resumo" class="tab-content active">
-                <p id="modal-desc">Local ainda por descobrir!</p>
+                <p id="modal-desc"></p>
             </div>
             <div id="tab-historia" class="tab-content">
-                <p id="modal-hist">Aqui vai entrar a história do monumento...</p>
+                <p id="modal-hist"></p>
             </div>
             <div id="tab-curiosidades" class="tab-content">
-                <p id="modal-curio">Aqui vão entrar os factos curiosos...</p>
+                <p id="modal-curio"></p>
             </div>
         </div>
     </div>

@@ -352,3 +352,38 @@ body.day-mode .tab-content {
 
 /* Ajustes para o botão "Partilhar" nas mensagens de sistema nativas (SweetAlert ou similares no futuro) */
 /* No modo dia, os botões mantêm o mesmo aspeto de destaque */
+
+/* =========================================
+   SELETOR DE IDIOMAS
+   ========================================= */
+.lang-select {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    padding: 5px 10px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    margin-top: 10px;
+}
+
+.lang-select option {
+    background: #061026;
+    color: white;
+}
+
+body.day-mode .lang-select {
+    background: rgba(0, 0, 0, 0.05);
+    color: #061026;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+body.day-mode .lang-select option {
+    background: #e0f2fe;
+    color: #061026;
+}

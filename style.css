@@ -226,3 +226,28 @@ body.day-mode .modal-content h2 {
 body.day-mode .close {
     color: #061026;
 }
+
+/* =========================================
+   RADAR (Quente / Frio)
+   ========================================= */
+/* Morno (Entre 150m e 400m) - Brilho subtil laranja */
+.cell.warm {
+    box-shadow: inset 0 0 15px rgba(255, 165, 0, 0.15), 0 4px 15px rgba(255, 165, 0, 0.1);
+    border: 1px solid rgba(255, 165, 0, 0.3);
+}
+
+/* Quente (A menos de 150m) - Brilho subtil vermelho */
+.cell.hot {
+    box-shadow: inset 0 0 20px rgba(255, 69, 0, 0.2), 0 4px 20px rgba(255, 69, 0, 0.15);
+    border: 1px solid rgba(255, 69, 0, 0.4);
+}
+
+/* Ajustes subtis para o modo diurno */
+body.day-mode .cell.warm {
+    box-shadow: inset 0 0 15px rgba(255, 140, 0, 0.1), 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 140, 0, 0.4);
+}
+body.day-mode .cell.hot {
+    box-shadow: inset 0 0 20px rgba(255, 0, 0, 0.1), 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 0, 0, 0.4);
+}

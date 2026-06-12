@@ -376,11 +376,13 @@ function triggerShare(type) {
     }
 }
 
-// Splash e Interface
+// Splash e Interface (Aumentámos a segurança para 15 segundos)
 const splash = document.getElementById('splash-screen');
 const video = document.getElementById('splash-video');
 if (video) video.onended = () => { if (splash) { splash.style.opacity = '0'; setTimeout(() => splash.remove(), 800); } };
-setTimeout(() => { if (splash) { splash.style.opacity = '0'; setTimeout(() => splash.remove(), 800); } }, 6000);
+
+// Mudámos de 6000 (6 seg) para 15000 (15 seg) para dar tempo de o vídeo acabar naturalmente
+setTimeout(() => { if (splash && splash.style.display !== 'none') { splash.style.opacity = '0'; setTimeout(() => splash.remove(), 800); } }, 15000);
 
 function openTab(evt, tabName) {
     const tabContents = document.getElementsByClassName("tab-content");

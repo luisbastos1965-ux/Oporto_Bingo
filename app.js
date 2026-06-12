@@ -8,7 +8,7 @@ if ("Notification" in window && Notification.permission !== "denied") {
     Notification.requestPermission();
 }
 
-// Configuração oficial dos 16 locais do Bingo com estrutura de conteúdos
+// Configuração oficial dos 16 locais do Bingo
 const locations = [
     // Linha 1
     { 
@@ -123,34 +123,32 @@ const modalTitle = document.getElementById('modal-title');
 const closeBtn = document.getElementById('close-modal');
 const unlockSound = document.getElementById('unlock-sound');
 
-// Elementos das Abas
 const modalDesc = document.getElementById('modal-desc');
 const modalHist = document.getElementById('modal-hist');
 const modalCurio = document.getElementById('modal-curio');
 
-// Recuperar progresso guardado no armazenamento do telemóvel
+let currentLocation = null; // Guarda o local selecionado
+
+// Recuperar progresso guardado
 function loadProgress() {
     const savedProgress = localStorage.getItem('oportoBingoProgress');
     if (savedProgress) {
         const unlockedStates = JSON.parse(savedProgress);
         locations.forEach((loc, i) => {
-            if (unlockedStates[i]) {
-                loc.unlocked = true;
-            }
+            if (unlockedStates[i]) loc.unlocked = true;
         });
     }
 }
 
-// Guardar o progresso atual do utilizador
+// Guardar progresso
 function saveProgress() {
     const unlockedStates = locations.map(loc => loc.unlocked);
     localStorage.setItem('oportoBingoProgress', JSON.stringify(unlockedStates));
 }
 
-// Carregar dados guardados antes de desenhar a interface
 loadProgress();
 
-// Desenhar a Grelha do Bingo (com IDs para o Radar)
+// Desenhar a Grelha
 function renderGrid() {
     grid.innerHTML = '';
     locations.forEach((loc) => {
@@ -160,42 +158,65 @@ function renderGrid() {
         cell.innerHTML = `<img src="${loc.imgUrl}" alt="${loc.name}">`;
         
         cell.addEventListener('click', () => {
-            if (loc.unlocked) openModal(loc);
+            openModal(loc);
         });
         grid.appendChild(cell);
     });
 }
 
-// Controlar a janela flutuante e injetar dados (Pop-up)
+// Controlar o Modal (Adaptado para bloqueados/desbloqueados)
 function openModal(loc) {
+    currentLocation = loc;
     modalTitle.innerText = loc.name;
-    modalImg.src = loc.imgUrl;
     
-    // Injeta os textos (se existirem, senão mostra mensagem padrão)
-    modalDesc.innerText = loc.desc || "Desbloqueaste este local!";
-    modalHist.innerText = loc.hist || "A história deste local será revelada em breve.";
-    modalCurio.innerText = loc.curio || "Ainda não temos curiosidades sobre este local.";
+    const tabsContainer = document.getElementById('modal-tabs');
+    const btnAudio = document.getElementById('btn-audio');
     
-    // Garante que abre sempre na aba "Resumo"
-    const firstTabBtn = document.querySelector('.tab-btn');
-    if(firstTabBtn) firstTabBtn.click(); 
+    if(speechSynthesis.speaking) speechSynthesis.cancel();
+    btnAudio.innerText = "🔊 Ouvir Textos";
+
+    if (loc.unlocked) {
+        modalImg.src = loc.imgUrl;
+        modalDesc.innerText = loc.desc || "Desbloqueaste este local!";
+        modalHist.innerText = loc.hist || "A história deste local será revelada em breve.";
+        modalCurio.innerText = loc.curio || "Ainda não temos curiosidades sobre este local.";
+        
+        tabsContainer.classList.remove('hidden');
+        btnAudio.classList.remove('hidden');
+        
+        const firstTabBtn = document.querySelector('.tab-btn');
+        if(firstTabBtn) firstTabBtn.click(); 
+    } else {
+        modalImg.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Compass_icon.png/200px-Compass_icon.png";
+        modalDesc.innerText = "Aproxima-te a menos de 50 metros para revelar os segredos deste local histórico!";
+        
+        tabsContainer.classList.add('hidden');
+        btnAudio.classList.add('hidden');
+        
+        const tabContents = document.getElementsByClassName("tab-content");
+        for (let i = 0; i < tabContents.length; i++) tabContents[i].classList.remove("active");
+        document.getElementById("tab-resumo").classList.add("active");
+    }
     
     modal.classList.remove('hidden');
 }
 
-closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
+closeBtn.addEventListener('click', () => {
+    modal.classList.add('hidden');
+    if(speechSynthesis.speaking) speechSynthesis.cancel();
+});
 
-// Lógica de Proximidade por GPS (com o Radar Quente/Frio)
+// Lógica de Proximidade e Radar
 function checkProximity(userLat, userLon) {
     locations.forEach(loc => {
         if (!loc.unlocked) {
             const dist = getDistanceFromLatLonInM(userLat, userLon, loc.lat, loc.lon);
             const cellElement = document.getElementById(`cell-${loc.id}`);
             
-            if (dist < 50) { // Raio de ativação (50 metros)
+            if (dist < 50) { 
                 loc.unlocked = true;
                 saveProgress();
-                unlockSound.play().catch(e => console.log("Áudio bloqueado pelas regras do navegador"));
+                unlockSound.play().catch(e => console.log("Áudio bloqueado pelo navegador"));
                 
                 if ("Notification" in window && Notification.permission === "granted") {
                     new Notification("📍 Oporto Bin'Go", {
@@ -208,7 +229,6 @@ function checkProximity(userLat, userLon) {
                 renderGrid();
                 checkWinConditions();
             } else if (cellElement) {
-                // LÓGICA DO RADAR
                 if (dist < 150) { 
                     cellElement.classList.add('hot');
                     cellElement.classList.remove('warm');
@@ -223,18 +243,15 @@ function checkProximity(userLat, userLon) {
     });
 }
 
-// Ativar monitorização contínua de GPS
+// GPS
 if ("geolocation" in navigator) {
     navigator.geolocation.watchPosition(
         position => checkProximity(position.coords.latitude, position.coords.longitude),
-        error => console.warn("Erro no sensor de GPS:", error.message),
+        error => console.warn("Erro no GPS:", error.message),
         { enableHighAccuracy: true, maximumAge: 0, timeout: 5000 }
     );
-} else {
-    alert("O dispositivo atual não suporta serviços de localização (GPS).");
 }
 
-// Fórmula de Haversine (Distância em metros)
 function getDistanceFromLatLonInM(lat1, lon1, lat2, lon2) {
     const R = 6371e3; 
     const dLat = (lat2 - lat1) * Math.PI / 180;
@@ -246,7 +263,7 @@ function getDistanceFromLatLonInM(lat1, lon1, lat2, lon2) {
     return R * c;
 }
 
-// Validar Vitórias
+// Condições de Vitória
 let lineWon = false;
 function checkWinConditions() {
     const unlockedArr = locations.map(l => l.unlocked);
@@ -258,19 +275,24 @@ function checkWinConditions() {
 
     if (unlockedArr.every(v => v === true)) {
         fireConfetti(true);
-        setTimeout(() => alert("🏆 EXTRAORDINÁRIO! Completaste todo o mapa do Oporto Bin'Go!"), 500);
+        setTimeout(() => {
+            alert("🏆 EXTRAORDINÁRIO! Completaste todo o mapa do Oporto Bin'Go!");
+            triggerShare('bingo');
+        }, 500);
     } 
     else if (!lineWon) {
         const hasLine = lines.some(line => line.every(index => unlockedArr[index]));
         if (hasLine) {
             lineWon = true;
             fireConfetti(false);
-            setTimeout(() => alert("🎉 Parabéns! Conseguiste completar uma linha!"), 500);
+            setTimeout(() => {
+                alert("🎉 Parabéns! Conseguiste completar uma linha!");
+                triggerShare('linha');
+            }, 500);
         }
     }
 }
 
-// Confettis
 function fireConfetti(isFullCard) {
     const duration = isFullCard ? 6000 : 2500;
     const end = Date.now() + duration;
@@ -282,7 +304,7 @@ function fireConfetti(isFullCard) {
     }());
 }
 
-// Gestão do Ecrã de Introdução
+// Splash Screen
 const splash = document.getElementById('splash-screen');
 const video = document.getElementById('splash-video');
 
@@ -308,25 +330,18 @@ setTimeout(() => {
     }
 }, 6000);
 
-// =========================================
-// LÓGICA DAS ABAS CULTURAIS NO POP-UP
-// =========================================
+// Abas Culturais
 function openTab(evt, tabName) {
     const tabContents = document.getElementsByClassName("tab-content");
-    for (let i = 0; i < tabContents.length; i++) {
-        tabContents[i].classList.remove("active");
-    }
+    for (let i = 0; i < tabContents.length; i++) tabContents[i].classList.remove("active");
     const tabBtns = document.getElementsByClassName("tab-btn");
-    for (let i = 0; i < tabBtns.length; i++) {
-        tabBtns[i].classList.remove("active");
-    }
+    for (let i = 0; i < tabBtns.length; i++) tabBtns[i].classList.remove("active");
+    
     document.getElementById(tabName).classList.add("active");
     evt.currentTarget.classList.add("active");
 }
 
-// =========================================
-// GESTÃO DO MODO DIA / NOITE
-// =========================================
+// Dia/Noite
 function checkTimeOfDay() {
     const currentHour = new Date().getHours();
     if (currentHour >= 7 && currentHour < 20) {
@@ -339,5 +354,53 @@ function checkTimeOfDay() {
 checkTimeOfDay();
 setInterval(checkTimeOfDay, 3600000);
 
-// Inicializar a renderização visual da grelha
+// =========================================
+// MAPAS EXTERNOS, ÁUDIO E PARTILHA
+// =========================================
+function openMap() {
+    if (!currentLocation) return;
+    const mapUrl = `https://www.google.com/maps/dir/?api=1&destination=${currentLocation.lat},${currentLocation.lon}&travelmode=walking`;
+    window.open(mapUrl, '_blank');
+}
+
+function toggleAudio() {
+    if (!currentLocation || !currentLocation.unlocked) return;
+    
+    const btnAudio = document.getElementById('btn-audio');
+    
+    if (speechSynthesis.speaking) {
+        speechSynthesis.cancel();
+        btnAudio.innerText = "🔊 Ouvir Textos";
+        return;
+    }
+    
+    const activeTabContent = document.querySelector('.tab-content.active').innerText;
+    
+    const utterance = new SpeechSynthesisUtterance(activeTabContent);
+    utterance.lang = 'pt-PT';
+    utterance.rate = 1.0;
+    
+    utterance.onend = () => {
+        btnAudio.innerText = "🔊 Ouvir Textos";
+    };
+    
+    btnAudio.innerText = "⏸️ Parar Áudio";
+    speechSynthesis.speak(utterance);
+}
+
+function triggerShare(type) {
+    if (navigator.share) {
+        const shareText = type === 'bingo' 
+            ? "🏆 Consegui o Cartão Cheio no Oporto Bin'Go! Já explorei a cidade toda. Vem jogar também!" 
+            : "🎉 Fiz Linha no Oporto Bin'Go e estou a descobrir o Porto! Vem jogar também!";
+            
+        navigator.share({
+            title: 'Oporto Bin\'Go',
+            text: shareText,
+            url: window.location.href
+        }).catch(console.error);
+    }
+}
+
+// Inicializar Grelha
 renderGrid();

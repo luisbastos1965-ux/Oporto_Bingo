@@ -36,14 +36,19 @@
             <h2 id="modal-title">Título</h2>
             <img id="modal-image" src="" alt="Local">
             
-            <div class="tabs">
+            <div id="modal-actions" class="actions-bar">
+                <button id="btn-map" class="action-btn" onclick="openMap()">📍 Como Chegar</button>
+                <button id="btn-audio" class="action-btn hidden" onclick="toggleAudio()">🔊 Ouvir Textos</button>
+            </div>
+
+            <div id="modal-tabs" class="tabs hidden">
                 <button class="tab-btn active" onclick="openTab(event, 'tab-resumo')">Resumo</button>
                 <button class="tab-btn" onclick="openTab(event, 'tab-historia')">História</button>
                 <button class="tab-btn" onclick="openTab(event, 'tab-curiosidades')">Curiosidades</button>
             </div>
 
             <div id="tab-resumo" class="tab-content active">
-                <p id="modal-desc">Desbloqueaste este local!</p>
+                <p id="modal-desc">Local ainda por descobrir!</p>
             </div>
             <div id="tab-historia" class="tab-content">
                 <p id="modal-hist">Aqui vai entrar a história do monumento...</p>

@@ -65,11 +65,13 @@ function saveProgress() {
 // Carregar dados guardados antes de desenhar a interface
 loadProgress();
 
-// Desenhar a Grelha do Bingo
+// Desenhar a Grelha do Bingo (Atualizada para suportar o Radar)
 function renderGrid() {
     grid.innerHTML = '';
     locations.forEach((loc) => {
         const cell = document.createElement('div');
+        // Adicionamos um ID único a cada célula para o GPS a conseguir encontrar e pintar
+        cell.id = `cell-${loc.id}`; 
         cell.className = `cell ${loc.unlocked ? 'unlocked' : ''}`;
         cell.innerHTML = `<img src="${loc.imgUrl}" alt="${loc.name}">`;
         
@@ -89,19 +91,18 @@ function openModal(loc) {
 
 closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
 
-// Lógica de Proximidade por GPS
+// Lógica de Proximidade por GPS (Atualizada com a lógica Quente/Frio)
 function checkProximity(userLat, userLon) {
     locations.forEach(loc => {
         if (!loc.unlocked) {
             const dist = getDistanceFromLatLonInM(userLat, userLon, loc.lat, loc.lon);
-            if (dist < 50) { // Raio de ativação de 50 metros
+            const cellElement = document.getElementById(`cell-${loc.id}`);
+            
+            if (dist < 50) { // Raio de ativação (50 metros)
                 loc.unlocked = true;
                 saveProgress();
-                
-                // Tentar reproduzir som de desbloqueio
                 unlockSound.play().catch(e => console.log("Áudio bloqueado pelas regras do navegador"));
                 
-                // Disparar notificação do sistema
                 if ("Notification" in window && Notification.permission === "granted") {
                     new Notification("📍 Oporto Bin'Go", {
                         body: `Excelente! Encontraste o local: ${loc.name}!`,
@@ -112,6 +113,20 @@ function checkProximity(userLat, userLon) {
                 openModal(loc);
                 renderGrid();
                 checkWinConditions();
+            } else if (cellElement) {
+                // LÓGICA DO RADAR: Muda a cor do quadrado sem recarregar a página
+                if (dist < 150) { 
+                    // Quente (Menos de 150m)
+                    cellElement.classList.add('hot');
+                    cellElement.classList.remove('warm');
+                } else if (dist < 400) { 
+                    // Morno (Entre 150m e 400m)
+                    cellElement.classList.add('warm');
+                    cellElement.classList.remove('hot');
+                } else { 
+                    // Frio (Mais de 400m) - Remove os efeitos
+                    cellElement.classList.remove('warm', 'hot');
+                }
             }
         }
     });
@@ -211,9 +226,6 @@ setTimeout(() => {
     }
 }, 6000);
 
-// Inicializar a renderização visual da grelha
-renderGrid();
-
 // =========================================
 // GESTÃO DO MODO DIA / NOITE
 // =========================================
@@ -233,3 +245,6 @@ checkTimeOfDay();
 
 // Verifica a cada hora se é preciso mudar (caso o utilizador tenha a app aberta muito tempo)
 setInterval(checkTimeOfDay, 3600000);
+
+// Inicializar a renderização visual da grelha
+renderGrid();

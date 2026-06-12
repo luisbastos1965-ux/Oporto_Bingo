@@ -15,7 +15,7 @@ const uiTexts = {
     es: { map: "📍 Cómo llegar", audio: "🔊 Escuchar", stopAudio: "⏸️ Detener", shareBtn: "📲 Compartir", shareMsg: "Acabo de descubrir este lugar en Oporto Bin'Go: ", tab1: "Resumen", tab2: "Historia", tab3: "Curiosidades", locked: "¡Acércate a menos de 50 metros para revelar los secretos de este lugar histórico!", winLine: "🎉 ¡Felicidades! ¡Has completado una línea!", winFull: "🏆 ¡EXTRAORDINARIO! ¡Has completado todo el mapa!", ttsLang: "es-ES" },
     fr: { map: "📍 Itinéraire", audio: "🔊 Écouter", stopAudio: "⏸️ Arrêter", shareBtn: "📲 Partager", shareMsg: "Je viens de découvrir ce lieu sur Oporto Bin'Go : ", tab1: "Résumé", tab2: "Histoire", tab3: "Anecdotes", locked: "Approchez-vous à moins de 50 mètres pour révéler les secrets de ce lieu historique !", winLine: "🎉 Félicitations ! Vous avez complété une ligne !", winFull: "🏆 EXTRAORDINAIRE ! Vous avez complété toute la carte !", ttsLang: "fr-FR" },
     de: { map: "📍 Route", audio: "🔊 Anhören", stopAudio: "⏸️ Stoppen", shareBtn: "📲 Teilen", shareMsg: "Ich habe gerade diesen Ort auf Oporto Bin'Go entdeckt: ", tab1: "Zusammenfassung", tab2: "Geschichte", tab3: "Fakten", locked: "Nähern Sie sich auf weniger als 50 Meter, um die Geheimnisse dieses Ortes zu enthüllen!", winLine: "🎉 Glückwunsch! Du hast eine Linie vervollständigt!", winFull: "🏆 AUSSERGEWÖHNLICH! Du hast die gesamte Karte vervollständigt!", ttsLang: "de-DE" },
-    it: { map: "📍 Indicazioni", audio: "🔊 Ascolta", stopAudio: "⏸️ Ferma", shareBtn: "📲 Condividi", shareMsg: "Ho appena scoperto questo posto su Oporto Bin'Go: ", tab1: "Riassunto", tab2: "Storia", tab3: "Curiosità", locked: "Avvicinati a meno di 50 metri per rivelare i segreti di questo luogo storico!", winLine: "🎉 Congratulazioni! Hai completato una linea!", winFull: "🏆 STRAORDINARIO! Hai completato l'intera mappa!", ttsLang: "it-IT" },
+    it: { map: "📍 Indicazioni", audio: "🔊 Ascolta", stopAudio: "⏸️ Ferma", shareBtn: "📲 Condividi", shareMsg: "Ho appena scoperto questo posto su Oporto Chi'Go: ", tab1: "Riassunto", tab2: "Storia", tab3: "Curiosità", locked: "Avvicinati a meno di 50 metri per rivelare i segreti di questo luogo storico!", winLine: "🎉 Congratulazioni! Hai completato una linea!", winFull: "🏆 STRAORDINARIO! Hai completato l'intera mappa!", ttsLang: "it-IT" },
     zh: { map: "📍 路线", audio: "🔊 聆听", stopAudio: "⏸️ 停止", shareBtn: "📲 分享", shareMsg: "我刚刚在 Oporto Bin'Go 上发现了这个地方： ", tab1: "总结", tab2: "历史", tab3: "趣闻", locked: "靠近50米以内，揭开这个历史名胜的秘密！", winLine: "🎉 恭喜！您完成了一条线！", winFull: "🏆 太棒了！您完成了整个地图！", ttsLang: "zh-CN" }
 };
 
@@ -47,63 +47,15 @@ function updateUILanguage() {
 const locations = [
     { 
         id: 0, name: "Ribeira do Porto", lat: 41.1405, lon: -8.6120, imgUrl: "./ribeira.png", unlocked: false,
-        desc: {
-            pt: "O coração histórico da cidade, banhado pelo rio Douro. As suas casas coloridas são um ícone mundial.",
-            en: "The historic heart of the city, bathed by the Douro River. Its colorful houses are a global icon.",
-            es: "El corazón histórico de la ciudad, bañado por el río Duero. Sus coloridas casas son un icono mundial.",
-            fr: "Le cœur historique de la ville, baigné par le fleuve Douro. Ses maisons colorées sont une icône mondiale.",
-            de: "Das historische Herz der Stadt am Douro. Seine bunten Häuser sind ein weltweites Symbol.",
-            it: "Il cuore storico della città, bagnato dal fiume Douro. Le sue case colorate sono un'icona mondiale.",
-            zh: "这座城市的历史中心，沐浴在杜罗河畔。其色彩缤纷的房屋是全球的标志。"
-        },
-        hist: {
-            pt: "Uma das zonas mais antigas do Porto, foi desde a Idade Média um intenso centro de comércio marítimo.",
-            en: "One of the oldest areas in Porto, it has been an intense center of maritime trade since the Middle Ages.",
-            es: "Una de las zonas más antiguas de Oporto, ha sido un intenso centro de comercio marítimo desde la Edad Media.",
-            fr: "L'un des plus anciens quartiers de Porto, c'est un centre intense de commerce maritime depuis le Moyen Âge.",
-            de: "Als eines der ältesten Viertel von Porto war es seit dem Mittelalter ein Zentrum für Seehandel.",
-            it: "Una delle zone più antiche di Porto, è stata un intenso centro di commercio marittimo fin dal Medioevo.",
-            zh: "波尔图最古老的地区之一，自中世纪以来一直是繁忙的海洋贸易中心。"
-        },
-        curio: {
-            pt: "Sabias que as casas estreitas foram construídas assim porque os impostos eram pagos consoante a largura da fachada?",
-            en: "Did you know that the narrow houses were built this way because taxes were paid based on the width of the facade?",
-            es: "¿Sabías que las casas estrechas se construyeron así porque los impuestos se pagaban según el ancho de la fachada?",
-            fr: "Saviez-vous que les maisons étroites ont été construites ainsi car les impôts étaient payés en fonction de la largeur de la façade ?",
-            de: "Wussten Sie, dass die schmalen Häuser so gebaut wurden, weil Steuern nach der Fassadenbreite berechnet wurden?",
-            it: "Sapevi che le case strette furono costruite così perché le tasse si pagavano in base alla larghezza della facciata?",
-            zh: "您知道吗？这些狭窄的房屋之所以这样建造，是因为当时的税收是根据外墙的宽度来缴纳的。"
-        }
+        desc: { pt: "O coração histórico da cidade, banhado pelo rio Douro. As suas casas coloridas são um ícone mundial.", en: "The historic heart of the city, bathed by the Douro River. Its colorful houses are a global icon.", es: "El corazón histórico de la ciudad, bañado por el río Duero. Sus coloridas casas son un icono mundial.", fr: "Le cœur historique de la ville, baigné par le fleuve Douro. Ses maisons colorées sont une icône mondiale.", de: "Das historische Herz der Stadt am Douro. Seine bunten Häuser sind ein weltweites Symbol.", it: "Il cuore storico della città, bagnato dal fiume Douro. Le sue case colorate sono un'icona mondiale.", zh: "这座城市的历史中心，沐浴在杜罗河畔。其色彩缤纷的房屋是全球的标志。" },
+        hist: { pt: "Uma das zonas mais antigas do Porto, foi desde a Idade Média um intenso centro de comércio marítimo.", en: "One of the oldest areas in Porto, it has been an intense center of maritime trade since the Middle Ages.", es: "Una de las zonas más antiguas de Oporto, ha sido un intenso centro de comercio marítimo desde la Edad Media.", fr: "L'un des plus anciens quartiers de Porto, c'est un centre intense de commerce maritime depuis le Moyen Âge.", de: "Als eines der ältesten Viertel von Porto war es seit dem Mittelalter ein Zentrum für Seehandel.", it: "Una delle zone più antiche di Porto, è stata un intenso centro di commercio marittimo fin dal Medioevo.", zh: "波尔图最古老的地区之一，自中世纪以来一直是繁忙的海洋贸易中心。" },
+        curio: { pt: "Sabias que as casas estreitas foram construídas assim porque os impostos eram pagos consoante a largura da fachada?", en: "Did you know that the narrow houses were built this way because taxes were paid based on the width of the facade?", es: "¿Sabías que las casas estrechas se construyeron así porque los impuestos se pagaban según el ancho de la fachada?", fr: "Saviez-vous que les maisons étroites ont été construites ainsi car les impôts étaient payés en fonction de la largeur de la façade ?", de: "Wussten Sie, dass die schmalen Häuser so gebaut wurden, weil Steuern nach der Fassadenbreite berechnet wurden?", it: "Sapevi che le case strette furono costruite così perché le tasse si pagavano in base alla larghezza da facciata?", zh: "您知道吗？这些狭窄的房屋之所以这样建造，是因为当时的税收是根据外墙的宽度来缴纳的。" }
     },
     { 
         id: 1, name: "Mercado do Bolhão", lat: 41.1488, lon: -8.6058, imgUrl: "./bolhao.png", unlocked: false,
-        desc: {
-            pt: "O mercado mais emblemático do Porto, vibrante de cores, cheiros e tradição.",
-            en: "Porto's most emblematic market, vibrant with colors, smells, and tradition.",
-            es: "El mercado más emblemático de Oporto, vibrante de colores, olores y tradición.",
-            fr: "Le marché le plus emblématique de Porto, vibrant de couleurs, d'odeurs et de tradition.",
-            de: "Portos symbolträchtigster Markt, voller Farben, Gerüche und Tradition.",
-            it: "Il mercato più emblematico di Porto, vibrante di colori, profumi e tradizione.",
-            zh: "波尔图最具标志性的市场，充满色彩、气味和传统。"
-        },
-        hist: {
-            pt: "Inaugurado em 1914, a sua arquitetura neoclássica alberga o comércio tradicional de frescos há mais de um século.",
-            en: "Inaugurated in 1914, its neoclassical architecture has housed traditional fresh produce trade for over a century.",
-            es: "Inaugurado en 1914, su arquitectura neoclásica alberga el comercio tradicional de productos frescos desde hace más de un siglo.",
-            fr: "Inaugurée en 1914, son architecture néoclassique abrite le commerce traditionnel de produits frais depuis plus d'un siècle.",
-            de: "Die 1914 eingeweihte neoklassizistische Architektur beherbergt seit über einem Jahrhundert den traditionellen Frischwarenhandel.",
-            it: "Inaugurata nel 1914, la sua architettura neoclassica ospita il commercio tradizionale di prodotti freschi da oltre un secolo.",
-            zh: "建于1914年，其新古典主义建筑在一个多世纪以来一直是传统生鲜贸易的场所。"
-        },
-        curio: {
-            pt: "As vendedoras do Bolhão, conhecidas pelo seu forte sotaque e pregões castiços, são a verdadeira alma do espaço.",
-            en: "The Bolhão vendors, known for their strong accents and traditional calls, are the true soul of the place.",
-            es: "Las vendedoras de Bolhão, conocidas por su fuerte acento y gritos tradicionales, son la verdadera alma del lugar.",
-            fr: "Les vendeuses de Bolhão, connues pour leur fort accent et leurs cris traditionnels, sont la véritable âme du lieu.",
-            de: "Die Verkäuferinnen von Bolhão, bekannt für ihren starken Akzent, sind die wahre Seele des Ortes.",
-            it: "Le venditrici del Bolhão, note per il loro forte accento e i richiami tradizionali, sono la vera anima del luogo.",
-            zh: "Bolhão 的女摊贩以其浓重的口音和传统的叫卖声而闻名，是这里的真正灵魂。"
-        }
+        desc: { pt: "O mercado mais emblemático do Porto, vibrante de cores, cheiros e tradição.", en: "Porto's most emblematic market, vibrant with colors, smells, and tradition.", es: "El mercado más emblemático de Oporto, vibrante de colores, olores y tradición.", fr: "Le marché le plus emblématique de Porto, vibrant de couleurs, d'odeurs et de tradition.", de: "Portos symbolträchtigster Markt, voller Farben, Gerüche und Tradition.", it: "Il mercado più emblematico di Porto, vibrante di colori, profumi e tradizione.", zh: "波尔图最具标志性的市场，充满色彩、气味和传统。" },
+        hist: { pt: "Inaugurado em 1914, a sua arquitetura neoclássica alberga o comércio tradicional de frescos há mais de um século.", en: "Inaugurated in 1914, its neoclassical architecture has housed traditional fresh produce trade for over a century.", es: "Inaugurado en 1914, su arquitectura neoclásica alberga el comercio tradicional de productos frescos desde hace más de un siglo.", fr: "Inaugurée en 1914, son architecture néoclassique abrite le commerce traditionnel de produits frais depuis plus d'un siècle.", de: "Die 1914 eingeweihte neoklassizistische Architektur beherbergt seit über einem Jahrhundert den traditionellen Frischwarenhandel.", it: "Inaugurata nel 1914, la sua architettura neoclassica ospita il commercio tradizionale di prodotti freschi da oltre un secolo.", zh: "建于1914年，其新古典主义建筑在一个多世纪以来一直是传统生鲜贸易的场所。" },
+        curio: { pt: "As vendedoras do Bolhão, conhecidas pelo seu forte sotaque e pregões castiços, são a verdadeira alma do espaço.", en: "The Bolhão vendors, known for their strong accents and traditional calls, are the true soul of the place.", es: "Las vendedoras de Bolhão, conocidas por su fuerte acento y gritos tradicionales, son la verdadera alma del lugar.", fr: "Les vendeuses de Bouillon, connues pour leur fort accent et leurs cris traditionnels, sont la véritable âme du lieu.", de: "Die Verkäuferinnen von Bolhão, bekannt für ihren starken Akzent, sind die wahre Seele des Ortes.", it: "Le venditrici del Bolhão, note per il loro forte accento e i richiami tradizionali, sono la vera anima del luogo.", zh: "Bolhão 的女摊贩以其浓重的口音和传统的叫卖声而闻名，是这里的真正灵魂。" }
     },
     { 
         id: 2, name: "Igreja de Santo Ildefonso", lat: 41.1458, lon: -8.6066, imgUrl: "./santo-ildefonso.png", unlocked: false,
@@ -115,25 +67,25 @@ const locations = [
         id: 3, name: "Casa da Música", lat: 41.1582, lon: -8.6307, imgUrl: "./casa-musica.png", unlocked: false,
         desc: { pt: "Um ícone da arquitetura contemporânea e a principal sala de espetáculos do Porto.", en: "An icon of contemporary architecture and Porto's main concert hall.", es: "Un icono de la arquitectura contemporánea y la principal sala de conciertos de Oporto.", fr: "Une icône de l'architecture contemporaine et la principale salle de concert de Porto.", de: "Ein Symbol zeitgenössischer Architektur und Portos wichtigster Konzertsaal.", it: "Un'icona dell'architettura contemporanea e la principale sala da concerto di Porto.", zh: "当代建筑的标志和波尔图的主要音乐厅。" },
         hist: { pt: "Desenhada por Rem Koolhaas, foi projetada para a capital europeia da cultura de 2001.", en: "Designed by Rem Koolhaas, it was planned for the 2001 European Capital of Culture.", es: "Diseñada por Rem Koolhaas, fue planeada para la Capital Europea de la Cultura 2001.", fr: "Conçue par Rem Koolhaas, elle a été prévue pour la Capitale européenne de la culture 2001.", de: "Entworfen von Rem Koolhaas für die Kulturhauptstadt Europas 2001.", it: "Progettata da Rem Koolhaas, è stata concepita per la Capitale Europea della Cultura 2001.", zh: "由雷姆·库哈斯设计，为2001年欧洲文化之都而建。" },
-        curio: { pt: "A sua forma geométrica assimétrica faz lembrar um meteorito que aterrou na cidade.", en: "Its asymmetrical geometric shape resembles a meteorite that landed in the city.", es: "Su forma geométrica asimétrica se asemeja a un meteorito que aterrizó en la ciudad.", fr: "Sa forme géométrique asymétrique ressemble à une météorite qui aurait atterri dans la ville.", de: "Seine asymmetrische Form erinnert an einen Meteoriten, der in der Stadt gelandet ist.", it: "La sua forma geometrica asimmetrica ricorda un meteorite atterrato in città.", zh: "其不对称的几何形状类似于降落在城市中的陨石。" }
+        curio: { pt: "A sua forma geométrica assimétrica faz lembrar um meteorito que aterrou na cidade.", en: "Its asymmetrical geometric shape resembles a meteorite that landed in the city.", es: "Su forma geométrica asimétrica se asemeja a un meteorito que aterrizó in la ciudad.", fr: "Sa forme géométrique asymétrique ressemble à une météorite qui aurait atterri dans la ville.", de: "Seine asymmetrische Form erinnert an einen Meteoriten, der in der Stadt gelandet ist.", it: "La sua forma geometrica asimmetrica ricorda un meteorite atterrato in città.", zh: "其不对称的几何形状类似于降落在城市中的陨石。" }
     },
     { 
         id: 4, name: "Estação de São Bento", lat: 41.1455, lon: -8.6105, imgUrl: "./sao-bento.png", unlocked: false,
-        desc: { pt: "Uma das estações mais deslumbrantes do mundo, famosa pelos seus azulejos.", en: "One of the most stunning stations in the world, famous for its tiles.", es: "Una de las estaciones más impresionantes del mundo, famosa por sus azulejos.", fr: "L'une des gares les plus époustouflantes au monde, célèbre pour ses azulejos.", de: "Einer der atemberaubendsten Bahnhöfe der Welt, berühmt für seine Kacheln.", it: "Una delle stazioni più straordinarie al mondo, famosa per i suoi azulejos.", zh: "世界上最迷人的火车站之一，以其瓷砖而闻名。" },
+        desc: { pt: "Uma das estações mais deslumbrantes do mundo, famosa pelos seus azulejos.", en: "One of the most stunning stations in the world, famous for its tiles.", es: "Una de las estaciones más impresionantes del mundo, famosa por sus azulejos.", fr: "L'une des gares les plus époustouflantes au monde, célèbre pour ses azulejos.", de: "Einer der atemberaubendsten Bahnhöfe der Welt, berühmt für seine Kacheln.", it: "Una delle stazioni mais straordinarie al mondo, famosa per i suoi azulejos.", zh: "世界上最迷人的火车站之一，以其瓷砖而闻名。" },
         hist: { pt: "Construída no século XX sobre as ruínas de um antigo convento.", en: "Built in the 20th century on the ruins of an old convent.", es: "Construida en el siglo XX sobre las ruinas de un antiguo convento.", fr: "Construite au XXe siècle sur les ruines d'un ancien couvent.", de: "Erbaut im 20. Jahrhundert auf den Ruinen eines alten Klosters.", it: "Costruita nel XX secolo sulle rovine di un antico convento.", zh: "建于20世纪，位于一座古老修道院的废墟上。" },
         curio: { pt: "Os seus 20 mil azulejos contam detalhadamente a história de Portugal.", en: "Its 20,000 tiles detail the history of Portugal.", es: "Sus 20.000 azulejos detallan la historia de Portugal.", fr: "Ses 20 000 azulejos détaillent l'histoire du Portugal.", de: "Seine 20.000 Kacheln erzählen die Geschichte Portugals.", it: "I suoi 20.000 azulejos raccontano la storia del Portogallo.", zh: "它的两万块瓷砖详细描绘了葡萄牙的历史。" }
     },
     { 
         id: 5, name: "Avenida dos Aliados", lat: 41.1478, lon: -8.6112, imgUrl: "./aliados.png", unlocked: false,
         desc: { pt: "O imponente 'salão de visitas' do Porto, ladeado por edifícios em granito.", en: "Porto's imposing 'living room', flanked by granite buildings.", es: "La imponente 'sala de estar' de Oporto, flanqueada por edificios de granito.", fr: "L'imposant 'salon' de Porto, bordé de bâtiments en granit.", de: "Portos imposantes 'Wohnzimmer', gesäumt von Granitgebäuden.", it: "L'imponente 'salotto' di Porto, fiancheggiato da edifici in granito.", zh: "波尔图宏伟的'客厅'，两侧是花岗岩建筑。" },
-        hist: { pt: "Projetada no século XX para criar uma praça monumental digna das metrópoles europeias.", en: "Designed in the 20th century to create a monumental square worthy of European metropolises.", es: "Diseñada en el siglo XX para crear una plaza monumental digna de las metrópolis europeas.", fr: "Conçue au XXe siècle pour créer une place monumentale digne des métropoles européennes.", de: "Im 20. Jahrhundert entworfen, um einen monumentalen Platz zu schaffen.", it: "Progettata nel XX secolo per creare una piazza monumentale degna delle metropoli europee.", zh: "设计于20世纪，旨在创造一个无愧于欧洲大都市的纪念性广场。" },
-        curio: { pt: "O nome homenageia os Aliados da 1ª Guerra. É aqui que se celebram as vitórias.", en: "Named after the WWI Allies. This is where victories are celebrated.", es: "Lleva el nombre de los Aliados de la Primera Guerra Mundial. Aquí se celebran las victorias.", fr: "Nommée d'après les Alliés de la 1ère Guerre mondiale. C'est ici que l'on célèbre les victoires.", de: "Benannt nach den Alliierten des Ersten Weltkriegs. Hier werden Siege gefeiert.", it: "Prende il nome dagli Alleati della Prima Guerra Mondiale. È qui che si celebrano le vittorie.", zh: "以一战同盟国的名字命名。这里是庆祝胜利的地方。" }
+        hist: { pt: "Projetada no século XX para criar uma praça monumental digna das metrópoles europeias.", en: "Designed in the 20th century to create a monumental square worthy of European metropolises.", es: "Diseñada en el siglo XX para crear una plaza monumental digna de las metrópolis europeas.", fr: "Conçue au XXe siècle pour créer une place monumentale digne des métropoles européennes.", de: "Im 20. Jahrhundert entworfen, um einen monumentalen Platz zu schaffen.", it: "Progettata nel XX secolo per creare uma piazza monumentale degna delle metropoli europee.", zh: "设计于20世纪，旨在创造一个无愧于欧洲大都市的纪念性广场。" },
+        curio: { pt: "O nome homenageia os Aliados da 1ª Guerra. É aqui que se celebram as vitórias.", en: "Named after the WWI Allies. This is where victories are celebrated.", es: "Lleva el nombre de los Aliados de la Primera Guerra Mundial. Aquí se celebran las victorias.", fr: "Nommée d'après les Alliés de la 1ère Guerre mondiale. C'est ici que l'on célèbre les victoires.", de: "Benannt nach den Alliierten des Ersten Weltkriegs. Hier werden Siege gefeiert.", it: "Prende il nome dagli Alleati della Prima Guerra Mondiale. È aqui que si celebrano le vittorie.", zh: "以一战同盟国的名字命名。这里是庆祝胜利的地方。" }
     },
     { 
         id: 6, name: "Teatro Nacional São João", lat: 41.1443, lon: -8.6074, imgUrl: "./sao-joao.png", unlocked: false,
         desc: { pt: "O teatro mais prestigiado da cidade, com uma arquitetura elegante.", en: "The most prestigious theater in the city, with elegant architecture.", es: "El teatro más prestigioso de la ciudad, con una arquitectura elegante.", fr: "Le théâtre le plus prestigieux de la ville, avec une architecture élégante.", de: "Das renommierteste Theater der Stadt mit eleganter Architektur.", it: "Il teatro più prestigioso della città, con un'architettura elegante.", zh: "这座城市最负盛名的剧院，拥有优雅的建筑。" },
         hist: { pt: "O edifício atual foi inaugurado em 1920, após o original de 1798 arder.", en: "The current building opened in 1920, after the 1798 original burned down.", es: "El edificio actual se inauguró en 1920, después de que el original de 1798 se incendiara.", fr: "Le bâtiment actuel a ouvert en 1920, après l'incendie de l'original de 1798.", de: "Das heutige Gebäude wurde 1920 eröffnet, nachdem das Original abbrannte.", it: "L'edificio attuale è stato inaugurato nel 1920, dopo che l'originale del 1798 è bruciato.", zh: "现有的建筑于1920年开放，原建于1798年的建筑被烧毁。" },
-        curio: { pt: "A sua fachada assemelha-se muito à da Ópera Garnier em Paris.", en: "Its facade closely resembles the Palais Garnier opera house in Paris.", es: "Su fachada se asemeja mucho a la de la Ópera Garnier en París.", fr: "Sa façade ressemble beaucoup à celle de l'Opéra Garnier à Paris.", de: "Seine Fassade ähnelt stark der Opéra Garnier in Paris.", it: "La sua facciata ricorda molto quella dell'Opéra Garnier a Parigi.", zh: "其外观与巴黎加尼叶歌剧院非常相似。" }
+        curio: { pt: "A sua fachada assemelha-se muito à da Ópera Garnier em Paris.", en: "Its facade closely resembles the Palais Garnier opera house in Paris.", es: "Su fachada se asemeja mucho a la de la Ópera Garnier en París.", fr: "Sa façade ressemble beaucoup à celle de l'Opéra Garnier à Paris.", de: "Seine Fassade ähnelt stark der Opéra Garnier in Paris.", it: "La sua facciata ricorda molto quella dell'Oppera Garnier a Parigi.", zh: "其外观与巴黎加尼叶歌剧院非常相似。" }
     },
     { 
         id: 7, name: "Torre dos Clérigos", lat: 41.1458, lon: -8.6139, imgUrl: "./clerigos.png", unlocked: false,
@@ -149,7 +101,7 @@ const locations = [
     },
     { 
         id: 9, name: "Mercado Ferreira Borges", lat: 41.1418, lon: -8.6148, imgUrl: "./ferreira-borges.png", unlocked: false,
-        desc: { pt: "Um belíssimo edifício vermelho, exemplo da arquitetura do ferro.", en: "A beautiful red building, an example of iron architecture.", es: "Un hermoso edificio rojo, ejemplo de la arquitectura del hierro.", fr: "Un beau bâtiment rouge, exemple de l'architecture en fer.", de: "Ein wunderschönes rotes Gebäude, ein Beispiel für Eisenarchitektur.", it: "Un bellissimo edificio rosso, esempio di architettura in ferro.", zh: "一座美丽的红色建筑，是铁质建筑的典范。" },
+        desc: { pt: "Um belíssimo edifício vermelho, exemplo da arquitetura do ferro.", en: "A beautiful red building, an example of iron architecture.", es: "Un hermoso edificio rojo, ejemplo de la arquitectura del hierro.", fr: "Un beau bâtiment rouge, exemple de l'architecture en fer.", de: "Ein wunderschönes rotes Gebäude, ein Beispiel für Eisenarchitektur.", it: "Un bellissimo edifício rosso, esempio di architettura in ferro.", zh: "一座美丽的红色建筑，是铁质建筑的典范。" },
         hist: { pt: "Construído em 1885, a verdade é que nunca operou como mercado.", en: "Built in 1885, the truth is it never operated as a market.", es: "Construido en 1885, la verdad es que nunca funcionó como mercado.", fr: "Construit en 1885, la vérité est qu'il n'a jamais fonctionné comme marché.", de: "1885 erbaut, diente es eigentlich nie als Markt.", it: "Costruito nel 1885, la verità è che non ha mai funzionato come mercato.", zh: "建于1885年，事实是它从未作为市场运营过。" },
         curio: { pt: "Hoje em dia, é uma casa de espetáculos e eventos muito popular.", en: "Today, it is a very popular concert and event venue.", es: "Hoy en día, es un lugar de conciertos y eventos muy popular.", fr: "Aujourd'hui, c'est une salle de concert et d'événements très populaire.", de: "Heute ist es ein sehr beliebter Ort für Konzerte und Veranstaltungen.", it: "Oggi è un luogo molto popolare per concerti ed eventi.", zh: "如今，这是一个非常受欢迎的音乐会和活动场所。" }
     },
@@ -162,8 +114,8 @@ const locations = [
     { 
         id: 11, name: "Igreja da Lapa", lat: 41.1579, lon: -8.6131, imgUrl: "./lapa.png", unlocked: false,
         desc: { pt: "Uma igreja majestosa que guarda o coração do rei D. Pedro IV.", en: "A majestic church that guards the heart of King D. Pedro IV.", es: "Una majestuosa iglesia que guarda el corazón del rey D. Pedro IV.", fr: "Une église majestueuse qui garde le cœur du roi D. Pedro IV.", de: "Eine majestätische Kirche, die das Herz von König D. Pedro IV. bewacht.", it: "Una chiesa maestosa che custodisce il cuore del re D. Pedro IV.", zh: "一座雄伟的教堂，守卫着佩德罗四世国王的心脏。" },
-        hist: { pt: "A sua construção durou mais de um século (1755-1863).", en: "Its construction lasted for more than a century (1755-1863).", es: "Su construcción duró más de un siglo (1755-1863).", fr: "Sa construction a duré plus d'un siècle (1755-1863).", de: "Der Bau dauerte über ein Jahrhundert (1755-1863).", it: "La sua costruzione è durata più di un secolo (1755-1863).", zh: "它的建造历时一个多世纪 (1755-1863)。" },
-        curio: { pt: "O coração do rei foi doado por ele à cidade em agradecimento.", en: "The king's heart was donated by him to the city in gratitude.", es: "El corazón del rey fue donado por él a la ciudad en agradecimiento.", fr: "Le cœur du roi a été donné par lui à la ville en signe de gratitude.", de: "Das Herz des Königs wurde von ihm aus Dankbarkeit an die Stadt gespendet.", it: "Il cuore del re fu donato da lui alla città in segno di gratitudine.", zh: "国王的心脏是由他捐赠给这座城市以示感谢。" }
+        hist: { pt: "A sua construção durou mais de um século (1755-1863).", en: "Its construction lasted for more than a century (1755-1863).", es: "Su construção duró más de un siglo (1755-1863).", fr: "Sa construction a duré plus d'un siècle (1755-1863).", de: "Der Bau dauerte über ein Jahrhundert (1755-1863).", it: "La sua costruzione è durata più di un secolo (1755-1863).", zh: "它的建造历时一个多世纪 (1755-1863)。" },
+        curio: { pt: "O coração do rei foi doado por ele à cidade em agradecimento.", en: "The king's heart was donated by him to the city in gratitude.", es: "El corazón del rey fue donado por él a la ciudad en agradecimento.", fr: "Le cœur du roi a été donné par lui à la ville en signe de gratitude.", de: "Das Herz des Königs wurde von ihm aus Dankbarkeit an die Stadt gespendet.", it: "Il cuore del re fu donato da lui alla città in segno di gratitudine.", zh: "国王的心脏是由他捐赠给这座城市以示感谢。" }
     },
     { 
         id: 12, name: "Sé Catedral do Porto", lat: 41.1427, lon: -8.6112, imgUrl: "./se-catedral.png", unlocked: false,
@@ -175,7 +127,7 @@ const locations = [
         id: 13, name: "Palácio da Bolsa", lat: 41.1414, lon: -8.6157, imgUrl: "./palacio-bolsa.png", unlocked: false,
         desc: { pt: "Um faustoso palácio construído pela Associação Comercial do Porto.", en: "A lavish palace built by the Porto Commercial Association.", es: "Un lujoso palacio construido por la Asociación Comercial de Oporto.", fr: "Un somptueux palais construit par l'Association commerciale de Porto.", de: "Ein opulenter Palast, erbaut vom Handelsverband von Porto.", it: "Un sontuoso palazzo costruito dall'Associazione Commerciale di Porto.", zh: "由波尔图商业协会建造的豪华宫殿。" },
         hist: { pt: "Erguido sobre as ruínas do Convento de São Francisco, ardido em 1832.", en: "Built on the ruins of the São Francisco Convent, burned down in 1832.", es: "Construido sobre las ruinas del Convento de San Francisco, incendiado en 1832.", fr: "Construit sur les ruines du couvent de São Francisco, incendié en 1832.", de: "Erbaut auf den Ruinen des 1832 niedergebrannten Klosters São Francisco.", it: "Costruito sulle rovine del Convento di São Francisco, bruciato nel 1832.", zh: "建于1832年被烧毁的圣弗朗西斯科修道院的废墟上。" },
-        curio: { pt: "O Salão Árabe é uma das salas mais ornamentadas do país.", en: "The Arabian Hall is one of the most ornate rooms in the country.", es: "El Salón Árabe es una de las salas más ornamentadas del país.", fr: "Le Salon Arabe est l'une des pièces les plus ornées du pays.", de: "Der Arabische Saal ist einer der am reichsten verzierten Räume des Landes.", it: "La Sala Araba è una delle stanze più decorate del paese.", zh: "阿拉伯厅是该国装饰最华丽的房间之一。" }
+        curio: { pt: "O Salão Árabe é uma das salas mais ornamentadas do país.", en: "The Arabian Hall is one of the most ornate rooms in the country.", es: "El Salón Árabe es una de las salas más ornamentadas del país.", fr: "Le Salon Arabe é l'une des pièces les plus ornées du pays.", de: "Der Arabische Saal ist einer der am reichsten verzierten Räume des Landes.", it: "La Sala Araba è una delle stanze più decorate del paese.", zh: "阿拉伯厅是该国装饰最华丽的房间之一。" }
     },
     { 
         id: 14, name: "Antiga Cadeia da Relação", lat: 41.1447, lon: -8.6153, imgUrl: "./cadeia-relacao.png", unlocked: false,
@@ -185,7 +137,7 @@ const locations = [
     },
     { 
         id: 15, name: "Livraria Lello", lat: 41.1469, lon: -8.6149, imgUrl: "./lello.png", unlocked: false,
-        desc: { pt: "Uma das livrarias mais bonitas do mundo, com a sua escadaria fluida.", en: "One of the most beautiful bookstores in the world, with its flowing staircase.", es: "Una de las librerías más bonitas del mundo, con su escalera fluida.", fr: "L'une des plus belles librairies du monde, avec son escalier fluide.", de: "Eine der schönsten Buchhandlungen der Welt mit ihrer fließenden Treppe.", it: "Una delle librerie più belle del mondo, con la sua scalinata fluida.", zh: "世界上最美丽的书店之一，有着流畅的楼梯。" },
+        desc: { pt: "Uma das livrarias mais bonitas do mundo, com a sua escadaria fluida.", en: "One of the most beautiful bookstores in the world, with its flowing staircase.", es: "Una de las librerías más bonitas del mundo, con su escalera fluida.", fr: "L'une des plus belles librairies du monde, avec son escalier fluide.", de: "Eine der schönsten Buchhandlungen der Welt mit ihrer fließenden Treppe.", it: "Una delle librerie più belle del mondo, com la sua scalinata fluida.", zh: "世界上最美丽的书店之一，有着流畅的楼梯。" },
         hist: { pt: "Inaugurada em 1906, possui uma impressionante traça neogótica.", en: "Opened in 1906, it has an impressive neo-Gothic design.", es: "Inaugurada en 1906, tiene un impresionante diseño neogótico.", fr: "Ouverte en 1906, elle présente un impressionnant design néo-gothique.", de: "1906 eröffnet, beeindruckt sie mit ihrem neugotischen Design.", it: "Aperta nel 1906, ha un impressionante design neogotico.", zh: "开业于1906年，拥有令人印象深刻的新哥特式设计。" },
         curio: { pt: "Reza a lenda que inspirou J.K. Rowling no mundo de Harry Potter.", en: "Legend has it that it inspired J.K. Rowling in the world of Harry Potter.", es: "La leyenda dice que inspiró a J.K. Rowling en el mundo de Harry Potter.", fr: "La légende veut qu'elle ait inspiré J.K. Rowling pour le monde de Harry Potter.", de: "Die Legende besagt, dass sie J.K. Rowling in der Welt von Harry Potter inspirierte.", it: "La leggenda narra che abbia ispirato J.K. Rowling nel mondo di Harry Potter.", zh: "传说是它激发了J.K.罗琳创作《哈利·波特》世界的灵感。" }
     }
@@ -223,7 +175,7 @@ function saveProgress() {
 
 loadProgress();
 
-// Grelha de Jogo (Modificada para permitir clicar sempre)
+// Grelha de Jogo (Sempre clicável)
 function renderGrid() {
     grid.innerHTML = '';
     locations.forEach((loc) => {
@@ -232,7 +184,6 @@ function renderGrid() {
         cell.className = `cell ${loc.unlocked ? 'unlocked' : ''}`;
         cell.innerHTML = `<img src="${loc.imgUrl}" alt="${loc.name}">`;
         
-        // Removemos o bloqueio do clique para permitir ver o Modo Mistério
         cell.addEventListener('click', () => {
             openModal(loc);
         });
@@ -240,7 +191,7 @@ function renderGrid() {
     });
 }
 
-// Pop-up e Idiomas (Com Modo Mistério)
+// Pop-up e Idiomas (Ajustado com o teu pedido)
 function openModal(loc) {
     currentLocation = loc;
     modalTitle.innerText = loc.name;
@@ -253,26 +204,27 @@ function openModal(loc) {
     const btnShare = document.getElementById('btn-share');
 
     if (loc.unlocked) {
-        // LOCAL DESBLOQUEADO: Mostra tudo, incluindo botão de partilha
+        // LOCAL DESBLOQUEADO: Mostra tudo, incluindo imagem e botões extras
         modalImg.src = loc.imgUrl;
+        modalImg.classList.remove('hidden'); // Garante que a imagem aparece
         modalDesc.innerText = loc.desc[currentLang];
         modalHist.innerText = loc.hist[currentLang];
         modalCurio.innerText = loc.curio[currentLang];
         
         tabsContainer.classList.remove('hidden');
         btnAudio.classList.remove('hidden');
-        btnShare.classList.remove('hidden');
+        btnShare.classList.remove('hidden'); // Botão de partilhar aparece aqui!
         
         const firstTabBtn = document.querySelector('.tab-btn');
         if(firstTabBtn) firstTabBtn.click(); 
     } else {
-        // LOCAL BLOQUEADO (MODO MISTÉRIO)
-        modalImg.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Compass_icon.png/200px-Compass_icon.png";
+        // LOCAL BLOQUEADO: Apenas nome, botão de como chegar e texto dos 50m
+        modalImg.classList.add('hidden'); // REMOVE A IMAGEM QUE DAVA ERRO
         modalDesc.innerText = uiTexts[currentLang].locked;
         
         tabsContainer.classList.add('hidden');
         btnAudio.classList.add('hidden');
-        btnShare.classList.add('hidden'); // Não pode partilhar o que não descobriu
+        btnShare.classList.add('hidden'); // Escondido se estiver bloqueado
         
         const tabContents = document.getElementsByClassName("tab-content");
         for (let i = 0; i < tabContents.length; i++) tabContents[i].classList.remove("active");
@@ -379,10 +331,10 @@ function fireConfetti(isFullCard) {
     }());
 }
 
-// Mapas, Áudio e Partilha
+// Mapas (Link Corrigido), Áudio e Partilha
 function openMap() {
     if (!currentLocation) return;
-    window.open(`https://www.google.com/maps/dir/?api=1&destination=$${currentLocation.lat},${currentLocation.lon}&travelmode=walking`, '_blank');
+    window.open(`https://www.google.com/maps/search/?api=1&query=${currentLocation.lat},${currentLocation.lon}`, '_blank');
 }
 
 function toggleAudio() {
@@ -404,10 +356,8 @@ function toggleAudio() {
     speechSynthesis.speak(utterance);
 }
 
-// Partilha Específica (Botão no Pop-up)
 function shareLocation() {
     if (!currentLocation || !currentLocation.unlocked) return;
-    
     if (navigator.share) {
         navigator.share({
             title: 'Oporto Bin\'Go',
@@ -419,7 +369,6 @@ function shareLocation() {
     }
 }
 
-// Partilha Automática (Ao ganhar Linha/Bingo)
 function triggerShare(type) {
     if (navigator.share) {
         const shareText = type === 'bingo' ? "🏆 Oporto Bin'Go Bingo!" : "🎉 Oporto Bin'Go Line!";

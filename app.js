@@ -10,13 +10,13 @@ if ("Notification" in window && Notification.permission !== "denied") {
 // DICIONÁRIO DA INTERFACE (UI)
 // =========================================
 const uiTexts = {
-    pt: { map: "📍 Como Chegar", audio: "🔊 Ouvir Textos", stopAudio: "⏸️ Parar Áudio", tab1: "Resumo", tab2: "História", tab3: "Curiosidades", winLine: "🎉 Parabéns! Conseguiste completar uma linha!", winFull: "🏆 EXTRAORDINÁRIO! Completaste todo o mapa do Oporto Bin'Go!", ttsLang: "pt-PT" },
-    en: { map: "📍 Directions", audio: "🔊 Listen", stopAudio: "⏸️ Stop Audio", tab1: "Summary", tab2: "History", tab3: "Trivia", winLine: "🎉 Congratulations! You completed a line!", winFull: "🏆 EXTRAORDINARY! You completed the entire map!", ttsLang: "en-GB" },
-    es: { map: "📍 Cómo llegar", audio: "🔊 Escuchar", stopAudio: "⏸️ Detener", tab1: "Resumen", tab2: "Historia", tab3: "Curiosidades", winLine: "🎉 ¡Felicidades! ¡Has completado una línea!", winFull: "🏆 ¡EXTRAORDINARIO! ¡Has completado todo el mapa!", ttsLang: "es-ES" },
-    fr: { map: "📍 Itinéraire", audio: "🔊 Écouter", stopAudio: "⏸️ Arrêter", tab1: "Résumé", tab2: "Histoire", tab3: "Anecdotes", winLine: "🎉 Félicitations ! Vous avez complété une ligne !", winFull: "🏆 EXTRAORDINAIRE ! Vous avez complété toute la carte !", ttsLang: "fr-FR" },
-    de: { map: "📍 Route", audio: "🔊 Anhören", stopAudio: "⏸️ Stoppen", tab1: "Zusammenfassung", tab2: "Geschichte", tab3: "Fakten", winLine: "🎉 Glückwunsch! Du hast eine Linie vervollständigt!", winFull: "🏆 AUSSERGEWÖHNLICH! Du hast die gesamte Karte vervollständigt!", ttsLang: "de-DE" },
-    it: { map: "📍 Indicazioni", audio: "🔊 Ascolta", stopAudio: "⏸️ Ferma", tab1: "Riassunto", tab2: "Storia", tab3: "Curiosità", winLine: "🎉 Congratulazioni! Hai completato una linea!", winFull: "🏆 STRAORDINARIO! Hai completato l'intera mappa!", ttsLang: "it-IT" },
-    zh: { map: "📍 路线", audio: "🔊 聆听", stopAudio: "⏸️ 停止", tab1: "总结", tab2: "历史", tab3: "趣闻", winLine: "🎉 恭喜！您完成了一条线！", winFull: "🏆 太棒了！您完成了整个地图！", ttsLang: "zh-CN" }
+    pt: { map: "📍 Como Chegar", audio: "🔊 Ouvir Textos", stopAudio: "⏸️ Parar Áudio", shareBtn: "📲 Partilhar", shareMsg: "Acabei de descobrir este local no Oporto Bin'Go: ", tab1: "Resumo", tab2: "História", tab3: "Curiosidades", locked: "Aproxima-te a menos de 50 metros para revelar os segredos deste local histórico!", winLine: "🎉 Parabéns! Conseguiste completar uma linha!", winFull: "🏆 EXTRAORDINÁRIO! Completaste todo o mapa do Oporto Bin'Go!", ttsLang: "pt-PT" },
+    en: { map: "📍 Directions", audio: "🔊 Listen", stopAudio: "⏸️ Stop Audio", shareBtn: "📲 Share", shareMsg: "I just discovered this place on Oporto Bin'Go: ", tab1: "Summary", tab2: "History", tab3: "Trivia", locked: "Get closer than 50 meters to reveal the secrets of this historic location!", winLine: "🎉 Congratulations! You completed a line!", winFull: "🏆 EXTRAORDINARY! You completed the entire map!", ttsLang: "en-GB" },
+    es: { map: "📍 Cómo llegar", audio: "🔊 Escuchar", stopAudio: "⏸️ Detener", shareBtn: "📲 Compartir", shareMsg: "Acabo de descubrir este lugar en Oporto Bin'Go: ", tab1: "Resumen", tab2: "Historia", tab3: "Curiosidades", locked: "¡Acércate a menos de 50 metros para revelar los secretos de este lugar histórico!", winLine: "🎉 ¡Felicidades! ¡Has completado una línea!", winFull: "🏆 ¡EXTRAORDINARIO! ¡Has completado todo el mapa!", ttsLang: "es-ES" },
+    fr: { map: "📍 Itinéraire", audio: "🔊 Écouter", stopAudio: "⏸️ Arrêter", shareBtn: "📲 Partager", shareMsg: "Je viens de découvrir ce lieu sur Oporto Bin'Go : ", tab1: "Résumé", tab2: "Histoire", tab3: "Anecdotes", locked: "Approchez-vous à moins de 50 mètres pour révéler les secrets de ce lieu historique !", winLine: "🎉 Félicitations ! Vous avez complété une ligne !", winFull: "🏆 EXTRAORDINAIRE ! Vous avez complété toute la carte !", ttsLang: "fr-FR" },
+    de: { map: "📍 Route", audio: "🔊 Anhören", stopAudio: "⏸️ Stoppen", shareBtn: "📲 Teilen", shareMsg: "Ich habe gerade diesen Ort auf Oporto Bin'Go entdeckt: ", tab1: "Zusammenfassung", tab2: "Geschichte", tab3: "Fakten", locked: "Nähern Sie sich auf weniger als 50 Meter, um die Geheimnisse dieses Ortes zu enthüllen!", winLine: "🎉 Glückwunsch! Du hast eine Linie vervollständigt!", winFull: "🏆 AUSSERGEWÖHNLICH! Du hast die gesamte Karte vervollständigt!", ttsLang: "de-DE" },
+    it: { map: "📍 Indicazioni", audio: "🔊 Ascolta", stopAudio: "⏸️ Ferma", shareBtn: "📲 Condividi", shareMsg: "Ho appena scoperto questo posto su Oporto Bin'Go: ", tab1: "Riassunto", tab2: "Storia", tab3: "Curiosità", locked: "Avvicinati a meno di 50 metri per rivelare i segreti di questo luogo storico!", winLine: "🎉 Congratulazioni! Hai completato una linea!", winFull: "🏆 STRAORDINARIO! Hai completato l'intera mappa!", ttsLang: "it-IT" },
+    zh: { map: "📍 路线", audio: "🔊 聆听", stopAudio: "⏸️ 停止", shareBtn: "📲 分享", shareMsg: "我刚刚在 Oporto Bin'Go 上发现了这个地方： ", tab1: "总结", tab2: "历史", tab3: "趣闻", locked: "靠近50米以内，揭开这个历史名胜的秘密！", winLine: "🎉 恭喜！您完成了一条线！", winFull: "🏆 太棒了！您完成了整个地图！", ttsLang: "zh-CN" }
 };
 
 let currentLang = localStorage.getItem('oportoBingoLang') || 'pt';
@@ -30,11 +30,12 @@ function changeLanguage() {
     currentLang = document.getElementById('lang-selector').value;
     localStorage.setItem('oportoBingoLang', currentLang);
     updateUILanguage();
-    if (currentLocation && currentLocation.unlocked) openModal(currentLocation);
+    if (currentLocation) openModal(currentLocation);
 }
 
 function updateUILanguage() {
     document.getElementById('btn-map').innerText = uiTexts[currentLang].map;
+    document.getElementById('btn-share').innerText = uiTexts[currentLang].shareBtn;
     document.getElementById('tab-btn-resumo').innerText = uiTexts[currentLang].tab1;
     document.getElementById('tab-btn-historia').innerText = uiTexts[currentLang].tab2;
     document.getElementById('tab-btn-curiosidades').innerText = uiTexts[currentLang].tab3;
@@ -222,7 +223,7 @@ function saveProgress() {
 
 loadProgress();
 
-// Grelha de Jogo
+// Grelha de Jogo (Modificada para permitir clicar sempre)
 function renderGrid() {
     grid.innerHTML = '';
     locations.forEach((loc) => {
@@ -231,15 +232,15 @@ function renderGrid() {
         cell.className = `cell ${loc.unlocked ? 'unlocked' : ''}`;
         cell.innerHTML = `<img src="${loc.imgUrl}" alt="${loc.name}">`;
         
+        // Removemos o bloqueio do clique para permitir ver o Modo Mistério
         cell.addEventListener('click', () => {
-            // Apenas abre o modal se o local estiver desbloqueado, conforme pedido
-            if (loc.unlocked) openModal(loc);
+            openModal(loc);
         });
         grid.appendChild(cell);
     });
 }
 
-// Pop-up e Idiomas
+// Pop-up e Idiomas (Com Modo Mistério)
 function openModal(loc) {
     currentLocation = loc;
     modalTitle.innerText = loc.name;
@@ -247,13 +248,36 @@ function openModal(loc) {
     if(speechSynthesis.speaking) speechSynthesis.cancel();
     document.getElementById('btn-audio').innerText = uiTexts[currentLang].audio;
 
-    modalImg.src = loc.imgUrl;
-    modalDesc.innerText = loc.desc[currentLang];
-    modalHist.innerText = loc.hist[currentLang];
-    modalCurio.innerText = loc.curio[currentLang];
-    
-    const firstTabBtn = document.querySelector('.tab-btn');
-    if(firstTabBtn) firstTabBtn.click(); 
+    const tabsContainer = document.getElementById('modal-tabs');
+    const btnAudio = document.getElementById('btn-audio');
+    const btnShare = document.getElementById('btn-share');
+
+    if (loc.unlocked) {
+        // LOCAL DESBLOQUEADO: Mostra tudo, incluindo botão de partilha
+        modalImg.src = loc.imgUrl;
+        modalDesc.innerText = loc.desc[currentLang];
+        modalHist.innerText = loc.hist[currentLang];
+        modalCurio.innerText = loc.curio[currentLang];
+        
+        tabsContainer.classList.remove('hidden');
+        btnAudio.classList.remove('hidden');
+        btnShare.classList.remove('hidden');
+        
+        const firstTabBtn = document.querySelector('.tab-btn');
+        if(firstTabBtn) firstTabBtn.click(); 
+    } else {
+        // LOCAL BLOQUEADO (MODO MISTÉRIO)
+        modalImg.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Compass_icon.png/200px-Compass_icon.png";
+        modalDesc.innerText = uiTexts[currentLang].locked;
+        
+        tabsContainer.classList.add('hidden');
+        btnAudio.classList.add('hidden');
+        btnShare.classList.add('hidden'); // Não pode partilhar o que não descobriu
+        
+        const tabContents = document.getElementsByClassName("tab-content");
+        for (let i = 0; i < tabContents.length; i++) tabContents[i].classList.remove("active");
+        document.getElementById("tab-resumo").classList.add("active");
+    }
     
     modal.classList.remove('hidden');
 }
@@ -380,6 +404,22 @@ function toggleAudio() {
     speechSynthesis.speak(utterance);
 }
 
+// Partilha Específica (Botão no Pop-up)
+function shareLocation() {
+    if (!currentLocation || !currentLocation.unlocked) return;
+    
+    if (navigator.share) {
+        navigator.share({
+            title: 'Oporto Bin\'Go',
+            text: uiTexts[currentLang].shareMsg + currentLocation.name + " 🗺️✨",
+            url: window.location.href
+        }).catch(console.error);
+    } else {
+        alert("O teu navegador não suporta a partilha nativa.");
+    }
+}
+
+// Partilha Automática (Ao ganhar Linha/Bingo)
 function triggerShare(type) {
     if (navigator.share) {
         const shareText = type === 'bingo' ? "🏆 Oporto Bin'Go Bingo!" : "🎉 Oporto Bin'Go Line!";

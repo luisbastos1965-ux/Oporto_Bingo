@@ -317,3 +317,38 @@ body.day-mode .tab-btn:hover, body.day-mode .tab-btn.active {
 body.day-mode .tab-content {
     color: rgba(0, 0, 0, 0.8);
 }
+
+/* =========================================
+   BARRA DE AÇÕES (MAPAS E ÁUDIO)
+   ========================================= */
+.actions-bar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0 15px 0;
+}
+
+.action-btn {
+    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+    border: none;
+    color: #061026;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+    transition: transform 0.2s;
+    font-family: inherit;
+}
+
+.action-btn:active {
+    transform: scale(0.95);
+}
+
+.action-btn.hidden, #modal-tabs.hidden {
+    display: none;
+}
+
+/* Ajustes para o botão "Partilhar" nas mensagens de sistema nativas (SweetAlert ou similares no futuro) */
+/* No modo dia, os botões mantêm o mesmo aspeto de destaque */

@@ -251,3 +251,69 @@ body.day-mode .cell.hot {
     box-shadow: inset 0 0 20px rgba(255, 0, 0, 0.1), 0 8px 32px 0 rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(255, 0, 0, 0.4);
 }
+
+/* =========================================
+   SISTEMA DE ABAS (TABS) CULTURAIS
+   ========================================= */
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.tab-btn:hover, .tab-btn.active {
+    color: #00f2fe;
+    background: rgba(0, 242, 254, 0.1);
+}
+
+/* Ocultar abas não ativas */
+.tab-content {
+    display: none;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    text-align: left;
+    max-height: 180px; /* Cria uma barra de scroll se o texto for grande */
+    overflow-y: auto;
+    padding-right: 5px;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Ajustes das abas para o Modo Diurno */
+body.day-mode .tabs {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+body.day-mode .tab-btn {
+    color: rgba(0, 0, 0, 0.5);
+}
+body.day-mode .tab-btn:hover, body.day-mode .tab-btn.active {
+    color: #0072ff;
+    background: rgba(0, 114, 255, 0.1);
+}
+body.day-mode .tab-content {
+    color: rgba(0, 0, 0, 0.8);
+}

@@ -248,3 +248,22 @@ setInterval(checkTimeOfDay, 3600000);
 
 // Inicializar a renderização visual da grelha
 renderGrid();
+
+// =========================================
+// LÓGICA DAS ABAS CULTURAIS NO POP-UP
+// =========================================
+function openTab(evt, tabName) {
+    // Esconde todos os textos
+    const tabContents = document.getElementsByClassName("tab-content");
+    for (let i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove("active");
+    }
+    // Tira o destaque de todos os botões
+    const tabBtns = document.getElementsByClassName("tab-btn");
+    for (let i = 0; i < tabBtns.length; i++) {
+        tabBtns[i].classList.remove("active");
+    }
+    // Mostra a aba clicada e destaca o botão
+    document.getElementById(tabName).classList.add("active");
+    evt.currentTarget.classList.add("active");
+}

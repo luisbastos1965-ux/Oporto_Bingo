@@ -213,3 +213,23 @@ setTimeout(() => {
 
 // Inicializar a renderização visual da grelha
 renderGrid();
+
+// =========================================
+// GESTÃO DO MODO DIA / NOITE
+// =========================================
+function checkTimeOfDay() {
+    const currentHour = new Date().getHours();
+    
+    // Consideramos "Dia" entre as 07:00 e as 19:59
+    if (currentHour >= 7 && currentHour < 20) {
+        document.body.classList.add('day-mode');
+    } else {
+        document.body.classList.remove('day-mode');
+    }
+}
+
+// Executa imediatamente quando a app abre
+checkTimeOfDay();
+
+// Verifica a cada hora se é preciso mudar (caso o utilizador tenha a app aberta muito tempo)
+setInterval(checkTimeOfDay, 3600000);

@@ -17,27 +17,102 @@ const locations = [
         hist: "Uma das zonas mais antigas do Porto, foi desde a Idade Média um intenso centro de comércio marítimo e fluvial.",
         curio: "Sabias que as casas estreitas e altas foram construídas assim porque, na época, os impostos eram pagos consoante a largura da fachada?"
     },
-    { id: 1, name: "Mercado do Bolhão", lat: 41.1488, lon: -8.6058, imgUrl: "./bolhao.png", unlocked: false },
-    { id: 2, name: "Igreja de Santo Ildefonso", lat: 41.1458, lon: -8.6066, imgUrl: "./santo-ildefonso.png", unlocked: false },
-    { id: 3, name: "Casa da Música", lat: 41.1582, lon: -8.6307, imgUrl: "./casa-musica.png", unlocked: false },
+    { 
+        id: 1, name: "Mercado do Bolhão", lat: 41.1488, lon: -8.6058, imgUrl: "./bolhao.png", unlocked: false,
+        desc: "O mercado mais emblemático do Porto, vibrante de cores, cheiros e tradição.",
+        hist: "Inaugurado em 1914, a sua arquitetura neoclássica alberga o comércio tradicional de frescos há mais de um século.",
+        curio: "As vendedoras do Bolhão, conhecidas pelo seu forte sotaque e pregões castiços, são consideradas as verdadeiras almas deste espaço."
+    },
+    { 
+        id: 2, name: "Igreja de Santo Ildefonso", lat: 41.1458, lon: -8.6066, imgUrl: "./santo-ildefonso.png", unlocked: false,
+        desc: "Uma belíssima igreja barroca que domina a Praça da Batalha com a sua imponente fachada revestida a azulejos.",
+        hist: "Reconstruída no início do século XVIII, a sua fachada foi revestida em 1932 com cerca de 11 mil azulejos do mestre Jorge Colaço.",
+        curio: "A igreja sobreviveu ao Cerco do Porto e a várias tempestades severas, mantendo-se inabalável no topo da sua escadaria monumental."
+    },
+    { 
+        id: 3, name: "Casa da Música", lat: 41.1582, lon: -8.6307, imgUrl: "./casa-musica.png", unlocked: false,
+        desc: "Um ícone da arquitetura contemporânea mundial e a principal sala de espetáculos da cidade do Porto.",
+        hist: "Desenhada pelo aclamado arquiteto Rem Koolhaas, foi projetada para assinalar a capital europeia da cultura de 2001, abrindo finalmente as portas em 2005.",
+        curio: "A sua forma geométrica completamente assimétrica faz lembrar, de forma propositada, um meteorito que acabou de aterrar na Rotunda da Boavista."
+    },
     
     // Linha 2
-    { id: 4, name: "Estação de São Bento", lat: 41.1455, lon: -8.6105, imgUrl: "./sao-bento.png", unlocked: false },
-    { id: 5, name: "Avenida dos Aliados", lat: 41.1478, lon: -8.6112, imgUrl: "./aliados.png", unlocked: false },
-    { id: 6, name: "Teatro Nacional São João", lat: 41.1443, lon: -8.6074, imgUrl: "./sao-joao.png", unlocked: false },
-    { id: 7, name: "Torre dos Clérigos", lat: 41.1458, lon: -8.6139, imgUrl: "./clerigos.png", unlocked: false },
+    { 
+        id: 4, name: "Estação de São Bento", lat: 41.1455, lon: -8.6105, imgUrl: "./sao-bento.png", unlocked: false,
+        desc: "Uma das estações de comboio mais deslumbrantes do mundo, famosa pelo seu átrio inteiramente forrado a azulejos.",
+        hist: "Construída no início do século XX sobre as ruínas do antigo Convento de São Bento de Ave-Maria, que lhe deu o nome.",
+        curio: "Os seus 20 mil azulejos contam detalhadamente a história de Portugal, desde batalhas épicas à evolução dos transportes ao longo dos tempos."
+    },
+    { 
+        id: 5, name: "Avenida dos Aliados", lat: 41.1478, lon: -8.6112, imgUrl: "./aliados.png", unlocked: false,
+        desc: "O imponente 'salão de visitas' do Porto, ladeado por edifícios monumentais em granito.",
+        hist: "Projetada no início do século XX, esta artéria rasgou o centro histórico para criar uma praça monumental digna das grandes metrópoles europeias.",
+        curio: "O nome homenageia os países Aliados da Primeira Guerra Mundial. É aqui que todos os portuenses se reúnem para celebrar as grandes vitórias e passagens de ano."
+    },
+    { 
+        id: 6, name: "Teatro Nacional São João", lat: 41.1443, lon: -8.6074, imgUrl: "./sao-joao.png", unlocked: false,
+        desc: "O teatro mais prestigiado da cidade, dono de uma arquitetura elegante e de uma rica programação cultural.",
+        hist: "O edifício original de 1798 ardeu por completo num grande incêndio. O teatro atual foi inaugurado em 1920, com projeto do arquiteto Marques da Silva.",
+        curio: "Se olhares bem para a fachada, vais notar que ela se assemelha muito à da Ópera Garnier em Paris, evidenciando a forte influência francesa da época."
+    },
+    { 
+        id: 7, name: "Torre dos Clérigos", lat: 41.1458, lon: -8.6139, imgUrl: "./clerigos.png", unlocked: false,
+        desc: "A torre sineira mais alta de Portugal e o verdadeiro ex-líbris e símbolo incontestável da cidade do Porto.",
+        hist: "Trata-se de uma obra-prima barroca desenhada pelo arquiteto italiano Nicolau Nasoni e construída a meio do século XVIII.",
+        curio: "Para teres a melhor vista panorâmica em 360 graus sobre a cidade e o rio Douro, terás de ter fôlego para subir os seus 225 degraus!"
+    },
     
     // Linha 3
-    { id: 8, name: "Mosteiro S. Bento da Vitória", lat: 41.1444, lon: -8.6160, imgUrl: "./mosteiro-vitoria.png", unlocked: false },
-    { id: 9, name: "Mercado Ferreira Borges", lat: 41.1418, lon: -8.6148, imgUrl: "./ferreira-borges.png", unlocked: false },
-    { id: 10, name: "Ponte Luiz I", lat: 41.1401, lon: -8.6096, imgUrl: "./ponte-luiz.png", unlocked: false },
-    { id: 11, name: "Igreja da Lapa", lat: 41.1579, lon: -8.6131, imgUrl: "./lapa.png", unlocked: false },
+    { 
+        id: 8, name: "Mosteiro S. Bento da Vitória", lat: 41.1444, lon: -8.6160, imgUrl: "./mosteiro-vitoria.png", unlocked: false,
+        desc: "Um imponente edifício monástico fortificado, enraizado no coração do antigo bairro judeu do Porto.",
+        hist: "A sua construção começou em 1596, arrastando-se por quase todo o século XVII. Foi erguido num terreno que albergava antigas casas da judiaria e a velha sinagoga.",
+        curio: "O edifício teve múltiplas vidas ao longo da história, chegando mesmo a ser utilizado como hospital militar durante o período das Invasões Francesas."
+    },
+    { 
+        id: 9, name: "Mercado Ferreira Borges", lat: 41.1418, lon: -8.6148, imgUrl: "./ferreira-borges.png", unlocked: false,
+        desc: "Um fascinante e chamativo edifício vermelho, um dos mais belos exemplos da arquitetura do ferro em Portugal.",
+        hist: "Construído em 1885 para substituir o velho Mercado da Ribeira, a verdade é que os comerciantes nunca se quiseram mudar, e o edifício nunca operou como mercado.",
+        curio: "Sobreviveu incólume a várias ameaças de demolição ao longo do século XX. Hoje em dia, é uma casa de espetáculos e eventos muito popular na cidade."
+    },
+    { 
+        id: 10, name: "Ponte Luiz I", lat: 41.1401, lon: -8.6096, imgUrl: "./ponte-luiz.png", unlocked: false,
+        desc: "A grandiosa ponte metálica de dois tabuleiros que une as cidades do Porto e de Vila Nova de Gaia sobre as águas do Douro.",
+        hist: "Inaugurada em 1886, a ponte foi projetada pelo engenheiro Théophile Seyrig, que havia sido discípulo e antigo sócio de Gustave Eiffel.",
+        curio: "Embora quase todos lhe chamem 'Ponte Dom Luís', o decreto original de batismo chamava-lhe apenas 'Ponte Luiz I', facto que ainda hoje gera debate entre historiadores."
+    },
+    { 
+        id: 11, name: "Igreja da Lapa", lat: 41.1579, lon: -8.6131, imgUrl: "./lapa.png", unlocked: false,
+        desc: "Uma igreja majestosa e serena que guarda o tesouro mais precioso e simbólico da história monárquica do Porto.",
+        hist: "Com uma construção que durou mais de um século (1755-1863), o local tornou-se rapidamente um dos pontos de devoção mais importantes para a população da cidade.",
+        curio: "No altar desta igreja repousa o coração do rei D. Pedro IV. Foi doado por ele próprio à cidade em testamento, como agradecimento pela heroica resistência durante o Cerco do Porto."
+    },
     
     // Linha 4
-    { id: 12, name: "Sé Catedral do Porto", lat: 41.1427, lon: -8.6112, imgUrl: "./se-catedral.png", unlocked: false },
-    { id: 13, name: "Palácio da Bolsa", lat: 41.1414, lon: -8.6157, imgUrl: "./palacio-bolsa.png", unlocked: false },
-    { id: 14, name: "Antiga Cadeia da Relação", lat: 41.1447, lon: -8.6153, imgUrl: "./cadeia-relacao.png", unlocked: false },
-    { id: 15, name: "Livraria Lello", lat: 41.1469, lon: -8.6149, imgUrl: "./lello.png", unlocked: false }
+    { 
+        id: 12, name: "Sé Catedral do Porto", lat: 41.1427, lon: -8.6112, imgUrl: "./se-catedral.png", unlocked: false,
+        desc: "Uma robusta fortaleza-igreja românica que vigia silenciosamente a cidade desde o seu ponto mais elevado.",
+        hist: "A sua construção iniciou-se no longínquo século XII. Com o passar do tempo, sofreu imensas alterações, resultando numa mistura de estilos: românico, gótico e barroco.",
+        curio: "Foi no altar desta Sé Catedral que o rei D. João I e a inglesa D. Filipa de Lencastre celebraram o seu casamento em 1387, e onde o Infante D. Henrique viria a ser batizado."
+    },
+    { 
+        id: 13, name: "Palácio da Bolsa", lat: 41.1414, lon: -8.6157, imgUrl: "./palacio-bolsa.png", unlocked: false,
+        desc: "Um deslumbrante e faustoso palácio neoclássico mandado construir pela poderosa Associação Comercial do Porto.",
+        hist: "Erguido sobre as ruínas de um antigo claustro do Convento de São Francisco, que tinha sido consumido pelas chamas durante o intenso Cerco do Porto em 1832.",
+        curio: "A sua principal joia, o Salão Árabe (diretamente inspirado no Palácio de Alhambra), é considerado uma das salas mais luxuosas e ornamentadas de todo o país."
+    },
+    { 
+        id: 14, name: "Antiga Cadeia da Relação", lat: 41.1447, lon: -8.6153, imgUrl: "./cadeia-relacao.png", unlocked: false,
+        desc: "Um edifício imponente, maciço e austero, que atualmente é a casa do Centro Português de Fotografia.",
+        hist: "O edifício atual serviu como o mais severo tribunal e prisão da cidade desde a sua conclusão em 1796 até 1974, sendo desativado após a Revolução dos Cravos.",
+        curio: "O célebre escritor Camilo Castelo Branco esteve preso nas suas celas frias por causa de um romance adúltero, acabando por escrever lá dentro a sua maior obra: 'Amor de Perdição'."
+    },
+    { 
+        id: 15, name: "Livraria Lello", lat: 41.1469, lon: -8.6149, imgUrl: "./lello.png", unlocked: false,
+        desc: "Apontada vezes sem conta como uma das livrarias mais bonitas do mundo, distinguindo-se pela sua escadaria carmesim fluida.",
+        hist: "Inaugurada em 1906 pelos irmãos Lello, este edifício de traça neogótica é uma verdadeira obra de arte talhada em madeira esculpida e tetos com vitrais.",
+        curio: "Reza a lenda que a sua estética mágica serviu de inspiração a J.K. Rowling para desenhar o mundo de Harry Potter, transformando a rua num local de romaria de fãs internacionais."
+    }
 ];
 
 // Elementos do HTML

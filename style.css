@@ -176,3 +176,53 @@ main {
 .close:hover {
     color: white;
 }
+
+/* =========================================
+   MODO DIURNO (Ativado por JavaScript)
+   ========================================= */
+body.day-mode {
+    background-color: #e0f2fe; /* Azul céu muito suave */
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(0, 168, 255, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(255, 204, 0, 0.15) 0%, transparent 40%); /* Toque de sol dourado */
+    color: #061026; /* Texto escuro para contraste */
+}
+
+body.day-mode header h1 {
+    background: linear-gradient(135deg, #0072ff 0%, #00c6ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 4px 15px rgba(0, 114, 255, 0.2);
+}
+
+body.day-mode footer h2 {
+    color: rgba(6, 16, 38, 0.6);
+}
+
+/* Quadrados no modo dia */
+body.day-mode .cell {
+    background: rgba(255, 255, 255, 0.5); /* Vidro mais claro */
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Pop-up no modo dia */
+body.day-mode .modal-content {
+    background: rgba(255, 255, 255, 0.85);
+    color: #061026;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.day-mode .modal-content p {
+    color: #333;
+}
+
+body.day-mode .modal-content h2 {
+    background: linear-gradient(135deg, #0072ff 0%, #00c6ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+body.day-mode .close {
+    color: #061026;
+}

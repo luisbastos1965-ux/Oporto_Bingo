@@ -35,7 +35,22 @@
             <span id="close-modal" class="close">&times;</span>
             <h2 id="modal-title">Título</h2>
             <img id="modal-image" src="" alt="Local">
-            <p id="modal-desc">Desbloqueaste este local!</p>
+            
+            <div class="tabs">
+                <button class="tab-btn active" onclick="openTab(event, 'tab-resumo')">Resumo</button>
+                <button class="tab-btn" onclick="openTab(event, 'tab-historia')">História</button>
+                <button class="tab-btn" onclick="openTab(event, 'tab-curiosidades')">Curiosidades</button>
+            </div>
+
+            <div id="tab-resumo" class="tab-content active">
+                <p id="modal-desc">Desbloqueaste este local!</p>
+            </div>
+            <div id="tab-historia" class="tab-content">
+                <p id="modal-hist">Aqui vai entrar a história do monumento...</p>
+            </div>
+            <div id="tab-curiosidades" class="tab-content">
+                <p id="modal-curio">Aqui vão entrar os factos curiosos...</p>
+            </div>
         </div>
     </div>
 

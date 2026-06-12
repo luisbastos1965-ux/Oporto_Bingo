@@ -3,16 +3,41 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js');
 }
 
+// 1. Pedir permissão para enviar notificações logo que a app abre
+if ("Notification" in window && Notification.permission !== "denied") {
+    Notification.requestPermission();
+}
+
 // Configuração dos 16 locais do Bingo
-// Coloquei coordenadas de teste, terás de substituir pelas reais depois
 const locations = Array.from({ length: 16 }, (_, i) => ({
     id: i,
     name: `Local ${i + 1}`,
-    lat: 41.1496 + (Math.random() * 0.01 - 0.005), // Coordenadas em torno do Porto para teste
+    lat: 41.1496 + (Math.random() * 0.01 - 0.005),
     lon: -8.6109 + (Math.random() * 0.01 - 0.005),
-    imgUrl: `https://picsum.photos/seed/${i + 1}/200`, // Imagens aleatórias
+    // Coloquei um ícone com fundo transparente (PNG) temporário 
+    // para poderes ver o efeito visual de pop-out sem o quadrado opaco!
+    imgUrl: `https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Compass_icon.png/200px-Compass_icon.png`, 
     unlocked: false
 }));
+
+// 2. Recuperar progresso guardado na memória do telemóvel
+function loadProgress() {
+    const savedProgress = localStorage.getItem('oportoBingoProgress');
+    if (savedProgress) {
+        const unlockedStates = JSON.parse(savedProgress);
+        locations.forEach((loc, i) => {
+            if (unlockedStates[i]) {
+                loc.unlocked = true; // Restaura o que já estava desbloqueado
+            }
+        });
+    }
+}
+
+// 3. Guardar progresso sempre que um local é desbloqueado
+function saveProgress() {
+    const unlockedStates = locations.map(loc => loc.unlocked);
+    localStorage.setItem('oportoBingoProgress', JSON.stringify(unlockedStates));
+}
 
 const grid = document.getElementById('bingo-grid');
 const modal = document.getElementById('location-modal');
@@ -21,10 +46,12 @@ const modalTitle = document.getElementById('modal-title');
 const closeBtn = document.getElementById('close-modal');
 const unlockSound = document.getElementById('unlock-sound');
 
-// Renderizar Grelha
+// Inicializar o jogo carregando o que estava guardado
+loadProgress();
+
 function renderGrid() {
     grid.innerHTML = '';
-    locations.forEach((loc, index) => {
+    locations.forEach((loc) => {
         const cell = document.createElement('div');
         cell.className = `cell ${loc.unlocked ? 'unlocked' : ''}`;
         cell.innerHTML = `<img src="${loc.imgUrl}" alt="${loc.name}">`;
@@ -36,7 +63,6 @@ function renderGrid() {
     });
 }
 
-// Abrir e Fechar Pop-up
 function openModal(loc) {
     modalTitle.innerText = loc.name;
     modalImg.src = loc.imgUrl;
@@ -45,14 +71,24 @@ function openModal(loc) {
 
 closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
 
-// Lógica de GPS (Verificar proximidade)
 function checkProximity(userLat, userLon) {
     locations.forEach(loc => {
         if (!loc.unlocked) {
             const dist = getDistanceFromLatLonInM(userLat, userLon, loc.lat, loc.lon);
-            if (dist < 50) { // Desbloqueia a menos de 50 metros
+            if (dist < 50) { 
                 loc.unlocked = true;
-                unlockSound.play().catch(e => console.log("Erro no som")); // Navegadores por vezes bloqueiam som automático
+                saveProgress(); // Guarda imediatamente o novo estado no telemóvel!
+                
+                unlockSound.play().catch(e => console.log("O som precisa de interação prévia para tocar"));
+                
+                // 4. Enviar notificação push (se permitido pelo utilizador)
+                if ("Notification" in window && Notification.permission === "granted") {
+                    new Notification("📍 Oporto Bin'Go", {
+                        body: `Parabéns! Desbloqueaste o ${loc.name}!`,
+                        icon: "./bingo-icon.png"
+                    });
+                }
+
                 openModal(loc);
                 renderGrid();
                 checkWinConditions();
@@ -61,7 +97,7 @@ function checkProximity(userLat, userLon) {
     });
 }
 
-// Ativar rastreio por GPS
+// Rastreio de GPS
 if ("geolocation" in navigator) {
     navigator.geolocation.watchPosition(
         position => checkProximity(position.coords.latitude, position.coords.longitude),
@@ -72,9 +108,8 @@ if ("geolocation" in navigator) {
     alert("O teu navegador não suporta GPS.");
 }
 
-// Fórmula matemática para calcular distância entre coordenadas
 function getDistanceFromLatLonInM(lat1, lon1, lat2, lon2) {
-    const R = 6371e3; // Raio da Terra em metros
+    const R = 6371e3; 
     const dLat = (lat2 - lat1) * Math.PI / 180;
     const dLon = (lon2 - lon1) * Math.PI / 180;
     const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
@@ -84,36 +119,29 @@ function getDistanceFromLatLonInM(lat1, lon1, lat2, lon2) {
     return R * c;
 }
 
-// Verificar Vitórias (Linha ou Cartão Cheio)
 let lineWon = false;
 function checkWinConditions() {
     const unlockedArr = locations.map(l => l.unlocked);
     const lines = [
-        // Linhas horizontais
         [0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11], [12, 13, 14, 15],
-        // Colunas verticais
         [0, 4, 8, 12], [1, 5, 9, 13], [2, 6, 10, 14], [3, 7, 11, 15],
-        // Diagonais
         [0, 5, 10, 15], [3, 6, 9, 12]
     ];
 
-    // Verifica cartão cheio
     if (unlockedArr.every(v => v === true)) {
-        fireConfetti(true); // Cartão Cheio!
+        fireConfetti(true);
         alert("PARABÉNS! Completaste o cartão de Bingo!");
     } 
-    // Verifica linha
     else if (!lineWon) {
         const hasLine = lines.some(line => line.every(index => unlockedArr[index]));
         if (hasLine) {
             lineWon = true;
-            fireConfetti(false); // Linha!
+            fireConfetti(false);
             alert("Boa! Fizeste Linha!");
         }
     }
 }
 
-// Animação de Confettis
 function fireConfetti(isFullCard) {
     const duration = isFullCard ? 5000 : 2000;
     const end = Date.now() + duration;
@@ -125,27 +153,26 @@ function fireConfetti(isFullCard) {
     }());
 }
 
-// Iniciar a página
-renderGrid();
-
-// Lógica para esconder a Intro animada quando o vídeo termina
+// Lógica da Tela de Splash (O vídeo)
 const splash = document.getElementById('splash-screen');
 const video = document.getElementById('splash-video');
 
 if (video) {
-    // Quando o vídeo acabar:
     video.onended = function() {
-        splash.style.opacity = '0'; // Começa a desaparecer
+        splash.style.opacity = '0';
         setTimeout(() => {
-            splash.style.display = 'none'; // Remove do ecrã
-        }, 800); // Espera o tempo da transição CSS
+            splash.style.display = 'none';
+        }, 800);
     };
 }
 
-// Caso o vídeo falhe por algum motivo, remove a tela após 5 segundos como precaução
+// Segurança extra caso o vídeo falhe
 setTimeout(() => {
-    if (splash.style.display !== 'none') {
+    if (splash && splash.style.display !== 'none') {
         splash.style.opacity = '0';
         setTimeout(() => splash.style.display = 'none', 800);
     }
 }, 5000);
+
+// Iniciar a grelha
+renderGrid();

@@ -127,3 +127,25 @@ function fireConfetti(isFullCard) {
 
 // Iniciar a página
 renderGrid();
+
+// Lógica para esconder a Intro animada quando o vídeo termina
+const splash = document.getElementById('splash-screen');
+const video = document.getElementById('splash-video');
+
+if (video) {
+    // Quando o vídeo acabar:
+    video.onended = function() {
+        splash.style.opacity = '0'; // Começa a desaparecer
+        setTimeout(() => {
+            splash.style.display = 'none'; // Remove do ecrã
+        }, 800); // Espera o tempo da transição CSS
+    };
+}
+
+// Caso o vídeo falhe por algum motivo, remove a tela após 5 segundos como precaução
+setTimeout(() => {
+    if (splash.style.display !== 'none') {
+        splash.style.opacity = '0';
+        setTimeout(() => splash.style.display = 'none', 800);
+    }
+}, 5000);

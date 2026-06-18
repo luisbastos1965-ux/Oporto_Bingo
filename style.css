@@ -13,25 +13,23 @@ body {
     font-family: system-ui, -apple-system, sans-serif;
     color: white;
     
-    /* Mantém o agrupamento perfeito no centro */
+    /* Agrupamento central */
     display: flex;
     flex-direction: column;
     justify-content: center; 
     align-items: center; 
     min-height: 100vh;
-    width: 100%;
     margin: 0;
-    /* Reduzimos a barreira lateral para apenas 8px, permitindo esticar quase até à borda! */
-    padding: 20px 8px; 
+    /* Margem lateral reduzida a percentagem: 4% do ecrã. Cola quase às bordas! */
+    padding: 2vh 4vw; 
     box-sizing: border-box;
-    gap: 20px; 
+    gap: 3vh; /* Afastamento dinâmico baseado na altura do ecrã */
     overflow-x: hidden;
 }
 
-/* Retirámos a trava de 420px. Agora tem permissão para esticar até aos 500px! */
 header, main, footer {
     width: 100%;
-    max-width: 500px; 
+    /* Remoção total do max-width. Agora não há limites! */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,17 +38,17 @@ header, main, footer {
     margin: 0;
 }
 
-/* Tipografia de Jogo de Grande Escala */
+/* Tipografia de Jogo (Modo Viewport - Força a esticar) */
 header h1, footer h2 {
     font-family: 'Luckiest Guy', cursive;
-    letter-spacing: 4px;
+    letter-spacing: 2px;
     text-align: center;
     margin: 0;
     width: 100%;
 }
 
 header h1 {
-    font-size: 5.5rem; /* OPORTO ligeiramente maior para acompanhar a largura */
+    font-size: 19vw; /* 19% da largura do ecrã. Fica gigante! */
     line-height: 1;
     background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
     -webkit-background-clip: text;
@@ -59,7 +57,7 @@ header h1 {
 }
 
 footer h2 {
-    font-size: 4.8rem; /* BIN'GO AUMENTADO! Quase com o mesmo impacto que o topo */
+    font-size: 16vw; /* 16% da largura do ecrã. Peso visual igual! */
     line-height: 1;
     color: rgba(255, 255, 255, 0.85);
     text-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
@@ -68,19 +66,22 @@ footer h2 {
 /* Bandeiras de Idioma em Linha */
 .lang-flags {
     display: flex;
-    gap: 8px;
-    margin-bottom: 5px;
+    gap: 2vw; /* Separação estica consoante o telemóvel */
+    margin-bottom: 2vh;
     justify-content: center;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .flag-btn {
     background: rgba(255, 255, 255, 0.08);
     border: 2px solid transparent;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 11vw; /* Botões adaptam-se à largura */
+    height: 11vw;
+    max-width: 45px;
+    max-height: 45px;
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
@@ -102,12 +103,13 @@ footer h2 {
     box-shadow: 0 0 12px rgba(0, 242, 254, 0.6);
 }
 
-/* Grelha do Bingo */
+/* Grelha do Bingo XL */
 .grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    width: 100%; /* Expande na totalidade da largura permitida */
+    gap: 3vw; /* Os buracos entre os quadrados também se adaptam ao ecrã */
+    width: 100%; /* Ocupa 100% do espaço permitido pelas margens de 4vw */
+    max-width: 600px; /* Prevenção apenas para não ficar do tamanho de um PC se abrires no tablet */
 }
 
 .cell {

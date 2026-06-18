@@ -14,37 +14,29 @@ body {
     color: white;
     display: flex;
     flex-direction: column;
+    justify-content: space-between; /* A magia que afasta os títulos sem esmagar o meio */
     min-height: 100vh;
     margin: 0;
-    padding: 0;
+    padding: 30px 0; /* Espaço extra em cima e em baixo para a letra não colar ao limite do ecrã */
     overflow-x: hidden;
 }
 
-/* Distribuição harmónica e balanceada dos espaços verticais */
 header {
-    flex: 1;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    width: 100%;
-    padding-top: 15px;
 }
 
 main {
-    flex: 0 0 auto;
     width: 100%;
-    padding: 10px 25px;
+    padding: 15px 25px; /* Margem lateral para a grelha não colar ao telemóvel */
 }
 
 footer {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     width: 100%;
-    padding-bottom: 15px;
+    display: flex;
+    justify-content: center;
 }
 
 /* Tipografia de Jogo de Grande Escala */
@@ -57,7 +49,7 @@ header h1, footer h2 {
 }
 
 header h1 {
-    font-size: 5rem;
+    font-size: 4.5rem;
     line-height: 1;
     background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
     -webkit-background-clip: text;
@@ -115,9 +107,8 @@ footer h2 {
     grid-template-columns: repeat(4, 1fr);
     gap: 12px;
     width: 100%;
-    max-width: 420px;
+    max-width: 450px; /* Deixa a grelha crescer mais um bocado */
     margin: 0 auto;
-    aspect-ratio: 1;
 }
 
 .cell {

@@ -13,27 +13,29 @@ body {
     font-family: system-ui, -apple-system, sans-serif;
     color: white;
     
-    /* O SEGREDO DO AGRUPAMENTO: Centra tudo num bloco unido no meio do ecrã */
+    /* Mantém o agrupamento perfeito no centro */
     display: flex;
     flex-direction: column;
     justify-content: center; 
     align-items: center; 
     min-height: 100vh;
+    width: 100%;
     margin: 0;
-    padding: 20px;
+    /* Reduzimos a barreira lateral para apenas 8px, permitindo esticar quase até à borda! */
+    padding: 20px 8px; 
     box-sizing: border-box;
-    gap: 25px; /* A distância fixa exata entre as palavras e a grelha */
+    gap: 20px; 
     overflow-x: hidden;
 }
 
-/* Força as secções a manterem-se do mesmo tamanho e não esticarem o ecrã */
+/* Retirámos a trava de 420px. Agora tem permissão para esticar até aos 500px! */
 header, main, footer {
     width: 100%;
-    max-width: 420px; /* Largura perfeita para encher o ecrã do telemóvel */
+    max-width: 500px; 
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: 0 0 auto; /* Impede o navegador de criar buracos vazios */
+    flex: 0 0 auto; 
     padding: 0;
     margin: 0;
 }
@@ -48,7 +50,7 @@ header h1, footer h2 {
 }
 
 header h1 {
-    font-size: 5rem;
+    font-size: 5.5rem; /* OPORTO ligeiramente maior para acompanhar a largura */
     line-height: 1;
     background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
     -webkit-background-clip: text;
@@ -57,7 +59,8 @@ header h1 {
 }
 
 footer h2 {
-    font-size: 4rem;
+    font-size: 4.8rem; /* BIN'GO AUMENTADO! Quase com o mesmo impacto que o topo */
+    line-height: 1;
     color: rgba(255, 255, 255, 0.85);
     text-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }

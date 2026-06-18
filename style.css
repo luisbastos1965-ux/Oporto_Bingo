@@ -14,10 +14,11 @@ body {
     color: white;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* A magia que afasta os títulos sem esmagar o meio */
+    justify-content: space-between;
+    align-items: center;
     min-height: 100vh;
     margin: 0;
-    padding: 30px 0; /* Espaço extra em cima e em baixo para a letra não colar ao limite do ecrã */
+    padding: 5vh 20px; /* Margem segura no topo e na base do ecrã */
     overflow-x: hidden;
 }
 
@@ -30,7 +31,12 @@ header {
 
 main {
     width: 100%;
-    padding: 15px 25px; /* Margem lateral para a grelha não colar ao telemóvel */
+    max-width: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* A MAGIA AQUI: Faz a zona da grelha expandir, empurrando os textos para cima e para baixo */
+    margin: 20px 0; /* Espaço para respirar entre os títulos e a grelha */
 }
 
 footer {
@@ -49,7 +55,7 @@ header h1, footer h2 {
 }
 
 header h1 {
-    font-size: 4.5rem;
+    font-size: 5rem;
     line-height: 1;
     background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
     -webkit-background-clip: text;
@@ -58,7 +64,7 @@ header h1 {
 }
 
 footer h2 {
-    font-size: 3.5rem;
+    font-size: 4rem; /* Aumentado para replicar o impacto da tua fotografia */
     color: rgba(255, 255, 255, 0.85);
     text-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
@@ -67,7 +73,7 @@ footer h2 {
 .lang-flags {
     display: flex;
     gap: 8px;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     justify-content: center;
     flex-wrap: wrap;
     max-width: 360px;
@@ -76,10 +82,10 @@ footer h2 {
 .flag-btn {
     background: rgba(255, 255, 255, 0.08);
     border: 2px solid transparent;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     border-radius: 50%;
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
@@ -107,8 +113,6 @@ footer h2 {
     grid-template-columns: repeat(4, 1fr);
     gap: 12px;
     width: 100%;
-    max-width: 450px; /* Deixa a grelha crescer mais um bocado */
-    margin: 0 auto;
 }
 
 .cell {

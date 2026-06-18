@@ -12,37 +12,30 @@ body {
         radial-gradient(circle at 80% 70%, rgba(79, 172, 254, 0.15) 0%, transparent 40%);
     font-family: system-ui, -apple-system, sans-serif;
     color: white;
+    
+    /* O SEGREDO DO AGRUPAMENTO: Centra tudo num bloco unido no meio do ecrã */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center; 
+    align-items: center; 
     min-height: 100vh;
     margin: 0;
-    padding: 5vh 20px; /* Margem segura no topo e na base do ecrã */
+    padding: 20px;
+    box-sizing: border-box;
+    gap: 25px; /* A distância fixa exata entre as palavras e a grelha */
     overflow-x: hidden;
 }
 
-header {
+/* Força as secções a manterem-se do mesmo tamanho e não esticarem o ecrã */
+header, main, footer {
     width: 100%;
+    max-width: 420px; /* Largura perfeita para encher o ecrã do telemóvel */
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-main {
-    width: 100%;
-    max-width: 450px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1; /* A MAGIA AQUI: Faz a zona da grelha expandir, empurrando os textos para cima e para baixo */
-    margin: 20px 0; /* Espaço para respirar entre os títulos e a grelha */
-}
-
-footer {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+    flex: 0 0 auto; /* Impede o navegador de criar buracos vazios */
+    padding: 0;
+    margin: 0;
 }
 
 /* Tipografia de Jogo de Grande Escala */
@@ -64,7 +57,7 @@ header h1 {
 }
 
 footer h2 {
-    font-size: 4rem; /* Aumentado para replicar o impacto da tua fotografia */
+    font-size: 4rem;
     color: rgba(255, 255, 255, 0.85);
     text-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
@@ -73,10 +66,9 @@ footer h2 {
 .lang-flags {
     display: flex;
     gap: 8px;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
     justify-content: center;
     flex-wrap: wrap;
-    max-width: 360px;
 }
 
 .flag-btn {
@@ -112,7 +104,7 @@ footer h2 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 12px;
-    width: 100%;
+    width: 100%; /* Expande na totalidade da largura permitida */
 }
 
 .cell {

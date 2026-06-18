@@ -13,32 +13,32 @@ body {
     font-family: system-ui, -apple-system, sans-serif;
     color: white;
     
-    /* Agrupamento central e coeso */
+    /* Distribuição unida e espalhada pelo ecrã */
     display: flex;
     flex-direction: column;
-    justify-content: center; 
+    justify-content: space-evenly; 
     align-items: center; 
     min-height: 100vh;
     margin: 0;
-    /* Margem lateral reduzida ao osso: apenas 2% de ecrã vazio nas pontas! */
-    padding: 2vh 2vw; 
+    /* Reduzimos as laterais para colar as coisas à borda do vidro */
+    padding: 2vh 3vw; 
     box-sizing: border-box;
-    /* Aproxima brutalmente o cabeçalho, a grelha e o rodapé */
-    gap: 1.5vh; 
     overflow-x: hidden;
 }
 
+/* O SEGREDO ESTAVA AQUI: Aumentámos a trava de 450px para 600px! 
+   Isto permite à grelha crescer livremente num telemóvel. */
 header, main, footer {
     width: 100%;
+    max-width: 600px; 
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: 0 0 auto; 
-    padding: 0;
     margin: 0;
+    padding: 0;
 }
 
-/* Tipografia de Jogo - Força G */
+/* Tipografia de Jogo - A Tua Referência de Ouro */
 header h1, footer h2 {
     font-family: 'Luckiest Guy', cursive;
     letter-spacing: 2px;
@@ -48,7 +48,7 @@ header h1, footer h2 {
 }
 
 header h1 {
-    font-size: 23vw; /* GIGANTE: 23% da largura do ecrã! */
+    font-size: 23vw; /* A medida perfeita que definiste! */
     line-height: 1;
     background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
     -webkit-background-clip: text;
@@ -57,17 +57,17 @@ header h1 {
 }
 
 footer h2 {
-    font-size: 19vw; /* Proporcionalmente gigante para o Bin'Go */
+    font-size: 19vw; /* Aumentado para acompanhar o impacto do OPORTO */
     line-height: 1;
     color: rgba(255, 255, 255, 0.85);
     text-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
 
-/* Bandeiras de Idioma */
+/* Bandeiras de Idioma Livres */
 .lang-flags {
     display: flex;
-    gap: 2vw; 
-    margin-bottom: 1vh;
+    gap: 2.5vw; 
+    margin-bottom: 2vh;
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
@@ -78,10 +78,10 @@ footer h2 {
     border: 2px solid transparent;
     font-size: 1.6rem;
     border-radius: 50%;
-    width: 12vw; 
-    height: 12vw;
-    max-width: 50px; /* Aumentado para garantir um bom toque */
-    max-height: 50px;
+    width: 11vw; /* Vai crescer com a largura do telemóvel */
+    height: 11vw;
+    max-width: 55px; /* Aumentámos o limite máximo para não travar nos telemóveis grandes */
+    max-height: 55px;
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
@@ -103,14 +103,12 @@ footer h2 {
     box-shadow: 0 0 12px rgba(0, 242, 254, 0.6);
 }
 
-/* Grelha do Bingo XL */
+/* Grelha do Bingo Livre */
 .grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    /* Quadrados mais juntos significa que cada quadrado pode ser maior */
-    gap: 2.5vw; 
-    width: 100%; 
-    max-width: 600px; 
+    gap: 2.5vw; /* O buraco cresce com o ecrã */
+    width: 100%; /* Finalmente com permissão para ocupar o ecrã todo (até 600px) */
 }
 
 .cell {

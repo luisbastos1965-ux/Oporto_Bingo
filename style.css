@@ -19,24 +19,27 @@ body {
     color: white;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start; /* Protege contra cortes em ecrãs minúsculos */
     min-height: 100vh;
     margin: 0;
-    padding: 20px;
+    /* MÁGICA 1: 85px no topo garante que o 'OPORTO' nunca se esmaga contra os botões! */
+    padding: 85px 20px 30px 20px; 
     overflow-x: hidden;
     transition: background-color 1s ease, color 1s ease;
 }
 
 /* Distribuição harmónica e balanceada dos espaços verticais */
 header {
-    flex: 1;
+    flex: 0 0 auto;
     display: flex;
     flex-direction: column;
-    /* Empurra o OPORTO para baixo, na direção da grelha */
-    justify-content: flex-end; 
+    justify-content: center;
     align-items: center;
     width: 100%;
-    padding-bottom: 25px; /* Distância exata para o topo da grelha */
+    /* MÁGICA 2: O margin-top e bottom: auto nas pontas centra o bloco todo verticalmente */
+    margin-top: auto; 
+    /* MÁGICA 3: O clamp() adapta a distância entre o texto e a grelha ao tamanho do ecrã */
+    padding-bottom: clamp(15px, 3vh, 30px); 
 }
 
 main {
@@ -45,18 +48,18 @@ main {
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 10px 20px;
+    padding: 0;
 }
 
 footer {
-    flex: 1;
+    flex: 0 0 auto;
     display: flex;
     flex-direction: column;
-    /* Empurra o BIN'GO para cima, na direção da grelha */
-    justify-content: flex-start; 
+    justify-content: center;
     align-items: center;
     width: 100%;
-    padding-top: 25px; /* A MESMA distância exata para o fundo da grelha */
+    margin-bottom: auto; /* Mantém o bloco centrado */
+    padding-top: clamp(15px, 3vh, 30px); /* Distância flexível para a grelha */
 }
 
 /* Tipografia de Jogo de Grande Escala */

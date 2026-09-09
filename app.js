@@ -429,7 +429,12 @@ let gpsIntervalId = null;
 
 function updateGpsIndicator(status) {
     if(!gpsStatus) return;
-    gpsStatus.className = 'gps-dot ' + status;
+    // Se estiver a pesquisar ou a atualizar, fica laranjinha/amarelo elegante e neutro
+    if (status === 'searching' || status === 'updating') {
+        gpsStatus.className = 'gps-dot searching';
+    } else {
+        gpsStatus.className = 'gps-dot ' + status; // 'active' (verde) ou 'error' (vermelho)
+    }
 }
 
 function initGPS() {
@@ -440,15 +445,18 @@ function initGPS() {
     if (gpsIntervalId) clearInterval(gpsIntervalId);
 
     const forceLocationCheck = () => {
+        updateGpsIndicator('searching'); // Fica laranja enquanto calcula
+        
         navigator.geolocation.getCurrentPosition(
             position => {
-                updateGpsIndicator('active');
+                updateGpsIndicator('active'); // Fica verde assim que obtém
                 userLat = position.coords.latitude;
                 userLon = position.coords.longitude;
                 checkProximity(userLat, userLon);
             },
             error => {
                 console.warn("GPS Erro:", error.message);
+                // Só fica vermelho se for uma falha real de permissão ou sinal esgotado
                 updateGpsIndicator('error');
             },
             { enableHighAccuracy: true, maximumAge: 0, timeout: 3500 }

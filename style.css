@@ -628,7 +628,6 @@ body.day-mode #alert-message { color: #061026; }
     gap: 12px !important;
 }
 
-/* Cada mini-cartão individual */
 .help-card-item {
     display: flex !important;
     align-items: center !important;
@@ -637,7 +636,8 @@ body.day-mode #alert-message { color: #061026; }
     border: 1px solid rgba(255, 255, 255, 0.08) !important;
     padding: 12px 15px !important;
     border-radius: 16px !important;
-    transition: background 0.2s ease !important;
+    min-height: 68px !important; /* Força todos os retângulos a terem a mesma altura mínima */
+    box-sizing: border-box !important;
 }
 
 /* Ícones e Cores dos Badges */

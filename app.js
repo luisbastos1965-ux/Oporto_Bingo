@@ -19,24 +19,42 @@ const uiTexts = {
     zh: { map: "📍 路线", audio: "🔊 聆听", stopAudio: "⏸️ 停止", tab1: "总结", tab2: "历史", tab3: "趣闻", locked: "靠近50米以内，揭开这个历史名胜的秘密！", winLine: "🎉 恭喜！您完成了一条线！", winFull: "🏆 太棒了！您完成了整个地图！", ttsLang: "zh-CN" }
 };
 
+// =========================================
+// SISTEMA CÍCLICO DE IDIOMAS
+// =========================================
+const langCycle = [
+    { code: 'pt', flag: '🇵🇹' }, { code: 'en', flag: '🇬🇧' },
+    { code: 'es', flag: '🇪🇸' }, { code: 'fr', flag: '🇫🇷' },
+    { code: 'de', flag: '🇩🇪' }, { code: 'it', flag: '🇮🇹' },
+    { code: 'zh', flag: '🇨🇳' }
+];
+
 let currentLang = localStorage.getItem('oportoBingoLang') || 'pt';
 
 window.onload = () => {
-    document.querySelectorAll('.flag-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.lang === currentLang);
-    });
+    // Carrega a bandeira correta no botão único logo ao abrir
+    const savedLangObj = langCycle.find(l => l.code === currentLang);
+    const btnLang = document.getElementById('btn-lang');
+    if (savedLangObj && btnLang) {
+        btnLang.innerText = savedLangObj.flag;
+    }
     updateUILanguage();
 };
 
-function changeLanguage(lang) {
+function cycleLanguage() {
     if (navigator.vibrate) navigator.vibrate(50);
-    currentLang = lang;
+    
+    const currentIndex = langCycle.findIndex(l => l.code === currentLang);
+    const nextIndex = (currentIndex + 1) % langCycle.length; // Salta para a próxima, ou volta a zero
+    const nextLang = langCycle[nextIndex];
+    
+    currentLang = nextLang.code;
     localStorage.setItem('oportoBingoLang', currentLang);
     
-    document.querySelectorAll('.flag-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.lang === currentLang);
-    });
-
+    // Atualiza a interface (Bandeira + Textos)
+    const btnLang = document.getElementById('btn-lang');
+    if (btnLang) btnLang.innerText = nextLang.flag;
+    
     updateUILanguage();
     if (currentLocation) openModal(currentLocation);
 }

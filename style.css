@@ -236,7 +236,9 @@ footer h2 {
 
 .modal-content h2 {
     font-family: 'Luckiest Guy', cursive;
-    font-size: 1.8rem;
+    font-size: 1.5rem; /* Ligeiramente mais pequeno para nomes compridos */
+    line-height: 1.25; /* Afasta as linhas umas das outras para não se esmagarem */
+    letter-spacing: 1px; /* Reduz o espaçamento horizontal excessivo */
     color: #00f2fe;
     margin: 0 0 15px 0;
 }
@@ -358,16 +360,20 @@ footer h2 {
 /* =========================================
    UI de Bordo (GPS, Ajuda e Pista)
    ========================================= */
+/* Agrupamento Top-Left */
+.top-left-controls {
+    position: absolute; top: 20px; left: 20px;
+    display: flex; gap: 10px; z-index: 50;
+}
 .top-icon-btn {
-    position: absolute; top: 20px;
     background: rgba(255, 255, 255, 0.1); border: none;
     color: white; font-size: 1.2rem;
     width: 36px; height: 36px; border-radius: 50%;
-    cursor: pointer; z-index: 50;
-    display: flex; justify-content: center; align-items: center;
+    cursor: pointer; display: flex; justify-content: center; align-items: center;
     backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
+    /* A MAGIA ANTI-SELEÇÃO */
+    -webkit-user-select: none; -ms-user-select: none; user-select: none;
 }
-.top-icon-btn.left { left: 20px; }
 
 /* O Ponto do GPS */
 .gps-dot {
@@ -453,4 +459,8 @@ body.day-mode .top-icon-btn {
 }
 body.day-mode .help-text { 
     color: #061026; 
+}
+/* Clareia os bloqueados no modo diurno para não parecerem buracos negros */
+body.day-mode .cell:not(.unlocked) img {
+    filter: grayscale(100%) brightness(85%) opacity(0.4) blur(1px);
 }

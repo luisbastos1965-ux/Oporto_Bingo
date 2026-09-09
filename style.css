@@ -14,10 +14,15 @@ body {
     color: white;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     min-height: 100vh;
     margin: 0;
-    padding: 0;
+    padding: 20px;
     overflow-x: hidden;
+    
+    /* A MAGIA NATIVA: Bloqueia o arrastar para atualizar (pull-to-refresh) nos telemóveis */
+    overscroll-behavior-y: none;
+    transition: background-color 1s ease, color 1s ease;
 }
 
 /* Distribuição harmónica e balanceada dos espaços verticais */
@@ -60,18 +65,31 @@ header h1, footer h2 {
 }
 
 header h1 {
-    font-size: 5rem;
+    font-size: clamp(3rem, 18vw, 6rem);
     line-height: 1;
     background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 4px 25px rgba(0, 242, 254, 0.4);
+    
+    /* A MAGIA ANTI-SELEÇÃO */
+    -webkit-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+    cursor: pointer;
 }
 
 footer h2 {
     font-size: 3.5rem;
+    letter-spacing: 4px;
     color: rgba(255, 255, 255, 0.85);
     text-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+    
+    /* A MAGIA ANTI-SELEÇÃO */
+    -webkit-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+    cursor: default;
 }
 
 /* Bandeiras de Idioma em Linha */
@@ -87,18 +105,23 @@ footer h2 {
 .flag-btn {
     background: rgba(255, 255, 255, 0.08);
     border: 2px solid transparent;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     border-radius: 50%;
-    width: 38px;
-    height: 38px;
+    width: 44px;
+    height: 44px;
     cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.2s ease;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
+    
+    /* A MAGIA ANTI-SELEÇÃO */
+    -webkit-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
 }
 
 .flag-btn:active {
@@ -142,13 +165,18 @@ footer h2 {
 }
 
 /* Estados do Radar Geográfico */
-.cell.warm {
-    border-color: #ffa500;
-    box-shadow: 0 0 10px rgba(254, 165, 0, 0.4);
+.cell.warm { border-color: #ffa500; box-shadow: 0 0 10px rgba(254, 165, 0, 0.4); }
+
+@keyframes radarPulse {
+    0% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 69, 0, 0.6); }
+    50% { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 69, 0, 0.9); border-color: #ff2a00; }
+    100% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 69, 0, 0.6); }
 }
-.cell.hot {
-    border-color: #ff4500;
-    box-shadow: 0 0 15px rgba(255, 69, 0, 0.6);
+
+.cell.hot { 
+    border-color: #ff4500; 
+    animation: radarPulse 1.2s infinite ease-in-out; 
+    z-index: 10;
 }
 
 /* Estado Desbloqueado */
@@ -189,6 +217,12 @@ footer h2 {
     text-align: center;
     position: relative;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: all 0.8s ease;
+    
+    /* A MAGIA ANTI-SELEÇÃO */
+    -webkit-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
 }
 
 .close {
@@ -209,63 +243,77 @@ footer h2 {
 
 .modal-content img {
     width: 100%;
+    height: auto;
     max-height: 180px;
-    object-fit: cover;
+    object-fit: contain; 
     border-radius: 16px;
     margin-bottom: 15px;
 }
 
 .modal-content img.hidden { display: none; }
 
-/* Barra de Ações Rápidas */
-.actions-bar {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 15px;
+/* Barra de Ações Rápidas (Rodapé do Modal) */
+.actions-bar { 
+    display: flex; 
+    justify-content: space-between; 
+    gap: 15px; 
+    margin-top: 20px; 
+    padding-top: 20px; 
+    border-top: 1px solid rgba(255, 255, 255, 0.1); 
 }
-
-.action-btn {
-    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
-    border: none;
-    color: #061026;
-    font-size: 0.85rem;
-    font-weight: 700;
-    cursor: pointer;
-    padding: 8px 14px;
-    border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0, 242, 254, 0.25);
-    transition: all 0.2s ease;
+.action-btn { 
+    background: rgba(0, 242, 254, 0.05); 
+    border: 1px solid rgba(0, 242, 254, 0.3); 
+    color: #00f2fe; 
+    font-size: 0.95rem; 
+    font-weight: 600; 
+    cursor: pointer; 
+    padding: 12px 10px; 
+    border-radius: 12px; 
+    transition: all 0.2s ease; 
+    flex: 1;
 }
-
+.action-btn:active { 
+    transform: scale(0.95); 
+    background: rgba(0, 242, 254, 0.15); 
+}
 .action-btn.hidden { display: none; }
 
-/* Abas Culturais */
+/* Abas Culturais (Estilo Cápsula Nativa) */
 .tabs {
     display: flex;
-    justify-content: center;
-    gap: 4px;
-    margin-bottom: 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 8px;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    padding: 5px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .tabs.hidden { display: none; }
 
 .tab-btn {
+    flex: 1;
     background: transparent;
     border: none;
     color: rgba(255, 255, 255, 0.4);
     font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
-    padding: 6px 10px;
-    border-radius: 8px;
+    padding: 8px 5px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    
+    /* A MAGIA ANTI-SELEÇÃO */
+    -webkit-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none;
 }
 
 .tab-btn.active {
-    color: #00f2fe;
-    background: rgba(0, 242, 254, 0.1);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .tab-content {
@@ -280,16 +328,22 @@ footer h2 {
 
 .tab-content.active { display: block; }
 
-/* Splash Screen */
+/* Splash Screen / Onboarding (Otimizado) */
 #splash-screen {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: #061026;
+    background: #061026; /* Cor escura do fundo para o desvanecimento */
     z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 0.8s ease;
+    opacity: 1; /* Começa totalmente visível */
+    transition: opacity 1s ease; /* Transição suave de 1 segundo ao desvanecer */
+}
+
+#splash-screen.fade-out {
+    opacity: 0; /* Torna-se invisível */
+    pointer-events: none; /* Deixa de reagir a cliques, deixando passar para o jogo */
 }
 
 #splash-video {
@@ -297,6 +351,57 @@ footer h2 {
     height: 100%;
     object-fit: cover;
 }
+
+/* Garante que o .hidden oculta de facto os elementos */
+.hidden { display: none !important; }
+
+/* =========================================
+   UI de Bordo (GPS, Ajuda e Pista)
+   ========================================= */
+.top-icon-btn {
+    position: absolute; top: 20px;
+    background: rgba(255, 255, 255, 0.1); border: none;
+    color: white; font-size: 1.2rem;
+    width: 36px; height: 36px; border-radius: 50%;
+    cursor: pointer; z-index: 50;
+    display: flex; justify-content: center; align-items: center;
+    backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
+}
+.top-icon-btn.left { left: 20px; }
+
+/* O Ponto do GPS */
+.gps-dot {
+    position: absolute; top: 32px; right: 25px;
+    width: 10px; height: 10px; border-radius: 50%;
+    z-index: 50; transition: all 0.3s ease;
+}
+.gps-dot.searching { background: #ffa500; animation: pulseGps 1s infinite alternate; }
+.gps-dot.active { background: #00ff00; box-shadow: 0 0 8px #00ff00; }
+.gps-dot.error { background: #ff0000; box-shadow: 0 0 8px #ff0000; }
+@keyframes pulseGps { from { opacity: 0.3; } to { opacity: 1; } }
+
+/* Botão Flutuante de Pista (FAB) */
+.fab-hint {
+    position: fixed; bottom: 30px; right: 20px;
+    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+    border: none; font-size: 1.6rem;
+    width: 56px; height: 56px; border-radius: 50%;
+    box-shadow: 0 6px 20px rgba(0, 242, 254, 0.4);
+    cursor: pointer; z-index: 50;
+    display: flex; justify-content: center; align-items: center;
+    transition: transform 0.2s;
+    -webkit-tap-highlight-color: transparent;
+}
+.fab-hint:active { transform: scale(0.9); }
+
+/* Animação da Pista na Grelha */
+@keyframes hintFlash {
+    0%, 100% { transform: scale(1); }
+    50% { border-color: #00f2fe; box-shadow: 0 0 25px #00f2fe; transform: scale(1.08); z-index: 10; }
+}
+.cell.hint-active { animation: hintFlash 0.8s ease-in-out 3; }
+
+.help-text { text-align: left; color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-top: 15px; }
 
 /* Modo Diurno */
 body.day-mode {
@@ -315,7 +420,37 @@ body.day-mode .flag-btn { background: rgba(0, 0, 0, 0.06); }
 body.day-mode .flag-btn.active { border-color: #0072ff; background: rgba(0, 114, 255, 0.12); box-shadow: 0 0 10px rgba(0, 114, 255, 0.4); }
 body.day-mode .modal-content { background: #ffffff; border-color: rgba(0, 114, 255, 0.15); color: #061026; }
 body.day-mode .modal-content h2 { color: #0072ff; }
-body.day-mode .tab-btn { color: rgba(0, 0, 0, 0.4); }
-body.day-mode .tab-btn.active { color: #0072ff; background: rgba(0, 114, 255, 0.08); }
-body.day-mode .tab-content { color: rgba(0, 0, 0, 0.8); }
-body.day-mode .tabs { border-bottom-color: rgba(0, 0, 0, 0.08); }
+body.day-mode .tabs {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.05);
+}
+body.day-mode .tab-btn { 
+    color: rgba(0, 0, 0, 0.5); /* Escurecemos ligeiramente o texto inativo para melhor leitura */
+}
+body.day-mode .tab-btn.active { 
+    color: #0072ff; /* Azul royal forte */
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+}
+body.day-mode .tab-content { 
+    color: rgba(0, 0, 0, 0.85); 
+}
+
+/* NOVA REGRA: Ajusta os botões de ação para terem contraste perfeito no fundo branco */
+body.day-mode .action-btn {
+    background: rgba(0, 114, 255, 0.08);
+    border: 1px solid rgba(0, 114, 255, 0.3);
+    color: #0072ff; /* Azul royal forte e legível */
+}
+body.day-mode .action-btn:active {
+    background: rgba(0, 114, 255, 0.15);
+}
+
+/* REGRAS DOS NOVOS ELEMENTOS: Garante a legibilidade do botão de Ajuda e do texto do Modal */
+body.day-mode .top-icon-btn { 
+    background: rgba(0, 0, 0, 0.08); 
+    color: #061026; 
+}
+body.day-mode .help-text { 
+    color: #061026; 
+}

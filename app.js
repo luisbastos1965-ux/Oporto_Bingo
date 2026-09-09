@@ -329,16 +329,15 @@ function checkProximity(userLat, userLon) {
 function startAppAnimation() {
     const btn = document.getElementById('ob-btn');
     
-    btn.style.pointerEvents = 'none'; // Impede múltiplos cliques
-    
     if (navigator.vibrate) navigator.vibrate(30);
     
+    // Ativa o estado de carregamento/animação
     btn.classList.add('animating');
     
-    // Agora esperamos 1.2 segundos para a animação correr de forma natural e fluida
+    // Damos 800ms para o utilizador perceber o feedback visual antes de avançar
     setTimeout(() => {
         finishOnboarding();
-    }, 1200);
+    }, 800);
 }
 
 // =========================================

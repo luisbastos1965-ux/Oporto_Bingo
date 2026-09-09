@@ -438,29 +438,77 @@ body.day-mode .cell:not(.unlocked) img {
 .dot { width: 10px; height: 10px; background: rgba(255,255,255,0.3); border-radius: 50%; transition: 0.3s ease; }
 .dot.active { background: #00f2fe; width: 25px; border-radius: 5px; }
 
-.start-btn { 
-    margin-top: 30px; 
-    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%); 
-    color: white; 
-    border: none; 
-    padding: 16px 45px; 
+/* =========================================
+   BOTÃO "COMEÇAR" (ESTILO PREMIUM MINIMALISTA)
+   ========================================= */
+.start-btn {
+    position: relative;
+    overflow: hidden;
+    width: 220px !important;
+    height: 55px !important;
+    min-width: 220px;
+    min-height: 55px;
     border-radius: 30px;
-    font-size: 1.2rem; 
-    font-weight: bold; 
+    border: none;
+    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 6px 20px rgba(0, 242, 254, 0.4); 
-    transition: transform 0.2s, opacity 0.4s ease;
+    box-shadow: 0 6px 20px rgba(0, 242, 254, 0.4);
+    transition: transform 0.2s ease, opacity 0.4s ease;
     -webkit-tap-highlight-color: transparent;
-    opacity: 1; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
 }
 
-.start-btn.hidden { 
-    opacity: 0; 
-    pointer-events: none; 
+.start-btn:active {
+    transform: scale(0.95);
 }
 
-.start-btn:active { 
-    transform: scale(0.95); 
+.start-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* O texto do botão */
+#ob-btn-text {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Spinner minimalista que aparece ao clicar */
+.start-btn .btn-loader {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #ffffff;
+    animation: spin 0.8s linear infinite;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ESTADO ANIMADO (Quando o utilizador clica em Começar) */
+.start-btn.animating {
+    pointer-events: none;
+}
+
+.start-btn.animating #ob-btn-text {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.start-btn.animating .btn-loader {
+    opacity: 1;
+    transform: scale(1);
 }
 
 /* Modo Diurno */

@@ -215,6 +215,7 @@ function openModal(loc) {
 function closeModal() {
     modal.classList.add('hidden');
     if(speechSynthesis.speaking) speechSynthesis.cancel();
+    currentLocation = null;
 }
 
 closeBtn.addEventListener('click', () => {

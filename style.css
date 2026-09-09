@@ -397,6 +397,9 @@ footer h2 {
     display: flex; justify-content: center; align-items: center;
     transition: transform 0.2s;
     -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 .fab-hint:active { transform: scale(0.9); }
 

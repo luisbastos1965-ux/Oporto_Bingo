@@ -6,7 +6,7 @@
 }
 
 html, body {
-    overscroll-behavior: none;
+    overscroll-behavior: none; /* A regra absoluta anti-refresh */
     overscroll-behavior-y: none;
 }
 
@@ -74,6 +74,7 @@ header h1 {
     -webkit-text-fill-color: transparent;
     text-shadow: 0 4px 25px rgba(0, 242, 254, 0.4);
     
+    /* A MAGIA ANTI-SELEÇÃO */
     -webkit-user-select: none; 
     -ms-user-select: none; 
     user-select: none; 
@@ -86,6 +87,7 @@ footer h2 {
     color: rgba(255, 255, 255, 0.85);
     text-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
     
+    /* A MAGIA ANTI-SELEÇÃO */
     -webkit-user-select: none; 
     -ms-user-select: none; 
     user-select: none; 
@@ -118,6 +120,7 @@ footer h2 {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     
+    /* A MAGIA ANTI-SELEÇÃO */
     -webkit-user-select: none; 
     -ms-user-select: none; 
     user-select: none; 
@@ -155,6 +158,7 @@ footer h2 {
     cursor: pointer;
     transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
     
+    /* A MAGIA QUE MATA O CURSOR: */
     -webkit-user-select: none; 
     -ms-user-select: none; 
     user-select: none; 
@@ -171,11 +175,12 @@ footer h2 {
     will-change: filter;
     transition: filter 0.5s ease, -webkit-filter 0.5s ease, opacity 0.5s ease;
     
+    /* BLOQUEIA O CLIQUE NA IMAGEM (Passa a responsabilidade só para a célula) */
     pointer-events: none;
     -webkit-user-drag: none;
 }
 
-/* Estado Desbloqueado */
+/* Estado Desbloqueado (Garante 0px em vez de 'none') */
 .cell.unlocked {
     border-color: #00f2fe !important;
     box-shadow: 0 0 15px rgba(0, 242, 254, 0.4) !important;
@@ -224,16 +229,26 @@ body.day-mode .cell:not(.unlocked) img {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     transition: all 0.8s ease;
     
+    /* A MAGIA ANTI-SELEÇÃO */
     -webkit-user-select: none; 
     -ms-user-select: none; 
     user-select: none; 
 }
 
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+}
+
 .modal-content h2 {
     font-family: 'Luckiest Guy', cursive;
-    font-size: 1.5rem;
-    line-height: 1.25;
-    letter-spacing: 1px;
+    font-size: 1.5rem; /* Ligeiramente mais pequeno para nomes compridos */
+    line-height: 1.25; /* Afasta as linhas umas das outras para não se esmagarem */
+    letter-spacing: 1px; /* Reduz o espaçamento horizontal excessivo */
     color: #00f2fe;
     margin: 0 0 15px 0;
 }
@@ -276,7 +291,7 @@ body.day-mode .cell:not(.unlocked) img {
 }
 .action-btn.hidden { display: none; }
 
-/* Abas Culturais */
+/* Abas Culturais (Estilo Cápsula Nativa) */
 .tabs {
     display: flex;
     justify-content: space-between;
@@ -301,6 +316,7 @@ body.day-mode .cell:not(.unlocked) img {
     border-radius: 12px;
     transition: all 0.3s ease;
     
+    /* A MAGIA ANTI-SELEÇÃO */
     -webkit-user-select: none; 
     -ms-user-select: none; 
     user-select: none;
@@ -324,27 +340,37 @@ body.day-mode .cell:not(.unlocked) img {
 
 .tab-content.active { display: block; }
 
-/* Splash Screen / Onboarding */
+/* Splash Screen / Onboarding (Otimizado) */
 #splash-screen {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: #061026;
+    background: #061026; /* Cor escura do fundo para o desvanecimento */
     z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 1;
-    transition: opacity 1s ease;
+    opacity: 1; /* Começa totalmente visível */
+    transition: opacity 1s ease; /* Transição suave de 1 segundo ao desvanecer */
 }
 
 #splash-screen.fade-out {
-    opacity: 0;
-    pointer-events: none;
+    opacity: 0; /* Torna-se invisível */
+    pointer-events: none; /* Deixa de reagir a cliques, deixando passar para o jogo */
 }
 
+#splash-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Garante que o .hidden oculta de facto os elementos */
 .hidden { display: none !important; }
 
-/* UI de Bordo (GPS, Ajuda e Pista) */
+/* =========================================
+   UI de Bordo (GPS, Ajuda e Pista)
+   ========================================= */
+/* Agrupamento Top-Left */
 .top-left-controls {
     position: absolute; top: 20px; left: 20px;
     display: flex; gap: 10px; z-index: 50;
@@ -355,7 +381,7 @@ body.day-mode .cell:not(.unlocked) img {
     width: 36px; height: 36px; border-radius: 50%;
     cursor: pointer; display: flex; justify-content: center; align-items: center;
     backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
-    
+    /* A MAGIA ANTI-SELEÇÃO */
     -webkit-user-select: none; -ms-user-select: none; user-select: none;
 }
 
@@ -365,11 +391,12 @@ body.day-mode .cell:not(.unlocked) img {
     width: 10px; height: 10px; border-radius: 50%;
     z-index: 50; transition: all 0.3s ease;
     
+    /* A MAGIA PARA REMOVER O CURSOR E SELEÇÃO: */
     -webkit-user-select: none; 
     -ms-user-select: none; 
     user-select: none; 
     cursor: default;
-    pointer-events: none;
+    pointer-events: none; /* Garante que os cliques passam completamente através dela */
 }
 .gps-dot.searching { background: #ffa500; animation: pulseGps 1s infinite alternate; }
 .gps-dot.active { background: #00ff00; box-shadow: 0 0 8px #00ff00; }
@@ -383,7 +410,11 @@ body.day-mode .cell:not(.unlocked) img {
 }
 .cell.hint-active { animation: hintFlash 0.8s ease-in-out 3; }
 
-/* Onboarding Swipe */
+.help-text { text-align: left; color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-top: 15px; }
+
+/* =========================================
+   ONBOARDING SWIPE (NATIVO MOBILE)
+   ========================================= */
 .onboarding-wrapper {
     width: 100%; height: 100vh;
     display: flex; flex-direction: column;
@@ -396,9 +427,9 @@ body.day-mode .cell:not(.unlocked) img {
     display: flex; width: 100%; overflow-x: auto;
     scroll-snap-type: x mandatory; scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    scrollbar-width: none; /* Esconde barra no Firefox */
 }
-.onboarding-carousel::-webkit-scrollbar { display: none; }
+.onboarding-carousel::-webkit-scrollbar { display: none; /* Esconde barra no Chrome/Safari */ }
 
 .onboard-card {
     flex: 0 0 100%; width: 100%; padding: 0 40px;
@@ -414,7 +445,9 @@ body.day-mode .cell:not(.unlocked) img {
 .dot { width: 10px; height: 10px; background: rgba(255,255,255,0.3); border-radius: 50%; transition: 0.3s ease; }
 .dot.active { background: #00f2fe; width: 25px; border-radius: 5px; }
 
-/* Botão Começar */
+/* =========================================
+   BOTÃO "COMEÇAR" (ESTILO PREMIUM MINIMALISTA)
+   ========================================= */
 .start-btn {
     position: relative;
     overflow: hidden;
@@ -438,10 +471,21 @@ body.day-mode .cell:not(.unlocked) img {
     margin-top: 30px;
 }
 
-.start-btn:active { transform: scale(0.95); }
-.start-btn.hidden { opacity: 0; pointer-events: none; }
-#ob-btn-text { transition: opacity 0.3s ease, transform 0.3s ease; }
+.start-btn:active {
+    transform: scale(0.95);
+}
 
+.start-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* O texto do botão */
+#ob-btn-text {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Spinner minimalista que aparece ao clicar */
 .start-btn .btn-loader {
     position: absolute;
     width: 24px;
@@ -455,47 +499,108 @@ body.day-mode .cell:not(.unlocked) img {
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
 
-.start-btn.animating { pointer-events: none; }
-.start-btn.animating #ob-btn-text { opacity: 0; transform: translateY(-10px); }
-.start-btn.animating .btn-loader { opacity: 1; transform: scale(1); }
+/* ESTADO ANIMADO (Quando o utilizador clica em Começar) */
+.start-btn.animating {
+    pointer-events: none;
+}
 
+.start-btn.animating #ob-btn-text {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.start-btn.animating .btn-loader {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Modo Diurno */
+body.day-mode {
+    background-color: #e0f2fe;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(0, 114, 255, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(0, 198, 255, 0.08) 0%, transparent 40%);
+    color: #061026;
+}
+body.day-mode header h1 {
+    background: linear-gradient(135deg, #0072ff 0%, #00c6ff 100%);
+    -webkit-background-clip: text;
+}
+body.day-mode footer h2 { color: rgba(6, 16, 38, 0.75); }
+body.day-mode .flag-btn { background: rgba(0, 0, 0, 0.06); }
+body.day-mode .flag-btn.active { border-color: #0072ff; background: rgba(0, 114, 255, 0.12); box-shadow: 0 0 10px rgba(0, 114, 255, 0.4); }
+body.day-mode .modal-content { background: #ffffff; border-color: rgba(0, 114, 255, 0.15); color: #061026; }
+body.day-mode .modal-content h2 { color: #0072ff; }
+body.day-mode .tabs {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.05);
+}
+body.day-mode .tab-btn { 
+    color: rgba(0, 0, 0, 0.5); /* Escurecemos ligeiramente o texto inativo para melhor leitura */
+}
+body.day-mode .tab-btn.active { 
+    color: #0072ff; /* Azul royal forte */
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+}
+body.day-mode .tab-content { 
+    color: rgba(0, 0, 0, 0.85); 
+}
+
+/* NOVA REGRA: Ajusta os botões de ação para terem contraste perfeito no fundo branco */
+body.day-mode .action-btn {
+    background: rgba(0, 114, 255, 0.08);
+    border: 1px solid rgba(0, 114, 255, 0.3);
+    color: #0072ff; /* Azul royal forte e legível */
+}
+body.day-mode .action-btn:active {
+    background: rgba(0, 114, 255, 0.15);
+}
+
+/* REGRAS DOS NOVOS ELEMENTOS: Garante a legibilidade do botão de Ajuda e do texto do Modal */
+body.day-mode .top-icon-btn { 
+    background: rgba(0, 0, 0, 0.08); 
+    color: #061026; 
+}
+body.day-mode .help-text { 
+    color: #061026; 
+}
+
+/* Correção do Botão e Pontos (Onboarding) */
 .onboarding-footer {
     display: flex; flex-direction: column; align-items: center; gap: 25px;
     margin-top: 20px; height: 90px;
 }
 .onboard-dots { display: flex; gap: 10px; }
+.start-btn { opacity: 1; transition: opacity 0.4s ease, transform 0.2s; }
+.start-btn.hidden { opacity: 0; pointer-events: none; }
 
 /* =========================================
-   SISTEMA DE ALERTAS (CENTRALIZADO)
+   SISTEMA DE ALERTAS E CORREÇÃO DE BLUR
    ========================================= */
 #custom-alert { z-index: 9999; }
-.custom-alert-box { 
-    text-align: center !important; 
-    max-width: 320px !important; 
-    padding: 30px 25px !important; 
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-}
+.custom-alert-box { text-align: center; max-width: 320px; padding: 30px 25px; }
 #alert-icon { font-size: 3.5rem; margin-bottom: 15px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)); }
 #alert-title { color: #00f2fe; margin-bottom: 15px; font-size: 1.8rem; font-family: 'Luckiest Guy', cursive; letter-spacing: 1px; }
 #alert-message { margin-bottom: 25px; font-size: 1.1rem; line-height: 1.5; color: rgba(255,255,255,0.9); font-weight: bold; }
+#alert-ok { width: 100%; opacity: 1; pointer-events: auto; }
+body.day-mode #alert-message { color: #061026; }
 
-#alert-ok { 
-    display: block !important;
-    width: 100% !important; 
-    margin: 0 auto !important; 
-    text-align: center !important;
-    opacity: 1 !important; 
-    pointer-events: auto !important;
+/* A ORDEM SUPREMA QUE OBRIGA O BROWSER A LIMPAR A IMAGEM */
+.cell.unlocked img {
+    filter: none !important;
+    -webkit-filter: none !important;
+    opacity: 1 !important;
 }
 
 /* =========================================
    REESTRUTURAÇÃO PREMIUM DO MODAL DE AJUDA
    ========================================= */
-#help-modal .modal-content {
+#help-modal .modal-content.help-box-premium {
     background: #0d1b3e !important;
     border: 2px solid rgba(0, 242, 254, 0.3) !important;
     border-radius: 28px !important;
@@ -507,7 +612,7 @@ body.day-mode .cell:not(.unlocked) img {
     position: relative !important;
 }
 
-#help-modal .modal-content h2 {
+#help-modal .modal-content.help-box-premium h2 {
     font-family: 'Luckiest Guy', cursive !important;
     font-size: 1.8rem !important;
     text-align: center !important;
@@ -516,6 +621,7 @@ body.day-mode .cell:not(.unlocked) img {
     letter-spacing: 1.5px !important;
 }
 
+/* Contentor dos pequenos cartões */
 .help-grid-cards {
     display: flex !important;
     flex-direction: column !important;
@@ -530,11 +636,12 @@ body.day-mode .cell:not(.unlocked) img {
     border: 1px solid rgba(255, 255, 255, 0.08) !important;
     padding: 14px 15px !important;
     border-radius: 16px !important;
-    height: 72px !important; 
+    height: 72px !important; /* Força altura fixa exata para todos */
     box-sizing: border-box !important;
     overflow: hidden !important;
 }
 
+/* Ícones e Cores dos Badges */
 .help-card-icon-wrap {
     font-size: 1.5rem !important;
     width: 36px !important;
@@ -558,6 +665,7 @@ body.day-mode .cell:not(.unlocked) img {
 .warm-bg { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%) !important; }
 .hot-bg { background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%) !important; }
 
+/* Tipografia interna dos cartões */
 .help-card-text {
     display: flex !important;
     flex-direction: column !important;
@@ -578,45 +686,25 @@ body.day-mode .cell:not(.unlocked) img {
     line-height: 1.35 !important;
 }
 
-/* Modo Diurno Global */
-body.day-mode {
-    background-color: #e0f2fe;
-    background-image: 
-        radial-gradient(circle at 20% 30%, rgba(0, 114, 255, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(0, 198, 255, 0.08) 0%, transparent 40%);
-    color: #061026;
-}
-body.day-mode header h1 {
-    background: linear-gradient(135deg, #0072ff 0%, #00c6ff 100%);
-    -webkit-background-clip: text;
-}
-body.day-mode footer h2 { color: rgba(6, 16, 38, 0.75); }
-body.day-mode .flag-btn { background: rgba(0, 0, 0, 0.06); }
-body.day-mode .flag-btn.active { border-color: #0072ff; background: rgba(0, 114, 255, 0.12); box-shadow: 0 0 10px rgba(0, 114, 255, 0.4); }
-body.day-mode .modal-content { background: #ffffff; border-color: rgba(0, 114, 255, 0.15); color: #061026; }
-body.day-mode .modal-content h2 { color: #0072ff; }
-body.day-mode .tabs {
-    background: rgba(0, 0, 0, 0.04);
-    border-color: rgba(0, 0, 0, 0.05);
-}
-body.day-mode .tab-btn { color: rgba(0, 0, 0, 0.5); }
-body.day-mode .tab-btn.active { color: #0072ff; background: #ffffff; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
-body.day-mode .tab-content { color: rgba(0, 0, 0, 0.85); }
-body.day-mode .action-btn { background: rgba(0, 114, 255, 0.08); border: 1px solid rgba(0, 114, 255, 0.3); color: #0072ff; }
-body.day-mode .action-btn:active { background: rgba(0, 114, 255, 0.15); }
-body.day-mode .top-icon-btn { background: rgba(0, 0, 0, 0.08); color: #061026; }
-body.day-mode #alert-message { color: #061026 !important; }
-
-body.day-mode #help-modal .modal-content {
+/* Modo Diurno perfeitamente adaptado para os mini-cartões */
+body.day-mode #help-modal .modal-content.help-box-premium {
     background: #ffffff !important;
     border-color: rgba(0, 114, 255, 0.2) !important;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
 }
-body.day-mode #help-modal .modal-content h2 { color: #0072ff !important; }
+body.day-mode #help-modal .modal-content.help-box-premium h2 {
+    color: #0072ff !important;
+}
 body.day-mode .help-card-item {
     background: rgba(0, 114, 255, 0.03) !important;
     border-color: rgba(0, 114, 255, 0.08) !important;
 }
-body.day-mode .help-card-icon-wrap { background: rgba(0, 114, 255, 0.08) !important; }
-body.day-mode .help-card-text strong { color: #0072ff !important; }
-body.day-mode .help-card-text p { color: rgba(6, 16, 38, 0.75) !important; }
+body.day-mode .help-card-icon-wrap {
+    background: rgba(0, 114, 255, 0.08) !important;
+}
+body.day-mode .help-card-text strong {
+    color: #0072ff !important;
+}
+body.day-mode .help-card-text p {
+    color: rgba(6, 16, 38, 0.75) !important;
+}

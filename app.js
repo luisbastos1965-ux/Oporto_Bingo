@@ -589,12 +589,12 @@ function finishOnboarding() {
     if (footerTitle) footerTitle.classList.remove('hidden');
     
     setTimeout(() => { if(splash) splash.remove(); }, 1000); 
-    localStorage.setItem('oportoBingoIntroSeen', 'true');
+    localStorage.setItem('oportoBingoIntroSeen_v2', 'true');
     renderGrid();
     initGPS();
 }
 
-const introSeen = localStorage.getItem('oportoBingoIntroSeen');
+const introSeen = localStorage.getItem('oportoBingoIntroSeen_v2');
 if (introSeen === 'true') {
     if (splash) splash.remove();
     if (gridElement) gridElement.classList.remove('hidden');
@@ -740,7 +740,7 @@ function copyAppUrl() {
 }
 
 // Dispara a segurança inicial
-checkInstallGate();
+checkInstallGate(); // Desativado temporariamente para testes
 
 // =========================================
 // WAKE LOCK (IMPEDIR O ECRÃ DE APAGAR)

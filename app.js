@@ -329,19 +329,16 @@ function checkProximity(userLat, userLon) {
 function startAppAnimation() {
     const btn = document.getElementById('ob-btn');
     
-    // Bloqueia duplos-cliques impacientes que possam anular a animação!
-    btn.style.pointerEvents = 'none';
+    btn.style.pointerEvents = 'none'; // Impede múltiplos cliques
     
-    // Pequena vibração inicial de arranque
     if (navigator.vibrate) navigator.vibrate(30);
     
-    // Adiciona a classe que dispara a corrida no CSS
     btn.classList.add('animating');
     
-    // Dá tempo ao turista para fazer a corrida (750ms)
+    // Agora esperamos 1.2 segundos para a animação correr de forma natural e fluida
     setTimeout(() => {
         finishOnboarding();
-    }, 750);
+    }, 1200);
 }
 
 // =========================================

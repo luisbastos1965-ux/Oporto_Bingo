@@ -19,10 +19,31 @@
     <div id="gps-status" class="gps-dot searching" title="A procurar GPS..."></div>
     <button id="btn-hint" class="fab-hint" onclick="showHint()">🧭</button>
 
+    <!-- NOVO ONBOARDING: 3 Cartões -->
     <div id="splash-screen">
-        <video id="splash-video" autoplay muted playsinline>
-            <source src="./assets/intro.mp4" type="video/mp4">
-        </video>
+        <div class="onboarding-container">
+            <!-- Cartão 1 -->
+            <div class="onboard-card active" id="card-1">
+                <div class="onboard-icon">🚶‍♂️</div>
+                <h2>Explora o Porto</h2>
+                <p>Caminha pela cidade e descobre os locais históricos que escondemos no mapa.</p>
+                <button class="onboard-btn" onclick="nextCard(2)">Próximo</button>
+            </div>
+            <!-- Cartão 2 -->
+            <div class="onboard-card" id="card-2">
+                <div class="onboard-icon">📍</div>
+                <h2>Radar GPS</h2>
+                <p>Fica atento às cores: laranja é perto, vermelho a pulsar é porque estás quase lá!</p>
+                <button class="onboard-btn" onclick="nextCard(3)">Próximo</button>
+            </div>
+            <!-- Cartão 3 -->
+            <div class="onboard-card" id="card-3">
+                <div class="onboard-icon">🔓</div>
+                <h2>Desbloqueia a História</h2>
+                <p>Aproxima-te a 50 metros para revelar os segredos e ouvir o nosso áudio guia.</p>
+                <button class="onboard-btn start-btn" onclick="finishOnboarding()">Começar Exploração</button>
+            </div>
+        </div>
     </div>
 
     <header>
@@ -37,9 +58,8 @@
         <h2 class="hidden">Bin'Go</h2>
     </footer>
 
-    <audio id="unlock-sound" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" preload="auto"></audio>
-    <audio id="open-sound" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3" preload="auto"></audio>
-
+    <audio id="unlock-sound" src="./assets/unlock.mp3" preload="auto"></audio>
+    
     <div id="location-modal" class="modal hidden">
         <div class="modal-content">
             <span id="close-modal" class="close">×</span>

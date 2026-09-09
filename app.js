@@ -357,50 +357,42 @@ function toggleAudio() {
 }
 
 // =========================================
-// MOTOR DE ONBOARDING - Vídeo apenas na primeira vez
+// MOTOR DE ONBOARDING - 3 Cartões Nativos
 // =========================================
 const splash = document.getElementById('splash-screen');
-const video = document.getElementById('splash-video');
 const gridElement = document.getElementById('bingo-grid');
 const footerTitle = document.querySelector('footer h2');
 
+// Função para avançar entre cartões
+function nextCard(step) {
+    if (navigator.vibrate) navigator.vibrate(30);
+    document.querySelectorAll('.onboard-card').forEach(c => c.classList.remove('active'));
+    document.getElementById(`card-${step}`).classList.add('active');
+}
+
 function finishOnboarding() {
-    // 1. Desvanece o splash screen
+    if (navigator.vibrate) navigator.vibrate(50);
+    // Desvanece o ecrã inicial
     if (splash) splash.classList.add('fade-out');
     
-    // 2. Mostra a grelha e o rodapé instantaneamente
+    // Mostra a grelha e o rodapé
     if (gridElement) gridElement.classList.remove('hidden');
     if (footerTitle) footerTitle.classList.remove('hidden');
     
-    // 3. Remove o splash do DOM após a transição de 1s para libertar memória
-    setTimeout(() => splash.remove(), 1000); 
-    
-    // 4. Guarda na memória que este telemóvel já viu o intro
+    // Remove do DOM após a animação e guarda na memória
+    setTimeout(() => { if(splash) splash.remove(); }, 1000); 
     localStorage.setItem('oportoBingoIntroSeen', 'true');
-    renderGrid(); // Garante que a grelha é desenhada
+    renderGrid();
 }
 
-if (video) {
-    // Verifica a memória: ele já viu o intro?
-    const introSeen = localStorage.getItem('oportoBingoIntroSeen');
-    
-    if (introSeen === 'true') {
-        // Se JÁ VIU, removemos o splash imediatamente e mostramos o jogo
-        splash.remove();
-        if (gridElement) gridElement.classList.remove('hidden');
-        if (footerTitle) footerTitle.classList.remove('hidden');
-        renderGrid();
-    } else {
-        // Se NÃO VIU (é a primeira vez), preparamos o vídeo
-        // iOS: Quando o vídeo acaba, chama a função de terminar
-        video.onended = finishOnboarding;
-        
-        // Android fallback: Alguns navegadores não disparam o onended em mobile
-        // Criamos um temporizador de segurança baseado na duração (aprox 7.5s)
-        setTimeout(() => {
-            if (splash && splash.parentElement) finishOnboarding();
-        }, 8500); // 8.5s para dar margem à duração do vídeo + buffer de rede
-    }
+// Quando a app arranca, verifica se já viu o tutorial
+const introSeen = localStorage.getItem('oportoBingoIntroSeen');
+
+if (introSeen === 'true') {
+    if (splash) splash.remove();
+    if (gridElement) gridElement.classList.remove('hidden');
+    if (footerTitle) footerTitle.classList.remove('hidden');
+    // renderGrid() já é chamado no final do script
 }
 
 // Abas de Navegação

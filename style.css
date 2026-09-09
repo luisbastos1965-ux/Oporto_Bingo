@@ -390,6 +390,13 @@ body.day-mode .cell:not(.unlocked) img {
     position: absolute; top: 32px; right: 25px;
     width: 10px; height: 10px; border-radius: 50%;
     z-index: 50; transition: all 0.3s ease;
+    
+    /* A MAGIA PARA REMOVER O CURSOR E SELEÇÃO: */
+    -webkit-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+    cursor: default;
+    pointer-events: none; /* Garante que os cliques passam completamente através dela */
 }
 .gps-dot.searching { background: #ffa500; animation: pulseGps 1s infinite alternate; }
 .gps-dot.active { background: #00ff00; box-shadow: 0 0 8px #00ff00; }
@@ -591,63 +598,77 @@ body.day-mode #alert-message { color: #061026; }
 }
 
 /* =========================================
-   MODAL DE AJUDA PREMIUM (ESTILIZADO)
+   MODAL DE AJUDA / INSTRUÇÕES (ESTILO UNIFICADO)
    ========================================= */
-.help-content { 
+#help-modal .modal-content {
     background: #0d1b3e !important;
     border: 2px solid rgba(0, 242, 254, 0.3) !important;
     border-radius: 24px !important;
-    max-width: 340px !important; 
-    padding: 30px 25px !important; 
+    width: 100% !important;
+    max-width: 380px !important;
+    padding: 30px 25px !important;
     text-align: left !important;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6) !important;
+    position: relative !important;
 }
 
-.help-content h2 { 
-    text-align: center !important; 
-    font-size: 1.8rem !important; 
-    margin-bottom: 25px !important;
+#help-modal .modal-content h2 {
     font-family: 'Luckiest Guy', cursive !important;
+    font-size: 1.6rem !important;
+    text-align: center !important;
     color: #00f2fe !important;
+    margin: 0 0 25px 0 !important;
     letter-spacing: 1px !important;
 }
 
-.help-legend { 
-    display: flex !important; 
-    flex-direction: column !important; 
-    gap: 18px !important; 
+.help-legend {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
 }
 
-.legend-item { 
-    display: flex !important; 
-    align-items: center !important; 
-    gap: 15px !important; 
+.legend-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
 }
 
-.legend-item p { 
-    margin: 0 !important; 
-    font-size: 1.05rem !important; 
-    font-weight: bold !important; 
-    color: rgba(255,255,255,0.9) !important; 
+.legend-item p {
+    margin: 0 !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    line-height: 1.4 !important;
+    text-align: left !important;
 }
 
-.legend-icon { 
-    font-size: 1.5rem !important; 
-    width: 35px !important; 
-    text-align: center !important; 
+.legend-icon {
+    font-size: 1.4rem !important;
+    width: 32px !important;
+    text-align: center !important;
+    flex-shrink: 0 !important;
 }
 
-.legend-box { 
-    width: 30px !important; 
-    height: 30px !important; 
-    border-radius: 8px !important; 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important; 
+.legend-box {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
+    flex-shrink: 0 !important;
 }
 
 .box-warm { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%) !important; }
 .box-hot { background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%) !important; }
 
-/* Modo Diurno para o Modal de Ajuda */
-body.day-mode .help-content { background: #ffffff !important; border-color: rgba(0, 114, 255, 0.2) !important; }
-body.day-mode .help-content h2 { color: #0072ff !important; }
-body.day-mode .legend-item p { color: #061026 !important; }
+/* Modo Diurno unificado para o Modal de Ajuda */
+body.day-mode #help-modal .modal-content {
+    background: #ffffff !important;
+    border-color: rgba(0, 114, 255, 0.2) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15) !important;
+}
+body.day-mode #help-modal .modal-content h2 {
+    color: #0072ff !important;
+}
+body.day-mode #help-modal .legend-item p {
+    color: #061026 !important;
+}

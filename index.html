@@ -58,13 +58,13 @@
 
     <!-- MODAL DE AJUDA DINÂMICO -->
     <div id="help-modal" class="modal hidden">
-        <div class="modal-content help-content">
-            <span class="close-btn" id="close-help">&times;</span>
+        <div class="modal-content">
+            <span id="close-help" class="close" onclick="document.getElementById('help-modal').classList.add('hidden')">&times;</span>
             <h2 id="help-title">COMO JOGAR</h2>
             
             <div class="help-legend">
                 <div class="legend-item">
-                    <div class="legend-icon icon-walk">🚶</div>
+                    <div class="legend-icon">🚶</div>
                     <p id="help-1">Caminha pela cidade para explorar.</p>
                 </div>
                 <div class="legend-item">
@@ -76,7 +76,7 @@
                     <p id="help-3">Vermelho (A pulsar): Menos de 150m!</p>
                 </div>
                 <div class="legend-item">
-                    <div class="legend-icon icon-unlock">🔓</div>
+                    <div class="legend-icon">🔓</div>
                     <p id="help-4">Desbloqueio: Aproxima-te a 50m.</p>
                 </div>
             </div>

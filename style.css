@@ -605,3 +605,65 @@ body.day-mode #alert-message { color: #061026; }
     -webkit-filter: none !important;
     opacity: 1 !important;
 }
+
+/* =========================================
+   MODAL DE AJUDA PREMIUM (ESTILIZADO)
+   ========================================= */
+.help-content { 
+    background: #0d1b3e !important;
+    border: 2px solid rgba(0, 242, 254, 0.3) !important;
+    border-radius: 24px !important;
+    max-width: 340px !important; 
+    padding: 30px 25px !important; 
+    text-align: left !important;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5) !important;
+}
+
+.help-content h2 { 
+    text-align: center !important; 
+    font-size: 1.8rem !important; 
+    margin-bottom: 25px !important;
+    font-family: 'Luckiest Guy', cursive !important;
+    color: #00f2fe !important;
+    letter-spacing: 1px !important;
+}
+
+.help-legend { 
+    display: flex !important; 
+    flex-direction: column !important; 
+    gap: 18px !important; 
+}
+
+.legend-item { 
+    display: flex !important; 
+    align-items: center !important; 
+    gap: 15px !important; 
+}
+
+.legend-item p { 
+    margin: 0 !important; 
+    font-size: 1.05rem !important; 
+    font-weight: bold !important; 
+    color: rgba(255,255,255,0.9) !important; 
+}
+
+.legend-icon { 
+    font-size: 1.5rem !important; 
+    width: 35px !important; 
+    text-align: center !important; 
+}
+
+.legend-box { 
+    width: 30px !important; 
+    height: 30px !important; 
+    border-radius: 8px !important; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important; 
+}
+
+.box-warm { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%) !important; }
+.box-hot { background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%) !important; }
+
+/* Modo Diurno para o Modal de Ajuda */
+body.day-mode .help-content { background: #ffffff !important; border-color: rgba(0, 114, 255, 0.2) !important; }
+body.day-mode .help-content h2 { color: #0072ff !important; }
+body.day-mode .legend-item p { color: #061026 !important; }

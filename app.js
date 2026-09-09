@@ -331,13 +331,11 @@ function startAppAnimation() {
     
     if (navigator.vibrate) navigator.vibrate(30);
     
-    // Ativa o estado de carregamento/animação
+    // Ativa a animação visual do botão
     btn.classList.add('animating');
     
-    // Damos 800ms para o utilizador perceber o feedback visual antes de avançar
-    setTimeout(() => {
-        finishOnboarding();
-    }, 800);
+    // Avança logo no milissegundo seguinte para a app (sem esperar)
+    finishOnboarding();
 }
 
 // =========================================

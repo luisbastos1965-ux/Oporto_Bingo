@@ -77,7 +77,7 @@ function updateUILanguage() {
         document.getElementById('ob-d2').innerText = uiTexts[currentLang].obD2;
         document.getElementById('ob-t3').innerText = uiTexts[currentLang].obT3;
         document.getElementById('ob-d3').innerText = uiTexts[currentLang].obD3;
-        document.getElementById('ob-btn-text').innerText = uiTexts[currentLang].obBtn;
+        document.getElementById('ob-btn').innerText = uiTexts[currentLang].obBtn;
     }
 
     // Ajuda Dinâmica

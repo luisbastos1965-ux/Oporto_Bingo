@@ -439,13 +439,29 @@ body.day-mode .cell:not(.unlocked) img {
 .dot.active { background: #00f2fe; width: 25px; border-radius: 5px; }
 
 .start-btn { 
-    margin-top: 30px; background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%); 
-    color: white; border: none; padding: 16px 45px; border-radius: 30px;
-    font-size: 1.2rem; font-weight: bold; cursor: pointer;
-    box-shadow: 0 6px 20px rgba(0, 242, 254, 0.4); transition: transform 0.2s;
+    margin-top: 30px; 
+    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%); 
+    color: white; 
+    border: none; 
+    padding: 16px 45px; 
+    border-radius: 30px;
+    font-size: 1.2rem; 
+    font-weight: bold; 
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0, 242, 254, 0.4); 
+    transition: transform 0.2s, opacity 0.4s ease;
     -webkit-tap-highlight-color: transparent;
+    opacity: 1; 
 }
-.start-btn:active { transform: scale(0.95); }
+
+.start-btn.hidden { 
+    opacity: 0; 
+    pointer-events: none; 
+}
+
+.start-btn:active { 
+    transform: scale(0.95); 
+}
 
 /* Modo Diurno */
 body.day-mode {
@@ -540,46 +556,4 @@ body.day-mode #alert-message { color: #061026; }
     filter: none !important;
     -webkit-filter: none !important;
     opacity: 1 !important;
-}
-
-/* =========================================
-   ANIMAÇÃO DO BOTÃO "COMEÇAR" (O TURISTA)
-   ========================================= */
-.start-btn {
-    position: relative;
-    overflow: hidden; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 220px; 
-    height: 55px;
-    /* A MAGIA: Força a Placa Gráfica a carregar a animação! */
-    transform: translateZ(0); 
-}
-
-#ob-btn-text {
-    transform: translateY(0);
-    transition: transform 0.3s ease, opacity 0.3s ease; 
-}
-
-.btn-icon {
-    position: absolute;
-    left: 0; /* Começamos no zero para o telemóvel não ignorar o desenho */
-    font-size: 1.6rem;
-    opacity: 0;
-    transform: translateX(-50px); /* Escondemo-lo usando a margem negativa */
-    /* Curva de aceleração suave: arranca rápido, mas vês o movimento todo */
-    transition: transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.2s ease; 
-}
-
-/* O ESTADO ANIMADO (Ativado via JavaScript) */
-.start-btn.animating #ob-btn-text {
-    transform: translateY(40px); /* O texto cai */
-    opacity: 0;
-}
-
-.start-btn.animating .btn-icon {
-    opacity: 1;
-    /* O boneco atravessa o botão todo até sair pela direita */
-    transform: translateX(250px); 
 }

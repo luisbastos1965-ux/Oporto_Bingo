@@ -23,7 +23,8 @@ const uiTexts = {
         helpT3: "Muito Perto", help3: "Vermelho (A pulsar): Menos de 150m!", 
         helpT4: "Desbloquear", help4: "Aproxima-te a menos de 50m.", 
         helpT5: "Pistas", help5: "Perdido? Clica na bússola para uma dica!",
-        alertGPS: "O radar precisa de sinal GPS verde para te dar uma pista!", alertNoHints: "Já não há pistas a dar. Descobriste o mapa todo!", alertTitle: "Aviso", alertOk: "OK" 
+        alertGPS: "O radar precisa de sinal GPS verde para te dar uma pista!", alertNoHints: "Já não há pistas a dar. Descobriste o mapa todo!", alertTitle: "Aviso", alertOk: "OK", 
+        dist: "📍 Distância:", meters: "metros"
     },
     en: { 
         map: "📍 Directions", audio: "🔊 Listen", stopAudio: "⏸️ Stop", tab1: "Summary", tab2: "History", tab3: "Trivia", 
@@ -38,7 +39,8 @@ const uiTexts = {
         helpT3: "Very Close", help3: "Red (Pulsing): Under 150m away!", 
         helpT4: "Unlock", help4: "Get closer than 50m.", 
         helpT5: "Hints", help5: "Lost? Click the compass for a hint!",
-        alertGPS: "The radar needs a green GPS signal to give you a hint!", alertNoHints: "No more hints available. You discovered the entire map!", alertTitle: "Notice", alertOk: "OK" 
+        alertGPS: "The radar needs a green GPS signal to give you a hint!", alertNoHints: "No more hints available. You discovered the entire map!", alertTitle: "Notice", alertOk: "OK", 
+        dist: "📍 Distance:", meters: "meters"
     },
     es: { 
         map: "📍 Cómo llegar", audio: "🔊 Escuchar", stopAudio: "⏸️ Detener", tab1: "Resumen", tab2: "Historia", tab3: "Curiosidades", 
@@ -53,7 +55,8 @@ const uiTexts = {
         helpT3: "Muy Cerca", help3: "Rojo (Parpadeando): ¡Menos de 150m!", 
         helpT4: "Desbloquear", help4: "Acércate a menos de 50m.", 
         helpT5: "Pistas", help5: "¿Perdido? ¡Haz clic en la brújula para una pista!",
-        alertGPS: "¡El radar necesita señal GPS verde para darte una pista!", alertNoHints: "No hay más pistas. ¡Descubriste todo el mapa!", alertTitle: "Aviso", alertOk: "OK" 
+        alertGPS: "¡El radar necesita señal GPS verde para darte una pista!", alertNoHints: "No hay más pistas. ¡Descubriste todo el mapa!", alertTitle: "Aviso", alertOk: "OK", 
+        dist: "📍 Distancia:", meters: "metros"
     },
     fr: { 
         map: "📍 Itinéraire", audio: "🔊 Écouter", stopAudio: "⏸️ Arrêter", tab1: "Résumé", tab2: "Histoire", tab3: "Anecdotes", 
@@ -68,7 +71,8 @@ const uiTexts = {
         helpT3: "Très Près", help3: "Rouge (Clignotant) : À moins de 150m !", 
         helpT4: "Débloquer", help4: "Approchez à moins de 50m.", 
         helpT5: "Indices", help5: "Perdu ? Cliquez sur la boussole pour un indice !",
-        alertGPS: "Le radar a besoin d'un signal GPS vert pour un indice !", alertNoHints: "Plus d'indices. Vous avez découvert toute la carte !", alertTitle: "Avis", alertOk: "OK" 
+        alertGPS: "Le radar a besoin d'un signal GPS vert pour un indice !", alertNoHints: "Plus d'indices. Vous avez découvert toute la carte !", alertTitle: "Avis", alertOk: "OK", 
+        dist: "📍 Distance :", meters: "mètres"
     },
     de: { 
         map: "📍 Route", audio: "🔊 Anhören", stopAudio: "⏸️ Stoppen", tab1: "Zusammenfassung", tab2: "Geschichte", tab3: "Fakten", 
@@ -83,7 +87,8 @@ const uiTexts = {
         helpT3: "Sehr Nah", help3: "Rot (Pulsierend): Unter 150m entfernt!", 
         helpT4: "Freischalten", help4: "Nähere dich auf unter 50m.", 
         helpT5: "Hinweise", help5: "Verloren? Klicke auf den Kompass für einen Tipp!",
-        alertGPS: "Das Radar benötigt ein grünes GPS-Signal für Hinweise!", alertNoHints: "Keine Hinweise mehr. Du hast die ganze Karte entdeckt!", alertTitle: "Hinweis", alertOk: "OK" 
+        alertGPS: "Das Radar benötigt ein grünes GPS-Signal für Hinweise!", alertNoHints: "Keine Hinweise mehr. Du hast die ganze Karte entdeckt!", alertTitle: "Hinweis", alertOk: "OK", 
+        dist: "📍 Entfernung:", meters: "Meter"
     },
     it: { 
         map: "📍 Indicazioni", audio: "🔊 Ascolta", stopAudio: "⏸️ Ferma", tab1: "Riassunto", tab2: "Storia", tab3: "Curiosità", 
@@ -98,7 +103,8 @@ const uiTexts = {
         helpT3: "Molto Vicino", help3: "Rosso (Lampeggiante): A meno di 150m!", 
         helpT4: "Sbloccare", help4: "Avvicinati a meno di 50m.", 
         helpT5: "Indizi", help5: "Perso? Clicca sulla bussola per un suggerimento!",
-        alertGPS: "Il radar ha bisogno di un segnale GPS verde per aiutarti!", alertNoHints: "Nessun indizio. Hai scoperto tutta la mappa!", alertTitle: "Avviso", alertOk: "OK" 
+        alertGPS: "Il radar ha bisogno di un segnale GPS verde per aiutarti!", alertNoHints: "Nessun indizio. Hai scoperto tutta la mappa!", alertTitle: "Avviso", alertOk: "OK", 
+        dist: "📍 Distanza:", meters: "metri"
     },
     zh: { 
         map: "📍 路线", audio: "🔊 聆听", stopAudio: "⏸️ 停止", tab1: "总结", tab2: "历史", tab3: "趣闻", 
@@ -113,7 +119,8 @@ const uiTexts = {
         helpT3: "非常接近", help3: "红色（闪烁）：距离不到150米！", 
         helpT4: "解锁", help4: "靠近至50米以内。", 
         helpT5: "提示", help5: "迷路了？点击指南针获取提示！",
-        alertGPS: "雷达需要绿色的GPS信号才能给您提示！", alertNoHints: "没有更多提示了。您已探索整个地图！", alertTitle: "提示", alertOk: "确定" 
+        alertGPS: "雷达需要绿色的GPS信号才能给您提示！", alertNoHints: "没有更多提示了。您已探索整个地图！", alertTitle: "提示", alertOk: "确定", 
+        dist: "📍 距离:", meters: "米"
     }
 };
 
@@ -340,7 +347,8 @@ function openModal(loc) {
         let lockMsg = uiTexts[currentLang].locked;
         if (userLat && userLon) {
             const dist = Math.round(getDistanceFromLatLonInM(userLat, userLon, loc.lat, loc.lon));
-            lockMsg += `\n\n📍 Distância: ${dist} metros`;
+            // A MAGIA DA TRADUÇÃO ENTRA AQUI:
+            lockMsg += `\n\n${uiTexts[currentLang].dist} ${dist} ${uiTexts[currentLang].meters}`;
         }
         modalDesc.innerText = lockMsg;
         
@@ -733,3 +741,29 @@ function copyAppUrl() {
 
 // Dispara a segurança inicial
 checkInstallGate();
+
+// =========================================
+// WAKE LOCK (IMPEDIR O ECRÃ DE APAGAR)
+// =========================================
+let wakeLock = null;
+
+async function requestWakeLock() {
+    if ('wakeLock' in navigator) {
+        try {
+            wakeLock = await navigator.wakeLock.request('screen');
+            console.log('Ecrã mantido ligado ativo!');
+            
+            // Se o turista for a outra app e voltar, temos de pedir o bloqueio de novo
+            document.addEventListener('visibilitychange', async () => {
+                if (wakeLock !== null && document.visibilityState === 'visible') {
+                    wakeLock = await navigator.wakeLock.request('screen');
+                }
+            });
+        } catch (err) {
+            console.warn('Wake Lock falhou:', err.message);
+        }
+    }
+}
+
+// Ativa o ecrã sempre ligado quando o utilizador clica em "Começar" no tutorial
+// Vai à tua função finishOnboarding() e adiciona lá dentro: requestWakeLock();

@@ -5,6 +5,11 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+html, body {
+    overscroll-behavior: none; /* A regra absoluta anti-refresh */
+    overscroll-behavior-y: none;
+}
+
 body {
     background-color: #061026;
     background-image: 
@@ -19,9 +24,6 @@ body {
     margin: 0;
     padding: 20px;
     overflow-x: hidden;
-    
-    /* A MAGIA NATIVA: Bloqueia o arrastar para atualizar (pull-to-refresh) nos telemóveis */
-    overscroll-behavior-y: none;
     transition: background-color 1s ease, color 1s ease;
 }
 
@@ -145,6 +147,7 @@ footer h2 {
     aspect-ratio: 1;
 }
 
+/* Grelha do Bingo e Imagens (Anti-Blur Bug Mobile) */
 .cell {
     background: rgba(255, 255, 255, 0.05);
     border: 2px solid rgba(255, 255, 255, 0.1);
@@ -153,39 +156,38 @@ footer h2 {
     overflow: hidden;
     position: relative;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .cell img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    /* Aplica os filtros matematicamente */
     filter: grayscale(100%) brightness(30%) blur(2px);
-    transition: all 0.3s ease;
+    -webkit-filter: grayscale(100%) brightness(30%) blur(2px);
+    /* Força o telemóvel a usar a placa gráfica 3D (Mata o bug do encravamento visual) */
+    transform: translateZ(0);
+    will-change: filter;
+    transition: filter 0.5s ease, -webkit-filter 0.5s ease, opacity 0.5s ease;
 }
 
-/* Estados do Radar Geográfico */
-.cell.warm { border-color: #ffa500; box-shadow: 0 0 10px rgba(254, 165, 0, 0.4); }
-
-@keyframes radarPulse {
-    0% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 69, 0, 0.6); }
-    50% { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 69, 0, 0.9); border-color: #ff2a00; }
-    100% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 69, 0, 0.6); }
-}
-
-.cell.hot { 
-    border-color: #ff4500; 
-    animation: radarPulse 1.2s infinite ease-in-out; 
-    z-index: 10;
-}
-
-/* Estado Desbloqueado */
+/* Estado Desbloqueado (Garante 0px em vez de 'none') */
 .cell.unlocked {
-    border-color: #00f2fe;
-    box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+    border-color: #00f2fe !important;
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.4) !important;
 }
+
 .cell.unlocked img {
-    filter: grayscale(0%) brightness(100%) blur(0px);
+    filter: grayscale(0%) brightness(100%) blur(0px) !important;
+    -webkit-filter: grayscale(0%) brightness(100%) blur(0px) !important;
+    opacity: 1 !important;
+}
+
+/* Modo Diurno - Apenas os bloqueados sofrem alteração */
+body.day-mode .cell:not(.unlocked) img {
+    filter: grayscale(100%) brightness(85%) opacity(0.4) blur(1px) !important;
+    -webkit-filter: grayscale(100%) brightness(85%) opacity(0.4) blur(1px) !important;
 }
 
 /* Janela Modal Flutuante */
@@ -487,10 +489,6 @@ body.day-mode .top-icon-btn {
 }
 body.day-mode .help-text { 
     color: #061026; 
-}
-/* Clareia os bloqueados no modo diurno para não parecerem buracos negros */
-body.day-mode .cell:not(.unlocked) img {
-    filter: grayscale(100%) brightness(85%) opacity(0.4) blur(1px);
 }
 
 /* Correção do Botão e Pontos (Onboarding) */

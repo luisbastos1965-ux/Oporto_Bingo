@@ -77,7 +77,7 @@ function updateUILanguage() {
         document.getElementById('ob-d2').innerText = uiTexts[currentLang].obD2;
         document.getElementById('ob-t3').innerText = uiTexts[currentLang].obT3;
         document.getElementById('ob-d3').innerText = uiTexts[currentLang].obD3;
-        document.getElementById('ob-btn').innerText = uiTexts[currentLang].obBtn;
+        document.getElementById('ob-btn-text').innerText = uiTexts[currentLang].obBtn;
     }
 
     // Ajuda Dinâmica
@@ -321,6 +321,25 @@ function checkProximity(userLat, userLon) {
             }
         }
     });
+}
+
+// =========================================
+// ANIMAÇÃO DO BOTÃO "COMEÇAR"
+// =========================================
+function startAppAnimation() {
+    const btn = document.getElementById('ob-btn');
+    
+    // Pequena vibração inicial de arranque
+    if (navigator.vibrate) navigator.vibrate(30);
+    
+    // Adiciona a classe que dispara o CSS do Turista a correr
+    btn.classList.add('animating');
+    
+    // Espera 750 milissegundos (o tempo exato da corrida do turista) 
+    // antes de abrir o mapa real
+    setTimeout(() => {
+        finishOnboarding();
+    }, 750);
 }
 
 // =========================================

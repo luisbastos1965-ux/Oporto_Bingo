@@ -541,3 +541,40 @@ body.day-mode #alert-message { color: #061026; }
     -webkit-filter: none !important;
     opacity: 1 !important;
 }
+
+/* =========================================
+   ANIMAÇÃO DO BOTÃO "COMEÇAR" (O TURISTA)
+   ========================================= */
+.start-btn {
+    position: relative;
+    overflow: hidden; /* Impede que o turista se veja fora do botão */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px; /* Fixamos a largura para a corrida ter espaço */
+    height: 55px;
+}
+
+#ob-btn-text {
+    transition: all 0.3s ease; /* A velocidade com que a letra cai */
+}
+
+.btn-icon {
+    position: absolute;
+    left: -40px; /* Escondido fora do ecrã à esquerda */
+    font-size: 1.6rem;
+    opacity: 0;
+    /* Curva de aceleração: arranca rápido e mantém a velocidade */
+    transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1); 
+}
+
+/* O ESTADO ANIMADO (Ativado via JavaScript) */
+.start-btn.animating #ob-btn-text {
+    transform: translateY(40px); /* O texto cai e desaparece */
+    opacity: 0;
+}
+
+.start-btn.animating .btn-icon {
+    opacity: 1;
+    transform: translateX(280px); /* O turista corre 280px para a direita! */
+}

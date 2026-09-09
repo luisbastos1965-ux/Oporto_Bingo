@@ -11,28 +11,39 @@
 </head>
 <body>
 
-    <!-- ECRÃ DE BLOQUEIO DE BROWSER (FORÇAR INSTALAÇÃO) -->
+    <!-- ECRÃ DE BLOQUEIO DE BROWSER (PORTÃO CAMALEÃO) -->
     <div id="install-gate" class="modal hidden">
         <div class="modal-content" style="padding: 40px 20px;">
             <div style="font-size: 3.5rem; margin-bottom: 10px;">📲</div>
             <h2 style="font-size: 1.8rem; margin-bottom: 10px;">Quase lá!</h2>
             <p style="font-size: 1rem; color: rgba(255,255,255,0.85); margin-bottom: 25px;">
-                O Oporto Bin'Go é um jogo de exploração. Para acederes ao radar GPS, instala a App gratuitamente.
+                O Oporto Bin'Go é uma experiência interativa. Para jogares e acederes ao radar GPS, tens de instalar a App.
             </p>
-            
-            <!-- A caixa que vai mudar consoante o telemóvel -->
-            <div id="install-instructions" style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; text-align: left; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.1);">
+
+            <!-- CAIXA ANDROID (Com o Botão Mágico) -->
+            <div id="android-install-box" class="hidden" style="margin-bottom: 20px;">
+                <button id="btn-install-pwa" class="start-btn" style="width: 100%; margin: 0 auto; height: 50px !important; min-height: 50px;">
+                    📥 Instalar Aplicação
+                </button>
             </div>
 
-            <button class="start-btn" onclick="copyAppUrl()" style="width: 100%; margin: 0 auto; height: 45px !important; min-height: 45px;">
+            <!-- CAIXA iOS (Com as Instruções) -->
+            <div id="ios-install-box" class="hidden" style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; text-align: left; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.1);">
+                <p style="margin: 0 0 10px 0;"><strong>No teu iPhone (Safari):</strong></p>
+                <p style="margin: 0 0 8px 0; font-size: 0.9rem;">1️⃣ Toca em <strong>Partilhar</strong> (quadrado com a seta no fundo)</p>
+                <p style="margin: 0; font-size: 0.9rem;">2️⃣ Escolhe <strong>Ecrã Principal ➕</strong></p>
+            </div>
+
+            <!-- BOTÃO DE RESGATE (Copiar Link) -->
+            <button class="start-btn copy-link-btn" onclick="copyAppUrl()" style="width: 100%; margin: 0 auto; height: 45px !important; min-height: 45px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); box-shadow: none;">
                 <span id="copy-btn-text">🔗 Copiar Link da App</span>
             </button>
             <p style="font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 15px; line-height: 1.4;">
-                (Se abriste via QR Code, copia o link acima e cola no Chrome/Safari normal)
+                (Leste um QR Code? Copia o link e abre no Chrome/Safari)
             </p>
         </div>
     </div>
-    
+
     <!-- Ícones de Controlo (Top Left) -->
     <div class="top-left-controls">
         <button id="btn-help" class="top-icon-btn" onclick="openHelpModal()">❔</button>

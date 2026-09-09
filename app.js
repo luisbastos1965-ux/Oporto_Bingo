@@ -663,43 +663,63 @@ function showHint() {
 }
 
 // =========================================
-// O PORTÃO DE INSTALAÇÃO UNIVERSAL
+// O PORTÃO DE INSTALAÇÃO CAMALEÃO
 // =========================================
+let deferredPrompt;
+const installGate = document.getElementById('install-gate');
+const btnInstallPwa = document.getElementById('btn-install-pwa');
+const androidBox = document.getElementById('android-install-box');
+const iosBox = document.getElementById('ios-install-box');
+
+function isPWA() {
+    return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+}
+
 function checkInstallGate() {
-    const isPWA = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
-    const installGate = document.getElementById('install-gate');
-    
     if (!installGate) return;
 
-    // Se estiver instalado, destrói o portão para não pesar na memória
-    if (isPWA) {
+    // Se estiver a correr como App instalada, destrói o portão e deixa jogar
+    if (isPWA()) {
         installGate.remove();
         return;
     }
 
-    // Se for browser, tranca a pessoa de fora
+    // Se estiver no Browser, tranca o jogo
     installGate.classList.remove('hidden');
-    
-    const instBox = document.getElementById('install-instructions');
+
+    // Verifica que telemóvel é
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
-    // Injeta as instruções perfeitas consoante o telemóvel
     if (isIOS) {
-        instBox.innerHTML = `
-            <p style="margin: 0 0 10px 0;"><strong>No teu iPhone (Safari):</strong></p>
-            <p style="margin: 0 0 8px 0; font-size: 0.9rem;">1️⃣ Toca em <strong>Partilhar</strong> (quadrado com seta no fundo)</p>
-            <p style="margin: 0; font-size: 0.9rem;">2️⃣ Escolhe <strong>Ecrã Principal</strong></p>
-        `;
+        // Mostra instruções iOS
+        if (iosBox) iosBox.classList.remove('hidden');
     } else {
-        instBox.innerHTML = `
-            <p style="margin: 0 0 10px 0;"><strong>No teu Android (Chrome):</strong></p>
-            <p style="margin: 0 0 8px 0; font-size: 0.9rem;">1️⃣ Toca nos <strong>3 pontos</strong> (topo direito)</p>
-            <p style="margin: 0; font-size: 0.9rem;">2️⃣ Escolhe <strong>Instalar Aplicação</strong> ou <strong>Ecrã Principal</strong></p>
-        `;
+        // Mostra botão Android
+        if (androidBox) androidBox.classList.remove('hidden');
     }
 }
 
-// Função para salvação em leitores de QR Code
+// Ouve o convite do Android para instalar
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e; // Guarda o evento para o botão usar
+});
+
+// Ação do Botão Mágico (Android)
+if (btnInstallPwa) {
+    btnInstallPwa.addEventListener('click', async () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            deferredPrompt = null;
+        } else {
+            // Se o telemóvel bloquear o prompt (ex: Navegador In-App do Instagram)
+            showCustomAlert("Aviso", "Abre as opções (3 pontos) no topo direito e escolhe 'Instalar Aplicação'.", "📱");
+        }
+    });
+}
+
+// Botão de Resgate (Copiar Link)
 function copyAppUrl() {
     if (navigator.vibrate) navigator.vibrate(30);
     navigator.clipboard.writeText(window.location.href).then(() => {
@@ -711,5 +731,5 @@ function copyAppUrl() {
     });
 }
 
-// Dispara a segurança logo que o código é lido
+// Dispara a segurança inicial
 checkInstallGate();

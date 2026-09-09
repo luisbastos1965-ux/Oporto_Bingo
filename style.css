@@ -742,15 +742,23 @@ body.day-mode .help-card-text p {
     color: rgba(6, 16, 38, 0.75) !important;
 }
 
+/* =========================================
+   PORTÃO DE INSTALAÇÃO OBRIGATÓRIA
+   ========================================= */
 #install-gate {
-    z-index: 999999 !important; /* Por cima de absolutamente tudo */
-    background: #061026 !important; /* Fundo opaco para esconder a app */
+    z-index: 999999 !important; /* Esconde absolutamente tudo o que está por trás */
+    background: #061026 !important; 
 }
 body.day-mode #install-gate {
     background: #e0f2fe !important;
 }
-body.day-mode #install-instructions {
+body.day-mode #ios-install-box {
     background: rgba(0, 114, 255, 0.05) !important;
     border-color: rgba(0, 114, 255, 0.15) !important;
     color: #061026 !important;
+}
+body.day-mode .copy-link-btn {
+    background: rgba(0, 114, 255, 0.08) !important;
+    border: 1px solid rgba(0, 114, 255, 0.3) !important;
+    color: #0072ff !important;
 }

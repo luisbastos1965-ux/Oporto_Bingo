@@ -323,25 +323,58 @@ function checkProximity(userLat, userLon) {
     });
 }
 
+// =========================================
+// MOTOR GPS (O CÃO DE GUARDA)
+// =========================================
 const gpsStatus = document.getElementById('gps-status');
+let gpsIntervalId = null; 
+
+function updateGpsIndicator(status) {
+    if(!gpsStatus) return;
+    gpsStatus.className = 'gps-dot ' + status; // 'searching', 'active' ou 'error'
+}
 
 function initGPS() {
-    if ("geolocation" in navigator) {
-        navigator.geolocation.watchPosition(
+    if (!("geolocation" in navigator)) return;
+    
+    updateGpsIndicator('searching');
+    
+    // Limpa qualquer cão de guarda anterior para não haver duplicações
+    if (gpsIntervalId) clearInterval(gpsIntervalId);
+
+    // A função de ataque: pede a localização de forma isolada e agressiva
+    const forceLocationCheck = () => {
+        navigator.geolocation.getCurrentPosition(
             position => {
-                if(gpsStatus) { gpsStatus.classList.remove('searching', 'error'); gpsStatus.classList.add('active'); }
+                updateGpsIndicator('active');
                 userLat = position.coords.latitude;
                 userLon = position.coords.longitude;
                 checkProximity(userLat, userLon);
             },
             error => {
                 console.warn("GPS Erro:", error.message);
-                if(gpsStatus) { gpsStatus.classList.remove('searching', 'active'); gpsStatus.classList.add('error'); }
+                updateGpsIndicator('error');
             },
-            { enableHighAccuracy: true, maximumAge: 0, timeout: 5000 }
+            { enableHighAccuracy: true, maximumAge: 0, timeout: 3500 } // Desiste em 3.5s se não houver sinal
         );
-    }
+    };
+
+    // Faz a primeira verificação no segundo zero
+    forceLocationCheck();
+    
+    // Configura o Cão de Guarda: a cada 4 segundos dispara a verificação
+    // Mesmo que puxes a barra e desligues o GPS, nos próximos 4 segundos ele falha e fica vermelho!
+    gpsIntervalId = setInterval(forceLocationCheck, 4000);
 }
+
+// Mantemos na mesma a verificação de quando a app é minimizada
+document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") {
+        if (localStorage.getItem('oportoBingoIntroSeen') === 'true') {
+            initGPS();
+        }
+    }
+});
 
 function getDistanceFromLatLonInM(lat1, lon1, lat2, lon2) {
     const R = 6371e3; 

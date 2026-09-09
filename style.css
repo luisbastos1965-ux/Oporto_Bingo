@@ -413,35 +413,46 @@ footer h2 {
 .help-text { text-align: left; color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-top: 15px; }
 
 /* =========================================
-   ONBOARDING (OS 3 CARTÕES)
+   ONBOARDING SWIPE (NATIVO MOBILE)
    ========================================= */
-.onboarding-container {
-    width: 90%; max-width: 380px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 24px; padding: 35px 20px;
-    text-align: center; color: white;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+.onboarding-wrapper {
+    width: 100%; height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    background: linear-gradient(135deg, rgba(6,16,38,0.98), rgba(0,242,254,0.15));
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
 }
 
-.onboard-card { display: none; animation: fadeIn 0.4s ease-out; }
-.onboard-card.active { display: block; }
+.onboarding-carousel {
+    display: flex; width: 100%; overflow-x: auto;
+    scroll-snap-type: x mandatory; scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Esconde barra no Firefox */
+}
+.onboarding-carousel::-webkit-scrollbar { display: none; /* Esconde barra no Chrome/Safari */ }
 
-.onboard-icon { font-size: 4rem; margin-bottom: 20px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)); }
-.onboard-card h2 { font-family: 'Luckiest Guy', cursive; font-size: 1.8rem; margin-bottom: 15px; letter-spacing: 1px; color: #00f2fe; }
-.onboard-card p { font-size: 1.05rem; line-height: 1.6; margin-bottom: 30px; color: rgba(255,255,255,0.9); }
+.onboard-card {
+    flex: 0 0 100%; width: 100%; padding: 0 40px;
+    scroll-snap-align: center; text-align: center;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+}
 
-.onboard-btn {
-    background: white; color: #061026;
-    border: none; padding: 14px 35px; border-radius: 30px;
-    font-size: 1.1rem; font-weight: bold; cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    transition: transform 0.2s;
+.onboard-icon { font-size: 5rem; margin-bottom: 20px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4)); }
+.onboard-card h2 { font-family: 'Luckiest Guy', cursive; font-size: 2.2rem; margin-bottom: 15px; letter-spacing: 1px; color: #00f2fe; }
+.onboard-card p { font-size: 1.15rem; line-height: 1.5; color: rgba(255,255,255,0.9); max-width: 300px; margin: 0 auto; }
+
+.onboard-dots { display: flex; gap: 10px; margin-top: 40px; }
+.dot { width: 10px; height: 10px; background: rgba(255,255,255,0.3); border-radius: 50%; transition: 0.3s ease; }
+.dot.active { background: #00f2fe; width: 25px; border-radius: 5px; }
+
+.start-btn { 
+    margin-top: 30px; background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%); 
+    color: white; border: none; padding: 16px 45px; border-radius: 30px;
+    font-size: 1.2rem; font-weight: bold; cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0, 242, 254, 0.4); transition: transform 0.2s;
     -webkit-tap-highlight-color: transparent;
 }
-.onboard-btn:active { transform: scale(0.95); }
-.start-btn { background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%); color: white; }
+.start-btn:active { transform: scale(0.95); }
 
 /* Modo Diurno */
 body.day-mode {

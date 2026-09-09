@@ -19,29 +19,35 @@
     <div id="gps-status" class="gps-dot searching" title="A procurar GPS..."></div>
     <button id="btn-hint" class="fab-hint" onclick="showHint()">🧭</button>
 
-    <!-- NOVO ONBOARDING: 3 Cartões -->
+    <!-- NOVO ONBOARDING: Swipe & Snap Nativo -->
     <div id="splash-screen">
-        <div class="onboarding-container">
-            <!-- Cartão 1 -->
-            <div class="onboard-card active" id="card-1">
-                <div class="onboard-icon">🚶‍♂️</div>
-                <h2>Explora o Porto</h2>
-                <p>Caminha pela cidade e descobre os locais históricos que escondemos no mapa.</p>
-                <button class="onboard-btn" onclick="nextCard(2)">Próximo</button>
+        <div class="onboarding-wrapper">
+            <div class="onboarding-carousel" id="carousel">
+                <!-- Cartão 1 -->
+                <div class="onboard-card">
+                    <div class="onboard-icon">🚶‍♂️</div>
+                    <h2 id="ob-t1">Explora o Porto</h2>
+                    <p id="ob-d1">Caminha pela cidade e descobre os locais históricos escondidos.</p>
+                </div>
+                <!-- Cartão 2 -->
+                <div class="onboard-card">
+                    <div class="onboard-icon">📍</div>
+                    <h2 id="ob-t2">Radar GPS</h2>
+                    <p id="ob-d2">Fica atento às cores: laranja é perto, vermelho a pulsar é porque estás quase lá!</p>
+                </div>
+                <!-- Cartão 3 -->
+                <div class="onboard-card">
+                    <div class="onboard-icon">🔓</div>
+                    <h2 id="ob-t3">Desbloqueia a História</h2>
+                    <p id="ob-d3">Aproxima-te a 50 metros para revelar os segredos e ouvir o nosso áudio guia.</p>
+                    <button class="onboard-btn start-btn" id="ob-btn" onclick="finishOnboarding()">Começar</button>
+                </div>
             </div>
-            <!-- Cartão 2 -->
-            <div class="onboard-card" id="card-2">
-                <div class="onboard-icon">📍</div>
-                <h2>Radar GPS</h2>
-                <p>Fica atento às cores: laranja é perto, vermelho a pulsar é porque estás quase lá!</p>
-                <button class="onboard-btn" onclick="nextCard(3)">Próximo</button>
-            </div>
-            <!-- Cartão 3 -->
-            <div class="onboard-card" id="card-3">
-                <div class="onboard-icon">🔓</div>
-                <h2>Desbloqueia a História</h2>
-                <p>Aproxima-te a 50 metros para revelar os segredos e ouvir o nosso áudio guia.</p>
-                <button class="onboard-btn start-btn" onclick="finishOnboarding()">Começar Exploração</button>
+            <!-- Os Pontinhos de Navegação -->
+            <div class="onboard-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
             </div>
         </div>
     </div>

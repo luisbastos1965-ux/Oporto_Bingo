@@ -10,17 +10,17 @@ if ("Notification" in window && Notification.permission !== "denied") {
 // DICIONÁRIO DA INTERFACE (UI)
 // =========================================
 const uiTexts = {
-    pt: { map: "📍 Como Chegar", audio: "🔊 Ouvir Textos", stopAudio: "⏸️ Parar Áudio", tab1: "Resumo", tab2: "História", tab3: "Curiosidades", locked: "Aproxima-te a menos de 50 metros para revelar os segredos deste local histórico!", winLine: "🎉 Parabéns! Conseguiste completar uma linha!", winFull: "🏆 EXTRAORDINÁRIO! Completaste todo o mapa do Oporto Bin'Go!", ttsLang: "pt-PT" },
-    en: { map: "📍 Directions", audio: "🔊 Listen", stopAudio: "⏸️ Stop Audio", tab1: "Summary", tab2: "History", tab3: "Trivia", locked: "Get closer than 50 meters to reveal the secrets of this historic location!", winLine: "🎉 Congratulations! You completed a line!", winFull: "🏆 EXTRAORDINARY! You completed the entire map!", ttsLang: "en-GB" },
-    es: { map: "📍 Cómo llegar", audio: "🔊 Escuchar", stopAudio: "⏸️ Detener", tab1: "Resumen", tab2: "Historia", tab3: "Curiosidades", locked: "¡Acércate a menos de 50 metros para revelar los secretos de este lugar histórico!", winLine: "🎉 ¡Felicidades! ¡Has completado una línea!", winFull: "🏆 ¡EXTRAORDINARIO! ¡Has completado todo el mapa!", ttsLang: "es-ES" },
-    fr: { map: "📍 Itinéraire", audio: "🔊 Écouter", stopAudio: "⏸️ Arrêter", tab1: "Résumé", tab2: "Histoire", tab3: "Anecdotes", locked: "Approchez-vous à moins de 50 mètres pour révéler les secrets de ce lieu historique !", winLine: "🎉 Félicitations ! Vous avez complété une ligne !", winFull: "🏆 EXTRAORDINAIRE ! Vous avez complété toute la carte !", ttsLang: "fr-FR" },
-    de: { map: "📍 Route", audio: "🔊 Anhören", stopAudio: "⏸️ Stoppen", tab1: "Zusammenfassung", tab2: "Geschichte", tab3: "Fakten", locked: "Nähern Sie sich auf weniger als 50 Meter, um die Geheimnisse dieses Ortes zu enthüllen!", winLine: "🎉 Glückwunsch! Du hast eine Linie vervollständigt!", winFull: "🏆 AUSSERGEWÖHNLICH! Du hast die gesamte Karte vervollständigt!", ttsLang: "de-DE" },
-    it: { map: "📍 Indicazioni", audio: "🔊 Ascolta", stopAudio: "⏸️ Ferma", tab1: "Riassunto", tab2: "Storia", tab3: "Curiosità", locked: "Avvicinati a meno di 50 metri per rivelare i segreti di questo luogo storico!", winLine: "🎉 Congratulazioni! Hai completato una linea!", winFull: "🏆 STRAORDINARIO! Hai completato l'intera mappa!", ttsLang: "it-IT" },
-    zh: { map: "📍 路线", audio: "🔊 聆听", stopAudio: "⏸️ 停止", tab1: "总结", tab2: "历史", tab3: "趣闻", locked: "靠近50米以内，揭开这个历史名胜的秘密！", winLine: "🎉 恭喜！您完成了一条线！", winFull: "🏆 太棒了！您完成了整个地图！", ttsLang: "zh-CN" }
+    pt: { map: "📍 Como Chegar", audio: "🔊 Ouvir Textos", stopAudio: "⏸️ Parar", tab1: "Resumo", tab2: "História", tab3: "Curiosidades", locked: "Aproxima-te a menos de 50 metros para revelar os segredos deste local histórico!", winLine: "🎉 Parabéns! Conseguiste completar uma linha!", winFull: "🏆 EXTRAORDINÁRIO! Completaste todo o mapa!", ttsLang: "pt-PT", obT1: "Explora o Porto", obD1: "Caminha pela cidade e descobre os locais históricos escondidos.", obT2: "Radar GPS", obD2: "Fica atento às cores: laranja é perto, vermelho a pulsar é quase lá!", obT3: "Desbloqueia a História", obD3: "Aproxima-te a 50 metros para revelar os segredos e ouvir o áudio guia.", obBtn: "Começar" },
+    en: { map: "📍 Directions", audio: "🔊 Listen", stopAudio: "⏸️ Stop", tab1: "Summary", tab2: "History", tab3: "Trivia", locked: "Get closer than 50 meters to reveal the secrets of this historic location!", winLine: "🎉 Congratulations! You completed a line!", winFull: "🏆 EXTRAORDINARY! You completed the entire map!", ttsLang: "en-GB", obT1: "Explore Porto", obD1: "Walk around the city and discover hidden historic locations.", obT2: "GPS Radar", obD2: "Watch the colors: orange is close, pulsing red means you are almost there!", obT3: "Unlock History", obD3: "Get closer than 50 meters to reveal secrets and hear our audio guide.", obBtn: "Start" },
+    es: { map: "📍 Cómo llegar", audio: "🔊 Escuchar", stopAudio: "⏸️ Detener", tab1: "Resumen", tab2: "Historia", tab3: "Curiosidades", locked: "¡Acércate a menos de 50 metros para revelar los secretos de este lugar histórico!", winLine: "🎉 ¡Felicidades! ¡Has completado una línea!", winFull: "🏆 ¡EXTRAORDINARIO! ¡Has completado todo el mapa!", ttsLang: "es-ES", obT1: "Explora Oporto", obD1: "Camina por la ciudad y descubre lugares históricos ocultos.", obT2: "Radar GPS", obD2: "Atento a los colores: naranja es cerca, rojo parpadeando es casi allí.", obT3: "Desbloquea la Historia", obD3: "Acércate a 50 metros para revelar secretos y escuchar la audioguía.", obBtn: "Comenzar" },
+    fr: { map: "📍 Itinéraire", audio: "🔊 Écouter", stopAudio: "⏸️ Arrêter", tab1: "Résumé", tab2: "Histoire", tab3: "Anecdotes", locked: "Approchez-vous à moins de 50 mètres pour révéler les secrets de ce lieu !", winLine: "🎉 Félicitations ! Ligne complétée !", winFull: "🏆 EXTRAORDINAIRE ! Carte complétée !", ttsLang: "fr-FR", obT1: "Explorez Porto", obD1: "Promenez-vous dans la ville et découvrez des lieux historiques cachés.", obT2: "Radar GPS", obD2: "Surveillez les couleurs : orange c'est près, rouge clignotant c'est tout près !", obT3: "Débloquez l'Histoire", obD3: "Approchez à moins de 50m pour révéler les secrets et écouter le guide.", obBtn: "Commencer" },
+    de: { map: "📍 Route", audio: "🔊 Anhören", stopAudio: "⏸️ Stoppen", tab1: "Zusammenfassung", tab2: "Geschichte", tab3: "Fakten", locked: "Nähern Sie sich auf weniger als 50 Meter, um die Geheimnisse zu enthüllen!", winLine: "🎉 Glückwunsch! Linie vervollständigt!", winFull: "🏆 AUSSERGEWÖHNLICH! Karte vervollständigt!", ttsLang: "de-DE", obT1: "Entdecke Porto", obD1: "Spaziere durch die Stadt und entdecke verborgene historische Orte.", obT2: "GPS-Radar", obD2: "Achte auf die Farben: Orange ist nah, pulsierendes Rot bedeutet fast da!", obT3: "Geschichte freischalten", obD3: "Nähere dich auf 50m, um Geheimnisse zu enthüllen und den Audioguide zu hören.", obBtn: "Starten" },
+    it: { map: "📍 Indicazioni", audio: "🔊 Ascolta", stopAudio: "⏸️ Ferma", tab1: "Riassunto", tab2: "Storia", tab3: "Curiosità", locked: "Avvicinati a meno di 50 metri per rivelare i segreti di questo luogo!", winLine: "🎉 Congratulazioni! Linea completata!", winFull: "🏆 STRAORDINARIO! Mappa completata!", ttsLang: "it-IT", obT1: "Esplora Porto", obD1: "Passeggia per la città e scopri luoghi storici nascosti.", obT2: "Radar GPS", obD2: "Guarda i colori: arancione è vicino, rosso lampeggiante è quasi arrivato!", obT3: "Sblocca la Storia", obD3: "Avvicinati a 50m per svelare segreti e ascoltare l'audioguida.", obBtn: "Inizia" },
+    zh: { map: "📍 路线", audio: "🔊 聆听", stopAudio: "⏸️ 停止", tab1: "总结", tab2: "历史", tab3: "趣闻", locked: "靠近50米以内，揭开这个历史名胜的秘密！", winLine: "🎉 恭喜！您完成了一条线！", winFull: "🏆 太棒了！您完成了整个地图！", ttsLang: "zh-CN", obT1: "探索波尔图", obD1: "在城市中漫步，发现隐藏的历史古迹。", obT2: "GPS雷达", obD2: "观察颜色：橙色代表接近，闪烁的红色表示即将到达！", obT3: "解锁历史", obD3: "靠近50米以内，揭开秘密并收听我们的语音导览。", obBtn: "开始" }
 };
 
 // =========================================
-// SISTEMA CÍCLICO DE IDIOMAS
+// SISTEMA CÍCLICO E DETEÇÃO INTELIGENTE
 // =========================================
 const langCycle = [
     { code: 'pt', flag: '🇵🇹' }, { code: 'en', flag: '🇬🇧' },
@@ -29,7 +29,19 @@ const langCycle = [
     { code: 'zh', flag: '🇨🇳' }
 ];
 
-let currentLang = localStorage.getItem('oportoBingoLang') || 'pt';
+function detectLanguage() {
+    const savedLang = localStorage.getItem('oportoBingoLang');
+    if (savedLang) return savedLang; // Se já escolheu antes, respeita
+    
+    // Lê as duas primeiras letras do idioma do sistema
+    const browserLang = navigator.language.slice(0, 2);
+    const supportedLangs = ['pt', 'en', 'es', 'fr', 'de', 'it', 'zh'];
+    
+    // Usa o do sistema se existir, senão cai para inglês
+    return supportedLangs.includes(browserLang) ? browserLang : 'en';
+}
+
+let currentLang = detectLanguage();
 
 window.onload = () => {
     // Carrega a bandeira correta no botão único logo ao abrir
@@ -45,13 +57,13 @@ function cycleLanguage() {
     if (navigator.vibrate) navigator.vibrate(50);
     
     const currentIndex = langCycle.findIndex(l => l.code === currentLang);
-    const nextIndex = (currentIndex + 1) % langCycle.length; // Salta para a próxima, ou volta a zero
+    const nextIndex = (currentIndex + 1) % langCycle.length; 
     const nextLang = langCycle[nextIndex];
     
     currentLang = nextLang.code;
     localStorage.setItem('oportoBingoLang', currentLang);
     
-    // Atualiza a interface (Bandeira + Textos)
+    // Atualiza a interface
     const btnLang = document.getElementById('btn-lang');
     if (btnLang) btnLang.innerText = nextLang.flag;
     
@@ -60,10 +72,22 @@ function cycleLanguage() {
 }
 
 function updateUILanguage() {
+    // Interface Normal
     document.getElementById('btn-map').innerText = uiTexts[currentLang].map;
     document.getElementById('tab-btn-resumo').innerText = uiTexts[currentLang].tab1;
     document.getElementById('tab-btn-historia').innerText = uiTexts[currentLang].tab2;
     document.getElementById('tab-btn-curiosidades').innerText = uiTexts[currentLang].tab3;
+    
+    // Interface Onboarding (se existir no DOM)
+    if(document.getElementById('ob-t1')) {
+        document.getElementById('ob-t1').innerText = uiTexts[currentLang].obT1;
+        document.getElementById('ob-d1').innerText = uiTexts[currentLang].obD1;
+        document.getElementById('ob-t2').innerText = uiTexts[currentLang].obT2;
+        document.getElementById('ob-d2').innerText = uiTexts[currentLang].obD2;
+        document.getElementById('ob-t3').innerText = uiTexts[currentLang].obT3;
+        document.getElementById('ob-d3').innerText = uiTexts[currentLang].obD3;
+        document.getElementById('ob-btn').innerText = uiTexts[currentLang].obBtn;
+    }
 }
 
 // =========================================
@@ -91,7 +115,9 @@ titleElement.addEventListener('click', () => {
     }
 });
 
-// A base de dados mantém-se igual
+// =========================================
+// BASE DE DADOS DOS MONUMENTOS
+// =========================================
 const locations = [
     { id: 0, name: "Ribeira do Porto", lat: 41.1405, lon: -8.6120, imgUrl: "./assets/ribeira.png", unlocked: false, desc: { pt: "O coração histórico da cidade, banhado pelo rio Douro. As suas casas coloridas são um ícone mundial.", en: "The historic heart of the city, bathed by the Douro River. Its colorful houses are a global icon.", es: "El corazón histórico de la ciudad, bañado por el río Duero. Sus coloridas casas son un icono mundial.", fr: "Le cœur historique de la ville, baigné par le fleuve Douro. Ses maisons colorées sont une icône mondiale.", de: "Das historische Herz der Stadt am Douro. Seine bunten Häuser sind ein weltweites Symbol.", it: "Il cuore storico della città, bagnato dal fiume Douro. Le sue case colorate sono un'icona mondiale.", zh: "这座城市的历史中心，沐浴在杜罗河畔。其色彩缤纷的房屋是全球的标志。" }, hist: { pt: "Uma das zonas mais antigas do Porto, foi desde a Idade Média um intenso centro de comércio marítimo.", en: "One of the oldest areas in Porto, it has been an intense center of maritime trade since the Middle Ages.", es: "Una de las zonas más antiguas de Oporto, ha sido un intenso centro de comercio marítimo desde la Edad Media.", fr: "L'un des plus anciens quartiers de Porto, c'est un centre intense de commerce maritime depuis le Moyen Âge.", de: "Als eines der ältesten Viertel von Porto war es seit dem Mittelalter ein Zentrum für Seehandel.", it: "Una delle zone più antiche di Porto, è stata un intenso centro di commercio marittimo fin dal Medioevo.", zh: "波尔图最古老的地区之一，自中世纪以来一直是繁忙的海洋贸易中心。" }, curio: { pt: "Sabias que as casas estreitas foram construídas assim porque os impostos eram pagos consoante a largura da fachada?", en: "Did you know that the narrow houses were built this way because taxes were paid based on the width of the facade?", es: "¿Sabías que las casas estrechas se construyeron así porque los impuestos se pagaban según el ancho de la fachada?", fr: "Saviez-vous que les maisons étroites ont été construites ainsi car les impôts étaient payés en fonction de la largeur de la façade ?", de: "Wussten Sie, dass die schmalen Häuser so gebaut wurden, weil Steuern nach der Fassadenbreite berechnet wurden?", it: "Sapevi che le case strette furono costruite così perché le tasse si pagavano in base alla larghezza della facciata?", zh: "您知道吗？这些狭窄的房屋之所以这样建造，是因为当时的税收是根据外墙的宽度来缴纳的。" } },
     { id: 1, name: "Mercado do Bolhão", lat: 41.1488, lon: -8.6058, imgUrl: "./assets/bolhao.png", unlocked: false, desc: { pt: "O mercado mais emblemático do Porto, vibrante de cores, cheiros e tradição.", en: "Porto's most emblematic market, vibrant with colors, smells, and tradition.", es: "El mercado más emblemático de Oporto, vibrante de colores, olores y tradición.", fr: "Le marché le plus emblématique de Porto, vibrant de couleurs, d'odeurs et de tradition.", de: "Portos symbolträchtigster Markt, voller Farben, Gerüche und Tradition.", it: "Il mercato più emblematico di Porto, vibrante di colori, profumi e tradizione.", zh: "波尔图最具标志性的市场，充满色彩、气味和传统。" }, hist: { pt: "Inaugurado em 1914, a sua arquitetura neoclássica alberga o comércio tradicional de frescos há mais de um século.", en: "Inaugurated in 1914, its neoclassical architecture has housed traditional fresh produce trade for over a century.", es: "Inaugurado en 1914, su arquitectura neoclásica alberga el comercio tradicional de productos frescos desde hace más de un siglo.", fr: "Inaugurée en 1914, son architecture néoclassique abrite le commerce traditionnel de produits frais depuis plus d'un siècle.", de: "Die 1914 eingeweihte neoklassizistische Architektur beherbergt seit über einem Jahrhundert den traditionellen Frischwarenhandel.", it: "Inaugurata nel 1914, la sua architettura neoclassica ospita il commercio tradizionale di prodotti freschi da oltre un secolo.", zh: "建于1914年，其新古典主义建筑在一个多世纪以来一直是传统生鲜贸易的场所。" }, curio: { pt: "As vendedoras do Bolhão, conhecidas pelo seu forte sotaque e pregões castiços, são a verdadeira alma do espaço.", en: "The Bolhão vendors, known for their strong accents and traditional calls, are the true soul of the place.", es: "Las vendedoras de Bolhão, conocidas por su fuerte acento y gritos tradicionales, son la verdadera alma del lugar.", fr: "Les vendeuses de Bolhão, connues pour leur fort accent et leurs cris traditionnels, sont la véritable âme du lieu.", de: "Die Verkäuferinnen von Bolhão, bekannt für ihren starken Akzent, sind die wahre Seele des Ortes.", it: "Le venditrici del Bolhão, note per il loro forte accento e i richiami tradizionali, sono la vera anima del luogo.", zh: "Bolhão 的女摊贩以其浓重的口音和传统的叫卖声而闻名，是这里的真正灵魂。" } },
@@ -118,7 +144,7 @@ const modalImg = document.getElementById('modal-image');
 const modalTitle = document.getElementById('modal-title');
 const closeBtn = document.getElementById('close-modal');
 const unlockSound = document.getElementById('unlock-sound');
-const openSound = document.getElementById('open-sound'); 
+const openSound = document.getElementById('open-sound'); // Mantido (não faz mal se o HTML não o tiver)
 
 const modalDesc = document.getElementById('modal-desc');
 const modalHist = document.getElementById('modal-hist');
@@ -148,6 +174,7 @@ loadProgress();
 
 // Grelha Dinâmica
 function renderGrid() {
+    if(!grid) return;
     grid.innerHTML = '';
     locations.forEach((loc) => {
         const cell = document.createElement('div');
@@ -215,7 +242,7 @@ function openModal(loc) {
 function closeModal() {
     modal.classList.add('hidden');
     if(speechSynthesis.speaking) speechSynthesis.cancel();
-    currentLocation = null;
+    currentLocation = null; // Memória perfeitamente limpa!
 }
 
 closeBtn.addEventListener('click', () => {
@@ -239,7 +266,7 @@ function checkProximity(userLat, userLon) {
             if (dist < 50) { 
                 loc.unlocked = true;
                 saveProgress();
-                unlockSound.play().catch(() => {});
+                if(unlockSound) unlockSound.play().catch(() => {});
                 
                 if (navigator.vibrate) navigator.vibrate([200, 100, 200]); 
                 
@@ -357,42 +384,42 @@ function toggleAudio() {
 }
 
 // =========================================
-// MOTOR DE ONBOARDING - 3 Cartões Nativos
+// MOTOR DE ONBOARDING - SWIPE & SNAP
 // =========================================
 const splash = document.getElementById('splash-screen');
 const gridElement = document.getElementById('bingo-grid');
 const footerTitle = document.querySelector('footer h2');
+const carousel = document.getElementById('carousel');
+const dots = document.querySelectorAll('.dot');
 
-// Função para avançar entre cartões
-function nextCard(step) {
-    if (navigator.vibrate) navigator.vibrate(30);
-    document.querySelectorAll('.onboard-card').forEach(c => c.classList.remove('active'));
-    document.getElementById(`card-${step}`).classList.add('active');
+if(carousel) {
+    carousel.addEventListener('scroll', () => {
+        const scrollPos = carousel.scrollLeft;
+        const cardWidth = carousel.offsetWidth;
+        const activeIndex = Math.round(scrollPos / cardWidth);
+        
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === activeIndex);
+        });
+    });
 }
 
 function finishOnboarding() {
     if (navigator.vibrate) navigator.vibrate(50);
-    // Desvanece o ecrã inicial
     if (splash) splash.classList.add('fade-out');
-    
-    // Mostra a grelha e o rodapé
     if (gridElement) gridElement.classList.remove('hidden');
     if (footerTitle) footerTitle.classList.remove('hidden');
     
-    // Remove do DOM após a animação e guarda na memória
     setTimeout(() => { if(splash) splash.remove(); }, 1000); 
     localStorage.setItem('oportoBingoIntroSeen', 'true');
     renderGrid();
 }
 
-// Quando a app arranca, verifica se já viu o tutorial
 const introSeen = localStorage.getItem('oportoBingoIntroSeen');
-
 if (introSeen === 'true') {
     if (splash) splash.remove();
     if (gridElement) gridElement.classList.remove('hidden');
     if (footerTitle) footerTitle.classList.remove('hidden');
-    // renderGrid() já é chamado no final do script
 }
 
 // Abas de Navegação
@@ -444,7 +471,6 @@ function showHint() {
     let closestLoc = null;
     let minDist = Infinity;
 
-    // Procura o local bloqueado fisicamente mais perto do turista
     locations.forEach(loc => {
         if (!loc.unlocked) {
             const dist = getDistanceFromLatLonInM(userLat, userLon, loc.lat, loc.lon);
@@ -456,14 +482,11 @@ function showHint() {
     });
 
     if (closestLoc) {
-        if (navigator.vibrate) navigator.vibrate([50, 50, 50]); // Vibração tripla
+        if (navigator.vibrate) navigator.vibrate([50, 50, 50]); 
         const cellElement = document.getElementById(`cell-${closestLoc.id}`);
         
         if (cellElement) {
-            // Faz scroll suave até à imagem caso ela esteja fora do ecrã
             cellElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
-            // Adiciona a classe de animação que pulsa 3 vezes
             cellElement.classList.add('hint-active');
             setTimeout(() => cellElement.classList.remove('hint-active'), 2400); 
         }

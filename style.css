@@ -572,22 +572,6 @@ body.day-mode .help-text {
 .start-btn { opacity: 1; transition: opacity 0.4s ease, transform 0.2s; }
 .start-btn.hidden { opacity: 0; pointer-events: none; }
 
-/* Legenda Dinâmica do Modal de Ajuda */
-.help-content { max-width: 320px; padding: 25px 20px; text-align: left; }
-.help-content h2 { text-align: center; font-size: 1.8rem; margin-bottom: 20px; }
-.help-legend { display: flex; flex-direction: column; gap: 15px; }
-.legend-item { display: flex; align-items: center; gap: 15px; }
-.legend-item p { margin: 0; font-size: 1.05rem; font-weight: bold; color: rgba(255,255,255,0.9); }
-
-.legend-icon { font-size: 1.5rem; width: 35px; text-align: center; }
-.legend-box { width: 30px; height: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-.box-warm { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); }
-.box-hot { background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%); }
-.pulse-anim { animation: pulseWarning 1.5s infinite; }
-
-/* No Modo Diurno, a letra do help fica escura */
-body.day-mode .legend-item p { color: #061026; }
-
 /* =========================================
    SISTEMA DE ALERTAS E CORREÇÃO DE BLUR
    ========================================= */

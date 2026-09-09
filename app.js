@@ -285,7 +285,13 @@ function checkProximity(userLat, userLon) {
                         icon: "./assets/bingo-icon.png"
                     });
                 }
-                renderGrid();
+                
+                // A CORREÇÃO: Em vez de redesenhar a grelha toda (renderGrid),
+                // apenas atualizamos a classe deste quadrado específico!
+                if (cellElement) {
+                    cellElement.className = 'cell unlocked'; 
+                }
+                
                 checkWinConditions();
             } else if (cellElement) {
                 if (dist < 150) { 

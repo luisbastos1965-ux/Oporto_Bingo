@@ -7,16 +7,16 @@ if ("Notification" in window && Notification.permission !== "denied") {
 }
 
 // =========================================
-// DICIONÁRIO DA INTERFACE (UI)
+// DICIONÁRIO DA INTERFACE (UI) + ALERTAS
 // =========================================
 const uiTexts = {
-    pt: { map: "📍 Como Chegar", audio: "🔊 Ouvir Textos", stopAudio: "⏸️ Parar", tab1: "Resumo", tab2: "História", tab3: "Curiosidades", locked: "Aproxima-te a menos de 50 metros para revelar os segredos deste local histórico!", winLine: "🎉 Parabéns! Conseguiste completar uma linha!", winFull: "🏆 EXTRAORDINÁRIO! Completaste todo o mapa!", ttsLang: "pt-PT", obT1: "Explora o Porto", obD1: "Caminha pela cidade e descobre os locais históricos escondidos.", obT2: "Radar GPS", obD2: "Fica atento às cores: laranja é perto, vermelho a pulsar é quase lá!", obT3: "Desbloqueia a História", obD3: "Aproxima-te a 50 metros para revelar os segredos e ouvir o áudio guia.", obBtn: "Começar", helpTitle: "COMO JOGAR", help1: "Caminha pela cidade para explorar.", help2: "Laranja: Estás a menos de 400m!", help3: "Vermelho (A pulsar): Menos de 150m!", help4: "Desbloqueio: Aproxima-te a 50m." },
-    en: { map: "📍 Directions", audio: "🔊 Listen", stopAudio: "⏸️ Stop", tab1: "Summary", tab2: "History", tab3: "Trivia", locked: "Get closer than 50 meters to reveal the secrets of this historic location!", winLine: "🎉 Congratulations! You completed a line!", winFull: "🏆 EXTRAORDINARY! You completed the entire map!", ttsLang: "en-GB", obT1: "Explore Porto", obD1: "Walk around the city and discover hidden historic locations.", obT2: "GPS Radar", obD2: "Watch the colors: orange is close, pulsing red means you are almost there!", obT3: "Unlock History", obD3: "Get closer than 50 meters to reveal secrets and hear our audio guide.", obBtn: "Start", helpTitle: "HOW TO PLAY", help1: "Walk around the city to explore.", help2: "Orange: You are under 400m away!", help3: "Red (Pulsing): Under 150m away!", help4: "Unlock: Get closer than 50m." },
-    es: { map: "📍 Cómo llegar", audio: "🔊 Escuchar", stopAudio: "⏸️ Detener", tab1: "Resumen", tab2: "Historia", tab3: "Curiosidades", locked: "¡Acércate a menos de 50 metros para revelar los secretos de este lugar histórico!", winLine: "🎉 ¡Felicidades! ¡Has completado una línea!", winFull: "🏆 ¡EXTRAORDINARIO! ¡Has completado todo el mapa!", ttsLang: "es-ES", obT1: "Explora Oporto", obD1: "Camina por la ciudad y descubre lugares históricos ocultos.", obT2: "Radar GPS", obD2: "Atento a los colores: naranja es cerca, rojo parpadeando es casi allí.", obT3: "Desbloquea la Historia", obD3: "Acércate a 50 metros para revelar secretos y escuchar la audioguía.", obBtn: "Comenzar", helpTitle: "CÓMO JUGAR", help1: "Camina por la ciudad para explorar.", help2: "Naranja: ¡Estás a menos de 400m!", help3: "Rojo (Parpadeando): ¡Menos de 150m!", help4: "Desbloqueo: Acércate a 50m." },
-    fr: { map: "📍 Itinéraire", audio: "🔊 Écouter", stopAudio: "⏸️ Arrêter", tab1: "Résumé", tab2: "Histoire", tab3: "Anecdotes", locked: "Approchez-vous à moins de 50 mètres pour révéler les secrets de ce lieu !", winLine: "🎉 Félicitations ! Ligne complétée !", winFull: "🏆 EXTRAORDINAIRE ! Carte complétée !", ttsLang: "fr-FR", obT1: "Explorez Porto", obD1: "Promenez-vous dans la ville et découvrez des lieux historiques cachés.", obT2: "Radar GPS", obD2: "Surveillez les couleurs : orange c'est près, rouge clignotant c'est tout près !", obT3: "Débloquez l'Histoire", obD3: "Approchez à moins de 50m pour révéler les secrets et écouter le guide.", obBtn: "Commencer", helpTitle: "COMMENT JOUER", help1: "Promenez-vous dans la ville pour explorer.", help2: "Orange : À moins de 400m !", help3: "Rouge (Clignotant) : À moins de 150m !", help4: "Déblocage : Approchez à 50m." },
-    de: { map: "📍 Route", audio: "🔊 Anhören", stopAudio: "⏸️ Stoppen", tab1: "Zusammenfassung", tab2: "Geschichte", tab3: "Fakten", locked: "Nähern Sie sich auf weniger als 50 Meter, um die Geheimnisse zu enthüllen!", winLine: "🎉 Glückwunsch! Linie vervollständigt!", winFull: "🏆 AUSSERGEWÖHNLICH! Karte vervollständigt!", ttsLang: "de-DE", obT1: "Entdecke Porto", obD1: "Spaziere durch die Stadt und entdecke verborgene historische Orte.", obT2: "GPS-Radar", obD2: "Achte auf die Farben: Orange ist nah, pulsierendes Rot bedeutet fast da!", obT3: "Geschichte freischalten", obD3: "Nähere dich auf 50m, um Geheimnisse zu enthüllen und den Audioguide zu hören.", obBtn: "Starten", helpTitle: "SPIELANLEITUNG", help1: "Spaziere durch die Stadt, um zu erkunden.", help2: "Orange: Unter 400m entfernt!", help3: "Rot (Pulsierend): Unter 150m entfernt!", help4: "Freischalten: Nähere dich auf 50m." },
-    it: { map: "📍 Indicazioni", audio: "🔊 Ascolta", stopAudio: "⏸️ Ferma", tab1: "Riassunto", tab2: "Storia", tab3: "Curiosità", locked: "Avvicinati a meno di 50 metri per rivelare i segreti di questo luogo!", winLine: "🎉 Congratulazioni! Linea completata!", winFull: "🏆 STRAORDINARIO! Mappa completata!", ttsLang: "it-IT", obT1: "Esplora Porto", obD1: "Passeggia per la città e scopri luoghi storici nascosti.", obT2: "Radar GPS", obD2: "Guarda i colori: arancione è vicino, rosso lampeggiante è quasi arrivato!", obT3: "Sblocca la Storia", obD3: "Avvicinati a 50m per svelare segreti e ascoltare l'audioguida.", obBtn: "Inizia", helpTitle: "COME GIOCARE", help1: "Passeggia per la città per esplorare.", help2: "Arancione: A meno di 400m!", help3: "Rosso (Lampeggiante): A meno di 150m!", help4: "Sblocco: Avvicinati a 50m." },
-    zh: { map: "📍 路线", audio: "🔊 聆听", stopAudio: "⏸️ 停止", tab1: "总结", tab2: "历史", tab3: "趣闻", locked: "靠近50米以内，揭开这个历史名胜的秘密！", winLine: "🎉 恭喜！您完成了一条线！", winFull: "🏆 太棒了！您完成了整个地图！", ttsLang: "zh-CN", obT1: "探索波尔图", obD1: "在城市中漫步，发现隐藏的历史古迹。", obT2: "GPS雷达", obD2: "观察颜色：橙色代表接近，闪烁的红色表示即将到达！", obT3: "解锁历史", obD3: "靠近50米以内，揭开秘密并收听我们的语音导览。", obBtn: "开始", helpTitle: "怎么玩", help1: "在城市中漫步探索。", help2: "橙色：距离不到400米！", help3: "红色（闪烁）：距离不到150米！", help4: "解锁：靠近至50米。" }
+    pt: { map: "📍 Como Chegar", audio: "🔊 Ouvir Textos", stopAudio: "⏸️ Parar", tab1: "Resumo", tab2: "História", tab3: "Curiosidades", locked: "Aproxima-te a menos de 50 metros para revelar os segredos deste local histórico!", winLine: "Parabéns! Conseguiste completar uma linha!", winFull: "EXTRAORDINÁRIO! Completaste todo o mapa!", ttsLang: "pt-PT", obT1: "Explora o Porto", obD1: "Caminha pela cidade e descobre os locais históricos escondidos.", obT2: "Radar GPS", obD2: "Fica atento às cores: laranja é perto, vermelho a pulsar é quase lá!", obT3: "Desbloqueia a História", obD3: "Aproxima-te a 50 metros para revelar os segredos e ouvir o áudio guia.", obBtn: "Começar", helpTitle: "COMO JOGAR", help1: "Caminha pela cidade para explorar.", help2: "Laranja: Estás a menos de 400m!", help3: "Vermelho (A pulsar): Menos de 150m!", help4: "Desbloqueio: Aproxima-te a 50m.", alertGPS: "O radar precisa de sinal GPS verde para te dar uma pista!", alertNoHints: "Já não há pistas a dar. Descobriste o mapa todo!", alertTitle: "Aviso", alertOk: "OK" },
+    en: { map: "📍 Directions", audio: "🔊 Listen", stopAudio: "⏸️ Stop", tab1: "Summary", tab2: "History", tab3: "Trivia", locked: "Get closer than 50 meters to reveal the secrets of this historic location!", winLine: "Congratulations! You completed a line!", winFull: "EXTRAORDINARY! You completed the entire map!", ttsLang: "en-GB", obT1: "Explore Porto", obD1: "Walk around the city and discover hidden historic locations.", obT2: "GPS Radar", obD2: "Watch the colors: orange is close, pulsing red means you are almost there!", obT3: "Unlock History", obD3: "Get closer than 50 meters to reveal secrets and hear our audio guide.", obBtn: "Start", helpTitle: "HOW TO PLAY", help1: "Walk around the city to explore.", help2: "Orange: You are under 400m away!", help3: "Red (Pulsing): Under 150m away!", help4: "Unlock: Get closer than 50m.", alertGPS: "The radar needs a green GPS signal to give you a hint!", alertNoHints: "No more hints available. You discovered the entire map!", alertTitle: "Notice", alertOk: "OK" },
+    es: { map: "📍 Cómo llegar", audio: "🔊 Escuchar", stopAudio: "⏸️ Detener", tab1: "Resumen", tab2: "Historia", tab3: "Curiosidades", locked: "¡Acércate a menos de 50 metros para revelar los secretos de este lugar histórico!", winLine: "¡Felicidades! ¡Has completado una línea!", winFull: "¡EXTRAORDINARIO! ¡Has completado todo el mapa!", ttsLang: "es-ES", obT1: "Explora Oporto", obD1: "Camina por la ciudad y descubre lugares históricos ocultos.", obT2: "Radar GPS", obD2: "Atento a los colores: naranja es cerca, rojo parpadeando es casi allí.", obT3: "Desbloquea la Historia", obD3: "Acércate a 50 metros para revelar secretos y escuchar la audioguía.", obBtn: "Comenzar", helpTitle: "CÓMO JUGAR", help1: "Camina por la ciudad para explorar.", help2: "Naranja: ¡Estás a menos de 400m!", help3: "Rojo (Parpadeando): ¡Menos de 150m!", help4: "Desbloqueo: Acércate a 50m.", alertGPS: "¡El radar necesita señal GPS verde para darte una pista!", alertNoHints: "No hay más pistas. ¡Descubriste todo el mapa!", alertTitle: "Aviso", alertOk: "OK" },
+    fr: { map: "📍 Itinéraire", audio: "🔊 Écouter", stopAudio: "⏸️ Arrêter", tab1: "Résumé", tab2: "Histoire", tab3: "Anecdotes", locked: "Approchez-vous à moins de 50 mètres pour révéler les secrets de ce lieu !", winLine: "Félicitations ! Ligne complétée !", winFull: "EXTRAORDINAIRE ! Carte complétée !", ttsLang: "fr-FR", obT1: "Explorez Porto", obD1: "Promenez-vous dans la ville et découvrez des lieux historiques cachés.", obT2: "Radar GPS", obD2: "Surveillez les couleurs : orange c'est près, rouge clignotant c'est tout près !", obT3: "Débloquez l'Histoire", obD3: "Approchez à moins de 50m pour révéler les secrets et écouter le guide.", obBtn: "Commencer", helpTitle: "COMMENT JOUER", help1: "Promenez-vous dans la ville pour explorer.", help2: "Orange : À moins de 400m !", help3: "Rouge (Clignotant) : À moins de 150m !", help4: "Déblocage : Approchez à 50m.", alertGPS: "Le radar a besoin d'un signal GPS vert pour un indice !", alertNoHints: "Plus d'indices. Vous avez découvert toute la carte !", alertTitle: "Avis", alertOk: "OK" },
+    de: { map: "📍 Route", audio: "🔊 Anhören", stopAudio: "⏸️ Stoppen", tab1: "Zusammenfassung", tab2: "Geschichte", tab3: "Fakten", locked: "Nähern Sie sich auf weniger als 50 Meter, um die Geheimnisse zu enthüllen!", winLine: "Glückwunsch! Linie vervollständigt!", winFull: "AUSSERGEWÖHNLICH! Karte vervollständigt!", ttsLang: "de-DE", obT1: "Entdecke Porto", obD1: "Spaziere durch die Stadt und entdecke verborgene historische Orte.", obT2: "GPS-Radar", obD2: "Achte auf die Farben: Orange ist nah, pulsierendes Rot bedeutet fast da!", obT3: "Geschichte freischalten", obD3: "Nähere dich auf 50m, um Geheimnisse zu enthüllen und den Audioguide zu hören.", obBtn: "Starten", helpTitle: "SPIELANLEITUNG", help1: "Spaziere durch die Stadt, um zu erkunden.", help2: "Orange: Unter 400m entfernt!", help3: "Rot (Pulsierend): Unter 150m entfernt!", help4: "Freischalten: Nähere dich auf 50m.", alertGPS: "Das Radar benötigt ein grünes GPS-Signal für Hinweise!", alertNoHints: "Keine Hinweise mehr. Du hast die ganze Karte entdeckt!", alertTitle: "Hinweis", alertOk: "OK" },
+    it: { map: "📍 Indicazioni", audio: "🔊 Ascolta", stopAudio: "⏸️ Ferma", tab1: "Riassunto", tab2: "Storia", tab3: "Curiosità", locked: "Avvicinati a meno di 50 metri per rivelare i segreti di questo luogo!", winLine: "Congratulazioni! Linea completata!", winFull: "STRAORDINARIO! Mappa completata!", ttsLang: "it-IT", obT1: "Esplora Porto", obD1: "Passeggia per la città e scopri luoghi storici nascosti.", obT2: "Radar GPS", obD2: "Guarda i colori: arancione è vicino, rosso lampeggiante è quasi arrivato!", obT3: "Sblocca la Storia", obD3: "Avvicinati a 50m per svelare segreti e ascoltare l'audioguida.", obBtn: "Inizia", helpTitle: "COME GIOCARE", help1: "Passeggia per la città per esplorare.", help2: "Arancione: A meno di 400m!", help3: "Rosso (Lampeggiante): A meno di 150m!", help4: "Sblocco: Avvicinati a 50m.", alertGPS: "Il radar ha bisogno di un segnale GPS verde per aiutarti!", alertNoHints: "Nessun indizio. Hai scoperto tutta la mappa!", alertTitle: "Avviso", alertOk: "OK" },
+    zh: { map: "📍 路线", audio: "🔊 聆听", stopAudio: "⏸️ 停止", tab1: "总结", tab2: "历史", tab3: "趣闻", locked: "靠近50米以内，揭开这个历史名胜的秘密！", winLine: "恭喜！您完成了一条线！", winFull: "太棒了！您完成了整个地图！", ttsLang: "zh-CN", obT1: "探索波尔图", obD1: "在城市中漫步，发现隐藏的历史古迹。", obT2: "GPS雷达", obD2: "观察颜色：橙色代表接近，闪烁的红色表示即将到达！", obT3: "解锁历史", obD3: "靠近50米以内，揭开秘密并收听我们的语音导览。", obBtn: "开始", helpTitle: "怎么玩", help1: "在城市中漫步探索。", help2: "橙色：距离不到400米！", help3: "红色（闪烁）：距离不到150米！", help4: "解锁：靠近至50米。", alertGPS: "雷达需要绿色的GPS信号才能给您提示！", alertNoHints: "没有更多提示了。您已探索整个地图！", alertTitle: "提示", alertOk: "确定" }
 };
 
 // =========================================
@@ -31,20 +31,15 @@ const langCycle = [
 
 function detectLanguage() {
     const savedLang = localStorage.getItem('oportoBingoLang');
-    if (savedLang) return savedLang; // Se já escolheu antes, respeita
-    
-    // Lê as duas primeiras letras do idioma do sistema
+    if (savedLang) return savedLang; 
     const browserLang = navigator.language.slice(0, 2);
     const supportedLangs = ['pt', 'en', 'es', 'fr', 'de', 'it', 'zh'];
-    
-    // Usa o do sistema se existir, senão cai para inglês
     return supportedLangs.includes(browserLang) ? browserLang : 'en';
 }
 
 let currentLang = detectLanguage();
 
 window.onload = () => {
-    // Carrega a bandeira correta no botão único logo ao abrir
     const savedLangObj = langCycle.find(l => l.code === currentLang);
     const btnLang = document.getElementById('btn-lang');
     if (savedLangObj && btnLang) {
@@ -55,30 +50,26 @@ window.onload = () => {
 
 function cycleLanguage() {
     if (navigator.vibrate) navigator.vibrate(50);
-    
     const currentIndex = langCycle.findIndex(l => l.code === currentLang);
     const nextIndex = (currentIndex + 1) % langCycle.length; 
     const nextLang = langCycle[nextIndex];
-    
     currentLang = nextLang.code;
     localStorage.setItem('oportoBingoLang', currentLang);
     
-    // Atualiza a interface
     const btnLang = document.getElementById('btn-lang');
     if (btnLang) btnLang.innerText = nextLang.flag;
-    
     updateUILanguage();
     if (currentLocation) openModal(currentLocation);
 }
 
 function updateUILanguage() {
-    // Interface Normal
+    // UI Principal
     document.getElementById('btn-map').innerText = uiTexts[currentLang].map;
     document.getElementById('tab-btn-resumo').innerText = uiTexts[currentLang].tab1;
     document.getElementById('tab-btn-historia').innerText = uiTexts[currentLang].tab2;
     document.getElementById('tab-btn-curiosidades').innerText = uiTexts[currentLang].tab3;
     
-    // Interface Onboarding (se existir no DOM)
+    // Onboarding
     if(document.getElementById('ob-t1')) {
         document.getElementById('ob-t1').innerText = uiTexts[currentLang].obT1;
         document.getElementById('ob-d1').innerText = uiTexts[currentLang].obD1;
@@ -89,7 +80,7 @@ function updateUILanguage() {
         document.getElementById('ob-btn').innerText = uiTexts[currentLang].obBtn;
     }
 
-    // Interface Ajuda Dinâmica (se existir no DOM)
+    // Ajuda Dinâmica
     if(document.getElementById('help-title')) {
         document.getElementById('help-title').innerText = uiTexts[currentLang].helpTitle;
         document.getElementById('help-1').innerText = uiTexts[currentLang].help1;
@@ -97,6 +88,22 @@ function updateUILanguage() {
         document.getElementById('help-3').innerText = uiTexts[currentLang].help3;
         document.getElementById('help-4').innerText = uiTexts[currentLang].help4;
     }
+}
+
+// =========================================
+// SISTEMA DE ALERTAS CUSTOMIZADO (NOVO)
+// =========================================
+function showCustomAlert(title, message, icon = "⚠️") {
+    document.getElementById('alert-icon').innerText = icon;
+    document.getElementById('alert-title').innerText = title;
+    document.getElementById('alert-message').innerText = message;
+    document.getElementById('alert-ok').innerText = uiTexts[currentLang].alertOk;
+    document.getElementById('custom-alert').classList.remove('hidden');
+}
+
+function closeCustomAlert() {
+    if (navigator.vibrate) navigator.vibrate(30);
+    document.getElementById('custom-alert').classList.add('hidden');
 }
 
 // =========================================
@@ -116,10 +123,10 @@ titleElement.addEventListener('click', () => {
         devClickCount = 0;
         const nextLocked = locations.find(loc => !loc.unlocked);
         if (nextLocked) {
-            alert("🛠️ Dev Mode: A simular GPS para desbloquear " + nextLocked.name + "!");
+            showCustomAlert("Dev Mode", "A simular GPS para: " + nextLocked.name, "🛠️");
             checkProximity(nextLocked.lat, nextLocked.lon);
         } else {
-            alert("🛠️ Dev Mode: Já tens o mapa todo desbloqueado!");
+            showCustomAlert("Dev Mode", "Já tens o mapa todo desbloqueado!", "🛠️");
         }
     }
 });
@@ -153,7 +160,7 @@ const modalImg = document.getElementById('modal-image');
 const modalTitle = document.getElementById('modal-title');
 const closeBtn = document.getElementById('close-modal');
 const unlockSound = document.getElementById('unlock-sound');
-const openSound = document.getElementById('open-sound'); // Mantido (não faz mal se o HTML não o tiver)
+const openSound = document.getElementById('open-sound'); 
 
 const modalDesc = document.getElementById('modal-desc');
 const modalHist = document.getElementById('modal-hist');
@@ -251,7 +258,7 @@ function openModal(loc) {
 function closeModal() {
     modal.classList.add('hidden');
     if(speechSynthesis.speaking) speechSynthesis.cancel();
-    currentLocation = null; // Memória perfeitamente limpa!
+    currentLocation = null; 
 }
 
 closeBtn.addEventListener('click', () => {
@@ -262,6 +269,9 @@ closeBtn.addEventListener('click', () => {
 window.addEventListener('click', (event) => {
     if (event.target === modal) {
         closeModal();
+    }
+    if (event.target === document.getElementById('custom-alert')) {
+        closeCustomAlert();
     }
 });
 
@@ -279,20 +289,25 @@ function checkProximity(userLat, userLon) {
                 
                 if (navigator.vibrate) navigator.vibrate([200, 100, 200]); 
                 
-                if ("Notification" in window && Notification.permission === "granted") {
-                    new Notification("📍 Oporto Bin'Go", {
-                        body: `Excelente! Encontraste: ${loc.name}!`,
-                        icon: "./assets/bingo-icon.png"
-                    });
-                }
-                
-                // A CORREÇÃO: Em vez de redesenhar a grelha toda (renderGrid),
-                // apenas atualizamos a classe deste quadrado específico!
+                // NOVO: Força o desbloqueio visual limpo na hora
                 if (cellElement) {
-                    cellElement.className = 'cell unlocked'; 
+                    cellElement.classList.remove('warm', 'hot', 'hint-active');
+                    cellElement.classList.add('unlocked');
+                    
+                    // Injeta a limpeza da imagem à força por cima do CSS base
+                    const img = cellElement.querySelector('img');
+                    if(img) {
+                        img.style.filter = "none";
+                        img.style.webkitFilter = "none";
+                        img.style.opacity = "1";
+                    }
                 }
                 
                 checkWinConditions();
+                
+                // O EFEITO UAU: Abre o modal passados 800 milissegundos
+                setTimeout(() => { openModal(loc); }, 800);
+
             } else if (cellElement) {
                 if (dist < 150) { 
                     cellElement.classList.add('hot');
@@ -310,7 +325,6 @@ function checkProximity(userLat, userLon) {
 
 const gpsStatus = document.getElementById('gps-status');
 
-// O GPS só é ativado quando o utilizador clica em começar!
 function initGPS() {
     if ("geolocation" in navigator) {
         navigator.geolocation.watchPosition(
@@ -338,7 +352,7 @@ function getDistanceFromLatLonInM(lat1, lon1, lat2, lon2) {
     return R * c;
 }
 
-// Regras de Vitória e Confettis
+// Regras de Vitória e Confettis (AGORA COM ALERTAS PREMIUM)
 let lineWon = false;
 function checkWinConditions() {
     const unlockedArr = locations.map(l => l.unlocked);
@@ -351,8 +365,8 @@ function checkWinConditions() {
     if (unlockedArr.every(v => v === true)) {
         fireConfetti(true);
         setTimeout(() => {
-            alert(uiTexts[currentLang].winFull);
-        }, 500);
+            showCustomAlert(uiTexts[currentLang].alertTitle, uiTexts[currentLang].winFull, "🏆");
+        }, 1200);
     } 
     else if (!lineWon) {
         const hasLine = lines.some(line => line.every(index => unlockedArr[index]));
@@ -360,8 +374,8 @@ function checkWinConditions() {
             lineWon = true;
             fireConfetti(false);
             setTimeout(() => {
-                alert(uiTexts[currentLang].winLine);
-            }, 500);
+                showCustomAlert(uiTexts[currentLang].alertTitle, uiTexts[currentLang].winLine, "🎉");
+            }, 1200);
         }
     }
 }
@@ -420,7 +434,6 @@ if(carousel) {
             dot.classList.toggle('active', index === activeIndex);
         });
         
-        // Só mostra o botão "Começar" no último cartão do Swipe
         const startBtn = document.getElementById('ob-btn');
         if (startBtn) {
             if (activeIndex === 2) startBtn.classList.remove('hidden');
@@ -438,8 +451,6 @@ function finishOnboarding() {
     setTimeout(() => { if(splash) splash.remove(); }, 1000); 
     localStorage.setItem('oportoBingoIntroSeen', 'true');
     renderGrid();
-    
-    // O pedido de GPS só dispara aqui, depois de o turista perceber o jogo
     initGPS();
 }
 
@@ -493,7 +504,8 @@ window.addEventListener('click', (event) => {
 
 function showHint() {
     if (!userLat || !userLon) {
-        alert("O radar precisa de sinal GPS verde para te dar uma pista!");
+        // ALERTA CUSTOMIZADO AO INVÉS DO FEIO
+        showCustomAlert(uiTexts[currentLang].alertTitle, uiTexts[currentLang].alertGPS, "📡");
         return;
     }
     
@@ -520,6 +532,7 @@ function showHint() {
             setTimeout(() => cellElement.classList.remove('hint-active'), 2400); 
         }
     } else {
-        alert("Já não há pistas a dar. Descobriste o mapa todo!");
+        // ALERTA CUSTOMIZADO AO INVÉS DO FEIO
+        showCustomAlert(uiTexts[currentLang].alertTitle, uiTexts[currentLang].alertNoHints, "🗺️");
     }
 }

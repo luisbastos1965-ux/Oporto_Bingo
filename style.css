@@ -517,3 +517,21 @@ body.day-mode .cell:not(.unlocked) img {
 
 /* No Modo Diurno, a letra do help fica escura */
 body.day-mode .legend-item p { color: #061026; }
+
+/* =========================================
+   SISTEMA DE ALERTAS E CORREÇÃO DE BLUR
+   ========================================= */
+#custom-alert { z-index: 9999; }
+.custom-alert-box { text-align: center; max-width: 300px; padding: 30px 20px; }
+#alert-icon { font-size: 3.5rem; margin-bottom: 15px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)); }
+#alert-title { color: #00f2fe; margin-bottom: 15px; font-size: 1.8rem; font-family: 'Luckiest Guy', cursive; letter-spacing: 1px; }
+#alert-message { margin-bottom: 25px; font-size: 1.1rem; line-height: 1.5; color: rgba(255,255,255,0.9); font-weight: bold; }
+#alert-ok { width: 100%; opacity: 1; pointer-events: auto; }
+body.day-mode #alert-message { color: #061026; }
+
+/* A ORDEM SUPREMA QUE OBRIGA O BROWSER A LIMPAR A IMAGEM */
+.cell.unlocked img {
+    filter: none !important;
+    -webkit-filter: none !important;
+    opacity: 1 !important;
+}

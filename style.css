@@ -598,77 +598,112 @@ body.day-mode #alert-message { color: #061026; }
 }
 
 /* =========================================
-   MODAL DE AJUDA / INSTRUÇÕES (ESTILO UNIFICADO)
+   REESTRUTURAÇÃO PREMIUM DO MODAL DE AJUDA
    ========================================= */
-#help-modal .modal-content {
+#help-modal .modal-content.help-box-premium {
     background: #0d1b3e !important;
     border: 2px solid rgba(0, 242, 254, 0.3) !important;
-    border-radius: 24px !important;
-    width: 100% !important;
+    border-radius: 28px !important;
+    width: 90% !important;
     max-width: 380px !important;
-    padding: 30px 25px !important;
+    padding: 30px 20px !important;
     text-align: left !important;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7) !important;
     position: relative !important;
 }
 
-#help-modal .modal-content h2 {
+#help-modal .modal-content.help-box-premium h2 {
     font-family: 'Luckiest Guy', cursive !important;
-    font-size: 1.6rem !important;
+    font-size: 1.8rem !important;
     text-align: center !important;
     color: #00f2fe !important;
-    margin: 0 0 25px 0 !important;
-    letter-spacing: 1px !important;
+    margin: 0 0 22px 0 !important;
+    letter-spacing: 1.5px !important;
 }
 
-.help-legend {
+/* Contentor dos pequenos cartões */
+.help-grid-cards {
     display: flex !important;
     flex-direction: column !important;
-    gap: 16px !important;
+    gap: 12px !important;
 }
 
-.legend-item {
+/* Cada mini-cartão individual */
+.help-card-item {
     display: flex !important;
     align-items: center !important;
     gap: 15px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 12px 15px !important;
+    border-radius: 16px !important;
+    transition: background 0.2s ease !important;
 }
 
-.legend-item p {
-    margin: 0 !important;
-    font-size: 1rem !important;
-    font-weight: 500 !important;
-    color: rgba(255, 255, 255, 0.9) !important;
-    line-height: 1.4 !important;
-    text-align: left !important;
-}
-
-.legend-icon {
-    font-size: 1.4rem !important;
-    width: 32px !important;
-    text-align: center !important;
+/* Ícones e Cores dos Badges */
+.help-card-icon-wrap {
+    font-size: 1.5rem !important;
+    width: 36px !important;
+    height: 36px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(0, 242, 254, 0.1) !important;
+    border-radius: 10px !important;
     flex-shrink: 0 !important;
 }
 
-.legend-box {
-    width: 28px !important;
-    height: 28px !important;
-    border-radius: 8px !important;
+.help-card-badge {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 10px !important;
+    flex-shrink: 0 !important;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
-    flex-shrink: 0 !important;
 }
 
-.box-warm { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%) !important; }
-.box-hot { background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%) !important; }
+.warm-bg { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%) !important; }
+.hot-bg { background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%) !important; }
 
-/* Modo Diurno unificado para o Modal de Ajuda */
-body.day-mode #help-modal .modal-content {
+/* Tipografia interna dos cartões */
+.help-card-text {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+}
+
+.help-card-text strong {
+    font-size: 0.95rem !important;
+    color: #00f2fe !important;
+    letter-spacing: 0.5px !important;
+}
+
+.help-card-text p {
+    margin: 0 !important;
+    font-size: 0.85rem !important;
+    font-weight: 400 !important;
+    color: rgba(255, 255, 255, 0.75) !important;
+    line-height: 1.35 !important;
+}
+
+/* Modo Diurno perfeitamente adaptado para os mini-cartões */
+body.day-mode #help-modal .modal-content.help-box-premium {
     background: #ffffff !important;
     border-color: rgba(0, 114, 255, 0.2) !important;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
 }
-body.day-mode #help-modal .modal-content h2 {
+body.day-mode #help-modal .modal-content.help-box-premium h2 {
     color: #0072ff !important;
 }
-body.day-mode #help-modal .legend-item p {
-    color: #061026 !important;
+body.day-mode .help-card-item {
+    background: rgba(0, 114, 255, 0.03) !important;
+    border-color: rgba(0, 114, 255, 0.08) !important;
+}
+body.day-mode .help-card-icon-wrap {
+    background: rgba(0, 114, 255, 0.08) !important;
+}
+body.day-mode .help-card-text strong {
+    color: #0072ff !important;
+}
+body.day-mode .help-card-text p {
+    color: rgba(6, 16, 38, 0.75) !important;
 }

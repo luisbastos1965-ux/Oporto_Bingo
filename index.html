@@ -58,26 +58,41 @@
 
     <!-- MODAL DE AJUDA DINÂMICO -->
     <div id="help-modal" class="modal hidden">
-        <div class="modal-content">
-            <span id="close-help" class="close" onclick="document.getElementById('help-modal').classList.add('hidden')">&times;</span>
+        <div class="modal-content help-box-premium">
+            <span class="close" onclick="document.getElementById('help-modal').classList.add('hidden')">&times;</span>
             <h2 id="help-title">COMO JOGAR</h2>
             
-            <div class="help-legend">
-                <div class="legend-item">
-                    <div class="legend-icon">🚶</div>
-                    <p id="help-1">Caminha pela cidade para explorar.</p>
+            <div class="help-grid-cards">
+                <div class="help-card-item">
+                    <div class="help-card-icon-wrap">🚶</div>
+                    <div class="help-card-text">
+                        <strong id="help-t1">Explorar</strong>
+                        <p id="help-1">Caminha pela cidade para descobrir.</p>
+                    </div>
                 </div>
-                <div class="legend-item">
-                    <div class="legend-box box-warm"></div>
-                    <p id="help-2">Laranja: Estás a menos de 400m!</p>
+
+                <div class="help-card-item">
+                    <div class="help-card-badge warm-bg"></div>
+                    <div class="help-card-text">
+                        <strong id="help-t2">Perto</strong>
+                        <p id="help-2">Laranja: Estás a menos de 400m!</p>
+                    </div>
                 </div>
-                <div class="legend-item">
-                    <div class="legend-box box-hot pulse-anim"></div>
-                    <p id="help-3">Vermelho (A pulsar): Menos de 150m!</p>
+
+                <div class="help-card-item">
+                    <div class="help-card-badge hot-bg pulse-anim"></div>
+                    <div class="help-card-text">
+                        <strong id="help-t3">Muito Perto</strong>
+                        <p id="help-3">Vermelho (A pulsar): Menos de 150m!</p>
+                    </div>
                 </div>
-                <div class="legend-item">
-                    <div class="legend-icon">🔓</div>
-                    <p id="help-4">Desbloqueio: Aproxima-te a 50m.</p>
+
+                <div class="help-card-item">
+                    <div class="help-card-icon-wrap">🔓</div>
+                    <div class="help-card-text">
+                        <strong id="help-t4">Desbloquear</strong>
+                        <p id="help-4">Aproxima-te a menos de 50m.</p>
+                    </div>
                 </div>
             </div>
         </div>

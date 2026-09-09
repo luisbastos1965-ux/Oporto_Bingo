@@ -10,13 +10,104 @@ if ("Notification" in window && Notification.permission !== "denied") {
 // DICIONÁRIO DA INTERFACE (UI) + ALERTAS
 // =========================================
 const uiTexts = {
-    pt: { map: "📍 Como Chegar", audio: "🔊 Ouvir Textos", stopAudio: "⏸️ Parar", tab1: "Resumo", tab2: "História", tab3: "Curiosidades", locked: "Aproxima-te a menos de 50 metros para revelar os segredos deste local histórico!", winLine: "Parabéns! Conseguiste completar uma linha!", winFull: "EXTRAORDINÁRIO! Completaste todo o mapa!", ttsLang: "pt-PT", obT1: "Explora o Porto", obD1: "Caminha pela cidade e descobre os locais históricos escondidos.", obT2: "Radar GPS", obD2: "Fica atento às cores: laranja é perto, vermelho a pulsar é quase lá!", obT3: "Desbloqueia a História", obD3: "Aproxima-te a 50 metros para revelar os segredos e ouvir o áudio guia.", obBtn: "Começar", helpTitle: "COMO JOGAR", help1: "Caminha pela cidade para explorar.", help2: "Laranja: Estás a menos de 400m!", help3: "Vermelho (A pulsar): Menos de 150m!", help4: "Desbloqueio: Aproxima-te a 50m.", alertGPS: "O radar precisa de sinal GPS verde para te dar uma pista!", alertNoHints: "Já não há pistas a dar. Descobriste o mapa todo!", alertTitle: "Aviso", alertOk: "OK" },
-    en: { map: "📍 Directions", audio: "🔊 Listen", stopAudio: "⏸️ Stop", tab1: "Summary", tab2: "History", tab3: "Trivia", locked: "Get closer than 50 meters to reveal the secrets of this historic location!", winLine: "Congratulations! You completed a line!", winFull: "EXTRAORDINARY! You completed the entire map!", ttsLang: "en-GB", obT1: "Explore Porto", obD1: "Walk around the city and discover hidden historic locations.", obT2: "GPS Radar", obD2: "Watch the colors: orange is close, pulsing red means you are almost there!", obT3: "Unlock History", obD3: "Get closer than 50 meters to reveal secrets and hear our audio guide.", obBtn: "Start", helpTitle: "HOW TO PLAY", help1: "Walk around the city to explore.", help2: "Orange: You are under 400m away!", help3: "Red (Pulsing): Under 150m away!", help4: "Unlock: Get closer than 50m.", alertGPS: "The radar needs a green GPS signal to give you a hint!", alertNoHints: "No more hints available. You discovered the entire map!", alertTitle: "Notice", alertOk: "OK" },
-    es: { map: "📍 Cómo llegar", audio: "🔊 Escuchar", stopAudio: "⏸️ Detener", tab1: "Resumen", tab2: "Historia", tab3: "Curiosidades", locked: "¡Acércate a menos de 50 metros para revelar los secretos de este lugar histórico!", winLine: "¡Felicidades! ¡Has completado una línea!", winFull: "¡EXTRAORDINARIO! ¡Has completado todo el mapa!", ttsLang: "es-ES", obT1: "Explora Oporto", obD1: "Camina por la ciudad y descubre lugares históricos ocultos.", obT2: "Radar GPS", obD2: "Atento a los colores: naranja es cerca, rojo parpadeando es casi allí.", obT3: "Desbloquea la Historia", obD3: "Acércate a 50 metros para revelar secretos y escuchar la audioguía.", obBtn: "Comenzar", helpTitle: "CÓMO JUGAR", help1: "Camina por la ciudad para explorar.", help2: "Naranja: ¡Estás a menos de 400m!", help3: "Rojo (Parpadeando): ¡Menos de 150m!", help4: "Desbloqueo: Acércate a 50m.", alertGPS: "¡El radar necesita señal GPS verde para darte una pista!", alertNoHints: "No hay más pistas. ¡Descubriste todo el mapa!", alertTitle: "Aviso", alertOk: "OK" },
-    fr: { map: "📍 Itinéraire", audio: "🔊 Écouter", stopAudio: "⏸️ Arrêter", tab1: "Résumé", tab2: "Histoire", tab3: "Anecdotes", locked: "Approchez-vous à moins de 50 mètres pour révéler les secrets de ce lieu !", winLine: "Félicitations ! Ligne complétée !", winFull: "EXTRAORDINAIRE ! Carte complétée !", ttsLang: "fr-FR", obT1: "Explorez Porto", obD1: "Promenez-vous dans la ville et découvrez des lieux historiques cachés.", obT2: "Radar GPS", obD2: "Surveillez les couleurs : orange c'est près, rouge clignotant c'est tout près !", obT3: "Débloquez l'Histoire", obD3: "Approchez à moins de 50m pour révéler les secrets et écouter le guide.", obBtn: "Commencer", helpTitle: "COMMENT JOUER", help1: "Promenez-vous dans la ville pour explorer.", help2: "Orange : À moins de 400m !", help3: "Rouge (Clignotant) : À moins de 150m !", help4: "Déblocage : Approchez à 50m.", alertGPS: "Le radar a besoin d'un signal GPS vert pour un indice !", alertNoHints: "Plus d'indices. Vous avez découvert toute la carte !", alertTitle: "Avis", alertOk: "OK" },
-    de: { map: "📍 Route", audio: "🔊 Anhören", stopAudio: "⏸️ Stoppen", tab1: "Zusammenfassung", tab2: "Geschichte", tab3: "Fakten", locked: "Nähern Sie sich auf weniger als 50 Meter, um die Geheimnisse zu enthüllen!", winLine: "Glückwunsch! Linie vervollständigt!", winFull: "AUSSERGEWÖHNLICH! Karte vervollständigt!", ttsLang: "de-DE", obT1: "Entdecke Porto", obD1: "Spaziere durch die Stadt und entdecke verborgene historische Orte.", obT2: "GPS-Radar", obD2: "Achte auf die Farben: Orange ist nah, pulsierendes Rot bedeutet fast da!", obT3: "Geschichte freischalten", obD3: "Nähere dich auf 50m, um Geheimnisse zu enthüllen und den Audioguide zu hören.", obBtn: "Starten", helpTitle: "SPIELANLEITUNG", help1: "Spaziere durch die Stadt, um zu erkunden.", help2: "Orange: Unter 400m entfernt!", help3: "Rot (Pulsierend): Unter 150m entfernt!", help4: "Freischalten: Nähere dich auf 50m.", alertGPS: "Das Radar benötigt ein grünes GPS-Signal für Hinweise!", alertNoHints: "Keine Hinweise mehr. Du hast die ganze Karte entdeckt!", alertTitle: "Hinweis", alertOk: "OK" },
-    it: { map: "📍 Indicazioni", audio: "🔊 Ascolta", stopAudio: "⏸️ Ferma", tab1: "Riassunto", tab2: "Storia", tab3: "Curiosità", locked: "Avvicinati a meno di 50 metri per rivelare i segreti di questo luogo!", winLine: "Congratulazioni! Linea completata!", winFull: "STRAORDINARIO! Mappa completata!", ttsLang: "it-IT", obT1: "Esplora Porto", obD1: "Passeggia per la città e scopri luoghi storici nascosti.", obT2: "Radar GPS", obD2: "Guarda i colori: arancione è vicino, rosso lampeggiante è quasi arrivato!", obT3: "Sblocca la Storia", obD3: "Avvicinati a 50m per svelare segreti e ascoltare l'audioguida.", obBtn: "Inizia", helpTitle: "COME GIOCARE", help1: "Passeggia per la città per esplorare.", help2: "Arancione: A meno di 400m!", help3: "Rosso (Lampeggiante): A meno di 150m!", help4: "Sblocco: Avvicinati a 50m.", alertGPS: "Il radar ha bisogno di un segnale GPS verde per aiutarti!", alertNoHints: "Nessun indizio. Hai scoperto tutta la mappa!", alertTitle: "Avviso", alertOk: "OK" },
-    zh: { map: "📍 路线", audio: "🔊 聆听", stopAudio: "⏸️ 停止", tab1: "总结", tab2: "历史", tab3: "趣闻", locked: "靠近50米以内，揭开这个历史名胜的秘密！", winLine: "恭喜！您完成了一条线！", winFull: "太棒了！您完成了整个地图！", ttsLang: "zh-CN", obT1: "探索波尔图", obD1: "在城市中漫步，发现隐藏的历史古迹。", obT2: "GPS雷达", obD2: "观察颜色：橙色代表接近，闪烁的红色表示即将到达！", obT3: "解锁历史", obD3: "靠近50米以内，揭开秘密并收听我们的语音导览。", obBtn: "开始", helpTitle: "怎么玩", help1: "在城市中漫步探索。", help2: "橙色：距离不到400米！", help3: "红色（闪烁）：距离不到150米！", help4: "解锁：靠近至50米。", alertGPS: "雷达需要绿色的GPS信号才能给您提示！", alertNoHints: "没有更多提示了。您已探索整个地图！", alertTitle: "提示", alertOk: "确定" }
+    pt: { 
+        map: "📍 Como Chegar", audio: "🔊 Ouvir Textos", stopAudio: "⏸️ Parar", tab1: "Resumo", tab2: "História", tab3: "Curiosidades", 
+        locked: "Aproxima-te a menos de 50 metros para revelar os segredos deste local histórico!", 
+        winLine: "Parabéns! Conseguiste completar uma linha!", winFull: "EXTRAORDINÁRIO! Completaste todo o mapa!", ttsLang: "pt-PT", 
+        obT1: "Explora o Porto", obD1: "Caminha pela cidade e descobre os locais históricos escondidos.", 
+        obT2: "Radar GPS", obD2: "Fica atento às cores: laranja é perto, vermelho a pulsar é quase lá!", 
+        obT3: "Desbloqueia a História", obD3: "Aproxima-te a 50 metros para revelar os segredos e ouvir o áudio guia.", obBtn: "Começar", 
+        helpTitle: "COMO JOGAR", 
+        helpT1: "Explorar", help1: "Caminha pela cidade para descobrir.", 
+        helpT2: "Perto", help2: "Laranja: Estás a menos de 400m!", 
+        helpT3: "Muito Perto", help3: "Vermelho (A pulsar): Menos de 150m!", 
+        helpT4: "Desbloquear", help4: "Aproxima-te a menos de 50m.", 
+        alertGPS: "O radar precisa de sinal GPS verde para te dar uma pista!", alertNoHints: "Já não há pistas a dar. Descobriste o mapa todo!", alertTitle: "Aviso", alertOk: "OK" 
+    },
+    en: { 
+        map: "📍 Directions", audio: "🔊 Listen", stopAudio: "⏸️ Stop", tab1: "Summary", tab2: "History", tab3: "Trivia", 
+        locked: "Get closer than 50 meters to reveal the secrets of this historic location!", 
+        winLine: "Congratulations! You completed a line!", winFull: "EXTRAORDINARY! You completed the entire map!", ttsLang: "en-GB", 
+        obT1: "Explore Porto", obD1: "Walk around the city and discover hidden historic locations.", 
+        obT2: "GPS Radar", obD2: "Watch the colors: orange is close, pulsing red means you are almost there!", 
+        obT3: "Unlock History", obD3: "Get closer than 50 meters to reveal secrets and hear our audio guide.", obBtn: "Start", 
+        helpTitle: "HOW TO PLAY", 
+        helpT1: "Explore", help1: "Walk around the city to discover.", 
+        helpT2: "Close", help2: "Orange: You are under 400m away!", 
+        helpT3: "Very Close", help3: "Red (Pulsing): Under 150m away!", 
+        helpT4: "Unlock", help4: "Get closer than 50m.", 
+        alertGPS: "The radar needs a green GPS signal to give you a hint!", alertNoHints: "No more hints available. You discovered the entire map!", alertTitle: "Notice", alertOk: "OK" 
+    },
+    es: { 
+        map: "📍 Cómo llegar", audio: "🔊 Escuchar", stopAudio: "⏸️ Detener", tab1: "Resumen", tab2: "Historia", tab3: "Curiosidades", 
+        locked: "¡Acércate a menos de 50 metros para revelar los secretos de este lugar histórico!", 
+        winLine: "¡Felicidades! ¡Has completado una línea!", winFull: "¡EXTRAORDINARIO! ¡Has completado todo el mapa!", ttsLang: "es-ES", 
+        obT1: "Explora Oporto", obD1: "Camina por la ciudad y descubre lugares históricos ocultos.", 
+        obT2: "Radar GPS", obD2: "Atento a los colores: naranja es cerca, rojo parpadeando es casi allí.", 
+        obT3: "Desbloquea la Historia", obD3: "Acércate a 50 metros para revelar secretos y escuchar la audioguía.", obBtn: "Comenzar", 
+        helpTitle: "CÓMO JUGAR", 
+        helpT1: "Explorar", help1: "Camina por la ciudad para descubrir.", 
+        helpT2: "Cerca", help2: "Naranja: ¡Estás a menos de 400m!", 
+        helpT3: "Muy Cerca", help3: "Rojo (Parpadeando): ¡Menos de 150m!", 
+        helpT4: "Desbloquear", help4: "Acércate a menos de 50m.", 
+        alertGPS: "¡El radar necesita señal GPS verde para darte una pista!", alertNoHints: "No hay más pistas. ¡Descubriste todo el mapa!", alertTitle: "Aviso", alertOk: "OK" 
+    },
+    fr: { 
+        map: "📍 Itinéraire", audio: "🔊 Écouter", stopAudio: "⏸️ Arrêter", tab1: "Résumé", tab2: "Histoire", tab3: "Anecdotes", 
+        locked: "Approchez-vous à moins de 50 mètres pour révéler les secrets de ce lieu !", 
+        winLine: "Félicitations ! Ligne complétée !", winFull: "EXTRAORDINAIRE ! Carte complétée !", ttsLang: "fr-FR", 
+        obT1: "Explorez Porto", obD1: "Promenez-vous dans la ville et découvrez des lieux historiques cachés.", 
+        obT2: "Radar GPS", obD2: "Surveillez les couleurs : orange c'est près, rouge clignotant c'est tout près !", 
+        obT3: "Débloquez l'Histoire", obD3: "Approchez à moins de 50m pour révéler les secrets et écouter le guide.", obBtn: "Commencer", 
+        helpTitle: "COMMENT JOUER", 
+        helpT1: "Explorer", help1: "Promenez-vous pour découvrir.", 
+        helpT2: "Près", help2: "Orange : À moins de 400m !", 
+        helpT3: "Très Près", help3: "Rouge (Clignotant) : À moins de 150m !", 
+        helpT4: "Débloquer", help4: "Approchez à moins de 50m.", 
+        alertGPS: "Le radar a besoin d'un signal GPS vert pour un indice !", alertNoHints: "Plus d'indices. Vous avez découvert toute la carte !", alertTitle: "Avis", alertOk: "OK" 
+    },
+    de: { 
+        map: "📍 Route", audio: "🔊 Anhören", stopAudio: "⏸️ Stoppen", tab1: "Zusammenfassung", tab2: "Geschichte", tab3: "Fakten", 
+        locked: "Nähern Sie sich auf weniger als 50 Meter, um die Geheimnisse zu enthüllen!", 
+        winLine: "Glückwunsch! Linie vervollständigt!", winFull: "AUSSERGEWÖHNLICH! Karte vervollständigt!", ttsLang: "de-DE", 
+        obT1: "Entdecke Porto", obD1: "Spaziere durch die Stadt und entdecke verborgene historische Orte.", 
+        obT2: "GPS-Radar", obD2: "Achte auf die Farben: Orange ist nah, pulsierendes Rot bedeutet fast da!", 
+        obT3: "Geschichte freischalten", obD3: "Nähere dich auf 50m, um Geheimnisse zu enthüllen und den Audioguide zu hören.", obBtn: "Starten", 
+        helpTitle: "SPIELANLEITUNG", 
+        helpT1: "Erkunden", help1: "Spaziere durch die Stadt zum Entdecken.", 
+        helpT2: "Nah", help2: "Orange: Unter 400m entfernt!", 
+        helpT3: "Sehr Nah", help3: "Rot (Pulsierend): Unter 150m entfernt!", 
+        helpT4: "Freischalten", help4: "Nähere dich auf unter 50m.", 
+        alertGPS: "Das Radar benötigt ein grünes GPS-Signal für Hinweise!", alertNoHints: "Keine Hinweise mehr. Du hast die ganze Karte entdeckt!", alertTitle: "Hinweis", alertOk: "OK" 
+    },
+    it: { 
+        map: "📍 Indicazioni", audio: "🔊 Ascolta", stopAudio: "⏸️ Ferma", tab1: "Riassunto", tab2: "Storia", tab3: "Curiosità", 
+        locked: "Avvicinati a meno di 50 metri per revelar i segreti di questo luogo!", 
+        winLine: "Congratulazioni! Linea completata!", winFull: "STRAORDINARIO! Mappa completata!", ttsLang: "it-IT", 
+        obT1: "Esplora Porto", obD1: "Passeggia per la città e scopri luoghi storici nascosti.", 
+        obT2: "Radar GPS", obD2: "Guarda i colori: arancione è vicino, rosso lampeggiante è quasi arrivato!", 
+        obT3: "Sblocca la Storia", obD3: "Avvicinati a 50m per svelare segreti e ascoltare l'audioguida.", obBtn: "Inizia", 
+        helpTitle: "COME GIOCARE", 
+        helpT1: "Esplorare", help1: "Passeggia per la città per scoprire.", 
+        helpT2: "Vicino", help2: "Arancione: A meno di 400m!", 
+        helpT3: "Molto Vicino", help3: "Rosso (Lampeggiante): A meno di 150m!", 
+        helpT4: "Sbloccare", help4: "Avvicinati a meno di 50m.", 
+        alertGPS: "Il radar ha bisogno di un segnale GPS verde per aiutarti!", alertNoHints: "Nessun indizio. Hai scoperto tutta la mappa!", alertTitle: "Avviso", alertOk: "OK" 
+    },
+    zh: { 
+        map: "📍 路线", audio: "🔊 聆听", stopAudio: "⏸️ 停止", tab1: "总结", tab2: "历史", tab3: "趣闻", 
+        locked: "靠近50米以内，揭开这个历史名胜的秘密！", 
+        winLine: "恭喜！您完成了一条线！", winFull: "🏆 太棒了！您完成了整个地图！", ttsLang: "zh-CN", 
+        obT1: "探索波尔图", obD1: "在城市中漫步，发现隐藏的历史古迹。", 
+        obT2: "GPS雷达", obD2: "观察颜色：橙色代表接近，闪烁的红色表示即将到达！", 
+        obT3: "解锁历史", obD3: "靠近50米以内，揭开秘密并收听我们的语音导览。", obBtn: "开始", 
+        helpTitle: "怎么玩", 
+        helpT1: "探索", help1: "在城市中漫步以发现。", 
+        helpT2: "接近", help2: "橙色：距离不到400米！", 
+        helpT3: "非常接近", help3: "红色（闪烁）：距离不到150米！", 
+        helpT4: "解锁", help4: "靠近至50米以内。", 
+        alertGPS: "雷达需要绿色的GPS信号才能给您提示！", alertNoHints: "没有更多提示了。您已探索整个地图！", alertTitle: "提示", alertOk: "确定" 
+    }
 };
 
 // =========================================
@@ -63,13 +154,11 @@ function cycleLanguage() {
 }
 
 function updateUILanguage() {
-    // UI Principal
     document.getElementById('btn-map').innerText = uiTexts[currentLang].map;
     document.getElementById('tab-btn-resumo').innerText = uiTexts[currentLang].tab1;
     document.getElementById('tab-btn-historia').innerText = uiTexts[currentLang].tab2;
     document.getElementById('tab-btn-curiosidades').innerText = uiTexts[currentLang].tab3;
     
-    // Onboarding
     if(document.getElementById('ob-t1')) {
         document.getElementById('ob-t1').innerText = uiTexts[currentLang].obT1;
         document.getElementById('ob-d1').innerText = uiTexts[currentLang].obD1;
@@ -77,21 +166,24 @@ function updateUILanguage() {
         document.getElementById('ob-d2').innerText = uiTexts[currentLang].obD2;
         document.getElementById('ob-t3').innerText = uiTexts[currentLang].obT3;
         document.getElementById('ob-d3').innerText = uiTexts[currentLang].obD3;
-        document.getElementById('ob-btn').innerText = uiTexts[currentLang].obBtn;
+        document.getElementById('ob-btn-text').innerText = uiTexts[currentLang].obBtn;
     }
 
-    // Ajuda Dinâmica
     if(document.getElementById('help-title')) {
         document.getElementById('help-title').innerText = uiTexts[currentLang].helpTitle;
+        document.getElementById('help-t1').innerText = uiTexts[currentLang].helpT1;
         document.getElementById('help-1').innerText = uiTexts[currentLang].help1;
+        document.getElementById('help-t2').innerText = uiTexts[currentLang].helpT2;
         document.getElementById('help-2').innerText = uiTexts[currentLang].help2;
+        document.getElementById('help-t3').innerText = uiTexts[currentLang].helpT3;
         document.getElementById('help-3').innerText = uiTexts[currentLang].help3;
+        document.getElementById('help-t4').innerText = uiTexts[currentLang].helpT4;
         document.getElementById('help-4').innerText = uiTexts[currentLang].help4;
     }
-}
+} // <--- CHAVETA CORretamente FECHADA AQUI
 
 // =========================================
-// SISTEMA DE ALERTAS CUSTOMIZADO (NOVO)
+// SISTEMA DE ALERTAS CUSTOMIZADO
 // =========================================
 function showCustomAlert(title, message, icon = "⚠️") {
     document.getElementById('alert-icon').innerText = icon;
@@ -141,7 +233,7 @@ const locations = [
     { id: 3, name: "Casa da Música", lat: 41.1582, lon: -8.6307, imgUrl: "./assets/casa-musica.png", unlocked: false, desc: { pt: "Um ícone da arquitetura contemporânea e a principal sala de espetáculos do Porto.", en: "An icon of contemporary architecture and Porto's main concert hall.", es: "Un icono de la arquitectura contemporánea y la principal sala de conciertos de Oporto.", fr: "Une icône de l'architecture contemporaine et la principale salle de concert de Porto.", de: "Ein Symbol zeitgenössischer Architektur und Portos wichtigster Konzertsaal.", it: "Un'icona dell'architettura contemporanea e la principale sala da concerto di Porto.", zh: "当代建筑的标志和波尔图的主要音乐厅。" }, hist: { pt: "Desenhada por Rem Koolhaas, foi projetada para a capital europeia da cultura de 2001.", en: "Designed by Rem Koolhaas, it was planned for the 2001 European Capital of Culture.", es: "Diseñada por Rem Koolhaas, fue planeada para la Capital Europea de la Cultura 2001.", fr: "Conçue par Rem Koolhaas, elle a été prévue pour la Capitale européenne de la culture 2001.", de: "Entworfen von Rem Koolhaas für die Kulturhauptstadt Europas 2001.", it: "Progettata da Rem Koolhaas, è stata concepita per la Capitale Europea della Cultura 2001.", zh: "由雷姆·库哈斯设计，为2001年欧洲文化之都而建。" }, curio: { pt: "A sua forma geométrica assimétrica faz lembrar um meteorito que aterrou na cidade.", en: "Its asymmetrical geometric shape resembles a meteorite that landed in the city.", es: "Su forma geométrica asimétrica se asemeja a un meteorito que aterrizó en la ciudad.", fr: "Sa forme géométrique asymétrique ressemble à une météorite qui aurait atterri dans la ville.", de: "Seine asymmetrische Form erinnert an einen Meteoriten, der in der Stadt gelandet ist.", it: "La sua forma geometrica asimmetrica ricorda un meteorite atterrato in città.", zh: "其不对称的几何形状类似于降落在城市中的陨石。" } },
     { id: 4, name: "Estação de São Bento", lat: 41.1455, lon: -8.6105, imgUrl: "./assets/sao-bento.png", unlocked: false, desc: { pt: "Uma das estações mais deslumbrantes do mundo, famosa pelos seus azulejos.", en: "One of the most stunning stations in the world, famous for its tiles.", es: "Una de las estaciones más impresionantes del mundo, famosa por sus azulejos.", fr: "L'une des gares les plus époustouflantes au monde, célèbre pour ses azulejos.", de: "Einer der atemberaubendsten Bahnhöfe der Welt, berühmt für seine Kacheln.", it: "Una delle stazioni più straordinarie al mondo, famosa per i suoi azulejos.", zh: "世界上最迷人的火车站之一，以其瓷砖而闻名。" }, hist: { pt: "Construída no século XX sobre as ruínas de um antigo convento.", en: "Built in the 20th century on the ruins of an old convent.", es: "Construida en el siglo XX sobre las ruinas de un antiguo convento.", fr: "Construite au XXe siècle sur les ruines d'un ancien couvent.", de: "Erbaut im 20. Jahrhundert auf den Ruinen eines alten Klosters.", it: "Costruita nel XX secolo sulle rovine di un antico convento.", zh: "建于20世纪，位于一座古老修道院的废墟上。" }, curio: { pt: "Os seus 20 mil azulejos contam detalhadamente a história de Portugal.", en: "Its 20,000 tiles detail the history of Portugal.", es: "Sus 20.000 azulejos detallan la historia de Portugal.", fr: "Ses 20 000 azulejos détaillent l'histoire du Portugal.", de: "Seine 20.000 Kacheln erzählen die Geschichte Portugals.", it: "I suoi 20.000 azulejos raccontano la storia del Portogallo.", zh: "它的两万块瓷砖详细描绘了葡萄牙的历史。" } },
     { id: 5, name: "Avenida dos Aliados", lat: 41.1478, lon: -8.6112, imgUrl: "./assets/aliados.png", unlocked: false, desc: { pt: "O imponente 'salão de visitas' do Porto, ladeado por edifícios em granito.", en: "Porto's imposing 'living room', flanked by granite buildings.", es: "La imponente 'sala de estar' de Oporto, flanqueada por edificios de granito.", fr: "L'imposant 'salon' de Porto, bordé de bâtiments en granit.", de: "Portos imposantes 'Wohnzimmer', gesäumt von Granitgebäuden.", it: "L'imponente 'salotto' di Porto, fiancheggiato da edifici in granito.", zh: "波尔图宏伟的'客厅'，两侧是花岗岩建筑。" }, hist: { pt: "Projetada no século XX para criar uma praça monumental digna das metrópoles europeias.", en: "Designed in the 20th century to create a monumental square worthy of European metropolises.", es: "Diseñada en el siglo XX para crear una plaza monumental digna de las metrópolis europeas.", fr: "Conçue au XXe siècle pour créer une place monumentale digne des métropoles européennes.", de: "Im 20. Jahrhundert entworfen, um einen monumentalen Platz zu schaffen.", it: "Progettata nel XX secolo per creare una piazza monumentale degna delle metropoli europee.", zh: "设计于20世纪，旨在创造一个无愧于欧洲大都市的纪念性广场。" }, curio: { pt: "O nome homenageia os Aliados da 1ª Guerra. É aqui que se celebram as vitórias.", en: "Named after the WWI Allies. This is where victories are celebrated.", es: "Lleva el nombre de los Aliados de la Primera Guerra Mundial. Aquí se celebran las victorias.", fr: "Nommée d'après les Alliés de la 1ère Guerre mondiale. C'est ici que l'on célèbre les victoires.", de: "Benannt nach den Alliierten des Ersten Weltkriegs. Hier werden Siege gefeiert.", it: "Prende il nome dagli Alleati della Prima Guerra Mondiale. È qui che si celebrano le vittorie.", zh: "以一战同盟国的名字命名。这里是庆祝胜利的地方。" } },
-    { id: 6, name: "Teatro Nacional São João", lat: 41.1443, lon: -8.6074, imgUrl: "./assets/sao-joao.png", unlocked: false, desc: { pt: "O teatro mais prestigiado da cidade, com uma arquitetura elegante.", en: "The most prestigious theater in the city, with elegant architecture.", es: "El teatro más prestigioso de la ciudad, con una arquitectura elegante.", fr: "Le théâtre le plus prestigieux de la ville, avec une architecture élégante.", de: "Das renommierteste Theater der Stadt mit eleganter Architektur.", it: "Il teatro più prestigioso della città, con un'architettura elegante.", zh: "这座城市最负盛名的剧院，拥有优雅的建筑。" }, hist: { pt: "O edifício atual foi inaugurado em 1920, após o original de 1798 arder.", en: "The current building opened in 1920, after the 1798 original burned down.", es: "El edificio actual se inauguró en 1920, después de que el original de 1798 se incendiara.", fr: "Le bâtiment actuel a ouvert en 1920, après l'incendie de l'original de 1798.", de: "Das heutige Gebäude wurde 1920 eröffnet, nachdem das Original abbrannte.", it: "L'edificio attuale è stato inaugurato nel 1920, dopo che l'originale del 1798 è bruciato.", zh: "现有的建筑于1920年开放，原建于1798年的建筑被烧毁。" }, curio: { pt: "A sua fachada assemelha-se muito à da Ópera Garnier em Paris.", en: "Its facade closely resembles the Palais Garnier opera house in Paris.", es: "Su fachada se asemeja mucho a la de la Ópera Garnier en París.", fr: "Sa façade ressemble beaucoup à celle de l'Opéra Garnier à Paris.", de: "Seine Fassade ähnelt stark der Opéra Garnier in Paris.", it: "La sua facciata ricorda molto quella dell'Opéra Garnier a Parigi.", zh: "其外观与巴黎加尼叶歌剧院非常相似。" } },
+    { id: 6, name: "Teatro Nacional São João", lat: 41.1443, lon: -8.6074, imgUrl: "./assets/sao-joao.png", unlocked: false, desc: { pt: "O teatro mais prestigiado da cidade, com uma arquitetura elegante.", en: "The most prestigious theater in the city, with elegant architecture.", es: "El teatro más prestigioso de la ciudad, con una arquitectura elegante.", fr: "Le théâtre le plus prestigieux de la ville, avec une architecture élégante.", de: "Das renommierteste Theater der Stadt mit eleganter Architektur.", it: "Il teatro più prestioso della città, con un'architettura elegante.", zh: "这座城市最负盛名的剧院，拥有优雅的建筑。" }, hist: { pt: "O edifício atual foi inaugurado em 1920, após o original de 1798 arder.", en: "The current building opened in 1920, after the 1798 original burned down.", es: "El edificio actual se inauguró en 1920, después de que el original de 1798 se incendiara.", fr: "Le bâtiment actuel a ouvert en 1920, après l'incendie de l'original de 1798.", de: "Das heutige Gebäude wurde 1920 eröffnet, nachdem das Original abbrannte.", it: "L'edificio attuale è stato inaugurato nel 1920, dopo che l'originale del 1798 è bruciato.", zh: "现有的建筑于1920年开放，原建于1798年的建筑被烧毁。" }, curio: { pt: "A sua fachada assemelha-se muito à da Ópera Garnier em Paris.", en: "Its facade closely resembles the Palais Garnier opera house in Paris.", es: "Su fachada se asemeja mucho a la de la Ópera Garnier en París.", fr: "Sa façade ressemble beaucoup à celle de l'Opéra Garnier à Paris.", de: "Seine Fassade ähnelt stark der Opéra Garnier in Paris.", it: "La sua facciata ricorda molto quella dell'Opéra Garnier a Parigi.", zh: "其外观与巴黎加尼叶歌剧院非常相似。" } },
     { id: 7, name: "Torre dos Clérigos", lat: 41.1458, lon: -8.6139, imgUrl: "./assets/clerigos.png", unlocked: false, desc: { pt: "A torre sineira mais alta de Portugal e o ex-líbris do Porto.", en: "The tallest bell tower in Portugal and Porto's iconic landmark.", es: "El campanario más alto de Portugal y el símbolo de Oporto.", fr: "Le plus haut clocher du Portugal et le symbole de Porto.", de: "Der höchste Glockenturm in Portugal und das Wahrzeichen von Porto.", it: "Il campanile più alto del Portogallo e il simbolo di Porto.", zh: "葡萄牙最高的钟楼，也是波尔图的标志性建筑。" }, hist: { pt: "Uma obra-prima barroca desenhada por Nicolau Nasoni no século XVIII.", en: "A baroque masterpiece designed by Nicolau Nasoni in the 18th century.", es: "Una obra maestra barroca diseñada por Nicolau Nasoni en el siglo XVIII.", fr: "Un chef-d'œuvre baroque conçu par Nicolau Nasoni au XVIIIe siècle.", de: "Ein barockes Meisterwerk, das im 18. Jahrhundert von Nicolau Nasoni entworfen wurde.", it: "Un capolavoro barocco progettato da Nicolau Nasoni nel XVIII secolo.", zh: "18世纪由 Nicolau Nasoni 设计的巴洛克式杰作。" }, curio: { pt: "Para teres a melhor vista de 360 graus, tens de subir 225 degraus!", en: "To get the best 360-degree view, you have to climb 225 steps!", es: "¡Para tener la mejor vista de 360 grados, tienes que subir 225 escalones!", fr: "Pour avoir la meilleure vue à 360 degrés, vous devez gravir 225 marches !", de: "Für die beste 360-Grad-Aussicht müssen Sie 225 Stufen erklimmen!", it: "Per avere la migliore vista a 360 gradi, devi salire 225 gradini!", zh: "为了获得最佳的360度视野，您必须爬225级台阶！" } },
     { id: 8, name: "Mosteiro S. Bento da Vitória", lat: 41.1444, lon: -8.6160, imgUrl: "./assets/mosteiro-vitoria.png", unlocked: false, desc: { pt: "Um imponente edifício monástico no coração do antigo bairro judeu.", en: "An imposing monastic building in the heart of the old Jewish quarter.", es: "Un imponente edificio monástico en el corazón de la antigua judería.", fr: "Un imposant bâtiment monastique au cœur de l'ancien quartier juif.", de: "Ein imposantes Klostergebäude im Herzen des alten jüdischen Viertels.", it: "Un imponente edificio monastico nel cuore dell'antico quartiere ebraico.", zh: "位于古老犹太区中心的一座宏伟的修道院建筑。" }, hist: { pt: "A construção começou em 1596 no terreno de uma antiga sinagoga.", en: "Construction began in 1596 on the site of an old synagogue.", es: "La construcción comenzó en 1596 en el sitio de una antigua sinagoga.", fr: "La construction a commencé en 1596 sur le site d'une ancienne synagogue.", de: "Der Bau begann 1596 an der Stelle einer alten Synagoge.", it: "La costruzione iniziò nel 1596 sul sito di un'antica sinagoga.", zh: "建筑始于1596年，原址是一座古老的犹太教堂。" }, curio: { pt: "Chegou a ser utilizado como hospital militar nas Invasões Francesas.", en: "It was used as a military hospital during the French Invasions.", es: "Fue utilizado como hospital militar durante las Invasiones Francesas.", fr: "Il a été utilisé comme hôpital militaire pendant les invasions françaises.", de: "Während der französischen Invasionen wurde es als Militärkrankenhaus genutzt.", it: "È stato utilizzato come ospedale militare durante le Invasioni Francesi.", zh: "在法国入侵期间，它曾被用作军事医院。" } },
     { id: 9, name: "Mercado Ferreira Borges", lat: 41.1418, lon: -8.6148, imgUrl: "./assets/ferreira-borges.png", unlocked: false, desc: { pt: "Um belíssimo edifício vermelho, exemplo da arquitetura do ferro.", en: "A beautiful red building, an example of iron architecture.", es: "Un hermoso edificio rojo, ejemplo de la arquitectura del hierro.", fr: "Un beau bâtiment rouge, exemple de l'architecture en fer.", de: "Ein wunderschönes rotes Gebäude, ein Beispiel für Eisenarchitektur.", it: "Un bellissimo edificio rosso, esempio di architettura in ferro.", zh: "一座美丽的红色建筑，是铁质建筑的典范。" }, hist: { pt: "Construído em 1885, a verdade é que nunca operou como mercado.", en: "Built in 1885, the truth is it never operated as a market.", es: "Construido en 1885, la verdad es que nunca funcionó como mercado.", fr: "Construit en 1885, la vérité est qu'il n'a jamais fonctionné comme marché.", de: "1885 erbaut, diente es eigentlich nie als Markt.", it: "Costruito nel 1885, la verità è che non ha mai funzionato come mercato.", zh: "建于1885年，事实是它从未作为市场运营过。" }, curio: { pt: "Hoje em dia, é uma casa de espetáculos e eventos muito popular.", en: "Today, it is a very popular concert and event venue.", es: "Hoy en día, es un lugar de conciertos y eventos muy popular.", fr: "Aujourd'hui, c'est une salle de concert et d'événements très populaire.", de: "Heute ist es ein sehr beliebter Ort für Konzerte und Veranstaltungen.", it: "Oggi è un luogo molto popolare per concerti ed eventi.", zh: "如今，这是一个非常受欢迎的音乐会和活动场所。" } },
@@ -289,12 +381,10 @@ function checkProximity(userLat, userLon) {
                 
                 if (navigator.vibrate) navigator.vibrate([200, 100, 200]); 
                 
-                // NOVO: Força o desbloqueio visual limpo na hora
                 if (cellElement) {
                     cellElement.classList.remove('warm', 'hot', 'hint-active');
                     cellElement.classList.add('unlocked');
                     
-                    // Injeta a limpeza da imagem à força por cima do CSS base
                     const img = cellElement.querySelector('img');
                     if(img) {
                         img.style.filter = "none";
@@ -304,8 +394,6 @@ function checkProximity(userLat, userLon) {
                 }
                 
                 checkWinConditions();
-                
-                // O EFEITO UAU: Abre o modal passados 800 milissegundos
                 setTimeout(() => { openModal(loc); }, 800);
 
             } else if (cellElement) {
@@ -328,13 +416,8 @@ function checkProximity(userLat, userLon) {
 // =========================================
 function startAppAnimation() {
     const btn = document.getElementById('ob-btn');
-    
     if (navigator.vibrate) navigator.vibrate(30);
-    
-    // Ativa a animação visual do botão
     btn.classList.add('animating');
-    
-    // Avança logo no milissegundo seguinte para a app (sem esperar)
     finishOnboarding();
 }
 
@@ -346,7 +429,7 @@ let gpsIntervalId = null;
 
 function updateGpsIndicator(status) {
     if(!gpsStatus) return;
-    gpsStatus.className = 'gps-dot ' + status; // 'searching', 'active' ou 'error'
+    gpsStatus.className = 'gps-dot ' + status;
 }
 
 function initGPS() {
@@ -354,10 +437,8 @@ function initGPS() {
     
     updateGpsIndicator('searching');
     
-    // Limpa qualquer cão de guarda anterior para não haver duplicações
     if (gpsIntervalId) clearInterval(gpsIntervalId);
 
-    // A função de ataque: pede a localização de forma isolada e agressiva
     const forceLocationCheck = () => {
         navigator.geolocation.getCurrentPosition(
             position => {
@@ -370,19 +451,14 @@ function initGPS() {
                 console.warn("GPS Erro:", error.message);
                 updateGpsIndicator('error');
             },
-            { enableHighAccuracy: true, maximumAge: 0, timeout: 3500 } // Desiste em 3.5s se não houver sinal
+            { enableHighAccuracy: true, maximumAge: 0, timeout: 3500 }
         );
     };
 
-    // Faz a primeira verificação no segundo zero
     forceLocationCheck();
-    
-    // Configura o Cão de Guarda: a cada 4 segundos dispara a verificação
-    // Mesmo que puxes a barra e desligues o GPS, nos próximos 4 segundos ele falha e fica vermelho!
     gpsIntervalId = setInterval(forceLocationCheck, 4000);
 }
 
-// Mantemos na mesma a verificação de quando a app é minimizada
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
         if (localStorage.getItem('oportoBingoIntroSeen') === 'true') {
@@ -400,7 +476,7 @@ function getDistanceFromLatLonInM(lat1, lon1, lat2, lon2) {
     return R * c;
 }
 
-// Regras de Vitória e Confettis (AGORA COM ALERTAS PREMIUM)
+// Regras de Vitória e Confettis
 let lineWon = false;
 function checkWinConditions() {
     const unlockedArr = locations.map(l => l.unlocked);
@@ -552,7 +628,6 @@ window.addEventListener('click', (event) => {
 
 function showHint() {
     if (!userLat || !userLon) {
-        // ALERTA CUSTOMIZADO AO INVÉS DO FEIO
         showCustomAlert(uiTexts[currentLang].alertTitle, uiTexts[currentLang].alertGPS, "📡");
         return;
     }
@@ -580,7 +655,6 @@ function showHint() {
             setTimeout(() => cellElement.classList.remove('hint-active'), 2400); 
         }
     } else {
-        // ALERTA CUSTOMIZADO AO INVÉS DO FEIO
         showCustomAlert(uiTexts[currentLang].alertTitle, uiTexts[currentLang].alertNoHints, "🗺️");
     }
 }

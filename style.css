@@ -32,10 +32,11 @@ header {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* Empurra o OPORTO para baixo, na direção da grelha */
+    justify-content: flex-end; 
     align-items: center;
     width: 100%;
-    padding-top: 15px;
+    padding-bottom: 25px; /* Distância exata para o topo da grelha */
 }
 
 main {
@@ -51,10 +52,11 @@ footer {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* Empurra o BIN'GO para cima, na direção da grelha */
+    justify-content: flex-start; 
     align-items: center;
     width: 100%;
-    padding-bottom: 15px;
+    padding-top: 25px; /* A MESMA distância exata para o fundo da grelha */
 }
 
 /* Tipografia de Jogo de Grande Escala */
@@ -582,15 +584,37 @@ body.day-mode .help-text {
 .start-btn.hidden { opacity: 0; pointer-events: none; }
 
 /* =========================================
-   SISTEMA DE ALERTAS E CORREÇÃO DE BLUR
+   SISTEMA DE ALERTAS (CENTRALIZADO)
    ========================================= */
 #custom-alert { z-index: 9999; }
-.custom-alert-box { text-align: center; max-width: 320px; padding: 30px 25px; }
+
+.custom-alert-box { 
+    text-align: center !important; 
+    max-width: 320px !important; 
+    padding: 30px 25px !important; 
+    /* AS 3 LINHAS QUE FORÇAM O CENTRO: */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
 #alert-icon { font-size: 3.5rem; margin-bottom: 15px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)); }
 #alert-title { color: #00f2fe; margin-bottom: 15px; font-size: 1.8rem; font-family: 'Luckiest Guy', cursive; letter-spacing: 1px; }
 #alert-message { margin-bottom: 25px; font-size: 1.1rem; line-height: 1.5; color: rgba(255,255,255,0.9); font-weight: bold; }
-#alert-ok { width: 100%; opacity: 1; pointer-events: auto; }
-body.day-mode #alert-message { color: #061026; }
+
+#alert-ok { 
+    display: block !important;
+    width: 100% !important; 
+    margin: 0 auto !important; /* CENTRO ABSOLUTO */
+    text-align: center !important;
+    opacity: 1 !important; 
+    pointer-events: auto !important;
+}
+
+/* Proteção da cor do texto no Modo Diurno */
+body.day-mode #alert-message { 
+    color: #061026 !important; 
+}
 
 /* A ORDEM SUPREMA QUE OBRIGA O BROWSER A LIMPAR A IMAGEM */
 .cell.unlocked img {

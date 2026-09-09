@@ -11,6 +11,28 @@
 </head>
 <body>
 
+    <!-- ECRÃ DE BLOQUEIO DE BROWSER (FORÇAR INSTALAÇÃO) -->
+    <div id="install-gate" class="modal hidden">
+        <div class="modal-content" style="padding: 40px 20px;">
+            <div style="font-size: 3.5rem; margin-bottom: 10px;">📲</div>
+            <h2 style="font-size: 1.8rem; margin-bottom: 10px;">Quase lá!</h2>
+            <p style="font-size: 1rem; color: rgba(255,255,255,0.85); margin-bottom: 25px;">
+                O Oporto Bin'Go é um jogo de exploração. Para acederes ao radar GPS, instala a App gratuitamente.
+            </p>
+            
+            <!-- A caixa que vai mudar consoante o telemóvel -->
+            <div id="install-instructions" style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; text-align: left; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.1);">
+            </div>
+
+            <button class="start-btn" onclick="copyAppUrl()" style="width: 100%; margin: 0 auto; height: 45px !important; min-height: 45px;">
+                <span id="copy-btn-text">🔗 Copiar Link da App</span>
+            </button>
+            <p style="font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 15px; line-height: 1.4;">
+                (Se abriste via QR Code, copia o link acima e cola no Chrome/Safari normal)
+            </p>
+        </div>
+    </div>
+    
     <!-- Ícones de Controlo (Top Left) -->
     <div class="top-left-controls">
         <button id="btn-help" class="top-icon-btn" onclick="openHelpModal()">❔</button>

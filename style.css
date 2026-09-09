@@ -741,3 +741,16 @@ body.day-mode .help-card-text strong {
 body.day-mode .help-card-text p {
     color: rgba(6, 16, 38, 0.75) !important;
 }
+
+#install-gate {
+    z-index: 999999 !important; /* Por cima de absolutamente tudo */
+    background: #061026 !important; /* Fundo opaco para esconder a app */
+}
+body.day-mode #install-gate {
+    background: #e0f2fe !important;
+}
+body.day-mode #install-instructions {
+    background: rgba(0, 114, 255, 0.05) !important;
+    border-color: rgba(0, 114, 255, 0.15) !important;
+    color: #061026 !important;
+}

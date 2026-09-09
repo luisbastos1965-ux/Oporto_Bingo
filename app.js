@@ -425,18 +425,17 @@ function startAppAnimation() {
 }
 
 // =========================================
-// MOTOR GPS (O CÃO DE GUARDA)
+// MOTOR GPS SENSÍVEL E OTIMIZADO
 // =========================================
 const gpsStatus = document.getElementById('gps-status');
-let gpsIntervalId = null; 
+let watchId = null; // Usamos watchId em vez de intervalId
 
 function updateGpsIndicator(status) {
     if(!gpsStatus) return;
-    // Se estiver a pesquisar ou a atualizar, fica laranjinha/amarelo elegante e neutro
     if (status === 'searching' || status === 'updating') {
         gpsStatus.className = 'gps-dot searching';
     } else {
-        gpsStatus.className = 'gps-dot ' + status; // 'active' (verde) ou 'error' (vermelho)
+        gpsStatus.className = 'gps-dot ' + status;
     }
 }
 
@@ -445,29 +444,27 @@ function initGPS() {
     
     updateGpsIndicator('searching');
     
-    if (gpsIntervalId) clearInterval(gpsIntervalId);
+    // Limpa qualquer rastreio anterior
+    if (watchId) navigator.geolocation.clearWatch(watchId);
 
-    const forceLocationCheck = () => {
-        updateGpsIndicator('searching'); // Fica laranja enquanto calcula
-        
-        navigator.geolocation.getCurrentPosition(
-            position => {
-                updateGpsIndicator('active'); // Fica verde assim que obtém
-                userLat = position.coords.latitude;
-                userLon = position.coords.longitude;
-                checkProximity(userLat, userLon);
-            },
-            error => {
-                console.warn("GPS Erro:", error.message);
-                // Só fica vermelho se for uma falha real de permissão ou sinal esgotado
-                updateGpsIndicator('error');
-            },
-            { enableHighAccuracy: true, maximumAge: 0, timeout: 3500 }
-        );
-    };
-
-    forceLocationCheck();
-    gpsIntervalId = setInterval(forceLocationCheck, 4000);
+    // O watchPosition deixa o telemóvel gerir o chip do GPS, poupando bateria
+    watchId = navigator.geolocation.watchPosition(
+        position => {
+            updateGpsIndicator('active'); 
+            userLat = position.coords.latitude;
+            userLon = position.coords.longitude;
+            checkProximity(userLat, userLon);
+        },
+        error => {
+            console.warn("GPS Erro:", error.message);
+            updateGpsIndicator('error');
+        },
+        { 
+            enableHighAccuracy: true, 
+            maximumAge: 10000, // Aceita uma localização de há 10 segundos (evita piscar)
+            timeout: 10000     // Dá mais margem ao telemóvel para não dar falso erro
+        }
+    );
 }
 
 document.addEventListener("visibilitychange", () => {
@@ -664,3 +661,55 @@ function showHint() {
         showCustomAlert(uiTexts[currentLang].alertTitle, uiTexts[currentLang].alertNoHints, "🗺️");
     }
 }
+
+// =========================================
+// O PORTÃO DE INSTALAÇÃO UNIVERSAL
+// =========================================
+function checkInstallGate() {
+    const isPWA = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+    const installGate = document.getElementById('install-gate');
+    
+    if (!installGate) return;
+
+    // Se estiver instalado, destrói o portão para não pesar na memória
+    if (isPWA) {
+        installGate.remove();
+        return;
+    }
+
+    // Se for browser, tranca a pessoa de fora
+    installGate.classList.remove('hidden');
+    
+    const instBox = document.getElementById('install-instructions');
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+    // Injeta as instruções perfeitas consoante o telemóvel
+    if (isIOS) {
+        instBox.innerHTML = `
+            <p style="margin: 0 0 10px 0;"><strong>No teu iPhone (Safari):</strong></p>
+            <p style="margin: 0 0 8px 0; font-size: 0.9rem;">1️⃣ Toca em <strong>Partilhar</strong> (quadrado com seta no fundo)</p>
+            <p style="margin: 0; font-size: 0.9rem;">2️⃣ Escolhe <strong>Ecrã Principal</strong></p>
+        `;
+    } else {
+        instBox.innerHTML = `
+            <p style="margin: 0 0 10px 0;"><strong>No teu Android (Chrome):</strong></p>
+            <p style="margin: 0 0 8px 0; font-size: 0.9rem;">1️⃣ Toca nos <strong>3 pontos</strong> (topo direito)</p>
+            <p style="margin: 0; font-size: 0.9rem;">2️⃣ Escolhe <strong>Instalar Aplicação</strong> ou <strong>Ecrã Principal</strong></p>
+        `;
+    }
+}
+
+// Função para salvação em leitores de QR Code
+function copyAppUrl() {
+    if (navigator.vibrate) navigator.vibrate(30);
+    navigator.clipboard.writeText(window.location.href).then(() => {
+        const btnText = document.getElementById('copy-btn-text');
+        btnText.innerText = "✅ Link Copiado!";
+        setTimeout(() => { btnText.innerText = "🔗 Copiar Link da App"; }, 3000);
+    }).catch(err => {
+        console.error('Erro a copiar:', err);
+    });
+}
+
+// Dispara a segurança logo que o código é lido
+checkInstallGate();

@@ -377,11 +377,13 @@ body.day-mode .cell:not(.unlocked) img {
 }
 .top-icon-btn {
     background: rgba(255, 255, 255, 0.1); border: none;
-    color: white; font-size: 1.2rem;
-    width: 36px; height: 36px; border-radius: 50%;
+    color: white; 
+    font-size: 1.4rem; /* Aumentamos ligeiramente o emoji para acompanhar */
+    width: 44px; /* O tamanho mínimo perfeito para o polegar */
+    height: 44px; 
+    border-radius: 50%;
     cursor: pointer; display: flex; justify-content: center; align-items: center;
     backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
-    /* A MAGIA ANTI-SELEÇÃO */
     -webkit-user-select: none; -ms-user-select: none; user-select: none;
 }
 
@@ -600,7 +602,7 @@ body.day-mode #alert-message { color: #061026; }
 /* =========================================
    REESTRUTURAÇÃO PREMIUM DO MODAL DE AJUDA
    ========================================= */
-#help-modal .modal-content.help-box-premium {
+#help-modal .modal-content {
     background: #0d1b3e !important;
     border: 2px solid rgba(0, 242, 254, 0.3) !important;
     border-radius: 28px !important;
@@ -610,6 +612,10 @@ body.day-mode #alert-message { color: #061026; }
     text-align: left !important;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7) !important;
     position: relative !important;
+    
+    /* AS DUAS LINHAS DE SEGURANÇA PARA ECRÃS PEQUENOS: */
+    max-height: 85vh !important;
+    overflow-y: auto !important;
 }
 
 #help-modal .modal-content.help-box-premium h2 {

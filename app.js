@@ -22,6 +22,7 @@ const uiTexts = {
         helpT2: "Perto", help2: "Laranja: Estás a menos de 400m!", 
         helpT3: "Muito Perto", help3: "Vermelho (A pulsar): Menos de 150m!", 
         helpT4: "Desbloquear", help4: "Aproxima-te a menos de 50m.", 
+        helpT5: "Pistas", help5: "Perdido? Clica na bússola para uma dica!",
         alertGPS: "O radar precisa de sinal GPS verde para te dar uma pista!", alertNoHints: "Já não há pistas a dar. Descobriste o mapa todo!", alertTitle: "Aviso", alertOk: "OK" 
     },
     en: { 
@@ -36,6 +37,7 @@ const uiTexts = {
         helpT2: "Close", help2: "Orange: You are under 400m away!", 
         helpT3: "Very Close", help3: "Red (Pulsing): Under 150m away!", 
         helpT4: "Unlock", help4: "Get closer than 50m.", 
+        helpT5: "Hints", help5: "Lost? Click the compass for a hint!",
         alertGPS: "The radar needs a green GPS signal to give you a hint!", alertNoHints: "No more hints available. You discovered the entire map!", alertTitle: "Notice", alertOk: "OK" 
     },
     es: { 
@@ -50,6 +52,7 @@ const uiTexts = {
         helpT2: "Cerca", help2: "Naranja: ¡Estás a menos de 400m!", 
         helpT3: "Muy Cerca", help3: "Rojo (Parpadeando): ¡Menos de 150m!", 
         helpT4: "Desbloquear", help4: "Acércate a menos de 50m.", 
+        helpT5: "Pistas", help5: "¿Perdido? ¡Haz clic en la brújula para una pista!",
         alertGPS: "¡El radar necesita señal GPS verde para darte una pista!", alertNoHints: "No hay más pistas. ¡Descubriste todo el mapa!", alertTitle: "Aviso", alertOk: "OK" 
     },
     fr: { 
@@ -64,6 +67,7 @@ const uiTexts = {
         helpT2: "Près", help2: "Orange : À moins de 400m !", 
         helpT3: "Très Près", help3: "Rouge (Clignotant) : À moins de 150m !", 
         helpT4: "Débloquer", help4: "Approchez à moins de 50m.", 
+        helpT5: "Indices", help5: "Perdu ? Cliquez sur la boussole pour un indice !",
         alertGPS: "Le radar a besoin d'un signal GPS vert pour un indice !", alertNoHints: "Plus d'indices. Vous avez découvert toute la carte !", alertTitle: "Avis", alertOk: "OK" 
     },
     de: { 
@@ -78,6 +82,7 @@ const uiTexts = {
         helpT2: "Nah", help2: "Orange: Unter 400m entfernt!", 
         helpT3: "Sehr Nah", help3: "Rot (Pulsierend): Unter 150m entfernt!", 
         helpT4: "Freischalten", help4: "Nähere dich auf unter 50m.", 
+        helpT5: "Hinweise", help5: "Verloren? Klicke auf den Kompass für einen Tipp!",
         alertGPS: "Das Radar benötigt ein grünes GPS-Signal für Hinweise!", alertNoHints: "Keine Hinweise mehr. Du hast die ganze Karte entdeckt!", alertTitle: "Hinweis", alertOk: "OK" 
     },
     it: { 
@@ -92,6 +97,7 @@ const uiTexts = {
         helpT2: "Vicino", help2: "Arancione: A meno di 400m!", 
         helpT3: "Molto Vicino", help3: "Rosso (Lampeggiante): A meno di 150m!", 
         helpT4: "Sbloccare", help4: "Avvicinati a meno di 50m.", 
+        helpT5: "Indizi", help5: "Perso? Clicca sulla bussola per un suggerimento!",
         alertGPS: "Il radar ha bisogno di un segnale GPS verde per aiutarti!", alertNoHints: "Nessun indizio. Hai scoperto tutta la mappa!", alertTitle: "Avviso", alertOk: "OK" 
     },
     zh: { 
@@ -106,6 +112,7 @@ const uiTexts = {
         helpT2: "接近", help2: "橙色：距离不到400米！", 
         helpT3: "非常接近", help3: "红色（闪烁）：距离不到150米！", 
         helpT4: "解锁", help4: "靠近至50米以内。", 
+        helpT5: "提示", help5: "迷路了？点击指南针获取提示！",
         alertGPS: "雷达需要绿色的GPS信号才能给您提示！", alertNoHints: "没有更多提示了。您已探索整个地图！", alertTitle: "提示", alertOk: "确定" 
     }
 };
@@ -179,6 +186,8 @@ function updateUILanguage() {
         document.getElementById('help-3').innerText = uiTexts[currentLang].help3;
         document.getElementById('help-t4').innerText = uiTexts[currentLang].helpT4;
         document.getElementById('help-4').innerText = uiTexts[currentLang].help4;
+        document.getElementById('help-t5').innerText = uiTexts[currentLang].helpT5;
+        document.getElementById('help-5').innerText = uiTexts[currentLang].help5;
     }
 } // <--- CHAVETA CORretamente FECHADA AQUI
 

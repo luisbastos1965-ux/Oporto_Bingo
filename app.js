@@ -250,7 +250,6 @@ const grid = document.getElementById('bingo-grid');
 const modal = document.getElementById('location-modal');
 const modalImg = document.getElementById('modal-image');
 const modalTitle = document.getElementById('modal-title');
-const closeBtn = document.getElementById('close-modal');
 const unlockSound = document.getElementById('unlock-sound');
 const openSound = document.getElementById('open-sound'); 
 
@@ -352,11 +351,6 @@ function closeModal() {
     if(speechSynthesis.speaking) speechSynthesis.cancel();
     currentLocation = null; 
 }
-
-closeBtn.addEventListener('click', () => {
-    if (navigator.vibrate) navigator.vibrate(50);
-    closeModal();
-});
 
 window.addEventListener('click', (event) => {
     if (event.target === modal) {
@@ -624,11 +618,6 @@ function openHelpModal() {
     if (navigator.vibrate) navigator.vibrate(30);
     helpModal.classList.remove('hidden');
 }
-
-document.getElementById('close-help').addEventListener('click', () => {
-    if (navigator.vibrate) navigator.vibrate(30);
-    helpModal.classList.add('hidden');
-});
 
 window.addEventListener('click', (event) => {
     if (event.target === helpModal) helpModal.classList.add('hidden');

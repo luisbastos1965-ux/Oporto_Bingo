@@ -23,31 +23,58 @@
     <div id="splash-screen">
         <div class="onboarding-wrapper">
             <div class="onboarding-carousel" id="carousel">
-                <!-- Cartão 1 -->
                 <div class="onboard-card">
                     <div class="onboard-icon">🚶‍♂️</div>
                     <h2 id="ob-t1">Explora o Porto</h2>
                     <p id="ob-d1">Caminha pela cidade e descobre os locais históricos escondidos.</p>
                 </div>
-                <!-- Cartão 2 -->
                 <div class="onboard-card">
                     <div class="onboard-icon">📍</div>
                     <h2 id="ob-t2">Radar GPS</h2>
-                    <p id="ob-d2">Fica atento às cores: laranja é perto, vermelho a pulsar é porque estás quase lá!</p>
+                    <p id="ob-d2">Fica atento às cores: laranja é perto, vermelho a pulsar é quase lá!</p>
                 </div>
-                <!-- Cartão 3 -->
                 <div class="onboard-card">
                     <div class="onboard-icon">🔓</div>
                     <h2 id="ob-t3">Desbloqueia a História</h2>
-                    <p id="ob-d3">Aproxima-te a 50 metros para revelar os segredos e ouvir o nosso áudio guia.</p>
-                    <button class="onboard-btn start-btn" id="ob-btn" onclick="finishOnboarding()">Começar</button>
+                    <p id="ob-d3">Aproxima-te a 50 metros para revelar os segredos e ouvir o áudio guia.</p>
                 </div>
             </div>
-            <!-- Os Pontinhos de Navegação -->
-            <div class="onboard-dots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
+            
+            <!-- Footer do Onboarding (Pontos em cima, Botão em baixo) -->
+            <div class="onboarding-footer">
+                <div class="onboard-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <button class="onboard-btn start-btn hidden" id="ob-btn" onclick="finishOnboarding()">Começar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE AJUDA DINÂMICO -->
+    <div id="help-modal" class="modal hidden">
+        <div class="modal-content help-content">
+            <span class="close-btn" id="close-help">&times;</span>
+            <h2 id="help-title">COMO JOGAR</h2>
+            
+            <div class="help-legend">
+                <div class="legend-item">
+                    <div class="legend-icon icon-walk">🚶</div>
+                    <p id="help-1">Caminha pela cidade para explorar.</p>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-box box-warm"></div>
+                    <p id="help-2">Laranja: Estás a menos de 400m!</p>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-box box-hot pulse-anim"></div>
+                    <p id="help-3">Vermelho (A pulsar): Menos de 150m!</p>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-icon icon-unlock">🔓</div>
+                    <p id="help-4">Desbloqueio: Aproxima-te a 50m.</p>
+                </div>
             </div>
         </div>
     </div>

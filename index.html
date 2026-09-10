@@ -140,18 +140,20 @@
                 </div>
             </div>
 
-            <!-- NOVA SECÇÃO: CONTACTOS E REDES SOCIAIS -->
+            <!-- SECÇÃO: CONTACTOS E REDES SOCIAIS -->
             <div id="help-contacts-box" style="margin-top: 25px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
                 <p id="help-contacts-title" style="font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 15px; font-weight: bold;">
                     TourismUP Experiences
                 </p>
                 <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
                     
-                    <a href="mailto:tourismup.experience@gmail.com" style="text-decoration: none; color: white; background: rgba(255,255,255,0.1); padding: 10px 15px; border-radius: 12px; font-size: 0.85rem; display: flex; align-items: center; gap: 8px;">
+                    <!-- Botão Email (Agora abre o modal in-app) -->
+                    <button onclick="openContactModal()" style="border: none; cursor: pointer; color: white; background: rgba(0, 0, 0, 0.25); border: 1px solid rgba(255,255,255,0.15); padding: 10px 15px; border-radius: 12px; font-size: 0.85rem; display: flex; align-items: center; gap: 8px;">
                         📧 Email
-                    </a>
+                    </button>
 
-                    <a href="#" target="_blank" style="text-decoration: none; color: white; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); padding: 10px 15px; border-radius: 12px; font-size: 0.85rem; display: flex; align-items: center; gap: 8px;">
+                    <!-- Botão Instagram (Link oficial real para evitar o refresh) -->
+                    <a href="https://www.instagram.com/o_teu_nome_aqui" target="_blank" style="text-decoration: none; color: white; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); padding: 10px 15px; border-radius: 12px; font-size: 0.85rem; display: flex; align-items: center; gap: 8px;">
                         📸 Instagram
                     </a>
                 </div>
@@ -215,6 +217,28 @@
                 <button id="btn-map" class="action-btn" onclick="openMap()">📍 Como Chegar</button>
                 <button id="btn-audio" class="action-btn hidden" onclick="toggleAudio()">🔊 Ouvir Textos</button>
             </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE CONTACTO IN-APP -->
+    <div id="contact-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" onclick="closeContactModal()">&times;</span>
+            <h2>Falar Connosco</h2>
+            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 20px;">
+                Deixa a tua mensagem e responderemos para o teu email.
+            </p>
+            
+            <form id="contact-form" class="contact-form">
+                <input type="text" name="Nome" placeholder="O teu nome" required>
+                <input type="email" name="Email" placeholder="O teu email" required>
+                <textarea name="Mensagem" rows="4" placeholder="Escreve aqui..." required></textarea>
+                
+                <button type="submit" class="start-btn" id="btn-send-msg" style="width: 100%; margin: 15px auto 0; height: 45px !important; min-height: 45px;">
+                    <span id="send-btn-text">Enviar Mensagem</span>
+                    <div class="btn-loader" id="send-loader"></div>
+                </button>
+            </form>
         </div>
     </div>
 

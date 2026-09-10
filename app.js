@@ -594,14 +594,14 @@ function finishOnboarding() {
     
     setTimeout(() => { if(splash) splash.remove(); }, 1000); 
     
-    // Atualiza para v6 para forçar o telemóvel a ler os parágrafos novos!
-    localStorage.setItem('oportoBingoIntroSeen_v6', 'true'); 
+    // Atualiza para v7 para forçar o telemóvel a ler os parágrafos novos!
+    localStorage.setItem('oportoBingoIntroSeen_v7', 'true'); 
     
     renderGrid();
     initGPS();
 }
 
-const introSeen = localStorage.getItem('oportoBingoIntroSeen_v6');
+const introSeen = localStorage.getItem('oportoBingoIntroSeen_v7');
 if (introSeen === 'true') {
     if (splash) splash.remove();
     if (gridElement) gridElement.classList.remove('hidden');
@@ -778,3 +778,53 @@ async function requestWakeLock() {
 
 // Ativa o ecrã sempre ligado quando o utilizador clica em "Começar" no tutorial
 // Vai à tua função finishOnboarding() e adiciona lá dentro: requestWakeLock();
+
+// =========================================
+// SISTEMA DE CONTACTO IN-APP
+// =========================================
+function openContactModal() {
+    if (navigator.vibrate) navigator.vibrate(30);
+    document.getElementById('help-modal').classList.add('hidden'); // Esconde a ajuda
+    document.getElementById('contact-modal').classList.remove('hidden'); // Abre o formulário
+}
+
+function closeContactModal() {
+    if (navigator.vibrate) navigator.vibrate(30);
+    document.getElementById('contact-modal').classList.add('hidden');
+    document.getElementById('contact-form').reset();
+}
+
+// Intercetar o clique fora do modal de contacto
+window.addEventListener('click', (event) => {
+    if (event.target === document.getElementById('contact-modal')) {
+        closeContactModal();
+    }
+});
+
+// A magia de enviar sem recarregar a página
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Impede que o form saia do jogo
+    
+    const btn = document.getElementById('btn-send-msg');
+    btn.classList.add('animating'); // Mostra a rodinha a girar
+    
+    const formData = new FormData(this);
+    
+    // ATENÇÃO: Altera o "TEU_CODIGO_AQUI" depois de criares a conta no Formspree
+    fetch('https://formspree.io/f/TEU_CODIGO_AQUI', {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+    }).then(response => {
+        btn.classList.remove('animating');
+        if (response.ok) {
+            closeContactModal();
+            showCustomAlert(uiTexts[currentLang].alertTitle, "Mensagem enviada com sucesso! Responderemos em breve.", "✅");
+        } else {
+            showCustomAlert(uiTexts[currentLang].alertTitle, "Ocorreu um erro ao enviar. Tenta de novo.", "❌");
+        }
+    }).catch(error => {
+        btn.classList.remove('animating');
+        showCustomAlert(uiTexts[currentLang].alertTitle, "Sem ligação à internet para enviar a mensagem.", "📡");
+    });
+});

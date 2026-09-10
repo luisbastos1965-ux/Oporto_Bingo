@@ -218,16 +218,16 @@
     <!-- MODAL DE CONTACTO IN-APP -->
     <div id="contact-modal" class="modal hidden">
         <div class="modal-content">
-            <span class="close" onclick="closeContactModal()">&times;</span>
-            <h2>Falar Connosco</h2>
-            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 20px;">
+            <!-- Retirámos o X daqui! -->
+            <h2 id="contact-title">Falar Connosco</h2>
+            <p id="contact-desc" style="font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 20px;">
                 Deixa a tua mensagem e responderemos para o teu email.
             </p>
             
             <form id="contact-form" class="contact-form">
-                <input type="text" name="Nome" placeholder="O teu nome" required>
-                <input type="email" name="Email" placeholder="O teu email" required>
-                <textarea name="Mensagem" rows="4" placeholder="Escreve aqui..." required></textarea>
+                <input type="text" id="contact-name" name="Nome" placeholder="O teu nome" required>
+                <input type="email" id="contact-email" name="Email" placeholder="O teu email" required>
+                <textarea id="contact-msg" name="Mensagem" rows="4" placeholder="Escreve aqui..." required></textarea>
                 
                 <button type="submit" class="start-btn" id="btn-send-msg" style="width: 100%; margin: 15px auto 0; height: 45px !important; min-height: 45px;">
                     <span id="send-btn-text">Enviar Mensagem</span>

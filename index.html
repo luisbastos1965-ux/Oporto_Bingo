@@ -16,7 +16,9 @@
         <div class="modal-content" style="padding: 40px 20px;">
             <div style="font-size: 3.5rem; margin-bottom: 10px;">📲</div>
             <h2 style="font-size: 1.8rem; margin-bottom: 10px;">Quase lá!</h2>
-            <p style="font-size: 1rem; color: rgba(255,255,255,0.85); margin-bottom: 25px;">
+            
+            <!-- CORREÇÃO 1: Tirámos a cor branca forçada e usámos opacity -->
+            <p style="font-size: 1rem; opacity: 0.85; margin-bottom: 25px;">
                 O Oporto Bin'Go é uma experiência interativa. Para jogares e acederes ao radar GPS, tens de instalar a App.
             </p>
 
@@ -38,7 +40,9 @@
             <button class="start-btn copy-link-btn" onclick="copyAppUrl()" style="width: 100%; margin: 0 auto; height: 45px !important; min-height: 45px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); box-shadow: none;">
                 <span id="copy-btn-text">🔗 Copiar Link da App</span>
             </button>
-            <p style="font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 15px; line-height: 1.4;">
+            
+            <!-- CORREÇÃO 2: Tirámos a cor branca forçada e usámos opacity -->
+            <p style="font-size: 0.75rem; opacity: 0.6; margin-top: 15px; line-height: 1.4;">
                 (Leste um QR Code? Copia o link e abre no Chrome/Safari)
             </p>
         </div>
@@ -157,7 +161,10 @@
     </main>
 
     <footer>
-        <h2 class="hidden">Bin'Go</h2>
+        <!-- A Nova Assinatura substitui o h2 antigo -->
+        <div id="brand-footer" class="hidden" style="text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.4); padding-top: 10px;">
+            Powered by <strong style="color: #00f2fe; letter-spacing: 0.5px;">TourismUP</strong>
+        </div>
     </footer>
 
     <audio id="unlock-sound" src="./assets/unlock.mp3" preload="auto"></audio>

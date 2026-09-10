@@ -586,19 +586,29 @@ function finishOnboarding() {
     if (navigator.vibrate) navigator.vibrate(50);
     if (splash) splash.classList.add('fade-out');
     if (gridElement) gridElement.classList.remove('hidden');
-    if (footerTitle) footerTitle.classList.remove('hidden');
+    
+    // NOVA LINHA: Mostra a assinatura da TourismUP
+    if (document.getElementById('brand-footer')) {
+        document.getElementById('brand-footer').classList.remove('hidden');
+    }
     
     setTimeout(() => { if(splash) splash.remove(); }, 1000); 
-    localStorage.setItem('oportoBingoIntroSeen_v3', 'true');
+    
+    // Atualiza para v4 para forçar o telemóvel a ler os parágrafos novos!
+    localStorage.setItem('oportoBingoIntroSeen_v4', 'true'); 
+    
     renderGrid();
     initGPS();
 }
 
-const introSeen = localStorage.getItem('oportoBingoIntroSeen_v3');
+const introSeen = localStorage.getItem('oportoBingoIntroSeen_v4');
 if (introSeen === 'true') {
     if (splash) splash.remove();
     if (gridElement) gridElement.classList.remove('hidden');
-    if (footerTitle) footerTitle.classList.remove('hidden');
+    
+    // NOVA LINHA: Substitui o antigo footerTitle e mostra a assinatura da marca
+    if (document.getElementById('brand-footer')) document.getElementById('brand-footer').classList.remove('hidden');
+    
     initGPS();
 }
 

@@ -776,7 +776,10 @@ body.day-mode .copy-link-btn {
 }
 .brand-signature strong {
     color: #00f2fe; 
-    letter-spacing: 0.5px;
+    letter-spacing: 1.5px;
+    font-family: 'Luckiest Guy', cursive; /* Aplica a fonte do jogo */
+    font-size: 1.1rem; /* Aumenta um bocadinho para se ler bem */
+    font-weight: normal; /* A fonte já é grossa por natureza */
 }
 
 /* Proteção no Modo Dia */

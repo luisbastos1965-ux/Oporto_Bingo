@@ -594,14 +594,14 @@ function finishOnboarding() {
     
     setTimeout(() => { if(splash) splash.remove(); }, 1000); 
     
-    // Atualiza para v5 para forçar o telemóvel a ler os parágrafos novos!
-    localStorage.setItem('oportoBingoIntroSeen_v5', 'true'); 
+    // Atualiza para v6 para forçar o telemóvel a ler os parágrafos novos!
+    localStorage.setItem('oportoBingoIntroSeen_v6', 'true'); 
     
     renderGrid();
     initGPS();
 }
 
-const introSeen = localStorage.getItem('oportoBingoIntroSeen_v5');
+const introSeen = localStorage.getItem('oportoBingoIntroSeen_v6');
 if (introSeen === 'true') {
     if (splash) splash.remove();
     if (gridElement) gridElement.classList.remove('hidden');

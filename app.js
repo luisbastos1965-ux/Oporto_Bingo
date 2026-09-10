@@ -196,7 +196,7 @@ function updateUILanguage() {
         document.getElementById('help-t5').innerText = uiTexts[currentLang].helpT5;
         document.getElementById('help-5').innerText = uiTexts[currentLang].help5;
     }
-} // <--- CHAVETA CORretamente FECHADA AQUI
+}
 
 // =========================================
 // SISTEMA DE ALERTAS CUSTOMIZADO
@@ -347,7 +347,6 @@ function openModal(loc) {
         let lockMsg = uiTexts[currentLang].locked;
         if (userLat && userLon) {
             const dist = Math.round(getDistanceFromLatLonInM(userLat, userLon, loc.lat, loc.lon));
-            // A MAGIA DA TRADUÇÃO ENTRA AQUI:
             lockMsg += `\n\n${uiTexts[currentLang].dist} ${dist} ${uiTexts[currentLang].meters}`;
         }
         modalDesc.innerText = lockMsg;
@@ -368,15 +367,6 @@ function closeModal() {
     if(speechSynthesis.speaking) speechSynthesis.cancel();
     currentLocation = null; 
 }
-
-window.addEventListener('click', (event) => {
-    if (event.target === modal) {
-        closeModal();
-    }
-    if (event.target === document.getElementById('custom-alert')) {
-        closeCustomAlert();
-    }
-});
 
 // Algoritmo de Localização e Radar
 function checkProximity(userLat, userLon) {
@@ -436,7 +426,7 @@ function startAppAnimation() {
 // MOTOR GPS SENSÍVEL E OTIMIZADO
 // =========================================
 const gpsStatus = document.getElementById('gps-status');
-let watchId = null; // Usamos watchId em vez de intervalId
+let watchId = null; 
 
 function updateGpsIndicator(status) {
     if(!gpsStatus) return;
@@ -452,10 +442,8 @@ function initGPS() {
     
     updateGpsIndicator('searching');
     
-    // Limpa qualquer rastreio anterior
     if (watchId) navigator.geolocation.clearWatch(watchId);
 
-    // O watchPosition deixa o telemóvel gerir o chip do GPS, poupando bateria
     watchId = navigator.geolocation.watchPosition(
         position => {
             updateGpsIndicator('active'); 
@@ -469,15 +457,15 @@ function initGPS() {
         },
         { 
             enableHighAccuracy: true, 
-            maximumAge: 10000, // Aceita uma localização de há 10 segundos (evita piscar)
-            timeout: 10000     // Dá mais margem ao telemóvel para não dar falso erro
+            maximumAge: 10000, 
+            timeout: 10000    
         }
     );
 }
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_v11') === 'true') {
             initGPS();
         }
     }
@@ -587,31 +575,27 @@ function finishOnboarding() {
     if (splash) splash.classList.add('fade-out');
     if (gridElement) gridElement.classList.remove('hidden');
     
-    // Mostra a palavra "Bin'Go"
     if (document.getElementById('footer-title')) {
         document.getElementById('footer-title').classList.remove('hidden');
     }
     
-    // Mostra a assinatura da TourismUP
     if (document.getElementById('brand-footer')) {
         document.getElementById('brand-footer').classList.remove('hidden');
     }
     
     setTimeout(() => { if(splash) splash.remove(); }, 1000); 
     
-    // Podes deixar estar a versão que tinhas
-    localStorage.setItem('oportoBingoIntroSeen_v9', 'true'); 
+    localStorage.setItem('oportoBingoIntroSeen_v11', 'true'); 
     
     renderGrid();
     initGPS();
 }
 
-const introSeen = localStorage.getItem('oportoBingoIntroSeen_v9');
+const introSeen = localStorage.getItem('oportoBingoIntroSeen_v11');
 if (introSeen === 'true') {
     if (splash) splash.remove();
     if (gridElement) gridElement.classList.remove('hidden');
     
-    // Mostra o Bin'Go E a marca
     if (document.getElementById('footer-title')) document.getElementById('footer-title').classList.remove('hidden');
     if (document.getElementById('brand-footer')) document.getElementById('brand-footer').classList.remove('hidden');
     
@@ -648,10 +632,6 @@ function openHelpModal() {
     if (navigator.vibrate) navigator.vibrate(30);
     helpModal.classList.remove('hidden');
 }
-
-window.addEventListener('click', (event) => {
-    if (event.target === helpModal) helpModal.classList.add('hidden');
-});
 
 function showHint() {
     if (!userLat || !userLon) {
@@ -702,34 +682,27 @@ function isPWA() {
 function checkInstallGate() {
     if (!installGate) return;
 
-    // Se estiver a correr como App instalada, destrói o portão e deixa jogar
     if (isPWA()) {
         installGate.remove();
         return;
     }
 
-    // Se estiver no Browser, tranca o jogo
     installGate.classList.remove('hidden');
 
-    // Verifica que telemóvel é
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
     if (isIOS) {
-        // Mostra instruções iOS
         if (iosBox) iosBox.classList.remove('hidden');
     } else {
-        // Mostra botão Android
         if (androidBox) androidBox.classList.remove('hidden');
     }
 }
 
-// Ouve o convite do Android para instalar
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
-    deferredPrompt = e; // Guarda o evento para o botão usar
+    deferredPrompt = e; 
 });
 
-// Ação do Botão Mágico (Android)
 if (btnInstallPwa) {
     btnInstallPwa.addEventListener('click', async () => {
         if (deferredPrompt) {
@@ -737,13 +710,11 @@ if (btnInstallPwa) {
             const { outcome } = await deferredPrompt.userChoice;
             deferredPrompt = null;
         } else {
-            // Se o telemóvel bloquear o prompt (ex: Navegador In-App do Instagram)
             showCustomAlert("Aviso", "Abre as opções (3 pontos) no topo direito e escolhe 'Instalar Aplicação'.", "📱");
         }
     });
 }
 
-// Botão de Resgate (Copiar Link)
 function copyAppUrl() {
     if (navigator.vibrate) navigator.vibrate(30);
     navigator.clipboard.writeText(window.location.href).then(() => {
@@ -755,8 +726,7 @@ function copyAppUrl() {
     });
 }
 
-// Dispara a segurança inicial
-checkInstallGate(); // Desativado temporariamente para testes
+checkInstallGate(); 
 
 // =========================================
 // WAKE LOCK (IMPEDIR O ECRÃ DE APAGAR)
@@ -769,7 +739,6 @@ async function requestWakeLock() {
             wakeLock = await navigator.wakeLock.request('screen');
             console.log('Ecrã mantido ligado ativo!');
             
-            // Se o turista for a outra app e voltar, temos de pedir o bloqueio de novo
             document.addEventListener('visibilitychange', async () => {
                 if (wakeLock !== null && document.visibilityState === 'visible') {
                     wakeLock = await navigator.wakeLock.request('screen');
@@ -781,16 +750,13 @@ async function requestWakeLock() {
     }
 }
 
-// Ativa o ecrã sempre ligado quando o utilizador clica em "Começar" no tutorial
-// Vai à tua função finishOnboarding() e adiciona lá dentro: requestWakeLock();
-
 // =========================================
 // SISTEMA DE CONTACTO IN-APP
 // =========================================
 function openContactModal() {
     if (navigator.vibrate) navigator.vibrate(30);
-    document.getElementById('help-modal').classList.add('hidden'); // Esconde a ajuda
-    document.getElementById('contact-modal').classList.remove('hidden'); // Abre o formulário
+    document.getElementById('help-modal').classList.add('hidden'); 
+    document.getElementById('contact-modal').classList.remove('hidden'); 
 }
 
 function closeContactModal() {
@@ -799,23 +765,14 @@ function closeContactModal() {
     document.getElementById('contact-form').reset();
 }
 
-// Intercetar o clique fora do modal de contacto
-window.addEventListener('click', (event) => {
-    if (event.target === document.getElementById('contact-modal')) {
-        closeContactModal();
-    }
-});
-
-// A magia de enviar sem recarregar a página
 document.getElementById('contact-form').addEventListener('submit', function(e) {
-    e.preventDefault(); // Impede que o form saia do jogo
+    e.preventDefault(); 
     
     const btn = document.getElementById('btn-send-msg');
-    btn.classList.add('animating'); // Mostra a rodinha a girar
+    btn.classList.add('animating'); 
     
     const formData = new FormData(this);
     
-    // ATENÇÃO: Altera o "TEU_CODIGO_AQUI" depois de criares a conta no Formspree
     fetch('https://formspree.io/f/TEU_CODIGO_AQUI', {
         method: 'POST',
         body: formData,
@@ -831,5 +788,19 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
     }).catch(error => {
         btn.classList.remove('animating');
         showCustomAlert(uiTexts[currentLang].alertTitle, "Sem ligação à internet para enviar a mensagem.", "📡");
+    });
+});
+
+// =========================================
+// GESTOR INTELIGENTE DE MODAIS (Corrige o bug do iOS)
+// =========================================
+document.querySelectorAll('.modal').forEach(modalElement => {
+    modalElement.addEventListener('click', function(event) {
+        if (event.target === this) {
+            if (this.id === 'location-modal') closeModal();
+            if (this.id === 'custom-alert') closeCustomAlert();
+            if (this.id === 'help-modal') this.classList.add('hidden');
+            if (this.id === 'contact-modal') closeContactModal();
+        }
     });
 });

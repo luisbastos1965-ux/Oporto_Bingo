@@ -601,7 +601,7 @@ function finishOnboarding() {
     
     setTimeout(() => { if(splash) splash.remove(); }, 1000); 
     
-    localStorage.setItem('oportoBingoIntroSeen_v12', 'true'); 
+    localStorage.setItem('oportoBingoIntroSeen_v13', 'true'); 
     
     renderGrid();
     initGPS();

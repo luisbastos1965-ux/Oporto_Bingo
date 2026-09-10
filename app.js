@@ -587,21 +587,26 @@ function finishOnboarding() {
     if (splash) splash.classList.add('fade-out');
     if (gridElement) gridElement.classList.remove('hidden');
     
-    // NOVA LINHA: Mostra a assinatura da TourismUP
+    // Mostra a palavra "Bin'Go"
+    if (document.getElementById('footer-title')) {
+        document.getElementById('footer-title').classList.remove('hidden');
+    }
+    
+    // Mostra a assinatura da TourismUP
     if (document.getElementById('brand-footer')) {
         document.getElementById('brand-footer').classList.remove('hidden');
     }
     
     setTimeout(() => { if(splash) splash.remove(); }, 1000); 
     
-    // Atualiza para v8 para forçar o telemóvel a ler os parágrafos novos!
-    localStorage.setItem('oportoBingoIntroSeen_v8', 'true'); 
+    // Podes deixar estar a versão que tinhas
+    localStorage.setItem('oportoBingoIntroSeen_v9', 'true'); 
     
     renderGrid();
     initGPS();
 }
 
-const introSeen = localStorage.getItem('oportoBingoIntroSeen_v8');
+const introSeen = localStorage.getItem('oportoBingoIntroSeen_v9');
 if (introSeen === 'true') {
     if (splash) splash.remove();
     if (gridElement) gridElement.classList.remove('hidden');

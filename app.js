@@ -594,19 +594,20 @@ function finishOnboarding() {
     
     setTimeout(() => { if(splash) splash.remove(); }, 1000); 
     
-    // Atualiza para v4 para forçar o telemóvel a ler os parágrafos novos!
-    localStorage.setItem('oportoBingoIntroSeen_v4', 'true'); 
+    // Atualiza para v5 para forçar o telemóvel a ler os parágrafos novos!
+    localStorage.setItem('oportoBingoIntroSeen_v5', 'true'); 
     
     renderGrid();
     initGPS();
 }
 
-const introSeen = localStorage.getItem('oportoBingoIntroSeen_v4');
+const introSeen = localStorage.getItem('oportoBingoIntroSeen_v5');
 if (introSeen === 'true') {
     if (splash) splash.remove();
     if (gridElement) gridElement.classList.remove('hidden');
     
-    // NOVA LINHA: Substitui o antigo footerTitle e mostra a assinatura da marca
+    // Mostra o Bin'Go E a marca
+    if (document.getElementById('footer-title')) document.getElementById('footer-title').classList.remove('hidden');
     if (document.getElementById('brand-footer')) document.getElementById('brand-footer').classList.remove('hidden');
     
     initGPS();

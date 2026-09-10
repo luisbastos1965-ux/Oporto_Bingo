@@ -762,3 +762,23 @@ body.day-mode .copy-link-btn {
     border: 1px solid rgba(0, 114, 255, 0.3) !important;
     color: #0072ff !important;
 }
+
+/* Assinatura no Modo Noite (Base) */
+.brand-signature {
+    margin-top: 5px; 
+    text-align: center; 
+    font-size: 0.8rem; 
+    color: rgba(255,255,255,0.4);
+}
+.brand-signature strong {
+    color: #00f2fe; 
+    letter-spacing: 0.5px;
+}
+
+/* Proteção no Modo Dia */
+body.day-mode .brand-signature { color: rgba(6, 16, 38, 0.6) !important; }
+body.day-mode .brand-signature strong { color: #0072ff !important; }
+
+/* Proteção dos Contactos no Modo Dia */
+body.day-mode #help-contacts-title { color: #061026 !important; }
+body.day-mode #help-contacts-box { border-top-color: rgba(0, 114, 255, 0.15) !important; }

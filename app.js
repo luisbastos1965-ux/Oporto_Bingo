@@ -361,19 +361,23 @@ function openModal(loc) {
         const firstTabBtn = document.querySelector('.tab-btn');
         if(firstTabBtn) firstTabBtn.click(); 
     } else {
+        // MODO BLOQUEADO: Imagem desfocada e sem texto descritivo
         modalImg.src = loc.imgUrl;
         modalImg.classList.remove('hidden');
         modalImg.classList.add('locked-blur'); 
         
+        // Apenas calcula e mostra as caixas de distância e tempo em tempo real
         if (userLat && userLon) {
             const dist = getDistanceFromLatLonInM(userLat, userLon, loc.lat, loc.lon);
             const { distText, timeText } = formatDistanceAndDuration(dist);
-            modalDesc.innerHTML = `<div class="locked-distance">
-                📍 <strong class="dist-value">${distText}</strong><br>
-                <span style="font-size: 0.95rem; opacity: 0.8; font-weight: normal;">🚶 ${timeText}</span>
-            </div>`;
+            modalDesc.innerHTML = `
+                <div class="locked-stats-row">
+                    <div class="stat-box">📍 <span class="dist-value">${distText}</span></div>
+                    <div class="stat-box">🚶 <span class="time-value">${timeText}</span></div>
+                </div>
+            `;
         } else {
-            modalDesc.innerHTML = `<div class="locked-distance">📍 A calcular...</div>`;
+            modalDesc.innerHTML = `<div class="locked-stats-row"><div class="stat-box">📍 A calcular...</div></div>`;
         }
         
         tabsContainer.classList.add('hidden');
@@ -507,13 +511,15 @@ function initGPS() {
                 
                 const descElement = document.getElementById('modal-desc');
                 if (descElement) {
-                    descElement.innerHTML = `<div class="locked-distance">
-                        📍 <strong class="dist-value">${distText}</strong><br>
-                        <span style="font-size: 0.95rem; opacity: 0.8; font-weight: normal;">🚶 ${timeText}</span>
-                    </div>`;
+                    descElement.innerHTML = `
+                        <div class="locked-stats-row">
+                            <div class="stat-box">📍 <span class="dist-value">${distText}</span></div>
+                            <div class="stat-box">🚶 <span class="time-value">${timeText}</span></div>
+                        </div>
+                    `;
                 }
             }
-        },
+        }, 
         error => {
             console.warn("GPS Erro:", error.message);
             updateGpsIndicator('error');
@@ -528,7 +534,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_v15') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_16') === 'true') {
             initGPS();
         }
     }

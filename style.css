@@ -1083,17 +1083,19 @@ body.day-mode .locked-stats-row {
 }
 
 /* =========================================
-   MINI-PÍLULA DE ÍCONES + BOTÃO NA MESMA LINHA
+   LINHA ÚNICA: MINI-PÍLULA + BOTÃO COMO CHEGAR
    ========================================= */
 
 .modal-action-row {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    margin: 10px 0 4px 0;
+    gap: 12px;
+    margin: 15px 0 5px 0;
+    width: 100%;
 }
 
+/* Mini-pílula compacta só com os ícones */
 .mini-icon-pill {
     display: flex;
     align-items: center;
@@ -1104,16 +1106,20 @@ body.day-mode .locked-stats-row {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
 }
 
 .icon-pill-btn {
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 6px 10px;
-    font-size: 1.1rem;
+    padding: 8px 10px;
+    font-size: 1.15rem;
     border-radius: 10px;
     transition: background 0.2s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .icon-pill-btn:active {
@@ -1123,7 +1129,51 @@ body.day-mode .locked-stats-row {
 
 .pill-divider-mini {
     width: 1px;
-    height: 14px;
+    height: 16px;
     background: rgba(255, 255, 255, 0.2);
     margin: 0 2px;
+}
+
+/* Ajuste do botão Como Chegar para encaixar ao lado da mini-pílula */
+.actions-bar.locked-actions {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    margin-top: 10px !important;
+    padding-top: 0 !important;
+    border-top: none !important;
+}
+
+.actions-bar.locked-actions #btn-map {
+    background: linear-gradient(135deg, #00f2fe 0%, #0072ff 100%) !important;
+    border: none !important;
+    color: #ffffff !important;
+    width: auto !important;
+    flex: 1 !important;
+    max-width: 190px !important;
+    height: 44px !important;
+    border-radius: 14px !important;
+    margin: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    font-weight: 700 !important;
+    font-size: 0.95rem !important;
+    gap: 6px !important;
+    box-shadow: 0 6px 16px rgba(0, 114, 255, 0.3) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.actions-bar.locked-actions #btn-map:active {
+    transform: scale(0.97);
+}
+
+/* Modo Diurno para a mini-pílula */
+body.day-mode .mini-icon-pill {
+    background: rgba(0, 114, 255, 0.05);
+    border-color: rgba(0, 114, 255, 0.15);
+}
+body.day-mode .pill-divider-mini {
+    background: rgba(0, 114, 255, 0.15);
 }

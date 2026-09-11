@@ -852,3 +852,65 @@ body.day-mode .contact-form textarea:focus {
     box-shadow: 0 0 10px rgba(0, 114, 255, 0.2);
     background: #ffffff;
 }
+
+/* =========================================
+   MODAL: ECRÃ BLOQUEADO & AFINAÇÕES
+   ========================================= */
+
+/* 1. Imagem Bloqueada (Efeito Mistério) */
+img.locked-blur {
+    filter: blur(6px) brightness(0.6) grayscale(0.5);
+    -webkit-filter: blur(6px) brightness(0.6) grayscale(0.5);
+    opacity: 0.9;
+    transform: scale(0.98);
+    transition: all 0.3s ease;
+}
+
+/* 2. Destaque da Distância */
+.locked-distance {
+    text-align: center;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.8);
+    margin: 15px 0;
+}
+.locked-distance .dist-value {
+    color: #00f2fe;
+    font-size: 1.4rem;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+}
+body.day-mode .locked-distance { color: rgba(6, 16, 38, 0.7); }
+body.day-mode .locked-distance .dist-value { color: #0072ff; }
+
+/* 3. Abas Inativas (Mais visíveis) */
+.tab-btn {
+    color: rgba(255, 255, 255, 0.65) !important;
+}
+.tab-btn.active {
+    color: white !important;
+}
+body.day-mode .tab-btn {
+    color: rgba(6, 16, 38, 0.6) !important;
+}
+body.day-mode .tab-btn.active {
+    color: #061026 !important;
+}
+
+/* 4. Botão Único 'Como Chegar' perfeitamente alinhado */
+.actions-bar.locked-actions {
+    justify-content: center;
+}
+.actions-bar.locked-actions #btn-map {
+    background: rgba(0, 242, 254, 0.1); 
+    border: 1px solid rgba(0, 242, 254, 0.4);
+    width: 200px; /* Largura elegante */
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+body.day-mode .actions-bar.locked-actions #btn-map {
+    background: rgba(0, 114, 255, 0.1);
+    border-color: rgba(0, 114, 255, 0.4);
+}

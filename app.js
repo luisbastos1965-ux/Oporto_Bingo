@@ -329,7 +329,7 @@ function renderGrid() {
     });
 }
 
-// Janela Modal Inteligente
+// Janela Modal Inteligente (Atualizada para Imagens Desfocadas e Distância Destaque)
 function openModal(loc) {
     currentLocation = loc;
     modalTitle.innerText = loc.name;
@@ -344,31 +344,39 @@ function openModal(loc) {
 
     const tabsContainer = document.getElementById('modal-tabs');
     const btnAudio = document.getElementById('btn-audio');
+    const actionsBar = document.getElementById('modal-actions');
 
     if (loc.unlocked) {
         modalImg.src = loc.imgUrl;
-        modalImg.classList.remove('hidden');
-        modalDesc.innerText = loc.desc[currentLang];
+        modalImg.classList.remove('hidden', 'locked-blur'); 
+        
+        modalDesc.innerHTML = loc.desc[currentLang];
         modalHist.innerText = loc.hist[currentLang];
         modalCurio.innerText = loc.curio[currentLang];
         
         tabsContainer.classList.remove('hidden');
         btnAudio.classList.remove('hidden');
+        actionsBar.classList.remove('locked-actions'); 
         
         const firstTabBtn = document.querySelector('.tab-btn');
         if(firstTabBtn) firstTabBtn.click(); 
     } else {
-        modalImg.classList.add('hidden');
+        // MODO BLOQUEADO (Mostra a imagem, mas com blur)
+        modalImg.src = loc.imgUrl;
+        modalImg.classList.remove('hidden');
+        modalImg.classList.add('locked-blur'); 
         
-        let lockMsg = uiTexts[currentLang].locked;
+        // Remove a frase e destaca apenas a distância
         if (userLat && userLon) {
             const dist = Math.round(getDistanceFromLatLonInM(userLat, userLon, loc.lat, loc.lon));
-            lockMsg += `\n\n${uiTexts[currentLang].dist} ${dist} ${uiTexts[currentLang].meters}`;
+            modalDesc.innerHTML = `<div class="locked-distance"><span style="font-size: 1.2rem;">📍</span> ${uiTexts[currentLang].dist.replace('📍 ', '')} <strong class="dist-value">${dist} ${uiTexts[currentLang].meters}</strong></div>`;
+        } else {
+            modalDesc.innerHTML = `<div class="locked-distance">📍 A calcular...</div>`;
         }
-        modalDesc.innerText = lockMsg;
         
         tabsContainer.classList.add('hidden');
         btnAudio.classList.add('hidden');
+        actionsBar.classList.add('locked-actions'); 
         
         const tabContents = document.getElementsByClassName("tab-content");
         for (let i = 0; i < tabContents.length; i++) tabContents[i].classList.remove("active");
@@ -481,7 +489,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_v12') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_v14') === 'true') {
             initGPS();
         }
     }
@@ -586,28 +594,25 @@ if(carousel) {
     });
 }
 
+// O Tutorial definitivo (Nunca mais repete depois desta versão)
 function finishOnboarding() {
     if (navigator.vibrate) navigator.vibrate(50);
     if (splash) splash.classList.add('fade-out');
     if (gridElement) gridElement.classList.remove('hidden');
     
-    if (document.getElementById('footer-title')) {
-        document.getElementById('footer-title').classList.remove('hidden');
-    }
-    
-    if (document.getElementById('brand-footer')) {
-        document.getElementById('brand-footer').classList.remove('hidden');
-    }
+    if (document.getElementById('footer-title')) document.getElementById('footer-title').classList.remove('hidden');
+    if (document.getElementById('brand-footer')) document.getElementById('brand-footer').classList.remove('hidden');
     
     setTimeout(() => { if(splash) splash.remove(); }, 1000); 
     
-    localStorage.setItem('oportoBingoIntroSeen_v13', 'true'); 
+    // CHAVE DEFINITIVA:
+    localStorage.setItem('oportoBingoIntroSeen_Final', 'true'); 
     
     renderGrid();
     initGPS();
 }
 
-const introSeen = localStorage.getItem('oportoBingoIntroSeen_v12');
+const introSeen = localStorage.getItem('oportoBingoIntroSeen_Final');
 if (introSeen === 'true') {
     if (splash) splash.remove();
     if (gridElement) gridElement.classList.remove('hidden');

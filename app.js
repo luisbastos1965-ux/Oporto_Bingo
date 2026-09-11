@@ -378,7 +378,7 @@ function openModal(loc) {
             const dist = getDistanceFromLatLonInM(userLat, userLon, loc.lat, loc.lon);
             const { distText, timeText } = formatDistanceAndDuration(dist);
             modalDesc.innerHTML = `
-                <div class="locked-stats-row">
+                <div class="locked-stats-container">
                     <div class="stat-box-dist">
                         <span>📍</span> <span class="dist-value">${distText}</span>
                     </div>
@@ -388,7 +388,7 @@ function openModal(loc) {
                 </div>
             `;
         } else {
-            modalDesc.innerHTML = `<div class="locked-stats-row"><div class="stat-box">📍 A calcular...</div></div>`;
+            modalDesc.innerHTML = `<div class="locked-stats-container"><div class="stat-box-dist">📍 A calcular...</div></div>`;
         }
         
         tabsContainer.classList.add('hidden');
@@ -546,7 +546,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_22') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_23') === 'true') {
             initGPS();
         }
     }

@@ -915,60 +915,90 @@ body.day-mode .actions-bar.locked-actions #btn-map {
     border-color: rgba(0, 114, 255, 0.4);
 }
 
-/* Linha compacta lado a lado sem espaços mortos */
+/* =========================================
+   REDESENHO PROFISSIONAL: CARD DE BLOQUEIO
+   ========================================= */
+
+/* Contentor único unificado para Distância + Tempo a pé */
 .locked-stats-row {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 12px;
-    margin: 8px 0; /* Margem reduzida em cima e em baixo */
+    background: rgba(0, 114, 255, 0.04);
+    border: 1px solid rgba(0, 114, 255, 0.12);
+    border-radius: 16px;
+    padding: 10px 16px;
+    margin: 12px auto 16px auto;
+    width: fit-content;
+    gap: 16px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
+/* Cada métrica (distância e tempo) integrada no bloco */
 .stat-box {
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 6px 12px;
-    border-radius: 12px;
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.9);
+    background: transparent;
+    border: none;
+    padding: 0;
+    font-size: 0.95rem;
+    color: #4a5568;
     display: flex;
     align-items: center;
     gap: 6px;
 }
 
 .stat-box .dist-value {
-    color: #00f2fe;
-    font-weight: bold;
-}
-
-body.day-mode .stat-box {
-    background: rgba(0, 114, 255, 0.05);
-    border-color: rgba(0, 114, 255, 0.15);
-    color: #061026;
-}
-body.day-mode .stat-box .dist-value {
     color: #0072ff;
+    font-weight: 800;
+    letter-spacing: -0.3px;
 }
 
-/* Aproxima o botão "Como Chegar" das caixas de texto */
+.stat-box .time-value {
+    font-weight: 600;
+    color: #2d3748;
+}
+
+/* Divisor elegante entre a distância e o tempo */
+.stat-box:not(:last-child)::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 16px;
+    background: rgba(0, 0, 0, 0.1);
+    margin-left: 16px;
+}
+
+/* Botão "Como Chegar" Premium com preenchimento sólido e gradiente */
 .actions-bar.locked-actions {
     justify-content: center;
-    margin-top: 5px; /* Puxa o botão mais para cima */
+    margin-top: 4px;
 }
 
 .actions-bar.locked-actions #btn-map {
-    background: linear-gradient(135deg, rgba(0, 242, 254, 0.15), rgba(0, 114, 255, 0.15));
-    border: 1px solid rgba(0, 242, 254, 0.5);
-    width: 85%;
-    max-width: 260px;
-    height: 44px; /* Altura equilibrada */
+    background: linear-gradient(135deg, #00f2fe 0%, #0072ff 100%);
+    border: none;
+    color: #ffffff;
+    width: 100%;
+    max-width: 280px;
+    height: 48px;
     border-radius: 14px;
     margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: bold;
-    font-size: 0.95rem;
+    font-weight: 700;
+    font-size: 1rem;
     gap: 8px;
-    box-shadow: 0 4px 15px rgba(0, 242, 254, 0.15);
+    box-shadow: 0 8px 20px rgba(0, 114, 255, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.actions-bar.locked-actions #btn-map:active {
+    transform: scale(0.97);
+    box-shadow: 0 4px 10px rgba(0, 114, 255, 0.2);
+}
+
+/* Adaptação perfeita para o modo escuro do modal branco/claro */
+body.day-mode .locked-stats-row {
+    background: rgba(0, 114, 255, 0.05);
+    border-color: rgba(0, 114, 255, 0.15);
 }

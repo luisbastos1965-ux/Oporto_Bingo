@@ -368,29 +368,27 @@ function openModal(loc) {
         const firstTabBtn = document.querySelector('.tab-btn');
         if(firstTabBtn) firstTabBtn.click(); 
     } else {
-        // MODO BLOQUEADO: Imagem desfocada e sem texto descritivo
+        // MODO BLOQUEADO
         modalImg.src = loc.imgUrl;
         modalImg.classList.remove('hidden');
         modalImg.classList.add('locked-blur'); 
         
-        // Apenas calcula e mostra as caixas de distância e tempo em tempo real
         if (userLat && userLon) {
-            // ATRIBUIÇÃO DA DISTÂNCIA GLOBAL E HTML DA MINI-PÍLULA
             currentDistanceMeters = getDistanceFromLatLonInM(userLat, userLon, loc.lat, loc.lon);
-            const { distText, timeText } = formatDistanceAndDuration(currentDistanceMeters);
-            
-            modalDesc.innerHTML = `
-                <div class="modal-action-row">
-                    <div class="mini-icon-pill">
-                        <button class="icon-pill-btn" onclick="showMetric('dist')" title="Ver Distância">📍</button>
-                        <div class="pill-divider-mini"></div>
-                        <button class="icon-pill-btn" onclick="showMetric('time')" title="Ver Tempo a pé">🚶</button>
-                    </div>
-                </div>
-            `;
-        } else {
-            modalDesc.innerHTML = `<div class="modal-action-row">📍 A calcular...</div>`;
         }
+
+        // Limpa o texto descritivo do topo para ficar super limpo
+        modalDesc.innerHTML = '';
+        
+        // Injeta a mini-pílula e o botão JUNTOS na mesma linha de ações
+        actionsBar.innerHTML = `
+            <div class="mini-icon-pill">
+                <button class="icon-pill-btn" onclick="showMetric('dist')" title="Ver Distância">📍</button>
+                <div class="pill-divider-mini"></div>
+                <button class="icon-pill-btn" onclick="showMetric('time')" title="Ver Tempo a pé">🚶</button>
+            </div>
+            <button id="btn-map" class="action-btn" onclick="openMap()">📍 Como Chegar</button>
+        `;
         
         tabsContainer.classList.add('hidden');
         btnAudio.classList.add('hidden');
@@ -586,7 +584,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_26') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_27') === 'true') {
             initGPS();
         }
     }

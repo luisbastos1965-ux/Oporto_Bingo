@@ -378,13 +378,16 @@ function openModal(loc) {
             const dist = getDistanceFromLatLonInM(userLat, userLon, loc.lat, loc.lon);
             const { distText, timeText } = formatDistanceAndDuration(dist);
             modalDesc.innerHTML = `
-                <div class="locked-stats-container">
-                    <div class="stat-box-dist">
-                        <span>📍</span> <span class="dist-value">${distText}</span>
-                    </div>
-                    <div class="stat-box-time">
-                        <span>🚶</span> <span>${timeText}</span>
-                    </div>
+                <div class="interactive-pill" id="interactivePill">
+                    <button class="pill-side active-default" id="pillDistBtn" onclick="togglePillView('dist')">
+                        <span class="pill-icon">📍</span> 
+                        <span class="pill-text">${distText}</span>
+                    </button>
+                    <div class="pill-divider"></div>
+                    <button class="pill-side" id="pillTimeBtn" onclick="togglePillView('time')">
+                        <span class="pill-icon">🚶</span> 
+                        <span class="pill-text">${timeText}</span>
+                    </button>                        
                 </div>
             `;
         } else {
@@ -431,6 +434,39 @@ function formatDistanceAndDuration(meters) {
     }
 
     return { distText, timeText };
+}
+
+// =========================================
+// INTERATIVIDADE DA PILL DE DISTÂNCIA / TEMPO
+// =========================================
+let pillTimeout = null;
+
+function togglePillView(mode) {
+    const distBtn = document.getElementById('pillDistBtn');
+    const timeBtn = document.getElementById('pillTimeBtn');
+    
+    if (pillTimeout) clearTimeout(pillTimeout);
+
+    if (mode === 'dist') {
+        distBtn.classList.toggle('active-mode');
+        timeBtn.classList.remove('active-mode');
+    } else if (mode === 'time') {
+        timeBtn.classList.toggle('active-mode');
+        distBtn.classList.remove('active-mode');
+    }
+
+    pillTimeout = setTimeout(() => {
+        resetPillView();
+    }, 5000);
+}
+
+function resetPillView() {
+    const distBtn = document.getElementById('pillDistBtn');
+    const timeBtn = document.getElementById('pillTimeBtn');
+    if (distBtn && timeBtn) {
+        distBtn.classList.remove('active-mode');
+        timeBtn.classList.remove('active-mode');
+    }
 }
 
 // Algoritmo de Localização e Radar
@@ -546,7 +582,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_23') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_24') === 'true') {
             initGPS();
         }
     }

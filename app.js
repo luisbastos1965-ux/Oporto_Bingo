@@ -361,15 +361,17 @@ function openModal(loc) {
         const firstTabBtn = document.querySelector('.tab-btn');
         if(firstTabBtn) firstTabBtn.click(); 
     } else {
-        // MODO BLOQUEADO (Mostra a imagem, mas com blur)
         modalImg.src = loc.imgUrl;
         modalImg.classList.remove('hidden');
         modalImg.classList.add('locked-blur'); 
         
-        // Remove a frase e destaca apenas a distância
         if (userLat && userLon) {
-            const dist = Math.round(getDistanceFromLatLonInM(userLat, userLon, loc.lat, loc.lon));
-            modalDesc.innerHTML = `<div class="locked-distance"><span style="font-size: 1.2rem;">📍</span> ${uiTexts[currentLang].dist.replace('📍 ', '')} <strong class="dist-value">${dist} ${uiTexts[currentLang].meters}</strong></div>`;
+            const dist = getDistanceFromLatLonInM(userLat, userLon, loc.lat, loc.lon);
+            const { distText, timeText } = formatDistanceAndDuration(dist);
+            modalDesc.innerHTML = `<div class="locked-distance">
+                📍 <strong class="dist-value">${distText}</strong><br>
+                <span style="font-size: 0.95rem; opacity: 0.8; font-weight: normal;">🚶 ${timeText}</span>
+            </div>`;
         } else {
             modalDesc.innerHTML = `<div class="locked-distance">📍 A calcular...</div>`;
         }
@@ -390,6 +392,29 @@ function closeModal() {
     modal.classList.add('hidden');
     if(speechSynthesis.speaking) speechSynthesis.cancel();
     currentLocation = null; 
+}
+
+function formatDistanceAndDuration(meters) {
+    let distText = "";
+    if (meters < 1000) {
+        distText = `${Math.round(meters)}m`;
+    } else {
+        distText = `${(meters / 1000).toFixed(1)} km`;
+    }
+
+    // Cálculo estimado: velocidade média a pé de ~80 metros por minuto
+    const minutes = Math.round(meters / 80);
+    let timeText = "";
+    if (minutes < 1) {
+        timeText = "a menos de 1 min";
+    } else if (minutes < 60) {
+        timeText = `~${minutes} min a pé`;
+    } else {
+        const hours = (minutes / 60).toFixed(1);
+        timeText = `~${hours}h a pé`;
+    }
+
+    return { distText, timeText };
 }
 
 // Algoritmo de Localização e Radar
@@ -474,6 +499,20 @@ function initGPS() {
             userLat = position.coords.latitude;
             userLon = position.coords.longitude;
             checkProximity(userLat, userLon);
+
+            // 🌟 ATUALIZAÇÃO EM TEMPO REAL DO MODAL ABERTO (SE ESTIVER BLOQUEADO)
+            if (currentLocation && !currentLocation.unlocked) {
+                const dist = getDistanceFromLatLonInM(userLat, userLon, currentLocation.lat, currentLocation.lon);
+                const { distText, timeText } = formatDistanceAndDuration(dist);
+                
+                const descElement = document.getElementById('modal-desc');
+                if (descElement) {
+                    descElement.innerHTML = `<div class="locked-distance">
+                        📍 <strong class="dist-value">${distText}</strong><br>
+                        <span style="font-size: 0.95rem; opacity: 0.8; font-weight: normal;">🚶 ${timeText}</span>
+                    </div>`;
+                }
+            }
         },
         error => {
             console.warn("GPS Erro:", error.message);
@@ -489,7 +528,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_v14') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_v15') === 'true') {
             initGPS();
         }
     }

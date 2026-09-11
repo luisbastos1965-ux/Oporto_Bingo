@@ -916,43 +916,54 @@ body.day-mode .actions-bar.locked-actions #btn-map {
 }
 
 /* =========================================
-   REDESENHO PROFISSIONAL: CARD DE BLOQUEIO
+   NOVO DESIGN: RADAR HOLOGRÁFICO DE DISTÂNCIA
    ========================================= */
 
-/* Container unificado ajustado para o modo escuro (Dark Mode nativo) */
 .locked-stats-row {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    background: rgba(0, 242, 254, 0.06);
-    border: 1px solid rgba(0, 242, 254, 0.2);
-    border-radius: 16px;
-    padding: 10px 16px;
-    margin: 12px auto 16px auto;
-    width: fit-content;
-    gap: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(0, 242, 254, 0.08) 0%, rgba(0, 114, 255, 0.04) 100%);
+    border: 1px solid rgba(0, 242, 254, 0.25);
+    border-radius: 20px;
+    padding: 14px 20px;
+    margin: 14px auto 18px auto;
+    width: 85%;
+    max-width: 280px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
-.stat-box {
-    background: transparent;
-    border: none;
-    padding: 0;
-    font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.9);
+/* Linha superior: A Distância em destaque principal */
+.stat-box-dist {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.stat-box-dist .dist-value {
+    color: #00f2fe;
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    text-shadow: 0 0 12px rgba(0, 242, 254, 0.4);
+}
+
+/* Linha inferior: O tempo a pé secundário, limpo e elegante */
+.stat-box-time {
     display: flex;
     align-items: center;
     gap: 6px;
-}
-
-.stat-box .dist-value {
-    color: #00f2fe;
-    font-weight: 800;
-}
-
-.stat-box .time-value {
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.2px;
 }
 
 /* Divisor elegante adaptado ao modo escuro */

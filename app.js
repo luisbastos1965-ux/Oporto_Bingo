@@ -379,8 +379,12 @@ function openModal(loc) {
             const { distText, timeText } = formatDistanceAndDuration(dist);
             modalDesc.innerHTML = `
                 <div class="locked-stats-row">
-                    <div class="stat-box">📍 <span class="dist-value">${distText}</span></div>
-                    <div class="stat-box">🚶 <span class="time-value">${timeText}</span></div>
+                    <div class="stat-box-dist">
+                        <span>📍</span> <span class="dist-value">${distText}</span>
+                    </div>
+                    <div class="stat-box-time">
+                        <span>🚶</span> <span>${timeText}</span>
+                    </div>
                 </div>
             `;
         } else {
@@ -542,7 +546,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_21') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_22') === 'true') {
             initGPS();
         }
     }

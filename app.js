@@ -336,7 +336,7 @@ function renderGrid() {
     });
 }
 
-// Janela Modal Inteligente (Atualizada para Imagens Desfocadas e Distância Destaque)
+// Janela Modal Inteligente (Totalmente Estável)
 function openModal(loc) {
     currentLocation = loc;
     modalTitle.innerText = loc.name;
@@ -353,12 +353,11 @@ function openModal(loc) {
     const tabsContainer = document.getElementById('modal-tabs');
     const btnAudio = document.getElementById('btn-audio');
     const actionsBar = document.getElementById('modal-actions');
-
-    // Seleciona ou garante que os elementos internos existem fixos no HTML do modal
-    // (Em vez de reescrevermos o innerHTML do actionsBar inteiro a cada clique)
+    const miniPill = document.getElementById('miniIconPillContainer');
     const btnMap = document.getElementById('btn-map');
     
     if (loc.unlocked) {
+        // MODO DESBLOQUEADO
         modalImg.src = loc.imgUrl;
         modalImg.classList.remove('hidden', 'locked-blur'); 
         
@@ -370,12 +369,12 @@ function openModal(loc) {
         if(btnAudio) btnAudio.classList.remove('hidden');
         if(actionsBar) actionsBar.classList.remove('locked-actions'); 
         
-        // Esconde a mini-pílula se estiver visível e mostra o botão normal
-        const miniPill = document.getElementById('miniIconPillContainer');
+        // Esconde a pílula de ícones e mostra o botão de mapa normal
         if(miniPill) miniPill.classList.add('hidden');
         if(btnMap) {
             btnMap.classList.remove('hidden');
             btnMap.innerHTML = uiTexts[currentLang].map;
+            if (btnMap.dataset.originalHtml) delete btnMap.dataset.originalHtml;
         }
 
         const firstTabBtn = document.querySelector('.tab-btn');
@@ -396,26 +395,11 @@ function openModal(loc) {
         if(btnAudio) btnAudio.classList.add('hidden');
         if(actionsBar) actionsBar.classList.add('locked-actions'); 
 
-        // Garante que a mini-pílula de ícones e o botão "Como Chegar" coexistem fixos
-        let miniPill = document.getElementById('miniIconPillContainer');
-        if (!miniPill && actionsBar) {
-            miniPill = document.createElement('div');
-            miniPill.id = 'miniIconPillContainer';
-            miniPill.className = 'mini-icon-pill';
-            miniPill.innerHTML = `
-                <button class="icon-pill-btn" onclick="showMetric('dist')" title="Ver Distância">📍</button>
-                <div class="pill-divider-mini"></div>
-                <button class="icon-pill-btn" onclick="showMetric('time')" title="Ver Tempo a pé">🚶</button>
-            `;
-            actionsBar.prepend(miniPill);
-        } else if (miniPill) {
-            miniPill.classList.remove('hidden');
-        }
-
+        // Mostra a pílula de ícones e limpa o botão de mapa
+        if(miniPill) miniPill.classList.remove('hidden');
         if(btnMap) {
             btnMap.classList.remove('hidden');
             btnMap.innerHTML = uiTexts[currentLang].map;
-            // Reseta qualquer dado temporário anterior do botão
             if (btnMap.dataset.originalHtml) delete btnMap.dataset.originalHtml;
         }
         
@@ -610,7 +594,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_28') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_29') === 'true') {
             initGPS();
         }
     }

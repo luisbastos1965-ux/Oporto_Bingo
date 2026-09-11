@@ -221,8 +221,19 @@
                 <p id="modal-curio"></p>
             </div>
 
+            <!-- DEPOIS -->
             <div id="modal-actions" class="actions-bar">
+                <!-- Mini-pílula de ícones fixa para locais bloqueados -->
+                <div id="miniIconPillContainer" class="mini-icon-pill hidden">
+                    <button class="icon-pill-btn" onclick="showMetric('dist')" title="Ver Distância">📍</button>
+                    <div class="pill-divider-mini"></div>
+                    <button class="icon-pill-btn" onclick="showMetric('time')" title="Ver Tempo a pé">🚶</button>
+                </div>
+
+                <!-- Botão de Mapa / Como Chegar -->
                 <button id="btn-map" class="action-btn" onclick="openMap()">📍 Como Chegar</button>
+
+                <!-- Botão de Áudio (Mantém-se escondido quando bloqueado e aparece quando desbloqueado) -->
                 <button id="btn-audio" class="action-btn hidden" onclick="toggleAudio()">🔊 Ouvir Textos</button>
             </div>
         </div>

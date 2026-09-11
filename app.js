@@ -25,7 +25,8 @@ const uiTexts = {
         helpT5: "Pistas", help5: "Perdido? Clica na bússola para uma dica!",
         alertGPS: "O radar precisa de sinal GPS verde para te dar uma pista!", alertNoHints: "Já não há pistas a dar. Descobriste o mapa todo!", alertTitle: "Aviso", alertOk: "OK", 
         dist: "📍 Distância:", meters: "metros",
-        contactTitle: "Falar Connosco", contactDesc: "Deixa a tua mensagem e responderemos para o teu email.", contactName: "O teu nome", contactEmail: "O teu email", contactMsg: "Escreve aqui...", contactBtn: "Enviar Mensagem", contactSuccess: "Mensagem enviada com sucesso! Responderemos em breve.", contactError: "Ocorreu um erro ao enviar. Tenta de novo.", contactNoNet: "Sem ligação à internet para enviar a mensagem."
+        contactTitle: "Falar Connosco", contactDesc: "Deixa a tua mensagem e responderemos para o teu email.", contactName: "O teu nome", contactEmail: "O teu email", contactMsg: "Escreve aqui...", contactBtn: "Enviar Mensagem", contactSuccess: "Mensagem enviada com sucesso! Responderemos em breve.", contactError: "Ocorreu um erro ao enviar. Tenta de novo.", contactNoNet: "Sem ligação à internet para enviar a mensagem.",
+        walkTime: "a pé"
     },
     en: { 
         map: "📍 Directions", audio: "🔊 Listen", stopAudio: "⏸️ Stop", tab1: "Summary", tab2: "History", tab3: "Trivia", 
@@ -42,7 +43,8 @@ const uiTexts = {
         helpT5: "Hints", help5: "Lost? Click the compass for a hint!",
         alertGPS: "The radar needs a green GPS signal to give you a hint!", alertNoHints: "No more hints available. You discovered the entire map!", alertTitle: "Notice", alertOk: "OK", 
         dist: "📍 Distance:", meters: "meters",
-        contactTitle: "Contact Us", contactDesc: "Leave your message and we will reply to your email.", contactName: "Your name", contactEmail: "Your email", contactMsg: "Write here...", contactBtn: "Send Message", contactSuccess: "Message sent successfully! We will reply soon.", contactError: "An error occurred while sending. Try again.", contactNoNet: "No internet connection to send the message."
+        contactTitle: "Contact Us", contactDesc: "Leave your message and we will reply to your email.", contactName: "Your name", contactEmail: "Your email", contactMsg: "Write here...", contactBtn: "Send Message", contactSuccess: "Message sent successfully! We will reply soon.", contactError: "An error occurred while sending. Try again.", contactNoNet: "No internet connection to send the message.",
+        walkTime: "on foot"
     },
     es: { 
         map: "📍 Cómo llegar", audio: "🔊 Escuchar", stopAudio: "⏸️ Detener", tab1: "Resumen", tab2: "Historia", tab3: "Curiosidades", 
@@ -59,7 +61,8 @@ const uiTexts = {
         helpT5: "Pistas", help5: "¿Perdido? ¡Haz clic en la brújula para una pista!",
         alertGPS: "¡El radar necesita señal GPS verde para darte una pista!", alertNoHints: "No hay más pistas. ¡Descubriste todo el mapa!", alertTitle: "Aviso", alertOk: "OK", 
         dist: "📍 Distancia:", meters: "metros",
-        contactTitle: "Contáctanos", contactDesc: "Deja tu mensaje y te responderemos a tu correo.", contactName: "Tu nombre", contactEmail: "Tu correo", contactMsg: "Escribe aquí...", contactBtn: "Enviar Mensaje", contactSuccess: "¡Mensaje enviado con éxito! Responderemos pronto.", contactError: "Ocurrió un error al enviar. Inténtalo de nuevo.", contactNoNet: "Sin conexión a internet para enviar el mensaje."
+        contactTitle: "Contáctanos", contactDesc: "Deja tu mensaje y te responderemos a tu correo.", contactName: "Tu nombre", contactEmail: "Tu correo", contactMsg: "Escribe aquí...", contactBtn: "Enviar Mensaje", contactSuccess: "¡Mensaje enviado con éxito! Responderemos pronto.", contactError: "Ocurrió un error al enviar. Inténtalo de nuevo.", contactNoNet: "Sin conexión a internet para enviar el mensaje.",
+        walkTime: "a pie"
     },
     fr: { 
         map: "📍 Itinéraire", audio: "🔊 Écouter", stopAudio: "⏸️ Arrêter", tab1: "Résumé", tab2: "Histoire", tab3: "Anecdotes", 
@@ -76,7 +79,8 @@ const uiTexts = {
         helpT5: "Indices", help5: "Perdu ? Cliquez sur la boussole pour un indice !",
         alertGPS: "Le radar a besoin d'un signal GPS vert pour un indice !", alertNoHints: "Plus d'indices. Vous avez découvert toute la carte !", alertTitle: "Avis", alertOk: "OK", 
         dist: "📍 Distance :", meters: "mètres",
-        contactTitle: "Contactez-nous", contactDesc: "Laissez votre message et nous vous répondrons par e-mail.", contactName: "Votre nom", contactEmail: "Votre e-mail", contactMsg: "Écrivez ici...", contactBtn: "Envoyer le message", contactSuccess: "Message envoyé avec succès ! Nous répondrons bientôt.", contactError: "Une erreur s'est produite lors de l'envoi. Réessayez.", contactNoNet: "Pas de connexion internet pour envoyer le message."
+        contactTitle: "Contactez-nous", contactDesc: "Laissez votre message et nous vous répondrons par e-mail.", contactName: "Votre nom", contactEmail: "Votre e-mail", contactMsg: "Écrivez ici...", contactBtn: "Envoyer le message", contactSuccess: "Message envoyé avec succès ! Nous répondrons bientôt.", contactError: "Une erreur s'est produite lors de l'envoi. Réessayez.", contactNoNet: "Pas de connexion internet pour envoyer le message.",
+        walkTime: "à pied"
     },
     de: { 
         map: "📍 Route", audio: "🔊 Anhören", stopAudio: "⏸️ Stoppen", tab1: "Zusammenfassung", tab2: "Geschichte", tab3: "Fakten", 
@@ -93,7 +97,8 @@ const uiTexts = {
         helpT5: "Hinweise", help5: "Verloren? Klicke auf den Kompass für einen Tipp!",
         alertGPS: "Das Radar benötigt ein grünes GPS-Signal für Hinweise!", alertNoHints: "Keine Hinweise mehr. Du hast die ganze Karte entdeckt!", alertTitle: "Hinweis", alertOk: "OK", 
         dist: "📍 Entfernung:", meters: "Meter",
-        contactTitle: "Kontaktiere uns", contactDesc: "Hinterlasse deine Nachricht und wir antworten per E-Mail.", contactName: "Dein Name", contactEmail: "Deine E-Mail", contactMsg: "Schreibe hier...", contactBtn: "Nachricht senden", contactSuccess: "Nachricht erfolgreich gesendet! Wir werden bald antworten.", contactError: "Ein Fehler ist aufgetreten. Versuch es noch einmal.", contactNoNet: "Keine Internetverbindung zum Senden der Nachricht."
+        contactTitle: "Kontaktiere uns", contactDesc: "Hinterlasse deine Nachricht und wir antworten per E-Mail.", contactName: "Dein Name", contactEmail: "Deine E-Mail", contactMsg: "Schreibe hier...", contactBtn: "Nachricht senden", contactSuccess: "Nachricht erfolgreich gesendet! Wir werden bald antworten.", contactError: "Ein Fehler ist aufgetreten. Versuch es noch einmal.", contactNoNet: "Keine Internetverbindung zum Senden der Nachricht.",
+        walkTime: "zu Fuß"
     },
     it: { 
         map: "📍 Indicazioni", audio: "🔊 Ascolta", stopAudio: "⏸️ Ferma", tab1: "Riassunto", tab2: "Storia", tab3: "Curiosità", 
@@ -110,7 +115,8 @@ const uiTexts = {
         helpT5: "Indizi", help5: "Perso? Clicca sulla bussola per un suggerimento!",
         alertGPS: "Il radar ha bisogno di un segnale GPS verde per aiutarti!", alertNoHints: "Nessun indizio. Hai scoperto tutta la mappa!", alertTitle: "Avviso", alertOk: "OK", 
         dist: "📍 Distanza:", meters: "metri",
-        contactTitle: "Contattaci", contactDesc: "Lascia il tuo messaggio e ti risponderemo via email.", contactName: "Il tuo nome", contactEmail: "La tua email", contactMsg: "Scrivi qui...", contactBtn: "Invia Messaggio", contactSuccess: "Messaggio inviato con successo! Risponderemo presto.", contactError: "Si è verificato un errore durante l'invio. Riprova.", contactNoNet: "Nessuna connessione internet per inviare il messaggio."
+        contactTitle: "Contattaci", contactDesc: "Lascia il tuo messaggio e ti risponderemo via email.", contactName: "Il tuo nome", contactEmail: "La tua email", contactMsg: "Scrivi qui...", contactBtn: "Invia Messaggio", contactSuccess: "Messaggio inviato con successo! Risponderemo presto.", contactError: "Si è verificato un errore durante l'invio. Riprova.", contactNoNet: "Nessuna connessione internet per inviare il messaggio.",
+        walkTime: "a piedi"
     },
     zh: { 
         map: "📍 路线", audio: "🔊 聆听", stopAudio: "⏸️ 停止", tab1: "总结", tab2: "历史", tab3: "趣闻", 
@@ -127,7 +133,8 @@ const uiTexts = {
         helpT5: "提示", help5: "迷路了？点击指南针获取提示！",
         alertGPS: "雷达需要绿色的GPS信号才能给您提示！", alertNoHints: "没有更多提示了。您已探索整个地图！", alertTitle: "提示", alertOk: "确定", 
         dist: "📍 距离:", meters: "米",
-        contactTitle: "联系我们", contactDesc: "留下您的信息，我们将通过电子邮件回复您。", contactName: "您的名字", contactEmail: "您的电子邮件", contactMsg: "在这里写...", contactBtn: "发送信息", contactSuccess: "信息发送成功！我们将尽快回复。", contactError: "发送时发生错误。请重试。", contactNoNet: "没有网络连接来发送信息。"
+        contactTitle: "联系我们", contactDesc: "留下您的信息，我们将通过电子邮件回复您。", contactName: "您的名字", contactEmail: "您的电子邮件", contactMsg: "在这里写...", contactBtn: "发送信息", contactSuccess: "信息发送成功！我们将尽快回复。", contactError: "发送时发生错误。请重试。", contactNoNet: "没有网络连接来发送信息。",
+        walkTime: "步行"
     }
 };
 
@@ -406,16 +413,17 @@ function formatDistanceAndDuration(meters) {
         distText = `${(meters / 1000).toFixed(1)} km`;
     }
 
-    // Cálculo estimado: velocidade média a pé de ~80 metros por minuto
     const minutes = Math.round(meters / 80);
+    const walkLabel = uiTexts[currentLang] && uiTexts[currentLang].walkTime ? uiTexts[currentLang].walkTime : "a pé";
+    
     let timeText = "";
     if (minutes < 1) {
-        timeText = "a menos de 1 min";
+        timeText = `< 1 min ${walkLabel}`;
     } else if (minutes < 60) {
-        timeText = `~${minutes} min a pé`;
+        timeText = `~${minutes} min ${walkLabel}`;
     } else {
         const hours = (minutes / 60).toFixed(1);
-        timeText = `~${hours}h a pé`;
+        timeText = `~${hours}h ${walkLabel}`;
     }
 
     return { distText, timeText };

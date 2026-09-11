@@ -914,3 +914,61 @@ body.day-mode .actions-bar.locked-actions #btn-map {
     background: rgba(0, 114, 255, 0.1);
     border-color: rgba(0, 114, 255, 0.4);
 }
+
+/* Linha compacta lado a lado sem espaços mortos */
+.locked-stats-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 8px 0; /* Margem reduzida em cima e em baixo */
+}
+
+.stat-box {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.stat-box .dist-value {
+    color: #00f2fe;
+    font-weight: bold;
+}
+
+body.day-mode .stat-box {
+    background: rgba(0, 114, 255, 0.05);
+    border-color: rgba(0, 114, 255, 0.15);
+    color: #061026;
+}
+body.day-mode .stat-box .dist-value {
+    color: #0072ff;
+}
+
+/* Aproxima o botão "Como Chegar" das caixas de texto */
+.actions-bar.locked-actions {
+    justify-content: center;
+    margin-top: 5px; /* Puxa o botão mais para cima */
+}
+
+.actions-bar.locked-actions #btn-map {
+    background: linear-gradient(135deg, rgba(0, 242, 254, 0.15), rgba(0, 114, 255, 0.15));
+    border: 1px solid rgba(0, 242, 254, 0.5);
+    width: 85%;
+    max-width: 260px;
+    height: 44px; /* Altura equilibrada */
+    border-radius: 14px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 0.95rem;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(0, 242, 254, 0.15);
+}

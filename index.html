@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-PT">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <!-- ECRÃ DE BLOQUEIO DE BROWSER (PORTÃO CAMALEÃO) -->
@@ -16,31 +18,36 @@
         <div class="modal-content" style="padding: 40px 20px;">
             <div style="font-size: 3.5rem; margin-bottom: 10px;">📲</div>
             <h2 style="font-size: 1.8rem; margin-bottom: 10px;">Quase lá!</h2>
-            
+
             <!-- CORREÇÃO 1: Tirámos a cor branca forçada e usámos opacity -->
             <p style="font-size: 1rem; opacity: 0.85; margin-bottom: 25px;">
-                O Oporto Bin'Go é uma experiência interativa. Para jogares e acederes ao radar GPS, tens de instalar a App.
+                O Oporto Bin'Go é uma experiência interativa. Para jogares e acederes ao radar GPS, tens de instalar a
+                App.
             </p>
 
             <!-- CAIXA ANDROID (Com o Botão Mágico) -->
             <div id="android-install-box" class="hidden" style="margin-bottom: 20px;">
-                <button id="btn-install-pwa" class="start-btn" style="width: 100%; margin: 0 auto; height: 50px !important; min-height: 50px;">
+                <button id="btn-install-pwa" class="start-btn"
+                    style="width: 100%; margin: 0 auto; height: 50px !important; min-height: 50px;">
                     📥 Instalar Aplicação
                 </button>
             </div>
 
             <!-- CAIXA iOS (Com as Instruções) -->
-            <div id="ios-install-box" class="hidden" style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; text-align: left; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.1);">
+            <div id="ios-install-box" class="hidden"
+                style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; text-align: left; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.1);">
                 <p style="margin: 0 0 10px 0;"><strong>No teu iPhone (Safari):</strong></p>
-                <p style="margin: 0 0 8px 0; font-size: 0.9rem;">1️⃣ Toca em <strong>Partilhar</strong> (quadrado com a seta no fundo)</p>
+                <p style="margin: 0 0 8px 0; font-size: 0.9rem;">1️⃣ Toca em <strong>Partilhar</strong> (quadrado com a
+                    seta no fundo)</p>
                 <p style="margin: 0; font-size: 0.9rem;">2️⃣ Escolhe <strong>Ecrã Principal ➕</strong></p>
             </div>
 
             <!-- BOTÃO DE RESGATE (Copiar Link) -->
-            <button class="start-btn copy-link-btn" onclick="copyAppUrl()" style="width: 100%; margin: 0 auto; height: 45px !important; min-height: 45px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); box-shadow: none;">
+            <button class="start-btn copy-link-btn" onclick="copyAppUrl()"
+                style="width: 100%; margin: 0 auto; height: 45px !important; min-height: 45px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); box-shadow: none;">
                 <span id="copy-btn-text">🔗 Copiar Link da App</span>
             </button>
-            
+
             <!-- CORREÇÃO 2: Tirámos a cor branca forçada e usámos opacity -->
             <p style="font-size: 0.75rem; opacity: 0.6; margin-top: 15px; line-height: 1.4;">
                 (Leste um QR Code? Copia o link e abre no Chrome/Safari)
@@ -54,7 +61,7 @@
         <button id="btn-lang" class="top-icon-btn" onclick="cycleLanguage()">🇵🇹</button>
         <button id="btn-hint" class="top-icon-btn" onclick="showHint()">🧭</button>
     </div>
-    
+
     <div id="gps-status" class="gps-dot searching" title="A procurar GPS..."></div>
 
     <!-- NOVO ONBOARDING: Swipe & Snap Nativo -->
@@ -69,7 +76,8 @@
                 <div class="onboard-card">
                     <div class="onboard-icon">📍</div>
                     <h2 id="ob-t2">Radar GPS</h2>
-                    <p id="ob-d2">Fica atento às cores: laranja é perto, vermelho a pulsar é quase lá! (Dica: Mantém o jogo aberto enquanto caminhas)</p>
+                    <p id="ob-d2">Fica atento às cores: laranja é perto, vermelho a pulsar é quase lá! (Dica: Mantém o
+                        jogo aberto enquanto caminhas)</p>
                 </div>
                 <div class="onboard-card">
                     <div class="onboard-icon">🔓</div>
@@ -77,7 +85,7 @@
                     <p id="ob-d3">Aproxima-te a 50 metros para revelar os segredos e ouvir o áudio guia.</p>
                 </div>
             </div>
-            
+
             <!-- Footer do Onboarding (Pontos em cima, Botão em baixo) -->
             <div class="onboarding-footer">
                 <div class="onboard-dots">
@@ -97,7 +105,7 @@
     <div id="help-modal" class="modal hidden">
         <div class="modal-content help-box-premium">
             <h2 id="help-title">COMO JOGAR</h2>
-            
+
             <div class="help-grid-cards">
                 <div class="help-card-item">
                     <div class="help-card-icon-wrap">🚶</div>
@@ -141,19 +149,22 @@
             </div>
 
             <!-- SECÇÃO: CONTACTOS E REDES SOCIAIS -->
-            <div id="help-contacts-box" style="margin-top: 25px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+            <div id="help-contacts-box"
+                style="margin-top: 25px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
                 <div style="display: flex; justify-content: space-between; gap: 10px; flex-wrap: nowrap;">
-                    
+
                     <!-- Botão Email (Com altura exata e texto mais forte) -->
-                    <button onclick="openContactModal()" style="flex: 1; justify-content: center; height: 48px; border: none; cursor: pointer; color: white; background: rgba(0, 0, 0, 0.25); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; font-size: 0.9rem; font-weight: bold; display: flex; align-items: center; gap: 8px;">
+                    <button onclick="openContactModal()"
+                        style="flex: 1; justify-content: center; height: 48px; border: none; cursor: pointer; color: white; background: rgba(0, 0, 0, 0.25); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; font-size: 0.9rem; font-weight: bold; display: flex; align-items: center; gap: 8px;">
                         📧 Email
                     </button>
 
                     <!-- Botão Instagram (Com altura exata e texto mais forte) -->
-                    <a href="https://www.instagram.com/instagram" target="_blank" style="flex: 1; justify-content: center; height: 48px; text-decoration: none; color: white; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); border-radius: 12px; font-size: 0.9rem; font-weight: bold; display: flex; align-items: center; gap: 8px;">
+                    <a href="https://www.instagram.com/instagram" target="_blank"
+                        style="flex: 1; justify-content: center; height: 48px; text-decoration: none; color: white; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); border-radius: 12px; font-size: 0.9rem; font-weight: bold; display: flex; align-items: center; gap: 8px;">
                         📸 Instagram
                     </a>
-                    
+
                 </div>
             </div>
 
@@ -186,20 +197,22 @@
     </footer>
 
     <audio id="unlock-sound" src="./assets/unlock.mp3" preload="auto"></audio>
-    
+
     <div id="location-modal" class="modal hidden">
         <div class="modal-content">
             <h2 id="modal-title">Título</h2>
             <img id="modal-image" src="" alt="Local">
-            
+
             <div id="modal-tabs" class="tabs">
-                <button id="tab-btn-resumo" class="tab-btn active" onclick="openTab(event, 'tab-resumo')">Resumo</button>
+                <button id="tab-btn-resumo" class="tab-btn active"
+                    onclick="openTab(event, 'tab-resumo')">Resumo</button>
                 <button id="tab-btn-historia" class="tab-btn" onclick="openTab(event, 'tab-historia')">História</button>
-                <button id="tab-btn-curiosidades" class="tab-btn" onclick="openTab(event, 'tab-curiosidades')">Curiosidades</button>
+                <button id="tab-btn-curiosidades" class="tab-btn"
+                    onclick="openTab(event, 'tab-curiosidades')">Curiosidades</button>
             </div>
 
             <div id="tab-resumo" class="tab-content active">
-                <p id="modal-desc"></p>
+                <div id="modal-desc"></div>
             </div>
             <div id="tab-historia" class="tab-content">
                 <p id="modal-hist"></p>
@@ -223,13 +236,14 @@
             <p id="contact-desc" style="font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 20px;">
                 Deixa a tua mensagem e responderemos para o teu email.
             </p>
-            
+
             <form id="contact-form" class="contact-form">
                 <input type="text" id="contact-name" name="Nome" placeholder="O teu nome" required>
                 <input type="email" id="contact-email" name="Email" placeholder="O teu email" required>
                 <textarea id="contact-msg" name="Mensagem" rows="4" placeholder="Escreve aqui..." required></textarea>
-                
-                <button type="submit" class="start-btn" id="btn-send-msg" style="width: 100%; margin: 15px auto 0; height: 45px !important; min-height: 45px;">
+
+                <button type="submit" class="start-btn" id="btn-send-msg"
+                    style="width: 100%; margin: 15px auto 0; height: 45px !important; min-height: 45px;">
                     <span id="send-btn-text">Enviar Mensagem</span>
                     <div class="btn-loader" id="send-loader"></div>
                 </button>
@@ -240,4 +254,5 @@
     <script src="sw.js"></script>
     <script src="app.js"></script>
 </body>
+
 </html>

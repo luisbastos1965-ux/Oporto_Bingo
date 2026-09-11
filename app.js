@@ -375,23 +375,21 @@ function openModal(loc) {
         
         // Apenas calcula e mostra as caixas de distância e tempo em tempo real
         if (userLat && userLon) {
-            const dist = getDistanceFromLatLonInM(userLat, userLon, loc.lat, loc.lon);
-            const { distText, timeText } = formatDistanceAndDuration(dist);
+            // ATRIBUIÇÃO DA DISTÂNCIA GLOBAL E HTML DA MINI-PÍLULA
+            currentDistanceMeters = getDistanceFromLatLonInM(userLat, userLon, loc.lat, loc.lon);
+            const { distText, timeText } = formatDistanceAndDuration(currentDistanceMeters);
+            
             modalDesc.innerHTML = `
-                <div class="interactive-pill" id="interactivePill">
-                    <button class="pill-side active-default" id="pillDistBtn" onclick="togglePillView('dist')">
-                        <span class="pill-icon">📍</span> 
-                        <span class="pill-text">${distText}</span>
-                    </button>
-                    <div class="pill-divider"></div>
-                    <button class="pill-side" id="pillTimeBtn" onclick="togglePillView('time')">
-                        <span class="pill-icon">🚶</span> 
-                        <span class="pill-text">${timeText}</span>
-                    </button>                        
+                <div class="modal-action-row">
+                    <div class="mini-icon-pill">
+                        <button class="icon-pill-btn" onclick="showMetric('dist')" title="Ver Distância">📍</button>
+                        <div class="pill-divider-mini"></div>
+                        <button class="icon-pill-btn" onclick="showMetric('time')" title="Ver Tempo a pé">🚶</button>
+                    </div>
                 </div>
             `;
         } else {
-            modalDesc.innerHTML = `<div class="locked-stats-container"><div class="stat-box-dist">📍 A calcular...</div></div>`;
+            modalDesc.innerHTML = `<div class="modal-action-row">📍 A calcular...</div>`;
         }
         
         tabsContainer.classList.add('hidden');
@@ -437,35 +435,39 @@ function formatDistanceAndDuration(meters) {
 }
 
 // =========================================
-// INTERATIVIDADE DA PILL DE DISTÂNCIA / TEMPO
+// MINI-PÍLULA INTERATIVA (DISTÂNCIA / TEMPO NO BOTÃO)
 // =========================================
-let pillTimeout = null;
+let currentDistanceMeters = 0;
+let metricTimeout = null;
 
-function togglePillView(mode) {
-    const distBtn = document.getElementById('pillDistBtn');
-    const timeBtn = document.getElementById('pillTimeBtn');
-    
-    if (pillTimeout) clearTimeout(pillTimeout);
+function showMetric(type) {
+    const btnMap = document.getElementById('btn-map');
+    if (!btnMap) return;
 
-    if (mode === 'dist') {
-        distBtn.classList.toggle('active-mode');
-        timeBtn.classList.remove('active-mode');
-    } else if (mode === 'time') {
-        timeBtn.classList.toggle('active-mode');
-        distBtn.classList.remove('active-mode');
+    if (!btnMap.dataset.originalHtml) {
+        btnMap.dataset.originalHtml = btnMap.innerHTML;
     }
 
-    pillTimeout = setTimeout(() => {
-        resetPillView();
+    if (metricTimeout) clearTimeout(metricTimeout);
+
+    const { distText, timeText } = formatDistanceAndDuration(currentDistanceMeters);
+
+    if (type === 'dist') {
+        btnMap.innerHTML = `📍 <span style="color: #00f2fe; margin-left: 6px; font-weight: 800;">${distText}</span>`;
+    } else if (type === 'time') {
+        const walkLabel = uiTexts[currentLang] && uiTexts[currentLang].walkTime ? uiTexts[currentLang].walkTime : "a pé";
+        btnMap.innerHTML = `🚶 <span style="margin-left: 6px; font-weight: 700;">${timeText}</span>`;
+    }
+
+    metricTimeout = setTimeout(() => {
+        resetButtonMap();
     }, 5000);
 }
 
-function resetPillView() {
-    const distBtn = document.getElementById('pillDistBtn');
-    const timeBtn = document.getElementById('pillTimeBtn');
-    if (distBtn && timeBtn) {
-        distBtn.classList.remove('active-mode');
-        timeBtn.classList.remove('active-mode');
+function resetButtonMap() {
+    const btnMap = document.getElementById('btn-map');
+    if (btnMap && btnMap.dataset.originalHtml) {
+        btnMap.innerHTML = btnMap.dataset.originalHtml;
     }
 }
 
@@ -554,20 +556,22 @@ function initGPS() {
 
             // 🌟 ATUALIZAÇÃO EM TEMPO REAL DO MODAL ABERTO (SE ESTIVER BLOQUEADO)
             if (currentLocation && !currentLocation.unlocked) {
-                const dist = getDistanceFromLatLonInM(userLat, userLon, currentLocation.lat, currentLocation.lon);
-                const { distText, timeText } = formatDistanceAndDuration(dist);
+                // Atualiza a distância global para a mini-pílula usar
+                currentDistanceMeters = getDistanceFromLatLonInM(userLat, userLon, currentLocation.lat, currentLocation.lon);
                 
-                const descElement = document.getElementById('modal-desc');
-                if (descElement) {
-                    descElement.innerHTML = `
-                        <div class="locked-stats-row">
-                            <div class="stat-box">📍 <span class="dist-value">${distText}</span></div>
-                            <div class="stat-box">🚶 <span class="time-value">${timeText}</span></div>
-                        </div>
-                    `;
+                // Se quisesses atualizar o texto caso o botão esteja ativo no momento, podes deixar assim:
+                const btnMap = document.getElementById('btn-map');
+                if (btnMap && btnMap.dataset.originalHtml && btnMap.innerHTML !== btnMap.dataset.originalHtml) {
+                    // Opcional: se o utilizador estiver a ver uma métrica ativa, ela atualiza o valor dinamicamente ao caminhar
+                    const { distText, timeText } = formatDistanceAndDuration(currentDistanceMeters);
+                    if (btnMap.innerHTML.includes('📍')) {
+                        btnMap.innerHTML = `📍 <span style="color: #00f2fe; margin-left: 6px; font-weight: 800;">${distText}</span>`;
+                    } else if (btnMap.innerHTML.includes('🚶')) {
+                        btnMap.innerHTML = `🚶 <span style="margin-left: 6px; font-weight: 700;">${timeText}</span>`;
+                    }
                 }
             }
-        }, 
+        },
         error => {
             console.warn("GPS Erro:", error.message);
             updateGpsIndicator('error');
@@ -582,7 +586,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_24') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_25') === 'true') {
             initGPS();
         }
     }

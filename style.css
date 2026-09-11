@@ -1081,3 +1081,49 @@ body.day-mode .locked-stats-row {
     background: rgba(0, 242, 254, 0.15);
     transform: scale(1.05);
 }
+
+/* =========================================
+   MINI-PÍLULA DE ÍCONES + BOTÃO NA MESMA LINHA
+   ========================================= */
+
+.modal-action-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0 4px 0;
+}
+
+.mini-icon-pill {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(0, 242, 254, 0.08) 0%, rgba(0, 114, 255, 0.04) 100%);
+    border: 1px solid rgba(0, 242, 254, 0.25);
+    border-radius: 14px;
+    padding: 4px 6px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.icon-pill-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px 10px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.icon-pill-btn:active {
+    transform: scale(0.9);
+    background: rgba(0, 242, 254, 0.2);
+}
+
+.pill-divider-mini {
+    width: 1px;
+    height: 14px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 0 2px;
+}

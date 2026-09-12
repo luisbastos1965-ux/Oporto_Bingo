@@ -11,7 +11,7 @@ if ("Notification" in window && Notification.permission !== "denied") {
 // =========================================
 const uiTexts = {
     pt: {
-        map: "📍 Como Chegar", audio: "🔊 Ouvir Textos", stopAudio: "⏸️ Parar", tab1: "Resumo", tab2: "História", tab3: "Curiosidades",
+        map: "Como Chegar", audio: "🔊 Ouvir Textos", stopAudio: "⏸️ Parar", tab1: "Resumo", tab2: "História", tab3: "Curiosidades",
         locked: "Aproxima-te a menos de 50 metros para revelar os segredos deste local histórico!",
         winLine: "Parabéns! Conseguiste completar uma linha!", winFull: "EXTRAORDINÁRIO! Completaste todo o mapa!", ttsLang: "pt-PT",
         obT1: "Explora o Porto", obD1: "Caminha pela cidade e descobre os locais históricos escondidos.",
@@ -24,12 +24,12 @@ const uiTexts = {
         helpT4: "Desbloquear", help4: "Aproxima-te a menos de 50m.",
         helpT5: "Pistas", help5: "Perdido? Clica na bússola para uma dica!",
         alertGPS: "O radar precisa de sinal GPS verde para te dar uma pista!", alertNoHints: "Já não há pistas a dar. Descobriste o mapa todo!", alertTitle: "Aviso", alertOk: "OK",
-        dist: "📍 Distância:", meters: "metros",
+        dist: "Distância:", meters: "metros",
         contactTitle: "Falar Connosco", contactDesc: "Deixa a tua mensagem e responderemos para o teu email.", contactName: "O teu nome", contactEmail: "O teu email", contactMsg: "Escreve aqui...", contactBtn: "Enviar Mensagem", contactSuccess: "Mensagem enviada com sucesso! Responderemos em breve.", contactError: "Ocorreu um erro ao enviar. Tenta de novo.", contactNoNet: "Sem ligação à internet para enviar a mensagem.",
         walkTime: "a pé"
     },
     en: {
-        map: "📍 Directions", audio: "🔊 Listen", stopAudio: "⏸️ Stop", tab1: "Summary", tab2: "History", tab3: "Trivia",
+        map: "Directions", audio: "🔊 Listen", stopAudio: "⏸️ Stop", tab1: "Summary", tab2: "History", tab3: "Trivia",
         locked: "Get closer than 50 meters to reveal the secrets of this historic location!",
         winLine: "Congratulations! You completed a line!", winFull: "EXTRAORDINARY! You completed the entire map!", ttsLang: "en-GB",
         obT1: "Explore Porto", obD1: "Walk around the city and discover hidden historic locations.",
@@ -42,12 +42,12 @@ const uiTexts = {
         helpT4: "Unlock", help4: "Get closer than 50m.",
         helpT5: "Hints", help5: "Lost? Click the compass for a hint!",
         alertGPS: "The radar needs a green GPS signal to give you a hint!", alertNoHints: "No more hints available. You discovered the entire map!", alertTitle: "Notice", alertOk: "OK",
-        dist: "📍 Distance:", meters: "meters",
+        dist: "Distance:", meters: "meters",
         contactTitle: "Contact Us", contactDesc: "Leave your message and we will reply to your email.", contactName: "Your name", contactEmail: "Your email", contactMsg: "Write here...", contactBtn: "Send Message", contactSuccess: "Message sent successfully! We will reply soon.", contactError: "An error occurred while sending. Try again.", contactNoNet: "No internet connection to send the message.",
         walkTime: "on foot"
     },
     es: {
-        map: "📍 Cómo llegar", audio: "🔊 Escuchar", stopAudio: "⏸️ Detener", tab1: "Resumen", tab2: "Historia", tab3: "Curiosidades",
+        map: "Cómo llegar", audio: "🔊 Escuchar", stopAudio: "⏸️ Detener", tab1: "Resumen", tab2: "Historia", tab3: "Curiosidades",
         locked: "¡Acércate a menos de 50 metros para revelar los secretos de este lugar histórico!",
         winLine: "¡Felicidades! ¡Has completado una línea!", winFull: "¡EXTRAORDINARIO! ¡Has completado todo el mapa!", ttsLang: "es-ES",
         obT1: "Explora Oporto", obD1: "Camina por la ciudad y descubre lugares históricos ocultos.",
@@ -60,12 +60,12 @@ const uiTexts = {
         helpT4: "Desbloquear", help4: "Acércate a menos de 50m.",
         helpT5: "Pistas", help5: "¿Perdido? ¡Haz clic en la brújula para una pista!",
         alertGPS: "¡El radar necesita señal GPS verde para darte una pista!", alertNoHints: "No hay más pistas. ¡Descubriste todo el mapa!", alertTitle: "Aviso", alertOk: "OK",
-        dist: "📍 Distancia:", meters: "metros",
+        dist: "Distancia:", meters: "metros",
         contactTitle: "Contáctanos", contactDesc: "Deja tu mensaje y te responderemos a tu correo.", contactName: "Tu nombre", contactEmail: "Tu correo", contactMsg: "Escribe aquí...", contactBtn: "Enviar Mensaje", contactSuccess: "¡Mensaje enviado con éxito! Responderemos pronto.", contactError: "Ocurrió un error al enviar. Inténtalo de nuevo.", contactNoNet: "Sin conexión a internet para enviar el mensaje.",
         walkTime: "a pie"
     },
     fr: {
-        map: "📍 Itinéraire", audio: "🔊 Écouter", stopAudio: "⏸️ Arrêter", tab1: "Résumé", tab2: "Histoire", tab3: "Anecdotes",
+        map: "Itinéraire", audio: "🔊 Écouter", stopAudio: "⏸️ Arrêter", tab1: "Résumé", tab2: "Histoire", tab3: "Anecdotes",
         locked: "Approchez-vous à moins de 50 mètres pour révéler les secrets de ce lieu !",
         winLine: "Félicitations ! Ligne complétée !", winFull: "EXTRAORDINAIRE ! Carte complétée !", ttsLang: "fr-FR",
         obT1: "Explorez Porto", obD1: "Promenez-vous dans la ville et découvrez des lieux historiques cachés.",
@@ -78,12 +78,12 @@ const uiTexts = {
         helpT4: "Débloquer", help4: "Approchez à moins de 50m.",
         helpT5: "Indices", help5: "Perdu ? Cliquez sur la boussole pour un indice !",
         alertGPS: "Le radar a besoin d'un signal GPS vert pour un indice !", alertNoHints: "Plus d'indices. Vous avez découvert toute la carte !", alertTitle: "Avis", alertOk: "OK",
-        dist: "📍 Distance :", meters: "mètres",
+        dist: "Distance :", meters: "mètres",
         contactTitle: "Contactez-nous", contactDesc: "Laissez votre message et nous vous répondrons par e-mail.", contactName: "Votre nom", contactEmail: "Votre e-mail", contactMsg: "Écrivez ici...", contactBtn: "Envoyer le message", contactSuccess: "Message envoyé avec succès ! Nous répondrons bientôt.", contactError: "Une erreur s'est produite lors de l'envoi. Réessayez.", contactNoNet: "Pas de connexion internet pour envoyer le message.",
         walkTime: "à pied"
     },
     de: {
-        map: "📍 Route", audio: "🔊 Anhören", stopAudio: "⏸️ Stoppen", tab1: "Zusammenfassung", tab2: "Geschichte", tab3: "Fakten",
+        map: "Route", audio: "🔊 Anhören", stopAudio: "⏸️ Stoppen", tab1: "Zusammenfassung", tab2: "Geschichte", tab3: "Fakten",
         locked: "Nähern Sie sich auf weniger als 50 Meter, um die Geheimnisse zu enthüllen!",
         winLine: "Glückwunsch! Linie vervollständigt!", winFull: "AUSSERGEWÖHNLICH! Karte vervollständigt!", ttsLang: "de-DE",
         obT1: "Entdecke Porto", obD1: "Spaziere durch die Stadt und entdecke verborgene historische Orte.",
@@ -96,12 +96,12 @@ const uiTexts = {
         helpT4: "Freischalten", help4: "Nähere dich auf unter 50m.",
         helpT5: "Hinweise", help5: "Verloren? Klicke auf den Kompass für einen Tipp!",
         alertGPS: "Das Radar benötigt ein grünes GPS-Signal für Hinweise!", alertNoHints: "Keine Hinweise mehr. Du hast die ganze Karte entdeckt!", alertTitle: "Hinweis", alertOk: "OK",
-        dist: "📍 Entfernung:", meters: "Meter",
+        dist: "Entfernung:", meters: "Meter",
         contactTitle: "Kontaktiere uns", contactDesc: "Hinterlasse deine Nachricht und wir antworten per E-Mail.", contactName: "Dein Name", contactEmail: "Deine E-Mail", contactMsg: "Schreibe hier...", contactBtn: "Nachricht senden", contactSuccess: "Nachricht erfolgreich gesendet! Wir werden bald antworten.", contactError: "Ein Fehler ist aufgetreten. Versuch es noch einmal.", contactNoNet: "Keine Internetverbindung zum Senden der Nachricht.",
         walkTime: "zu Fuß"
     },
     it: {
-        map: "📍 Indicazioni", audio: "🔊 Ascolta", stopAudio: "⏸️ Ferma", tab1: "Riassunto", tab2: "Storia", tab3: "Curiosità",
+        map: "Indicazioni", audio: "🔊 Ascolta", stopAudio: "⏸️ Ferma", tab1: "Riassunto", tab2: "Storia", tab3: "Curiosità",
         locked: "Avvicinati a meno di 50 metri per revelar i segreti di questo luogo!",
         winLine: "Congratulazioni! Linea completata!", winFull: "STRAORDINARIO! Mappa completata!", ttsLang: "it-IT",
         obT1: "Esplora Porto", obD1: "Passeggia per la città e scopri luoghi storici nascosti.",
@@ -114,12 +114,12 @@ const uiTexts = {
         helpT4: "Sbloccare", help4: "Avvicinati a meno di 50m.",
         helpT5: "Indizi", help5: "Perso? Clicca sulla bussola per un suggerimento!",
         alertGPS: "Il radar ha bisogno di un segnale GPS verde per aiutarti!", alertNoHints: "Nessun indizio. Hai scoperto tutta la mappa!", alertTitle: "Avviso", alertOk: "OK",
-        dist: "📍 Distanza:", meters: "metri",
+        dist: "Distanza:", meters: "metri",
         contactTitle: "Contattaci", contactDesc: "Lascia il tuo messaggio e ti risponderemo via email.", contactName: "Il tuo nome", contactEmail: "La tua email", contactMsg: "Scrivi qui...", contactBtn: "Invia Messaggio", contactSuccess: "Messaggio inviato con successo! Risponderemo presto.", contactError: "Si è verificato un errore durante l'invio. Riprova.", contactNoNet: "Nessuna connessione internet per inviare il messaggio.",
         walkTime: "a piedi"
     },
     zh: {
-        map: "📍 路线", audio: "🔊 聆听", stopAudio: "⏸️ 停止", tab1: "总结", tab2: "历史", tab3: "趣闻",
+        map: "路线", audio: "🔊 聆听", stopAudio: "⏸️ 停止", tab1: "总结", tab2: "历史", tab3: "趣闻",
         locked: "靠近50米以内，揭开这个历史名胜的秘密！",
         winLine: "恭喜！您完成了一条线！", winFull: "🏆 太棒了！您完成了整个地图！", ttsLang: "zh-CN",
         obT1: "探索波尔图", obD1: "在城市中漫步，发现隐藏的历史古迹。",
@@ -132,7 +132,7 @@ const uiTexts = {
         helpT4: "解锁", help4: "靠近至50米以内。",
         helpT5: "提示", help5: "迷路了？点击指南针获取提示！",
         alertGPS: "雷达需要绿色的GPS信号才能给您提示！", alertNoHints: "没有更多提示了。您已探索整个地图！", alertTitle: "提示", alertOk: "确定",
-        dist: "📍 距离:", meters: "米",
+        dist: "距离:", meters: "米",
         contactTitle: "联系我们", contactDesc: "留下您的信息，我们将通过电子邮件回复您。", contactName: "您的名字", contactEmail: "您的电子邮件", contactMsg: "在这里写...", contactBtn: "发送信息", contactSuccess: "信息发送成功！我们将尽快回复。", contactError: "发送时发生错误。请重试。", contactNoNet: "没有网络连接来发送信息。",
         walkTime: "步行"
     }
@@ -427,18 +427,18 @@ function formatDistanceAndDuration(meters) {
     }
 
     const minutes = Math.round(meters / 80);
-
-    let timeTextOnly = "";
+    
+    let timeText = "";
     if (minutes < 1) {
-        timeTextOnly = `< 1 min`;
+        timeText = `< 1 min`;
     } else if (minutes < 60) {
-        timeTextOnly = `~${minutes} min`;
+        timeText = `~${minutes} min`;
     } else {
         const hours = (minutes / 60).toFixed(1);
-        timeTextOnly = `~${hours}h`;
+        timeText = `~${hours}h`;
     }
 
-    return { distText, timeTextOnly };
+    return { distText, timeText };
 }
 
 // =========================================
@@ -451,24 +451,24 @@ function showMetric(type) {
     const btnMap = document.getElementById('btn-map');
     if (!btnMap) return;
 
-    // Guarda o HTML original do botão (com o ícone correto) se ainda não foi guardado
+    // Guarda o HTML original do botão (apenas texto) se ainda não foi guardado
     if (!btnMap.dataset.originalHtml) {
         btnMap.dataset.originalHtml = btnMap.innerHTML;
     }
 
     if (metricTimeout) clearTimeout(metricTimeout);
 
-    const { distText, timeTextOnly } = formatDistanceAndDuration(currentDistanceMeters);
+    const { distText, timeText } = formatDistanceAndDuration(currentDistanceMeters);
 
     if (type === 'dist') {
-        // Texto em branco puro sobre o fundo azul do botão
-        btnMap.innerHTML = `📍 <span style="color: #ffffff; margin-left: 6px; font-weight: 800;">${distText}</span>`;
+        // Apenas o número/distância em branco puro, sem ícones
+        btnMap.innerHTML = `<span style="color: #ffffff; font-weight: 800;">${distText}</span>`;
     } else if (type === 'time') {
-        // Texto em branco puro e totalmente sem o "a pé"
-        btnMap.innerHTML = `🚶 <span style="color: #ffffff; margin-left: 6px; font-weight: 700;">${timeTextOnly}</span>`;
+        // Apenas o tempo em branco puro, sem ícones e sem "a pé"
+        btnMap.innerHTML = `<span style="color: #ffffff; font-weight: 700;">${timeText}</span>`;
     }
 
-    // Reduzido para 3 segundos
+    // Volta ao normal após 3 segundos
     metricTimeout = setTimeout(() => {
         resetButtonMap();
     }, 3000);
@@ -596,7 +596,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_30') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_31') === 'true') {
             initGPS();
         }
     }

@@ -415,6 +415,14 @@ function closeModal() {
     modal.classList.add('hidden');
     if (speechSynthesis.speaking) speechSynthesis.cancel();
     currentLocation = null;
+    // ADICIONA ESTA LINHA:
+    document.querySelector('#location-modal .modal-content').classList.remove('text-expanded');
+}
+
+function toggleExpandText() {
+    if (navigator.vibrate) navigator.vibrate(20);
+    const modalContent = document.querySelector('#location-modal .modal-content');
+    if (modalContent) modalContent.classList.toggle('text-expanded');
 }
 
 function formatDistanceAndDuration(meters) {
@@ -618,7 +626,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_53') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_54') === 'true') {
             initGPS();
         }
     }
@@ -693,27 +701,23 @@ function toggleAudio() {
     const utterance = new SpeechSynthesisUtterance(activeTabContent);
     utterance.lang = uiTexts[currentLang].ttsLang;
 
-    // --- AFINAÇÕES HUMANAS ---
-    utterance.rate = 0.92; // Fala 8% mais devagar (tira a pressa robótica)
-    utterance.pitch = 1.05; // Levanta ligeiramente o tom para parecer mais natural
+    utterance.rate = 0.92; 
+    utterance.pitch = 1.05; 
 
-    // Tenta forçar o uso de vozes de alta qualidade nativas do telemóvel
+    // O BLOQUEIO ANTI-PT-BR
     const voices = speechSynthesis.getVoices();
     if (voices.length > 0) {
-        const bestVoice = voices.find(v => 
-            v.lang.includes(utterance.lang) && 
-            (v.name.includes('Premium') || v.name.includes('Enhanced') || v.name.includes('Google') || v.name.includes('Siri'))
-        );
-        if (bestVoice) utterance.voice = bestVoice;
+        // Exige estritamente as siglas de Portugal
+        const ptVoices = voices.filter(v => v.lang === 'pt-PT' || v.lang === 'pt_PT');
+        if (ptVoices.length > 0) {
+            // Tenta caçar as melhores vozes tugas nativas do telemóvel (Joana, Catarina, etc)
+            const bestVoice = ptVoices.find(v => v.name.includes('Joana') || v.name.includes('Catarina') || v.name.includes('Luciana') || v.name.includes('Premium'));
+            utterance.voice = bestVoice || ptVoices[0]; // Usa a melhor, ou a primeira tuga que apanhar
+        }
     }
-    // -------------------------
 
     utterance.onstart = () => {
         if (btnAudio) btnAudio.classList.add('playing');
-    };
-
-    utterance.onend = () => {
-        if (btnAudio) btnAudio.classList.remove('playing');
     };
 
     utterance.onerror = () => {
@@ -782,10 +786,17 @@ if (introSeen === 'true') {
 // Abas de Navegação
 function openTab(evt, tabName) {
     if (navigator.vibrate) navigator.vibrate(30);
+    
+    // A LINHA NOVA (B): Garante que a caixa encolhe sempre que trocas de aba
+    const modalContent = document.querySelector('#location-modal .modal-content');
+    if (modalContent) modalContent.classList.remove('text-expanded');
+
     const tabContents = document.getElementsByClassName("tab-content");
     for (let i = 0; i < tabContents.length; i++) tabContents[i].classList.remove("active");
+    
     const tabBtns = document.getElementsByClassName("tab-btn");
     for (let i = 0; i < tabBtns.length; i++) tabBtns[i].classList.remove("active");
+    
     document.getElementById(tabName).classList.add("active");
     evt.currentTarget.classList.add("active");
 }

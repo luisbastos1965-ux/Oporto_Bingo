@@ -8,7 +8,7 @@
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="./bingo-icon.png">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=4">
 </head>
 
 <body>
@@ -211,13 +211,13 @@
                     onclick="openTab(event, 'tab-curiosidades')">Curiosidades</button>
             </div>
 
-            <div id="tab-resumo" class="tab-content active">
+            <div id="tab-resumo" class="tab-content active" onclick="toggleExpandText()">
                 <div id="modal-desc"></div>
             </div>
-            <div id="tab-historia" class="tab-content">
+            <div id="tab-historia" class="tab-content" onclick="toggleExpandText()">
                 <p id="modal-hist"></p>
             </div>
-            <div id="tab-curiosidades" class="tab-content">
+            <div id="tab-curiosidades" class="tab-content" onclick="toggleExpandText()">
                 <p id="modal-curio"></p>
             </div>
 

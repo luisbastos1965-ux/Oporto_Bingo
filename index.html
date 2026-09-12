@@ -211,14 +211,21 @@
                     onclick="openTab(event, 'tab-curiosidades')">Curiosidades</button>
             </div>
 
-            <div id="tab-resumo" class="tab-content active" onclick="toggleExpandText()">
-                <div id="modal-desc"></div>
-            </div>
-            <div id="tab-historia" class="tab-content" onclick="toggleExpandText()">
-                <p id="modal-hist"></p>
-            </div>
-            <div id="tab-curiosidades" class="tab-content" onclick="toggleExpandText()">
-                <p id="modal-curio"></p>
+            <!-- Contentor que envolve os textos e o novo botão subtil -->
+            <div class="text-container-wrapper" style="position: relative;">
+                
+                <div id="tab-resumo" class="tab-content active">
+                    <div id="modal-desc"></div>
+                </div>
+                <div id="tab-historia" class="tab-content">
+                    <p id="modal-hist"></p>
+                </div>
+                <div id="tab-curiosidades" class="tab-content">
+                    <p id="modal-curio"></p>
+                </div>
+
+                <!-- O Novo Botão de Expandir -->
+                <button id="btn-expand-text" class="subtle-expand-btn" onclick="toggleExpandText()">⤢</button>
             </div>
 
             <!-- DEPOIS -->

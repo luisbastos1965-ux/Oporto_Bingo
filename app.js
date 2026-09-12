@@ -626,7 +626,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_54') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_55') === 'true') {
             initGPS();
         }
     }

@@ -11,7 +11,7 @@ if ("Notification" in window && Notification.permission !== "denied") {
 // =========================================
 const uiTexts = {
     pt: {
-        map: "Como Chegar", audio: "🔊 Ouvir Textos", stopAudio: "⏸️ Parar", tab1: "Resumo", tab2: "História", tab3: "Curiosidades",
+        map: "Direções", audio: "🔊 Ouvir Textos", stopAudio: "⏸️ Parar", tab1: "Resumo", tab2: "História", tab3: "Curiosidades",
         locked: "Aproxima-te a menos de 50 metros para revelar os segredos deste local histórico!",
         winLine: "Parabéns! Conseguiste completar uma linha!", winFull: "EXTRAORDINÁRIO! Completaste todo o mapa!", ttsLang: "pt-PT",
         obT1: "Explora o Porto", obD1: "Caminha pela cidade e descobre os locais históricos escondidos.",
@@ -47,7 +47,7 @@ const uiTexts = {
         walkTime: "on foot"
     },
     es: {
-        map: "Cómo llegar", audio: "🔊 Escuchar", stopAudio: "⏸️ Detener", tab1: "Resumen", tab2: "Historia", tab3: "Curiosidades",
+        map: "Direcciones", audio: "🔊 Escuchar", stopAudio: "⏸️ Detener", tab1: "Resumen", tab2: "Historia", tab3: "Curiosidades",
         locked: "¡Acércate a menos de 50 metros para revelar los secretos de este lugar histórico!",
         winLine: "¡Felicidades! ¡Has completado una línea!", winFull: "¡EXTRAORDINARIO! ¡Has completado todo el mapa!", ttsLang: "es-ES",
         obT1: "Explora Oporto", obD1: "Camina por la ciudad y descubre lugares históricos ocultos.",
@@ -471,7 +471,7 @@ function showMetric(type) {
     // Volta ao normal após 3 segundos
     metricTimeout = setTimeout(() => {
         resetButtonMap();
-    }, 3000);
+    }, 2000);
 }
 
 function resetButtonMap() {
@@ -596,7 +596,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_31') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_32') === 'true') {
             initGPS();
         }
     }

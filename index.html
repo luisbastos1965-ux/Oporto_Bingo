@@ -230,40 +230,39 @@
                     <button class="icon-pill-btn" onclick="showMetric('time')" title="Ver Tempo a pé">🚶</button>
                 </div>
 
-                <!-- Botão de Mapa / Como Chegar -->
-                <button id="btn-map" class="action-btn" onclick="openMap()">📍 Como Chegar</button>
+                <!-- Botão de Mapa (Sem ícones e atualizado) -->
+                <button id="btn-map" class="action-btn" onclick="openMap()">Direções</button>
 
-                <!-- Botão de Áudio (Mantém-se escondido quando bloqueado e aparece quando desbloqueado) -->
+                <!-- Botão de Áudio -->
                 <button id="btn-audio" class="action-btn hidden" onclick="toggleAudio()">🔊 Ouvir Textos</button>
             </div>
-        </div>
-    </div>
 
-    <!-- MODAL DE CONTACTO IN-APP -->
-    <div id="contact-modal" class="modal hidden">
-        <div class="modal-content">
-            <!-- Retirámos o X daqui! -->
-            <h2 id="contact-title">Falar Connosco</h2>
-            <p id="contact-desc" style="font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 20px;">
-                Deixa a tua mensagem e responderemos para o teu email.
-            </p>
+            <!-- MODAL DE CONTACTO IN-APP -->
+            <div id="contact-modal" class="modal hidden">
+                <div class="modal-content">
+                    <!-- Retirámos o X daqui! -->
+                    <h2 id="contact-title">Falar Connosco</h2>
+                    <p id="contact-desc" style="font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 20px;">
+                        Deixa a tua mensagem e responderemos para o teu email.
+                    </p>
 
-            <form id="contact-form" class="contact-form">
-                <input type="text" id="contact-name" name="Nome" placeholder="O teu nome" required>
-                <input type="email" id="contact-email" name="Email" placeholder="O teu email" required>
-                <textarea id="contact-msg" name="Mensagem" rows="4" placeholder="Escreve aqui..." required></textarea>
+                    <form id="contact-form" class="contact-form">
+                        <input type="text" id="contact-name" name="Nome" placeholder="O teu nome" required>
+                        <input type="email" id="contact-email" name="Email" placeholder="O teu email" required>
+                        <textarea id="contact-msg" name="Mensagem" rows="4" placeholder="Escreve aqui..."
+                            required></textarea>
 
-                <button type="submit" class="start-btn" id="btn-send-msg"
-                    style="width: 100%; margin: 15px auto 0; height: 45px !important; min-height: 45px;">
-                    <span id="send-btn-text">Enviar Mensagem</span>
-                    <div class="btn-loader" id="send-loader"></div>
-                </button>
-            </form>
-        </div>
-    </div>
+                        <button type="submit" class="start-btn" id="btn-send-msg"
+                            style="width: 100%; margin: 15px auto 0; height: 45px !important; min-height: 45px;">
+                            <span id="send-btn-text">Enviar Mensagem</span>
+                            <div class="btn-loader" id="send-loader"></div>
+                        </button>
+                    </form>
+                </div>
+            </div>
 
-    <script src="sw.js"></script>
-    <script src="app.js"></script>
+            <script src="sw.js"></script>
+            <script src="app.js"></script>
 </body>
 
 </html>

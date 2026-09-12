@@ -366,10 +366,7 @@ function openModal(loc) {
         modalCurio.innerText = loc.curio[currentLang];
 
         if (tabsContainer) tabsContainer.classList.remove('hidden');
-        if (btnAudio) {
-            btnAudio.classList.remove('hidden');
-            btnAudio.innerHTML = uiTexts[currentLang].audio; // Define apenas o ícone 🔊
-        }
+        if (btnAudio) btnAudio.classList.remove('hidden'); // MOSTRA O ÁUDIO AQUI
         if (actionsBar) actionsBar.classList.remove('locked-actions');
 
         if (miniPill) miniPill.classList.add('hidden');
@@ -396,7 +393,7 @@ function openModal(loc) {
         modalDesc.innerHTML = '';
 
         if (tabsContainer) tabsContainer.classList.add('hidden');
-        if (btnAudio) btnAudio.classList.add('hidden'); // Oculta o áudio nos bloqueados
+        if (btnAudio) btnAudio.classList.add('hidden'); // OCULTA O ÁUDIO AQUI
         if (actionsBar) actionsBar.classList.add('locked-actions');
 
         if (miniPill) miniPill.classList.remove('hidden');
@@ -622,7 +619,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_46') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_47') === 'true') {
             initGPS();
         }
     }

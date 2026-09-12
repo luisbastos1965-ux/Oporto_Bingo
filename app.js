@@ -10,128 +10,128 @@ if ("Notification" in window && Notification.permission !== "denied") {
 // DICIONÁRIO DA INTERFACE (UI) + ALERTAS
 // =========================================
 const uiTexts = {
-    pt: { 
-        map: "📍 Como Chegar", audio: "🔊 Ouvir Textos", stopAudio: "⏸️ Parar", tab1: "Resumo", tab2: "História", tab3: "Curiosidades", 
-        locked: "Aproxima-te a menos de 50 metros para revelar os segredos deste local histórico!", 
-        winLine: "Parabéns! Conseguiste completar uma linha!", winFull: "EXTRAORDINÁRIO! Completaste todo o mapa!", ttsLang: "pt-PT", 
-        obT1: "Explora o Porto", obD1: "Caminha pela cidade e descobre os locais históricos escondidos.", 
-        obT2: "Radar GPS", obD2: "Fica atento às cores: laranja é perto, vermelho a pulsar é quase lá!\n\n(Dica: Mantém o jogo aberto enquanto caminhas)", 
-        obT3: "Desbloqueia a História", obD3: "Aproxima-te a 50 metros para revelar os segredos e ouvir o áudio guia.", obBtn: "Começar", 
-        helpTitle: "COMO JOGAR", 
-        helpT1: "Explorar", help1: "Caminha pela cidade para descobrir.", 
-        helpT2: "Perto", help2: "Laranja: Estás a menos de 400m!", 
-        helpT3: "Muito Perto", help3: "Vermelho (A pulsar): Menos de 150m!", 
-        helpT4: "Desbloquear", help4: "Aproxima-te a menos de 50m.", 
+    pt: {
+        map: "📍 Como Chegar", audio: "🔊 Ouvir Textos", stopAudio: "⏸️ Parar", tab1: "Resumo", tab2: "História", tab3: "Curiosidades",
+        locked: "Aproxima-te a menos de 50 metros para revelar os segredos deste local histórico!",
+        winLine: "Parabéns! Conseguiste completar uma linha!", winFull: "EXTRAORDINÁRIO! Completaste todo o mapa!", ttsLang: "pt-PT",
+        obT1: "Explora o Porto", obD1: "Caminha pela cidade e descobre os locais históricos escondidos.",
+        obT2: "Radar GPS", obD2: "Fica atento às cores: laranja é perto, vermelho a pulsar é quase lá!\n\n(Dica: Mantém o jogo aberto enquanto caminhas)",
+        obT3: "Desbloqueia a História", obD3: "Aproxima-te a 50 metros para revelar os segredos e ouvir o áudio guia.", obBtn: "Começar",
+        helpTitle: "COMO JOGAR",
+        helpT1: "Explorar", help1: "Caminha pela cidade para descobrir.",
+        helpT2: "Perto", help2: "Laranja: Estás a menos de 400m!",
+        helpT3: "Muito Perto", help3: "Vermelho (A pulsar): Menos de 150m!",
+        helpT4: "Desbloquear", help4: "Aproxima-te a menos de 50m.",
         helpT5: "Pistas", help5: "Perdido? Clica na bússola para uma dica!",
-        alertGPS: "O radar precisa de sinal GPS verde para te dar uma pista!", alertNoHints: "Já não há pistas a dar. Descobriste o mapa todo!", alertTitle: "Aviso", alertOk: "OK", 
+        alertGPS: "O radar precisa de sinal GPS verde para te dar uma pista!", alertNoHints: "Já não há pistas a dar. Descobriste o mapa todo!", alertTitle: "Aviso", alertOk: "OK",
         dist: "📍 Distância:", meters: "metros",
         contactTitle: "Falar Connosco", contactDesc: "Deixa a tua mensagem e responderemos para o teu email.", contactName: "O teu nome", contactEmail: "O teu email", contactMsg: "Escreve aqui...", contactBtn: "Enviar Mensagem", contactSuccess: "Mensagem enviada com sucesso! Responderemos em breve.", contactError: "Ocorreu um erro ao enviar. Tenta de novo.", contactNoNet: "Sem ligação à internet para enviar a mensagem.",
         walkTime: "a pé"
     },
-    en: { 
-        map: "📍 Directions", audio: "🔊 Listen", stopAudio: "⏸️ Stop", tab1: "Summary", tab2: "History", tab3: "Trivia", 
-        locked: "Get closer than 50 meters to reveal the secrets of this historic location!", 
-        winLine: "Congratulations! You completed a line!", winFull: "EXTRAORDINARY! You completed the entire map!", ttsLang: "en-GB", 
-        obT1: "Explore Porto", obD1: "Walk around the city and discover hidden historic locations.", 
-        obT2: "GPS Radar", obD2: "Watch the colors: orange is close, pulsing red means you are almost there!\n\n(Tip: Keep the app open while walking)", 
-        obT3: "Unlock History", obD3: "Get closer than 50 meters to reveal secrets and hear our audio guide.", obBtn: "Start", 
-        helpTitle: "HOW TO PLAY", 
-        helpT1: "Explore", help1: "Walk around the city to discover.", 
-        helpT2: "Close", help2: "Orange: You are under 400m away!", 
-        helpT3: "Very Close", help3: "Red (Pulsing): Under 150m away!", 
-        helpT4: "Unlock", help4: "Get closer than 50m.", 
+    en: {
+        map: "📍 Directions", audio: "🔊 Listen", stopAudio: "⏸️ Stop", tab1: "Summary", tab2: "History", tab3: "Trivia",
+        locked: "Get closer than 50 meters to reveal the secrets of this historic location!",
+        winLine: "Congratulations! You completed a line!", winFull: "EXTRAORDINARY! You completed the entire map!", ttsLang: "en-GB",
+        obT1: "Explore Porto", obD1: "Walk around the city and discover hidden historic locations.",
+        obT2: "GPS Radar", obD2: "Watch the colors: orange is close, pulsing red means you are almost there!\n\n(Tip: Keep the app open while walking)",
+        obT3: "Unlock History", obD3: "Get closer than 50 meters to reveal secrets and hear our audio guide.", obBtn: "Start",
+        helpTitle: "HOW TO PLAY",
+        helpT1: "Explore", help1: "Walk around the city to discover.",
+        helpT2: "Close", help2: "Orange: You are under 400m away!",
+        helpT3: "Very Close", help3: "Red (Pulsing): Under 150m away!",
+        helpT4: "Unlock", help4: "Get closer than 50m.",
         helpT5: "Hints", help5: "Lost? Click the compass for a hint!",
-        alertGPS: "The radar needs a green GPS signal to give you a hint!", alertNoHints: "No more hints available. You discovered the entire map!", alertTitle: "Notice", alertOk: "OK", 
+        alertGPS: "The radar needs a green GPS signal to give you a hint!", alertNoHints: "No more hints available. You discovered the entire map!", alertTitle: "Notice", alertOk: "OK",
         dist: "📍 Distance:", meters: "meters",
         contactTitle: "Contact Us", contactDesc: "Leave your message and we will reply to your email.", contactName: "Your name", contactEmail: "Your email", contactMsg: "Write here...", contactBtn: "Send Message", contactSuccess: "Message sent successfully! We will reply soon.", contactError: "An error occurred while sending. Try again.", contactNoNet: "No internet connection to send the message.",
         walkTime: "on foot"
     },
-    es: { 
-        map: "📍 Cómo llegar", audio: "🔊 Escuchar", stopAudio: "⏸️ Detener", tab1: "Resumen", tab2: "Historia", tab3: "Curiosidades", 
-        locked: "¡Acércate a menos de 50 metros para revelar los secretos de este lugar histórico!", 
-        winLine: "¡Felicidades! ¡Has completado una línea!", winFull: "¡EXTRAORDINARIO! ¡Has completado todo el mapa!", ttsLang: "es-ES", 
-        obT1: "Explora Oporto", obD1: "Camina por la ciudad y descubre lugares históricos ocultos.", 
-        obT2: "Radar GPS", obD2: "Atento a los colores: naranja es cerca, rojo parpadeando es casi allí.\n\n(Consejo: Mantén la app abierta al caminar)", 
-        obT3: "Desbloquea la Historia", obD3: "Acércate a 50 metros para revelar secretos y escuchar la audioguía.", obBtn: "Comenzar", 
-        helpTitle: "CÓMO JUGAR", 
-        helpT1: "Explorar", help1: "Camina por la ciudad para descubrir.", 
-        helpT2: "Cerca", help2: "Naranja: ¡Estás a menos de 400m!", 
-        helpT3: "Muy Cerca", help3: "Rojo (Parpadeando): ¡Menos de 150m!", 
-        helpT4: "Desbloquear", help4: "Acércate a menos de 50m.", 
+    es: {
+        map: "📍 Cómo llegar", audio: "🔊 Escuchar", stopAudio: "⏸️ Detener", tab1: "Resumen", tab2: "Historia", tab3: "Curiosidades",
+        locked: "¡Acércate a menos de 50 metros para revelar los secretos de este lugar histórico!",
+        winLine: "¡Felicidades! ¡Has completado una línea!", winFull: "¡EXTRAORDINARIO! ¡Has completado todo el mapa!", ttsLang: "es-ES",
+        obT1: "Explora Oporto", obD1: "Camina por la ciudad y descubre lugares históricos ocultos.",
+        obT2: "Radar GPS", obD2: "Atento a los colores: naranja es cerca, rojo parpadeando es casi allí.\n\n(Consejo: Mantén la app abierta al caminar)",
+        obT3: "Desbloquea la Historia", obD3: "Acércate a 50 metros para revelar secretos y escuchar la audioguía.", obBtn: "Comenzar",
+        helpTitle: "CÓMO JUGAR",
+        helpT1: "Explorar", help1: "Camina por la ciudad para descubrir.",
+        helpT2: "Cerca", help2: "Naranja: ¡Estás a menos de 400m!",
+        helpT3: "Muy Cerca", help3: "Rojo (Parpadeando): ¡Menos de 150m!",
+        helpT4: "Desbloquear", help4: "Acércate a menos de 50m.",
         helpT5: "Pistas", help5: "¿Perdido? ¡Haz clic en la brújula para una pista!",
-        alertGPS: "¡El radar necesita señal GPS verde para darte una pista!", alertNoHints: "No hay más pistas. ¡Descubriste todo el mapa!", alertTitle: "Aviso", alertOk: "OK", 
+        alertGPS: "¡El radar necesita señal GPS verde para darte una pista!", alertNoHints: "No hay más pistas. ¡Descubriste todo el mapa!", alertTitle: "Aviso", alertOk: "OK",
         dist: "📍 Distancia:", meters: "metros",
         contactTitle: "Contáctanos", contactDesc: "Deja tu mensaje y te responderemos a tu correo.", contactName: "Tu nombre", contactEmail: "Tu correo", contactMsg: "Escribe aquí...", contactBtn: "Enviar Mensaje", contactSuccess: "¡Mensaje enviado con éxito! Responderemos pronto.", contactError: "Ocurrió un error al enviar. Inténtalo de nuevo.", contactNoNet: "Sin conexión a internet para enviar el mensaje.",
         walkTime: "a pie"
     },
-    fr: { 
-        map: "📍 Itinéraire", audio: "🔊 Écouter", stopAudio: "⏸️ Arrêter", tab1: "Résumé", tab2: "Histoire", tab3: "Anecdotes", 
-        locked: "Approchez-vous à moins de 50 mètres pour révéler les secrets de ce lieu !", 
-        winLine: "Félicitations ! Ligne complétée !", winFull: "EXTRAORDINAIRE ! Carte complétée !", ttsLang: "fr-FR", 
-        obT1: "Explorez Porto", obD1: "Promenez-vous dans la ville et découvrez des lieux historiques cachés.", 
-        obT2: "Radar GPS", obD2: "Surveillez les couleurs : orange c'est près, rouge clignotant c'est tout près !\n\n(Astuce : Gardez l'app ouverte en marchant)", 
-        obT3: "Débloquez l'Histoire", obD3: "Approchez à moins de 50m pour révéler les secrets et écouter le guide.", obBtn: "Commencer", 
-        helpTitle: "COMMENT JOUER", 
-        helpT1: "Explorer", help1: "Promenez-vous pour découvrir.", 
-        helpT2: "Près", help2: "Orange : À moins de 400m !", 
-        helpT3: "Très Près", help3: "Rouge (Clignotant) : À moins de 150m !", 
-        helpT4: "Débloquer", help4: "Approchez à moins de 50m.", 
+    fr: {
+        map: "📍 Itinéraire", audio: "🔊 Écouter", stopAudio: "⏸️ Arrêter", tab1: "Résumé", tab2: "Histoire", tab3: "Anecdotes",
+        locked: "Approchez-vous à moins de 50 mètres pour révéler les secrets de ce lieu !",
+        winLine: "Félicitations ! Ligne complétée !", winFull: "EXTRAORDINAIRE ! Carte complétée !", ttsLang: "fr-FR",
+        obT1: "Explorez Porto", obD1: "Promenez-vous dans la ville et découvrez des lieux historiques cachés.",
+        obT2: "Radar GPS", obD2: "Surveillez les couleurs : orange c'est près, rouge clignotant c'est tout près !\n\n(Astuce : Gardez l'app ouverte en marchant)",
+        obT3: "Débloquez l'Histoire", obD3: "Approchez à moins de 50m pour révéler les secrets et écouter le guide.", obBtn: "Commencer",
+        helpTitle: "COMMENT JOUER",
+        helpT1: "Explorer", help1: "Promenez-vous pour découvrir.",
+        helpT2: "Près", help2: "Orange : À moins de 400m !",
+        helpT3: "Très Près", help3: "Rouge (Clignotant) : À moins de 150m !",
+        helpT4: "Débloquer", help4: "Approchez à moins de 50m.",
         helpT5: "Indices", help5: "Perdu ? Cliquez sur la boussole pour un indice !",
-        alertGPS: "Le radar a besoin d'un signal GPS vert pour un indice !", alertNoHints: "Plus d'indices. Vous avez découvert toute la carte !", alertTitle: "Avis", alertOk: "OK", 
+        alertGPS: "Le radar a besoin d'un signal GPS vert pour un indice !", alertNoHints: "Plus d'indices. Vous avez découvert toute la carte !", alertTitle: "Avis", alertOk: "OK",
         dist: "📍 Distance :", meters: "mètres",
         contactTitle: "Contactez-nous", contactDesc: "Laissez votre message et nous vous répondrons par e-mail.", contactName: "Votre nom", contactEmail: "Votre e-mail", contactMsg: "Écrivez ici...", contactBtn: "Envoyer le message", contactSuccess: "Message envoyé avec succès ! Nous répondrons bientôt.", contactError: "Une erreur s'est produite lors de l'envoi. Réessayez.", contactNoNet: "Pas de connexion internet pour envoyer le message.",
         walkTime: "à pied"
     },
-    de: { 
-        map: "📍 Route", audio: "🔊 Anhören", stopAudio: "⏸️ Stoppen", tab1: "Zusammenfassung", tab2: "Geschichte", tab3: "Fakten", 
-        locked: "Nähern Sie sich auf weniger als 50 Meter, um die Geheimnisse zu enthüllen!", 
-        winLine: "Glückwunsch! Linie vervollständigt!", winFull: "AUSSERGEWÖHNLICH! Karte vervollständigt!", ttsLang: "de-DE", 
-        obT1: "Entdecke Porto", obD1: "Spaziere durch die Stadt und entdecke verborgene historische Orte.", 
-        obT2: "GPS-Radar", obD2: "Achte auf die Farben: Orange ist nah, pulsierendes Rot bedeutet fast da!\n\n(Tipp: Lass die App beim Gehen offen)", 
-        obT3: "Geschichte freischalten", obD3: "Nähere dich auf 50m, um Geheimnisse zu enthüllen und den Audioguide zu hören.", obBtn: "Starten", 
-        helpTitle: "SPIELANLEITUNG", 
-        helpT1: "Erkunden", help1: "Spaziere durch die Stadt zum Entdecken.", 
-        helpT2: "Nah", help2: "Orange: Unter 400m entfernt!", 
-        helpT3: "Sehr Nah", help3: "Rot (Pulsierend): Unter 150m entfernt!", 
-        helpT4: "Freischalten", help4: "Nähere dich auf unter 50m.", 
+    de: {
+        map: "📍 Route", audio: "🔊 Anhören", stopAudio: "⏸️ Stoppen", tab1: "Zusammenfassung", tab2: "Geschichte", tab3: "Fakten",
+        locked: "Nähern Sie sich auf weniger als 50 Meter, um die Geheimnisse zu enthüllen!",
+        winLine: "Glückwunsch! Linie vervollständigt!", winFull: "AUSSERGEWÖHNLICH! Karte vervollständigt!", ttsLang: "de-DE",
+        obT1: "Entdecke Porto", obD1: "Spaziere durch die Stadt und entdecke verborgene historische Orte.",
+        obT2: "GPS-Radar", obD2: "Achte auf die Farben: Orange ist nah, pulsierendes Rot bedeutet fast da!\n\n(Tipp: Lass die App beim Gehen offen)",
+        obT3: "Geschichte freischalten", obD3: "Nähere dich auf 50m, um Geheimnisse zu enthüllen und den Audioguide zu hören.", obBtn: "Starten",
+        helpTitle: "SPIELANLEITUNG",
+        helpT1: "Erkunden", help1: "Spaziere durch die Stadt zum Entdecken.",
+        helpT2: "Nah", help2: "Orange: Unter 400m entfernt!",
+        helpT3: "Sehr Nah", help3: "Rot (Pulsierend): Unter 150m entfernt!",
+        helpT4: "Freischalten", help4: "Nähere dich auf unter 50m.",
         helpT5: "Hinweise", help5: "Verloren? Klicke auf den Kompass für einen Tipp!",
-        alertGPS: "Das Radar benötigt ein grünes GPS-Signal für Hinweise!", alertNoHints: "Keine Hinweise mehr. Du hast die ganze Karte entdeckt!", alertTitle: "Hinweis", alertOk: "OK", 
+        alertGPS: "Das Radar benötigt ein grünes GPS-Signal für Hinweise!", alertNoHints: "Keine Hinweise mehr. Du hast die ganze Karte entdeckt!", alertTitle: "Hinweis", alertOk: "OK",
         dist: "📍 Entfernung:", meters: "Meter",
         contactTitle: "Kontaktiere uns", contactDesc: "Hinterlasse deine Nachricht und wir antworten per E-Mail.", contactName: "Dein Name", contactEmail: "Deine E-Mail", contactMsg: "Schreibe hier...", contactBtn: "Nachricht senden", contactSuccess: "Nachricht erfolgreich gesendet! Wir werden bald antworten.", contactError: "Ein Fehler ist aufgetreten. Versuch es noch einmal.", contactNoNet: "Keine Internetverbindung zum Senden der Nachricht.",
         walkTime: "zu Fuß"
     },
-    it: { 
-        map: "📍 Indicazioni", audio: "🔊 Ascolta", stopAudio: "⏸️ Ferma", tab1: "Riassunto", tab2: "Storia", tab3: "Curiosità", 
-        locked: "Avvicinati a meno di 50 metri per revelar i segreti di questo luogo!", 
-        winLine: "Congratulazioni! Linea completata!", winFull: "STRAORDINARIO! Mappa completata!", ttsLang: "it-IT", 
-        obT1: "Esplora Porto", obD1: "Passeggia per la città e scopri luoghi storici nascosti.", 
-        obT2: "Radar GPS", obD2: "Guarda i colori: arancione è vicino, rosso lampeggiante è quasi arrivato!\n\n(Consiglio: Tieni l'app aperta mentre cammini)", 
-        obT3: "Sblocca la Storia", obD3: "Avvicinati a 50m per svelare segreti e ascoltare l'audioguida.", obBtn: "Inizia", 
-        helpTitle: "COME GIOCARE", 
-        helpT1: "Esplorare", help1: "Passeggia per la città per scoprire.", 
-        helpT2: "Vicino", help2: "Arancione: A meno di 400m!", 
-        helpT3: "Molto Vicino", help3: "Rosso (Lampeggiante): A meno di 150m!", 
-        helpT4: "Sbloccare", help4: "Avvicinati a meno di 50m.", 
+    it: {
+        map: "📍 Indicazioni", audio: "🔊 Ascolta", stopAudio: "⏸️ Ferma", tab1: "Riassunto", tab2: "Storia", tab3: "Curiosità",
+        locked: "Avvicinati a meno di 50 metri per revelar i segreti di questo luogo!",
+        winLine: "Congratulazioni! Linea completata!", winFull: "STRAORDINARIO! Mappa completata!", ttsLang: "it-IT",
+        obT1: "Esplora Porto", obD1: "Passeggia per la città e scopri luoghi storici nascosti.",
+        obT2: "Radar GPS", obD2: "Guarda i colori: arancione è vicino, rosso lampeggiante è quasi arrivato!\n\n(Consiglio: Tieni l'app aperta mentre cammini)",
+        obT3: "Sblocca la Storia", obD3: "Avvicinati a 50m per svelare segreti e ascoltare l'audioguida.", obBtn: "Inizia",
+        helpTitle: "COME GIOCARE",
+        helpT1: "Esplorare", help1: "Passeggia per la città per scoprire.",
+        helpT2: "Vicino", help2: "Arancione: A meno di 400m!",
+        helpT3: "Molto Vicino", help3: "Rosso (Lampeggiante): A meno di 150m!",
+        helpT4: "Sbloccare", help4: "Avvicinati a meno di 50m.",
         helpT5: "Indizi", help5: "Perso? Clicca sulla bussola per un suggerimento!",
-        alertGPS: "Il radar ha bisogno di un segnale GPS verde per aiutarti!", alertNoHints: "Nessun indizio. Hai scoperto tutta la mappa!", alertTitle: "Avviso", alertOk: "OK", 
+        alertGPS: "Il radar ha bisogno di un segnale GPS verde per aiutarti!", alertNoHints: "Nessun indizio. Hai scoperto tutta la mappa!", alertTitle: "Avviso", alertOk: "OK",
         dist: "📍 Distanza:", meters: "metri",
         contactTitle: "Contattaci", contactDesc: "Lascia il tuo messaggio e ti risponderemo via email.", contactName: "Il tuo nome", contactEmail: "La tua email", contactMsg: "Scrivi qui...", contactBtn: "Invia Messaggio", contactSuccess: "Messaggio inviato con successo! Risponderemo presto.", contactError: "Si è verificato un errore durante l'invio. Riprova.", contactNoNet: "Nessuna connessione internet per inviare il messaggio.",
         walkTime: "a piedi"
     },
-    zh: { 
-        map: "📍 路线", audio: "🔊 聆听", stopAudio: "⏸️ 停止", tab1: "总结", tab2: "历史", tab3: "趣闻", 
-        locked: "靠近50米以内，揭开这个历史名胜的秘密！", 
-        winLine: "恭喜！您完成了一条线！", winFull: "🏆 太棒了！您完成了整个地图！", ttsLang: "zh-CN", 
-        obT1: "探索波尔图", obD1: "在城市中漫步，发现隐藏的历史古迹。", 
-        obT2: "GPS雷达", obD2: "观察颜色：橙色代表接近，闪烁的红色表示即将到达！\n\n（提示：走路时请保持应用开启）", 
-        obT3: "解锁历史", obD3: "靠近50米以内，揭开秘密并收听我们的语音导览。", obBtn: "开始", 
-        helpTitle: "怎么玩", 
-        helpT1: "探索", help1: "在城市中漫步以发现。", 
-        helpT2: "接近", help2: "橙色：距离不到400米！", 
-        helpT3: "非常接近", help3: "红色（闪烁）：距离不到150米！", 
-        helpT4: "解锁", help4: "靠近至50米以内。", 
+    zh: {
+        map: "📍 路线", audio: "🔊 聆听", stopAudio: "⏸️ 停止", tab1: "总结", tab2: "历史", tab3: "趣闻",
+        locked: "靠近50米以内，揭开这个历史名胜的秘密！",
+        winLine: "恭喜！您完成了一条线！", winFull: "🏆 太棒了！您完成了整个地图！", ttsLang: "zh-CN",
+        obT1: "探索波尔图", obD1: "在城市中漫步，发现隐藏的历史古迹。",
+        obT2: "GPS雷达", obD2: "观察颜色：橙色代表接近，闪烁的红色表示即将到达！\n\n（提示：走路时请保持应用开启）",
+        obT3: "解锁历史", obD3: "靠近50米以内，揭开秘密并收听我们的语音导览。", obBtn: "开始",
+        helpTitle: "怎么玩",
+        helpT1: "探索", help1: "在城市中漫步以发现。",
+        helpT2: "接近", help2: "橙色：距离不到400米！",
+        helpT3: "非常接近", help3: "红色（闪烁）：距离不到150米！",
+        helpT4: "解锁", help4: "靠近至50米以内。",
         helpT5: "提示", help5: "迷路了？点击指南针获取提示！",
-        alertGPS: "雷达需要绿色的GPS信号才能给您提示！", alertNoHints: "没有更多提示了。您已探索整个地图！", alertTitle: "提示", alertOk: "确定", 
+        alertGPS: "雷达需要绿色的GPS信号才能给您提示！", alertNoHints: "没有更多提示了。您已探索整个地图！", alertTitle: "提示", alertOk: "确定",
         dist: "📍 距离:", meters: "米",
         contactTitle: "联系我们", contactDesc: "留下您的信息，我们将通过电子邮件回复您。", contactName: "您的名字", contactEmail: "您的电子邮件", contactMsg: "在这里写...", contactBtn: "发送信息", contactSuccess: "信息发送成功！我们将尽快回复。", contactError: "发送时发生错误。请重试。", contactNoNet: "没有网络连接来发送信息。",
         walkTime: "步行"
@@ -150,7 +150,7 @@ const langCycle = [
 
 function detectLanguage() {
     const savedLang = localStorage.getItem('oportoBingoLang');
-    if (savedLang) return savedLang; 
+    if (savedLang) return savedLang;
     const browserLang = navigator.language.slice(0, 2);
     const supportedLangs = ['pt', 'en', 'es', 'fr', 'de', 'it', 'zh'];
     return supportedLangs.includes(browserLang) ? browserLang : 'en';
@@ -170,11 +170,11 @@ window.onload = () => {
 function cycleLanguage() {
     if (navigator.vibrate) navigator.vibrate(50);
     const currentIndex = langCycle.findIndex(l => l.code === currentLang);
-    const nextIndex = (currentIndex + 1) % langCycle.length; 
+    const nextIndex = (currentIndex + 1) % langCycle.length;
     const nextLang = langCycle[nextIndex];
     currentLang = nextLang.code;
     localStorage.setItem('oportoBingoLang', currentLang);
-    
+
     const btnLang = document.getElementById('btn-lang');
     if (btnLang) btnLang.innerText = nextLang.flag;
     updateUILanguage();
@@ -186,8 +186,8 @@ function updateUILanguage() {
     document.getElementById('tab-btn-resumo').innerText = uiTexts[currentLang].tab1;
     document.getElementById('tab-btn-historia').innerText = uiTexts[currentLang].tab2;
     document.getElementById('tab-btn-curiosidades').innerText = uiTexts[currentLang].tab3;
-    
-    if(document.getElementById('ob-t1')) {
+
+    if (document.getElementById('ob-t1')) {
         document.getElementById('ob-t1').innerText = uiTexts[currentLang].obT1;
         document.getElementById('ob-d1').innerText = uiTexts[currentLang].obD1;
         document.getElementById('ob-t2').innerText = uiTexts[currentLang].obT2;
@@ -197,7 +197,7 @@ function updateUILanguage() {
         document.getElementById('ob-btn-text').innerText = uiTexts[currentLang].obBtn;
     }
 
-    if(document.getElementById('help-title')) {
+    if (document.getElementById('help-title')) {
         document.getElementById('help-title').innerText = uiTexts[currentLang].helpTitle;
         document.getElementById('help-t1').innerText = uiTexts[currentLang].helpT1;
         document.getElementById('help-1').innerText = uiTexts[currentLang].help1;
@@ -211,7 +211,7 @@ function updateUILanguage() {
         document.getElementById('help-5').innerText = uiTexts[currentLang].help5;
     }
 
-    if(document.getElementById('contact-title')) {
+    if (document.getElementById('contact-title')) {
         document.getElementById('contact-title').innerText = uiTexts[currentLang].contactTitle;
         document.getElementById('contact-desc').innerText = uiTexts[currentLang].contactDesc;
         document.getElementById('contact-name').placeholder = uiTexts[currentLang].contactName;
@@ -247,9 +247,9 @@ const titleElement = document.querySelector('header h1');
 titleElement.addEventListener('click', () => {
     devClickCount++;
     clearTimeout(devClickTimer);
-    
-    devClickTimer = setTimeout(() => devClickCount = 0, 3000); 
-    
+
+    devClickTimer = setTimeout(() => devClickCount = 0, 3000);
+
     if (devClickCount === 5) {
         devClickCount = 0;
         const nextLocked = locations.find(loc => !loc.unlocked);
@@ -290,15 +290,15 @@ const modal = document.getElementById('location-modal');
 const modalImg = document.getElementById('modal-image');
 const modalTitle = document.getElementById('modal-title');
 const unlockSound = document.getElementById('unlock-sound');
-const openSound = document.getElementById('open-sound'); 
+const openSound = document.getElementById('open-sound');
 
 const modalDesc = document.getElementById('modal-desc');
 const modalHist = document.getElementById('modal-hist');
 const modalCurio = document.getElementById('modal-curio');
 
 let currentLocation = null;
-let userLat = null; 
-let userLon = null; 
+let userLat = null;
+let userLon = null;
 
 // Progresso Local
 function loadProgress() {
@@ -320,14 +320,14 @@ loadProgress();
 
 // Grelha Dinâmica
 function renderGrid() {
-    if(!grid) return;
+    if (!grid) return;
     grid.innerHTML = '';
     locations.forEach((loc) => {
         const cell = document.createElement('div');
-        cell.id = `cell-${loc.id}`; 
+        cell.id = `cell-${loc.id}`;
         cell.className = `cell ${loc.unlocked ? 'unlocked' : ''}`;
         cell.innerHTML = `<img src="${loc.imgUrl}" alt="${loc.name}">`;
-        
+
         cell.addEventListener('click', () => {
             if (navigator.vibrate) navigator.vibrate(50);
             openModal(loc);
@@ -340,82 +340,82 @@ function renderGrid() {
 function openModal(loc) {
     currentLocation = loc;
     modalTitle.innerText = loc.name;
-    
+
     if (openSound) {
         openSound.currentTime = 0;
-        openSound.play().catch(() => {}); 
+        openSound.play().catch(() => { });
     }
-    
-    if(speechSynthesis.speaking) speechSynthesis.cancel();
+
+    if (speechSynthesis.speaking) speechSynthesis.cancel();
     const btnAudioText = document.getElementById('btn-audio');
-    if(btnAudioText) btnAudioText.innerText = uiTexts[currentLang].audio;
+    if (btnAudioText) btnAudioText.innerText = uiTexts[currentLang].audio;
 
     const tabsContainer = document.getElementById('modal-tabs');
     const btnAudio = document.getElementById('btn-audio');
     const actionsBar = document.getElementById('modal-actions');
     const miniPill = document.getElementById('miniIconPillContainer');
     const btnMap = document.getElementById('btn-map');
-    
+
     if (loc.unlocked) {
         // MODO DESBLOQUEADO
         modalImg.src = loc.imgUrl;
-        modalImg.classList.remove('hidden', 'locked-blur'); 
-        
+        modalImg.classList.remove('hidden', 'locked-blur');
+
         modalDesc.innerHTML = loc.desc[currentLang];
         modalHist.innerText = loc.hist[currentLang];
         modalCurio.innerText = loc.curio[currentLang];
-        
-        if(tabsContainer) tabsContainer.classList.remove('hidden');
-        if(btnAudio) btnAudio.classList.remove('hidden');
-        if(actionsBar) actionsBar.classList.remove('locked-actions'); 
-        
+
+        if (tabsContainer) tabsContainer.classList.remove('hidden');
+        if (btnAudio) btnAudio.classList.remove('hidden');
+        if (actionsBar) actionsBar.classList.remove('locked-actions');
+
         // Esconde a pílula de ícones e mostra o botão de mapa normal
-        if(miniPill) miniPill.classList.add('hidden');
-        if(btnMap) {
+        if (miniPill) miniPill.classList.add('hidden');
+        if (btnMap) {
             btnMap.classList.remove('hidden');
             btnMap.innerHTML = uiTexts[currentLang].map;
             if (btnMap.dataset.originalHtml) delete btnMap.dataset.originalHtml;
         }
 
         const firstTabBtn = document.querySelector('.tab-btn');
-        if(firstTabBtn) firstTabBtn.click(); 
+        if (firstTabBtn) firstTabBtn.click();
     } else {
         // MODO BLOQUEADO
         modalImg.src = loc.imgUrl;
         modalImg.classList.remove('hidden');
-        modalImg.classList.add('locked-blur'); 
-        
+        modalImg.classList.add('locked-blur');
+
         if (userLat && userLon) {
             currentDistanceMeters = getDistanceFromLatLonInM(userLat, userLon, loc.lat, loc.lon);
         }
 
         modalDesc.innerHTML = '';
-        
-        if(tabsContainer) tabsContainer.classList.add('hidden');
-        if(btnAudio) btnAudio.classList.add('hidden');
-        if(actionsBar) actionsBar.classList.add('locked-actions'); 
+
+        if (tabsContainer) tabsContainer.classList.add('hidden');
+        if (btnAudio) btnAudio.classList.add('hidden');
+        if (actionsBar) actionsBar.classList.add('locked-actions');
 
         // Mostra a pílula de ícones e limpa o botão de mapa
-        if(miniPill) miniPill.classList.remove('hidden');
-        if(btnMap) {
+        if (miniPill) miniPill.classList.remove('hidden');
+        if (btnMap) {
             btnMap.classList.remove('hidden');
-            btnMap.innerHTML = uiTexts[currentLang].map;
+            btnMap.innerHTML = `📍 ${uiTexts[currentLang].map}`; // Garante o ícone no texto padrão
             if (btnMap.dataset.originalHtml) delete btnMap.dataset.originalHtml;
         }
-        
+
         const tabContents = document.getElementsByClassName("tab-content");
         for (let i = 0; i < tabContents.length; i++) tabContents[i].classList.remove("active");
         const tabResumo = document.getElementById("tab-resumo");
-        if(tabResumo) tabResumo.classList.add("active");
+        if (tabResumo) tabResumo.classList.add("active");
     }
-    
-    if(modal) modal.classList.remove('hidden');
+
+    if (modal) modal.classList.remove('hidden');
 }
 
 function closeModal() {
     modal.classList.add('hidden');
-    if(speechSynthesis.speaking) speechSynthesis.cancel();
-    currentLocation = null; 
+    if (speechSynthesis.speaking) speechSynthesis.cancel();
+    currentLocation = null;
 }
 
 function formatDistanceAndDuration(meters) {
@@ -427,19 +427,18 @@ function formatDistanceAndDuration(meters) {
     }
 
     const minutes = Math.round(meters / 80);
-    const walkLabel = uiTexts[currentLang] && uiTexts[currentLang].walkTime ? uiTexts[currentLang].walkTime : "a pé";
-    
-    let timeText = "";
+
+    let timeTextOnly = "";
     if (minutes < 1) {
-        timeText = `< 1 min ${walkLabel}`;
+        timeTextOnly = `< 1 min`;
     } else if (minutes < 60) {
-        timeText = `~${minutes} min ${walkLabel}`;
+        timeTextOnly = `~${minutes} min`;
     } else {
         const hours = (minutes / 60).toFixed(1);
-        timeText = `~${hours}h ${walkLabel}`;
+        timeTextOnly = `~${hours}h`;
     }
 
-    return { distText, timeText };
+    return { distText, timeTextOnly };
 }
 
 // =========================================
@@ -452,24 +451,27 @@ function showMetric(type) {
     const btnMap = document.getElementById('btn-map');
     if (!btnMap) return;
 
+    // Guarda o HTML original do botão (com o ícone correto) se ainda não foi guardado
     if (!btnMap.dataset.originalHtml) {
         btnMap.dataset.originalHtml = btnMap.innerHTML;
     }
 
     if (metricTimeout) clearTimeout(metricTimeout);
 
-    const { distText, timeText } = formatDistanceAndDuration(currentDistanceMeters);
+    const { distText, timeTextOnly } = formatDistanceAndDuration(currentDistanceMeters);
 
     if (type === 'dist') {
-        btnMap.innerHTML = `📍 <span style="color: #00f2fe; margin-left: 6px; font-weight: 800;">${distText}</span>`;
+        // Texto em branco puro sobre o fundo azul do botão
+        btnMap.innerHTML = `📍 <span style="color: #ffffff; margin-left: 6px; font-weight: 800;">${distText}</span>`;
     } else if (type === 'time') {
-        const walkLabel = uiTexts[currentLang] && uiTexts[currentLang].walkTime ? uiTexts[currentLang].walkTime : "a pé";
-        btnMap.innerHTML = `🚶 <span style="margin-left: 6px; font-weight: 700;">${timeText}</span>`;
+        // Texto em branco puro e totalmente sem o "a pé"
+        btnMap.innerHTML = `🚶 <span style="color: #ffffff; margin-left: 6px; font-weight: 700;">${timeTextOnly}</span>`;
     }
 
+    // Reduzido para 3 segundos
     metricTimeout = setTimeout(() => {
         resetButtonMap();
-    }, 5000);
+    }, 3000);
 }
 
 function resetButtonMap() {
@@ -485,37 +487,37 @@ function checkProximity(userLat, userLon) {
         if (!loc.unlocked) {
             const dist = getDistanceFromLatLonInM(userLat, userLon, loc.lat, loc.lon);
             const cellElement = document.getElementById(`cell-${loc.id}`);
-            
-            if (dist < 50) { 
+
+            if (dist < 50) {
                 loc.unlocked = true;
                 saveProgress();
-                if(unlockSound) unlockSound.play().catch(() => {});
-                
-                if (navigator.vibrate) navigator.vibrate([200, 100, 200]); 
-                
+                if (unlockSound) unlockSound.play().catch(() => { });
+
+                if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+
                 if (cellElement) {
                     cellElement.classList.remove('warm', 'hot', 'hint-active');
                     cellElement.classList.add('unlocked');
-                    
+
                     const img = cellElement.querySelector('img');
-                    if(img) {
+                    if (img) {
                         img.style.filter = "none";
                         img.style.webkitFilter = "none";
                         img.style.opacity = "1";
                     }
                 }
-                
+
                 checkWinConditions();
                 setTimeout(() => { openModal(loc); }, 800);
 
             } else if (cellElement) {
-                if (dist < 150) { 
+                if (dist < 150) {
                     cellElement.classList.add('hot');
                     cellElement.classList.remove('warm');
-                } else if (dist < 400) { 
+                } else if (dist < 400) {
                     cellElement.classList.add('warm');
                     cellElement.classList.remove('hot');
-                } else { 
+                } else {
                     cellElement.classList.remove('warm', 'hot');
                 }
             }
@@ -537,10 +539,10 @@ function startAppAnimation() {
 // MOTOR GPS SENSÍVEL E OTIMIZADO
 // =========================================
 const gpsStatus = document.getElementById('gps-status');
-let watchId = null; 
+let watchId = null;
 
 function updateGpsIndicator(status) {
-    if(!gpsStatus) return;
+    if (!gpsStatus) return;
     if (status === 'searching' || status === 'updating') {
         gpsStatus.className = 'gps-dot searching';
     } else {
@@ -550,14 +552,14 @@ function updateGpsIndicator(status) {
 
 function initGPS() {
     if (!("geolocation" in navigator)) return;
-    
+
     updateGpsIndicator('searching');
-    
+
     if (watchId) navigator.geolocation.clearWatch(watchId);
 
     watchId = navigator.geolocation.watchPosition(
         position => {
-            updateGpsIndicator('active'); 
+            updateGpsIndicator('active');
             userLat = position.coords.latitude;
             userLon = position.coords.longitude;
             checkProximity(userLat, userLon);
@@ -566,7 +568,7 @@ function initGPS() {
             if (currentLocation && !currentLocation.unlocked) {
                 // Atualiza a distância global para a mini-pílula usar
                 currentDistanceMeters = getDistanceFromLatLonInM(userLat, userLon, currentLocation.lat, currentLocation.lon);
-                
+
                 // Se quisesses atualizar o texto caso o botão esteja ativo no momento, podes deixar assim:
                 const btnMap = document.getElementById('btn-map');
                 if (btnMap && btnMap.dataset.originalHtml && btnMap.innerHTML !== btnMap.dataset.originalHtml) {
@@ -584,24 +586,24 @@ function initGPS() {
             console.warn("GPS Erro:", error.message);
             updateGpsIndicator('error');
         },
-        { 
-            enableHighAccuracy: true, 
-            maximumAge: 10000, 
-            timeout: 10000    
+        {
+            enableHighAccuracy: true,
+            maximumAge: 10000,
+            timeout: 10000
         }
     );
 }
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_29') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_30') === 'true') {
             initGPS();
         }
     }
 });
 
 function getDistanceFromLatLonInM(lat1, lon1, lat2, lon2) {
-    const R = 6371e3; 
+    const R = 6371e3;
     const dLat = (lat2 - lat1) * Math.PI / 180;
     const dLon = (lon2 - lon1) * Math.PI / 180;
     const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
@@ -624,7 +626,7 @@ function checkWinConditions() {
         setTimeout(() => {
             showCustomAlert(uiTexts[currentLang].alertTitle, uiTexts[currentLang].winFull, "🏆");
         }, 1200);
-    } 
+    }
     else if (!lineWon) {
         const hasLine = lines.some(line => line.every(index => unlockedArr[index]));
         if (hasLine) {
@@ -656,17 +658,17 @@ function openMap() {
 function toggleAudio() {
     if (!currentLocation || !currentLocation.unlocked) return;
     const btnAudio = document.getElementById('btn-audio');
-    
+
     if (speechSynthesis.speaking) {
         speechSynthesis.cancel();
         btnAudio.innerText = uiTexts[currentLang].audio;
         return;
     }
-    
+
     const activeTabContent = document.querySelector('.tab-content.active p').innerText;
     const utterance = new SpeechSynthesisUtterance(activeTabContent);
     utterance.lang = uiTexts[currentLang].ttsLang;
-    
+
     utterance.onend = () => { btnAudio.innerText = uiTexts[currentLang].audio; };
     btnAudio.innerText = uiTexts[currentLang].stopAudio;
     speechSynthesis.speak(utterance);
@@ -681,16 +683,16 @@ const footerTitle = document.querySelector('footer h2');
 const carousel = document.getElementById('carousel');
 const dots = document.querySelectorAll('.dot');
 
-if(carousel) {
+if (carousel) {
     carousel.addEventListener('scroll', () => {
         const scrollPos = carousel.scrollLeft;
         const cardWidth = carousel.offsetWidth;
         const activeIndex = Math.round(scrollPos / cardWidth);
-        
+
         dots.forEach((dot, index) => {
             dot.classList.toggle('active', index === activeIndex);
         });
-        
+
         const startBtn = document.getElementById('ob-btn');
         if (startBtn) {
             if (activeIndex === 2) startBtn.classList.remove('hidden');
@@ -704,15 +706,15 @@ function finishOnboarding() {
     if (navigator.vibrate) navigator.vibrate(50);
     if (splash) splash.classList.add('fade-out');
     if (gridElement) gridElement.classList.remove('hidden');
-    
+
     if (document.getElementById('footer-title')) document.getElementById('footer-title').classList.remove('hidden');
     if (document.getElementById('brand-footer')) document.getElementById('brand-footer').classList.remove('hidden');
-    
-    setTimeout(() => { if(splash) splash.remove(); }, 1000); 
-    
+
+    setTimeout(() => { if (splash) splash.remove(); }, 1000);
+
     // CHAVE DEFINITIVA:
-    localStorage.setItem('oportoBingoIntroSeen_Final', 'true'); 
-    
+    localStorage.setItem('oportoBingoIntroSeen_Final', 'true');
+
     renderGrid();
     initGPS();
 }
@@ -721,10 +723,10 @@ const introSeen = localStorage.getItem('oportoBingoIntroSeen_Final');
 if (introSeen === 'true') {
     if (splash) splash.remove();
     if (gridElement) gridElement.classList.remove('hidden');
-    
+
     if (document.getElementById('footer-title')) document.getElementById('footer-title').classList.remove('hidden');
     if (document.getElementById('brand-footer')) document.getElementById('brand-footer').classList.remove('hidden');
-    
+
     initGPS();
 }
 
@@ -764,7 +766,7 @@ function showHint() {
         showCustomAlert(uiTexts[currentLang].alertTitle, uiTexts[currentLang].alertGPS, "📡");
         return;
     }
-    
+
     let closestLoc = null;
     let minDist = Infinity;
 
@@ -779,13 +781,13 @@ function showHint() {
     });
 
     if (closestLoc) {
-        if (navigator.vibrate) navigator.vibrate([50, 50, 50]); 
+        if (navigator.vibrate) navigator.vibrate([50, 50, 50]);
         const cellElement = document.getElementById(`cell-${closestLoc.id}`);
-        
+
         if (cellElement) {
             cellElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
             cellElement.classList.add('hint-active');
-            setTimeout(() => cellElement.classList.remove('hint-active'), 2400); 
+            setTimeout(() => cellElement.classList.remove('hint-active'), 2400);
         }
     } else {
         showCustomAlert(uiTexts[currentLang].alertTitle, uiTexts[currentLang].alertNoHints, "🗺️");
@@ -826,7 +828,7 @@ function checkInstallGate() {
 
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
-    deferredPrompt = e; 
+    deferredPrompt = e;
 });
 
 if (btnInstallPwa) {
@@ -852,7 +854,7 @@ function copyAppUrl() {
     });
 }
 
-checkInstallGate(); 
+checkInstallGate();
 
 // =========================================
 // WAKE LOCK (IMPEDIR O ECRÃ DE APAGAR)
@@ -864,7 +866,7 @@ async function requestWakeLock() {
         try {
             wakeLock = await navigator.wakeLock.request('screen');
             console.log('Ecrã mantido ligado ativo!');
-            
+
             document.addEventListener('visibilitychange', async () => {
                 if (wakeLock !== null && document.visibilityState === 'visible') {
                     wakeLock = await navigator.wakeLock.request('screen');
@@ -881,8 +883,8 @@ async function requestWakeLock() {
 // =========================================
 function openContactModal() {
     if (navigator.vibrate) navigator.vibrate(30);
-    document.getElementById('help-modal').classList.add('hidden'); 
-    document.getElementById('contact-modal').classList.remove('hidden'); 
+    document.getElementById('help-modal').classList.add('hidden');
+    document.getElementById('contact-modal').classList.remove('hidden');
 }
 
 function closeContactModal() {
@@ -891,14 +893,14 @@ function closeContactModal() {
     document.getElementById('contact-form').reset();
 }
 
-document.getElementById('contact-form').addEventListener('submit', function(e) {
-    e.preventDefault(); 
-    
+document.getElementById('contact-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
     const btn = document.getElementById('btn-send-msg');
-    btn.classList.add('animating'); 
-    
+    btn.classList.add('animating');
+
     const formData = new FormData(this);
-    
+
     fetch('https://formspree.io/f/TEU_CODIGO_AQUI', {
         method: 'POST',
         body: formData,
@@ -921,7 +923,7 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
 // GESTOR INTELIGENTE DE MODAIS (Corrige o bug do iOS)
 // =========================================
 document.querySelectorAll('.modal').forEach(modalElement => {
-    modalElement.addEventListener('click', function(event) {
+    modalElement.addEventListener('click', function (event) {
         if (event.target === this) {
             if (this.id === 'location-modal') closeModal();
             if (this.id === 'custom-alert') closeCustomAlert();

@@ -349,8 +349,6 @@ function openModal(loc) {
     }
 
     if (speechSynthesis.speaking) speechSynthesis.cancel();
-    const btnAudioText = document.getElementById('btn-audio');
-    if (btnAudioText) btnAudioText.innerText = uiTexts[currentLang].audio;
 
     const tabsContainer = document.getElementById('modal-tabs');
     const btnAudio = document.getElementById('btn-audio');
@@ -368,7 +366,10 @@ function openModal(loc) {
         modalCurio.innerText = loc.curio[currentLang];
 
         if (tabsContainer) tabsContainer.classList.remove('hidden');
-        if (btnAudio) btnAudio.classList.remove('hidden');
+        if (btnAudio) {
+            btnAudio.classList.remove('hidden');
+            btnAudio.innerHTML = uiTexts[currentLang].audio; // Define apenas o ícone 🔊
+        }
         if (actionsBar) actionsBar.classList.remove('locked-actions');
 
         if (miniPill) miniPill.classList.add('hidden');
@@ -386,7 +387,6 @@ function openModal(loc) {
         modalImg.classList.remove('hidden');
         modalImg.classList.add('locked-blur');
 
-        // Usa imediatamente a última posição conhecida do watchPosition (sem atrasos)
         if (userLat && userLon) {
             currentDistanceMeters = getDistanceFromLatLonInM(userLat, userLon, loc.lat, loc.lon);
         } else {
@@ -396,7 +396,7 @@ function openModal(loc) {
         modalDesc.innerHTML = '';
 
         if (tabsContainer) tabsContainer.classList.add('hidden');
-        if (btnAudio) btnAudio.classList.add('hidden');
+        if (btnAudio) btnAudio.classList.add('hidden'); // Oculta o áudio nos bloqueados
         if (actionsBar) actionsBar.classList.add('locked-actions');
 
         if (miniPill) miniPill.classList.remove('hidden');
@@ -622,7 +622,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_44') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_45') === 'true') {
             initGPS();
         }
     }

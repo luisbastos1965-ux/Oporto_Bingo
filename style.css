@@ -1196,14 +1196,39 @@ body.day-mode .pill-divider-mini {
     transform: translateY(0);
 }
 
-/* 2. Botão de Áudio Compacto (Apenas Ícone) lado a lado com o Direções */
+/* 2. Barra de Ações (Modo Desbloqueado) - O Segredo do Alinhamento Lado a Lado */
+.actions-bar:not(.locked-actions) {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+}
+
+.actions-bar:not(.locked-actions) #btn-map {
+    background: linear-gradient(135deg, #00f2fe 0%, #0072ff 100%) !important;
+    border: none !important;
+    color: #ffffff !important;
+    flex: 1 !important; /* Estica o botão para preencher o espaço à esquerda */
+    height: 48px !important;
+    border-radius: 14px !important;
+    margin: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    font-weight: 700 !important;
+    font-size: 1.05rem !important;
+    box-shadow: 0 6px 16px rgba(0, 114, 255, 0.3) !important;
+}
+
+/* 3. Botão de Áudio Compacto (Apenas Ícone) */
 .actions-bar #btn-audio.icon-only-btn {
     flex: 0 0 52px !important;
     width: 52px !important;
     height: 48px !important;
     min-width: unset !important;
     padding: 0 !important;
-    display: flex !important;
+    margin: 0 !important;
+    /* Retirámos o "display: flex" cego daqui para não esmagar a class .hidden! */
     justify-content: center !important;
     align-items: center !important;
     font-size: 1.35rem !important;
@@ -1215,11 +1240,16 @@ body.day-mode .pill-divider-mini {
     transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* Força a exibição estruturada APENAS quando o JS lhe tira a classe .hidden */
+.actions-bar #btn-audio.icon-only-btn:not(.hidden) {
+    display: flex !important;
+}
+
 .actions-bar #btn-audio.icon-only-btn:active {
     transform: scale(0.95);
 }
 
-/* 3. Estado ativo do áudio (com brilho/cor dinâmica durante a narração) */
+/* 4. Estado ativo do áudio (com brilho/cor dinâmica durante a narração) */
 .actions-bar #btn-audio.playing {
     background: linear-gradient(135deg, #ff9966 0%, #ff5e62 100%) !important;
     color: #ffffff !important;
@@ -1227,14 +1257,18 @@ body.day-mode .pill-divider-mini {
     box-shadow: 0 4px 14px rgba(255, 94, 98, 0.35) !important;
 }
 
-/* 4. Adaptação do Botão de Áudio Compacto para o Modo Diurno */
+/* 5. Adaptação do Botão de Áudio Compacto para o Modo Diurno */
+body.day-mode .actions-bar:not(.locked-actions) {
+    border-top-color: rgba(0, 114, 255, 0.1) !important;
+}
+
 body.day-mode .actions-bar #btn-audio.icon-only-btn {
     background: rgba(0, 114, 255, 0.08) !important;
     color: #0072ff !important;
     border: 1px solid rgba(0, 114, 255, 0.25) !important;
 }
 
-/* GARANTIA ABSOLUTA: O botão de áudio some sempre nos locais bloqueados */
+/* GARANTIA ABSOLUTA DE BLOQUEIO */
 .actions-bar.locked-actions #btn-audio {
     display: none !important;
 }

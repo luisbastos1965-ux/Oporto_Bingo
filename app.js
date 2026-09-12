@@ -355,6 +355,8 @@ function openModal(loc) {
     const actionsBar = document.getElementById('modal-actions');
     const miniPill = document.getElementById('miniIconPillContainer');
     const btnMap = document.getElementById('btn-map');
+    const expandIcon = document.getElementById('expand-icon');
+    currentTabIndex = 0; // Faz reset ao carrossel
 
     if (loc.unlocked) {
         // MODO DESBLOQUEADO
@@ -419,6 +421,55 @@ function closeModal() {
     document.querySelector('#location-modal .modal-content').classList.remove('text-expanded');
 }
 
+// =========================================
+// MOTOR DO CARROSSEL DE ABAS
+// =========================================
+const tabList = ['tab-resumo', 'tab-historia', 'tab-curiosidades'];
+let currentTabIndex = 0;
+
+function navigateTab(direction) {
+    if (navigator.vibrate) navigator.vibrate(30);
+    
+    currentTabIndex += direction;
+    if (currentTabIndex < 0) currentTabIndex = tabList.length - 1;
+    if (currentTabIndex >= tabList.length) currentTabIndex = 0;
+
+    const nameDisplay = document.getElementById('carousel-tab-name');
+    
+    // 1. Anima a palavra a sair
+    nameDisplay.style.opacity = 0;
+    nameDisplay.style.transform = direction > 0 ? 'translateX(-15px)' : 'translateX(15px)';
+
+    setTimeout(() => {
+        // 2. Troca o conteúdo da caixa
+        const tabContents = document.getElementsByClassName("tab-content");
+        for (let i = 0; i < tabContents.length; i++) tabContents[i].classList.remove("active");
+        
+        const newTabId = tabList[currentTabIndex];
+        document.getElementById(newTabId).classList.add("active");
+
+        // 3. Troca a palavra traduzida
+        let tabNameKey = 'tab1'; 
+        if(newTabId === 'tab-historia') tabNameKey = 'tab2';
+        if(newTabId === 'tab-curiosidades') tabNameKey = 'tab3';
+        nameDisplay.innerText = uiTexts[currentLang][tabNameKey];
+
+        // 4. Anima a palavra a entrar
+        nameDisplay.style.transform = direction > 0 ? 'translateX(15px)' : 'translateX(-15px)';
+        setTimeout(() => {
+            nameDisplay.style.opacity = 1;
+            nameDisplay.style.transform = 'translateX(0)';
+        }, 50);
+
+    }, 200);
+
+    // Se estiver expandido, recolhe suavemente
+    document.querySelector('#location-modal .modal-content').classList.remove('text-expanded');
+}
+
+// =========================================
+// EXPANSÃO COM O DEDO 👆
+// =========================================
 function toggleExpandText() {
     if (navigator.vibrate) navigator.vibrate(20);
     const modalContent = document.querySelector('#location-modal .modal-content');
@@ -626,7 +677,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_55') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_56') === 'true') {
             initGPS();
         }
     }
@@ -781,24 +832,6 @@ if (introSeen === 'true') {
     if (document.getElementById('brand-footer')) document.getElementById('brand-footer').classList.remove('hidden');
 
     initGPS();
-}
-
-// Abas de Navegação
-function openTab(evt, tabName) {
-    if (navigator.vibrate) navigator.vibrate(30);
-    
-    // A LINHA NOVA (B): Garante que a caixa encolhe sempre que trocas de aba
-    const modalContent = document.querySelector('#location-modal .modal-content');
-    if (modalContent) modalContent.classList.remove('text-expanded');
-
-    const tabContents = document.getElementsByClassName("tab-content");
-    for (let i = 0; i < tabContents.length; i++) tabContents[i].classList.remove("active");
-    
-    const tabBtns = document.getElementsByClassName("tab-btn");
-    for (let i = 0; i < tabBtns.length; i++) tabBtns[i].classList.remove("active");
-    
-    document.getElementById(tabName).classList.add("active");
-    evt.currentTarget.classList.add("active");
 }
 
 // Modo Dia/Noite

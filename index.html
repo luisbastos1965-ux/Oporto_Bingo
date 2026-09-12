@@ -8,7 +8,7 @@
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="./bingo-icon.png">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=5">
 </head>
 
 <body>
@@ -203,17 +203,15 @@
             <h2 id="modal-title">Título</h2>
             <img id="modal-image" src="" alt="Local">
 
-            <div id="modal-tabs" class="tabs">
-                <button id="tab-btn-resumo" class="tab-btn active"
-                    onclick="openTab(event, 'tab-resumo')">Resumo</button>
-                <button id="tab-btn-historia" class="tab-btn" onclick="openTab(event, 'tab-historia')">História</button>
-                <button id="tab-btn-curiosidades" class="tab-btn"
-                    onclick="openTab(event, 'tab-curiosidades')">Curiosidades</button>
+            <!-- NOVO CARROSSEL DE ABAS (1 palavra visível) -->
+            <div id="modal-tabs" class="tabs-carousel">
+                <button class="carousel-btn" onclick="navigateTab(-1)">❮</button>
+                <div id="carousel-tab-name" class="carousel-name">Resumo</div>
+                <button class="carousel-btn" onclick="navigateTab(1)">❯</button>
             </div>
 
-            <!-- Contentor que envolve os textos e o novo botão subtil -->
-            <div class="text-container-wrapper" style="position: relative;">
-                
+            <!-- CAIXA DE TEXTO COM O DEDO 👆 NO CANTO -->
+            <div id="text-wrapper" class="text-container-wrapper" onclick="toggleExpandText()">
                 <div id="tab-resumo" class="tab-content active">
                     <div id="modal-desc"></div>
                 </div>
@@ -223,9 +221,9 @@
                 <div id="tab-curiosidades" class="tab-content">
                     <p id="modal-curio"></p>
                 </div>
-
-                <!-- O Novo Botão de Expandir -->
-                <button id="btn-expand-text" class="subtle-expand-btn" onclick="toggleExpandText()">⤢</button>
+                
+                <!-- O Ícone Flutuante (Aponta para cima por defeito) -->
+                <div class="expand-hint-icon" id="expand-icon">👆</div>
             </div>
 
             <!-- DEPOIS -->

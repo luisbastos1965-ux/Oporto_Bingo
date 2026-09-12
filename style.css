@@ -1272,3 +1272,86 @@ body.day-mode .actions-bar #btn-audio.icon-only-btn {
 .actions-bar.locked-actions #btn-audio {
     display: none !important;
 }
+
+/* =========================================
+   O FATOR "WOW": ESTÉTICA PREMIUM (MODO DESBLOQUEADO)
+   ========================================= */
+
+/* 1 & 2. Imagem 3D: Efeito Pop (Sombra) + Aura Mágica (Brilho) */
+#modal-image:not(.locked-blur) {
+    /* Removemos fundos para o recorte PNG funcionar na perfeição */
+    background: transparent !important;
+    border-radius: 0 !important;
+    transform: scale(1.08); /* Ligeiro zoom para dar imponência ao monumento */
+    margin-top: 10px !important;
+    margin-bottom: 25px !important;
+    
+    /* A MAGIA: O 1º drop-shadow faz a sombra realista, o 2º faz a Aura de luz! */
+    filter: drop-shadow(0px 18px 15px rgba(0, 0, 0, 0.4)) 
+            drop-shadow(0px 0px 35px rgba(0, 242, 254, 0.25)) !important;
+    -webkit-filter: drop-shadow(0px 18px 15px rgba(0, 0, 0, 0.4)) 
+                    drop-shadow(0px 0px 35px rgba(0, 242, 254, 0.25)) !important;
+    
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), filter 0.5s ease;
+}
+
+/* 3. Abas de Navegação: Mais elegantes e com a cor da marca */
+.tabs {
+    padding: 6px !important;
+    background: rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    margin-bottom: 12px !important;
+}
+
+.tab-btn {
+    border-radius: 10px !important;
+}
+
+.tab-btn.active {
+    color: #00f2fe !important; /* Texto em Azul Neon */
+    background: rgba(0, 242, 254, 0.12) !important; /* Fundo suave */
+    box-shadow: none !important;
+}
+
+/* 4. Enquadramento do Texto (O Cartão de Leitura Editorial) */
+.tab-content {
+    background: rgba(0, 0, 0, 0.25) !important;
+    padding: 16px 20px !important;
+    border-radius: 16px !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    line-height: 1.65 !important;
+    font-size: 0.95rem !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    margin-bottom: 5px !important;
+    max-height: 155px !important; /* Dá um pouco mais de altura ao cartão */
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.1) !important; /* Profundidade interior */
+}
+
+/* =========================================
+   ADAPTAÇÕES PARA O MODO DIURNO (Branco/Claro)
+   ========================================= */
+body.day-mode #modal-image:not(.locked-blur) {
+    /* Sombra mais suave e aura azul royal */
+    filter: drop-shadow(0px 18px 20px rgba(0, 114, 255, 0.15)) 
+            drop-shadow(0px 0px 40px rgba(0, 114, 255, 0.12)) !important;
+    -webkit-filter: drop-shadow(0px 18px 20px rgba(0, 114, 255, 0.15)) 
+                    drop-shadow(0px 0px 40px rgba(0, 114, 255, 0.12)) !important;
+}
+
+body.day-mode .tabs {
+    background: #f1f5f9 !important; /* Cinza prateado muito suave */
+    border-color: #e2e8f0 !important;
+}
+
+body.day-mode .tab-btn.active {
+    color: #0072ff !important;
+    background: #ffffff !important;
+    box-shadow: 0 4px 10px rgba(0, 114, 255, 0.1) !important;
+}
+
+body.day-mode .tab-content {
+    background: #f8fafc !important; /* Destaca-se do fundo totalmente branco do modal */
+    border-color: #e2e8f0 !important;
+    color: #334155 !important;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.02) !important;
+}

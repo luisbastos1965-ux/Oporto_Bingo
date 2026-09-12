@@ -342,50 +342,50 @@ function renderGrid() {
 function openModal(loc) {
     currentLocation = loc;
     modalTitle.innerText = loc.name;
-    
+
     if (openSound) {
         openSound.currentTime = 0;
-        openSound.play().catch(() => {}); 
+        openSound.play().catch(() => { });
     }
-    
-    if(speechSynthesis.speaking) speechSynthesis.cancel();
+
+    if (speechSynthesis.speaking) speechSynthesis.cancel();
     const btnAudioText = document.getElementById('btn-audio');
-    if(btnAudioText) btnAudioText.innerText = uiTexts[currentLang].audio;
+    if (btnAudioText) btnAudioText.innerText = uiTexts[currentLang].audio;
 
     const tabsContainer = document.getElementById('modal-tabs');
     const btnAudio = document.getElementById('btn-audio');
     const actionsBar = document.getElementById('modal-actions');
     const miniPill = document.getElementById('miniIconPillContainer');
     const btnMap = document.getElementById('btn-map');
-    
+
     if (loc.unlocked) {
         // MODO DESBLOQUEADO
         modalImg.src = loc.imgUrl;
-        modalImg.classList.remove('hidden', 'locked-blur'); 
-        
+        modalImg.classList.remove('hidden', 'locked-blur');
+
         modalDesc.innerHTML = loc.desc[currentLang];
         modalHist.innerText = loc.hist[currentLang];
         modalCurio.innerText = loc.curio[currentLang];
-        
-        if(tabsContainer) tabsContainer.classList.remove('hidden');
-        if(btnAudio) btnAudio.classList.remove('hidden');
-        if(actionsBar) actionsBar.classList.remove('locked-actions'); 
-        
-        if(miniPill) miniPill.classList.add('hidden');
-        if(btnMap) {
+
+        if (tabsContainer) tabsContainer.classList.remove('hidden');
+        if (btnAudio) btnAudio.classList.remove('hidden');
+        if (actionsBar) actionsBar.classList.remove('locked-actions');
+
+        if (miniPill) miniPill.classList.add('hidden');
+        if (btnMap) {
             btnMap.classList.remove('hidden');
             btnMap.innerHTML = uiTexts[currentLang].map;
             if (btnMap.dataset.originalHtml) delete btnMap.dataset.originalHtml;
         }
 
         const firstTabBtn = document.querySelector('.tab-btn');
-        if(firstTabBtn) firstTabBtn.click(); 
+        if (firstTabBtn) firstTabBtn.click();
     } else {
         // MODO BLOQUEADO
         modalImg.src = loc.imgUrl;
         modalImg.classList.remove('hidden');
-        modalImg.classList.add('locked-blur'); 
-        
+        modalImg.classList.add('locked-blur');
+
         // Usa imediatamente a última posição conhecida do watchPosition (sem atrasos)
         if (userLat && userLon) {
             currentDistanceMeters = getDistanceFromLatLonInM(userLat, userLon, loc.lat, loc.lon);
@@ -394,10 +394,10 @@ function openModal(loc) {
         }
 
         modalDesc.innerHTML = '';
-        
-        if(tabsContainer) tabsContainer.classList.add('hidden');
-        if(btnAudio) btnAudio.classList.add('hidden');
-        if(actionsBar) actionsBar.classList.add('locked-actions'); 
+
+        if (tabsContainer) tabsContainer.classList.add('hidden');
+        if (btnAudio) btnAudio.classList.add('hidden');
+        if (actionsBar) actionsBar.classList.add('locked-actions');
 
         if (miniPill) miniPill.classList.remove('hidden');
         if (btnMap) {
@@ -405,14 +405,14 @@ function openModal(loc) {
             btnMap.innerHTML = uiTexts[currentLang].map;
             if (btnMap.dataset.originalHtml) delete btnMap.dataset.originalHtml;
         }
-        
+
         const tabContents = document.getElementsByClassName("tab-content");
         for (let i = 0; i < tabContents.length; i++) tabContents[i].classList.remove("active");
         const tabResumo = document.getElementById("tab-resumo");
-        if(tabResumo) tabResumo.classList.add("active");
+        if (tabResumo) tabResumo.classList.add("active");
     }
-    
-    if(modal) modal.classList.remove('hidden');
+
+    if (modal) modal.classList.remove('hidden');
 }
 
 function closeModal() {
@@ -430,7 +430,7 @@ function formatDistanceAndDuration(meters) {
     }
 
     const minutes = Math.round(meters / 80);
-    
+
     let timeText = "";
     if (minutes < 1) {
         timeText = `< 1 min`;
@@ -590,12 +590,12 @@ function initGPS() {
             if (currentLocation && !currentLocation.unlocked) {
                 // Atualiza a distância global para a mini-pílula usar
                 currentDistanceMeters = getDistanceFromLatLonInM(userLat, userLon, currentLocation.lat, currentLocation.lon);
-                
+
                 // Se o botão estiver a mostrar uma métrica ativa, atualiza o valor dinamicamente ao caminhar
                 const btnMap = document.getElementById('btn-map');
                 if (btnMap && btnMap.dataset.originalHtml && btnMap.innerHTML !== btnMap.dataset.originalHtml) {
                     const { distText, timeText } = formatDistanceAndDuration(currentDistanceMeters);
-                    
+
                     // Identifica se o botão estava a mostrar a distância ou o tempo (verificando o valor atual ou a estrutura)
                     if (btnMap.innerHTML.includes('km') || btnMap.innerHTML.includes('m')) {
                         // Verifica se é o bloco de distância (não tem formato de minutos/horas)
@@ -622,7 +622,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_41') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_42') === 'true') {
             initGPS();
         }
     }
@@ -687,16 +687,28 @@ function toggleAudio() {
 
     if (speechSynthesis.speaking) {
         speechSynthesis.cancel();
-        btnAudio.innerText = uiTexts[currentLang].audio;
+        if (btnAudio) btnAudio.classList.remove('playing');
         return;
     }
 
-    const activeTabContent = document.querySelector('.tab-content.active p').innerText;
+    const activeTabContent = document.querySelector('.tab-content.active p')?.innerText || document.querySelector('.tab-content.active')?.innerText;
+    if (!activeTabContent) return;
+
     const utterance = new SpeechSynthesisUtterance(activeTabContent);
     utterance.lang = uiTexts[currentLang].ttsLang;
 
-    utterance.onend = () => { btnAudio.innerText = uiTexts[currentLang].audio; };
-    btnAudio.innerText = uiTexts[currentLang].stopAudio;
+    utterance.onstart = () => {
+        if (btnAudio) btnAudio.classList.add('playing');
+    };
+
+    utterance.onend = () => {
+        if (btnAudio) btnAudio.classList.remove('playing');
+    };
+
+    utterance.onerror = () => {
+        if (btnAudio) btnAudio.classList.remove('playing');
+    };
+
     speechSynthesis.speak(utterance);
 }
 

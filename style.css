@@ -1177,3 +1177,59 @@ body.day-mode .mini-icon-pill {
 body.day-mode .pill-divider-mini {
     background: rgba(0, 114, 255, 0.15);
 }
+
+/* =========================================
+   MELHORIAS DO MODO DESBLOQUEADO (ESTÉTICA & UX)
+   ========================================= */
+
+/* 1. Transições suaves (fade) ao trocar de aba */
+.tab-content {
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    display: none !important;
+}
+
+.tab-content.active {
+    display: block !important;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 2. Botão de Áudio Compacto (Apenas Ícone) lado a lado com o Direções */
+.actions-bar #btn-audio.icon-only-btn {
+    flex: 0 0 52px !important;
+    width: 52px !important;
+    height: 48px !important;
+    min-width: unset !important;
+    padding: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    font-size: 1.25rem !important;
+    background: #f1f3f5 !important;
+    color: #333333 !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 14px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.actions-bar #btn-audio.icon-only-btn:active {
+    transform: scale(0.95);
+}
+
+/* 3. Estado ativo do áudio (com brilho/cor dinâmica durante a narração) */
+.actions-bar #btn-audio.playing {
+    background: linear-gradient(135deg, #ff9966 0%, #ff5e62 100%) !important;
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: 0 4px 14px rgba(255, 94, 98, 0.35) !important;
+}
+
+/* 4. Adaptação do Botão de Áudio Compacto para o Modo Diurno */
+body.day-mode .actions-bar #btn-audio.icon-only-btn {
+    background: rgba(0, 114, 255, 0.08) !important;
+    color: #0072ff !important;
+    border: 1px solid rgba(0, 114, 255, 0.2) !important;
+}

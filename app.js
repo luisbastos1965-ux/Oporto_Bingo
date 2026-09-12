@@ -618,7 +618,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_52') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_53') === 'true') {
             initGPS();
         }
     }
@@ -692,6 +692,21 @@ function toggleAudio() {
 
     const utterance = new SpeechSynthesisUtterance(activeTabContent);
     utterance.lang = uiTexts[currentLang].ttsLang;
+
+    // --- AFINAÇÕES HUMANAS ---
+    utterance.rate = 0.92; // Fala 8% mais devagar (tira a pressa robótica)
+    utterance.pitch = 1.05; // Levanta ligeiramente o tom para parecer mais natural
+
+    // Tenta forçar o uso de vozes de alta qualidade nativas do telemóvel
+    const voices = speechSynthesis.getVoices();
+    if (voices.length > 0) {
+        const bestVoice = voices.find(v => 
+            v.lang.includes(utterance.lang) && 
+            (v.name.includes('Premium') || v.name.includes('Enhanced') || v.name.includes('Google') || v.name.includes('Siri'))
+        );
+        if (bestVoice) utterance.voice = bestVoice;
+    }
+    // -------------------------
 
     utterance.onstart = () => {
         if (btnAudio) btnAudio.classList.add('playing');

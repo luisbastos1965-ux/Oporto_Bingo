@@ -476,8 +476,10 @@ function showMetric(type) {
 
 function resetButtonMap() {
     const btnMap = document.getElementById('btn-map');
-    if (btnMap && btnMap.dataset.originalHtml) {
-        btnMap.innerHTML = btnMap.dataset.originalHtml;
+    if (btnMap) {
+        // Força diretamente o texto traduzido sem depender de caches antigas
+        btnMap.innerHTML = uiTexts[currentLang].map;
+        if (btnMap.dataset.originalHtml) delete btnMap.dataset.originalHtml;
     }
 }
 
@@ -596,7 +598,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_33') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_34') === 'true') {
             initGPS();
         }
     }

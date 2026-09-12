@@ -1233,3 +1233,8 @@ body.day-mode .actions-bar #btn-audio.icon-only-btn {
     color: #0072ff !important;
     border: 1px solid rgba(0, 114, 255, 0.25) !important;
 }
+
+/* GARANTIA ABSOLUTA: O botão de áudio some sempre nos locais bloqueados */
+.actions-bar.locked-actions #btn-audio {
+    display: none !important;
+}

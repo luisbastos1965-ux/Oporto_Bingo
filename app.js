@@ -405,8 +405,7 @@ function openModal(loc) {
 
         const tabContents = document.getElementsByClassName("tab-content");
         for (let i = 0; i < tabContents.length; i++) tabContents[i].classList.remove("active");
-        const tabResumo = document.getElementById("tab-resumo");
-        if (tabResumo) tabResumo.classList.add("active");
+        
     }
 
     if (modal) modal.classList.remove('hidden');
@@ -619,7 +618,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_51') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_52') === 'true') {
             initGPS();
         }
     }

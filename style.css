@@ -1152,14 +1152,14 @@ body.day-mode .locked-stats-row {
     width: auto !important;
     flex: 1 !important;
     max-width: 190px !important;
-    height: 44px !important;
+    height: 48px !important;
     border-radius: 14px !important;
     margin: 0 !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
     font-weight: 700 !important;
-    font-size: 0.95rem !important;
+    font-size: 1.15rem !important;
     gap: 6px !important;
     box-shadow: 0 6px 16px rgba(0, 114, 255, 0.3) !important;
     transition: transform 0.2s ease, box-shadow 0.2s ease;

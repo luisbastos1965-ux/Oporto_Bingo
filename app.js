@@ -11,7 +11,7 @@ if ("Notification" in window && Notification.permission !== "denied") {
 // =========================================
 const uiTexts = {
     pt: {
-        map: "Direções", audio: "🔊 Ouvir Textos", stopAudio: "⏸️ Parar", tab1: "Resumo", tab2: "História", tab3: "Curiosidades",
+        map: "Direções", audio: "🔊", stopAudio: "⏸️", tab1: "Resumo", tab2: "História", tab3: "Curiosidades",
         locked: "Aproxima-te a menos de 50 metros para revelar os segredos deste local histórico!",
         winLine: "Parabéns! Conseguiste completar uma linha!", winFull: "EXTRAORDINÁRIO! Completaste todo o mapa!", ttsLang: "pt-PT",
         obT1: "Explora o Porto", obD1: "Caminha pela cidade e descobre os locais históricos escondidos.",
@@ -29,7 +29,7 @@ const uiTexts = {
         walkTime: "a pé"
     },
     en: {
-        map: "Directions", audio: "🔊 Listen", stopAudio: "⏸️ Stop", tab1: "Summary", tab2: "History", tab3: "Trivia",
+        map: "Directions", audio: "🔊", stopAudio: "⏸️", tab1: "Summary", tab2: "History", tab3: "Trivia",
         locked: "Get closer than 50 meters to reveal the secrets of this historic location!",
         winLine: "Congratulations! You completed a line!", winFull: "EXTRAORDINARY! You completed the entire map!", ttsLang: "en-GB",
         obT1: "Explore Porto", obD1: "Walk around the city and discover hidden historic locations.",
@@ -47,7 +47,7 @@ const uiTexts = {
         walkTime: "on foot"
     },
     es: {
-        map: "Direcciones", audio: "🔊 Escuchar", stopAudio: "⏸️ Detener", tab1: "Resumen", tab2: "Historia", tab3: "Curiosidades",
+        map: "Direcciones", audio: "🔊", stopAudio: "⏸️", tab1: "Resumen", tab2: "Historia", tab3: "Curiosidades",
         locked: "¡Acércate a menos de 50 metros para revelar los secretos de este lugar histórico!",
         winLine: "¡Felicidades! ¡Has completado una línea!", winFull: "¡EXTRAORDINARIO! ¡Has completado todo el mapa!", ttsLang: "es-ES",
         obT1: "Explora Oporto", obD1: "Camina por la ciudad y descubre lugares históricos ocultos.",
@@ -65,7 +65,7 @@ const uiTexts = {
         walkTime: "a pie"
     },
     fr: {
-        map: "Itinéraire", audio: "🔊 Écouter", stopAudio: "⏸️ Arrêter", tab1: "Résumé", tab2: "Histoire", tab3: "Anecdotes",
+        map: "Itinéraire", audio: "🔊", stopAudio: "⏸️", tab1: "Résumé", tab2: "Histoire", tab3: "Anecdotes",
         locked: "Approchez-vous à moins de 50 mètres pour révéler les secrets de ce lieu !",
         winLine: "Félicitations ! Ligne complétée !", winFull: "EXTRAORDINAIRE ! Carte complétée !", ttsLang: "fr-FR",
         obT1: "Explorez Porto", obD1: "Promenez-vous dans la ville et découvrez des lieux historiques cachés.",
@@ -83,7 +83,7 @@ const uiTexts = {
         walkTime: "à pied"
     },
     de: {
-        map: "Route", audio: "🔊 Anhören", stopAudio: "⏸️ Stoppen", tab1: "Zusammenfassung", tab2: "Geschichte", tab3: "Fakten",
+        map: "Route", audio: "🔊", stopAudio: "⏸️", tab1: "Zusammenfassung", tab2: "Geschichte", tab3: "Fakten",
         locked: "Nähern Sie sich auf weniger als 50 Meter, um die Geheimnisse zu enthüllen!",
         winLine: "Glückwunsch! Linie vervollständigt!", winFull: "AUSSERGEWÖHNLICH! Karte vervollständigt!", ttsLang: "de-DE",
         obT1: "Entdecke Porto", obD1: "Spaziere durch die Stadt und entdecke verborgene historische Orte.",
@@ -101,7 +101,7 @@ const uiTexts = {
         walkTime: "zu Fuß"
     },
     it: {
-        map: "Indicazioni", audio: "🔊 Ascolta", stopAudio: "⏸️ Ferma", tab1: "Riassunto", tab2: "Storia", tab3: "Curiosità",
+        map: "Indicazioni", audio: "🔊", stopAudio: "⏸️", tab1: "Riassunto", tab2: "Storia", tab3: "Curiosità",
         locked: "Avvicinati a meno di 50 metri per revelar i segreti di questo luogo!",
         winLine: "Congratulazioni! Linea completata!", winFull: "STRAORDINARIO! Mappa completata!", ttsLang: "it-IT",
         obT1: "Esplora Porto", obD1: "Passeggia per la città e scopri luoghi storici nascosti.",
@@ -119,7 +119,7 @@ const uiTexts = {
         walkTime: "a piedi"
     },
     zh: {
-        map: "路线", audio: "🔊 聆听", stopAudio: "⏸️ 停止", tab1: "总结", tab2: "历史", tab3: "趣闻",
+        map: "路线", audio: "🔊", stopAudio: "⏸️", tab1: "总结", tab2: "历史", tab3: "趣闻",
         locked: "靠近50米以内，揭开这个历史名胜的秘密！",
         winLine: "恭喜！您完成了一条线！", winFull: "🏆 太棒了！您完成了整个地图！", ttsLang: "zh-CN",
         obT1: "探索波尔图", obD1: "在城市中漫步，发现隐藏的历史古迹。",
@@ -622,7 +622,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_42') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_43') === 'true') {
             initGPS();
         }
     }

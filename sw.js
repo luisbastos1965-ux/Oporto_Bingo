@@ -1,6 +1,6 @@
 // O nome da tua cache. Quando fizeres grandes alterações no design no futuro, 
-// muda isto para 'oporto-bingo-v40' para forçar os telemóveis a atualizarem.
-const CACHE_NAME = 'oporto-bingo-v40';
+// muda isto para 'oporto-bingo-v41' para forçar os telemóveis a atualizarem.
+const CACHE_NAME = 'oporto-bingo-v41';
 
 // 1. INSTALAÇÃO: Força a atualização imediata do Service Worker
 self.addEventListener('install', (event) => {

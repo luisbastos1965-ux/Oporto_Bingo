@@ -454,13 +454,18 @@ function showMetric(type) {
     const btnMap = document.getElementById('btn-map');
     if (!btnMap) return;
 
-    if (!btnMap.dataset.originalHtml) {
-        btnMap.dataset.originalHtml = btnMap.innerHTML;
+    // Cancela imediatamente qualquer temporizador anterior
+    if (metricTimeout) {
+        clearTimeout(metricTimeout);
+        metricTimeout = null;
     }
 
-    if (metricTimeout) clearTimeout(metricTimeout);
+    // Se ainda não guardou o HTML original, guarda agora ("Direções")
+    if (!btnMap.dataset.originalHtml || btnMap.dataset.originalHtml.includes('min') || btnMap.dataset.originalHtml.includes('km') || btnMap.dataset.originalHtml.includes('m')) {
+        btnMap.dataset.originalHtml = uiTexts[currentLang].map;
+    }
 
-    // Se o GPS ainda não tiver coordenadas, recalcula se já existirem na hora
+    // Atualiza a distância se houver coordenadas
     if (currentLocation && userLat && userLon) {
         currentDistanceMeters = getDistanceFromLatLonInM(userLat, userLon, currentLocation.lat, currentLocation.lon);
     }
@@ -471,18 +476,22 @@ function showMetric(type) {
         if (!userLat || !userLon) {
             btnMap.innerHTML = `<span style="color: #ffffff; font-weight: 700; font-size: 0.95rem;">A procurar GPS...</span>`;
         } else {
+            // Mostra EXCLUSIVAMENTE a distância
             btnMap.innerHTML = `<span style="color: #ffffff; font-weight: 800;">${distText}</span>`;
         }
     } else if (type === 'time') {
         if (!userLat || !userLon) {
             btnMap.innerHTML = `<span style="color: #ffffff; font-weight: 700; font-size: 0.95rem;">A procurar GPS...</span>`;
         } else {
+            // Mostra EXCLUSIVAMENTE o tempo
             btnMap.innerHTML = `<span style="color: #ffffff; font-weight: 700;">${timeText}</span>`;
         }
     }
 
+    // Programa o retorno limpo ao texto "Direções" após exatamente 2 segundos
     metricTimeout = setTimeout(() => {
         resetButtonMap();
+        metricTimeout = null;
     }, 2000);
 }
 
@@ -613,7 +622,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_40') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_41') === 'true') {
             initGPS();
         }
     }

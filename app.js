@@ -451,24 +451,25 @@ function showMetric(type) {
     const btnMap = document.getElementById('btn-map');
     if (!btnMap) return;
 
-    // Guarda o HTML original do botão (apenas texto) se ainda não foi guardado
+    // Guarda o HTML original do botão ("Direções") apenas se ainda não estiver guardado
     if (!btnMap.dataset.originalHtml) {
         btnMap.dataset.originalHtml = btnMap.innerHTML;
     }
 
+    // Cancela qualquer temporizador ativo anterior para evitar sobreposições
     if (metricTimeout) clearTimeout(metricTimeout);
 
     const { distText, timeText } = formatDistanceAndDuration(currentDistanceMeters);
 
     if (type === 'dist') {
-        // Apenas o número/distância em branco puro, sem ícones
+        // Mostra APENAS a distância em branco puro
         btnMap.innerHTML = `<span style="color: #ffffff; font-weight: 800;">${distText}</span>`;
     } else if (type === 'time') {
-        // Apenas o tempo em branco puro, sem ícones e sem "a pé"
+        // Mostra APENAS o tempo em branco puro
         btnMap.innerHTML = `<span style="color: #ffffff; font-weight: 700;">${timeText}</span>`;
     }
 
-    // Volta ao normal após 3 segundos
+    // Regressa a "Direções" passados exatamente 2 segundos
     metricTimeout = setTimeout(() => {
         resetButtonMap();
     }, 2000);
@@ -477,7 +478,6 @@ function showMetric(type) {
 function resetButtonMap() {
     const btnMap = document.getElementById('btn-map');
     if (btnMap) {
-        // Força diretamente o texto traduzido sem depender de caches antigas
         btnMap.innerHTML = uiTexts[currentLang].map;
         if (btnMap.dataset.originalHtml) delete btnMap.dataset.originalHtml;
     }
@@ -602,7 +602,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_37') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_38') === 'true') {
             initGPS();
         }
     }

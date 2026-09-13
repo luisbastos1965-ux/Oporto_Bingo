@@ -1641,15 +1641,14 @@ body.day-mode .actions-bar #btn-audio.icon-only-btn {
     position: absolute;
     bottom: 8px;
     right: 15px;
-    font-size: 1.1rem !important; /* Ainda mais pequeno */
-    opacity: 0.75 !important; /* Retira agressividade tornando-o ligeiramente transparente */
+    font-size: 1.1rem !important; 
+    opacity: 0.45 !important; /* Muito mais transparente e discreto */
     animation: pulse-finger 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
     z-index: 10;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     
-    /* Filtro Mágico Suavizado (Saturação a metade e sombra reduzida) */
-    filter: sepia(100%) hue-rotate(170deg) saturate(250%) drop-shadow(0 2px 3px rgba(0, 242, 254, 0.4)) !important;
+    /* Retira o tom radioativo: fica num tom prateado/azulado muito suave */
+    filter: sepia(50%) hue-rotate(180deg) saturate(80%) drop-shadow(0 1px 2px rgba(0, 242, 254, 0.15)) !important;
 }
 
 @keyframes pulse-finger {
@@ -1694,7 +1693,6 @@ body.day-mode .actions-bar #btn-audio.icon-only-btn {
 .modal-content.text-expanded .tab-content {
     max-height: 55vh !important; 
     overflow-y: auto !important; 
-    /* Já não aumentamos a fonte. Mantém o mesmo tamanho (0.95rem) para evitar o reflow gago! */
 }
 
 /* Inverte o dedo para apontar para baixo quando expandido (👇) */
@@ -1709,29 +1707,23 @@ body.day-mode .carousel-name { color: #0072ff; }
 body.day-mode .tab-content { background: #f8fafc !important; border-color: #e2e8f0 !important; color: #334155 !important; }
 
 /* =========================================
-   AFINAÇÕES FINAIS DE UX / UI
+   BLOQUEIO DE SELEÇÃO E LIMPEZA DE ESPAÇOS
    ========================================= */
 
-/* 1. Remove a margem automática das tags <p> dentro das abas */
+/* Remove a margem automática das tags <p> dentro das abas */
 .tab-content p {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
 }
 
-/* 2. Reduz o tamanho do ícone do dedo para ficar mais subtil */
-.expand-hint-icon {
-    font-size: 1.2rem !important; /* Reduzido de 1.5rem */
-}
-
-/* Bloqueio absoluto de seleção (Botões e Pontos do Tutorial) */
-.onboard-dots, .dot, #ob-btn, .btn, button {
-    -webkit-user-select: none !important;
-    -ms-user-select: none !important;
-    user-select: none !important;
-    -webkit-tap-highlight-color: transparent !important; /* Remove o piscar azul ao tocar no Android */
-}
-
-/* Força o cursor normal nos pontos para não aparecer o ponteiro de texto (o "I") */
-.onboard-dots, .dot {
+/* Bloqueio ABSOLUTO de seleção (Mata o menu "Copiar" do Android e iOS) */
+#onboarding-overlay, .onboard-dots, .dot, #ob-btn, .btn, button, .carousel-btn {
+    -webkit-touch-callout: none !important; /* ISTO É O QUE DESATIVA O MENU DO ANDROID */
+    -webkit-user-select: none !important; 
+    -khtml-user-select: none !important; 
+    -moz-user-select: none !important; 
+    -ms-user-select: none !important; 
+    user-select: none !important; 
+    -webkit-tap-highlight-color: transparent !important;
     cursor: default !important;
 }

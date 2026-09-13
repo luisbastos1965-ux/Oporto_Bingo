@@ -1633,20 +1633,23 @@ body.day-mode .actions-bar #btn-audio.icon-only-btn {
 }
 
 /* =========================================
-   O ÍCONE DO DEDO NEON (A PULSAR SUAVEMENTE)
+   AFINAÇÕES FINAIS DE UX / UI (TUTORIAL E DEDO)
    ========================================= */
+
+/* O Ícone do Dedo (Mais pequeno, opacidade reduzida e brilho suave) */
 .expand-hint-icon {
     position: absolute;
     bottom: 8px;
     right: 15px;
-    font-size: 1.5rem;
-    animation: pulse-finger 2s infinite cubic-bezier(0.4, 0, 0.2, 1); /* Animação de pulsar */
+    font-size: 1.1rem !important; /* Ainda mais pequeno */
+    opacity: 0.75 !important; /* Retira agressividade tornando-o ligeiramente transparente */
+    animation: pulse-finger 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
     z-index: 10;
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     
-    /* Filtro Mágico: Amarelo para Azul Neon */
-    filter: sepia(100%) hue-rotate(170deg) saturate(500%) drop-shadow(0 0 8px #00f2fe);
+    /* Filtro Mágico Suavizado (Saturação a metade e sombra reduzida) */
+    filter: sepia(100%) hue-rotate(170deg) saturate(250%) drop-shadow(0 2px 3px rgba(0, 242, 254, 0.4)) !important;
 }
 
 @keyframes pulse-finger {
@@ -1720,10 +1723,15 @@ body.day-mode .tab-content { background: #f8fafc !important; border-color: #e2e8
     font-size: 1.2rem !important; /* Reduzido de 1.5rem */
 }
 
-/* 3. Bloqueia a seleção com o cursor nos pontos do tutorial */
-.onboard-dots, .dot {
+/* Bloqueio absoluto de seleção (Botões e Pontos do Tutorial) */
+.onboard-dots, .dot, #ob-btn, .btn, button {
     -webkit-user-select: none !important;
     -ms-user-select: none !important;
     user-select: none !important;
-    pointer-events: none !important;
+    -webkit-tap-highlight-color: transparent !important; /* Remove o piscar azul ao tocar no Android */
+}
+
+/* Força o cursor normal nos pontos para não aparecer o ponteiro de texto (o "I") */
+.onboard-dots, .dot {
+    cursor: default !important;
 }

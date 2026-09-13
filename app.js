@@ -174,6 +174,15 @@ function detectLanguage() {
 let currentLang = detectLanguage();
 
 window.onload = () => {
+    // 1. Esconde o ecrã de carregamento falso ao fim de 1.5s
+    setTimeout(() => {
+        const splash = document.getElementById('custom-splash');
+        if (splash) {
+            splash.classList.add('hide-splash');
+        }
+    }, 1500);
+
+    // 2. Lógica das línguas que já tinhas
     const savedLangObj = langCycle.find(l => l.code === currentLang);
     const btnLang = document.getElementById('btn-lang');
     if (savedLangObj && btnLang) {
@@ -701,7 +710,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_68') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_69') === 'true') {
             initGPS();
         }
     }

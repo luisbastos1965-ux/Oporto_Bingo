@@ -1727,3 +1727,45 @@ body.day-mode .tab-content { background: #f8fafc !important; border-color: #e2e8
     -webkit-tap-highlight-color: transparent !important;
     cursor: default !important;
 }
+
+/* =========================================
+   ECRÃ DE CARREGAMENTO (SPLASH SCREEN)
+   ========================================= */
+#custom-splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0d1b2a; /* Cor exata do fundo do teu SVG */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.6s;
+}
+
+.splash-logo {
+    width: 320px;
+    max-width: 85vw; /* Garante que nunca bate nas bordas do telemóvel */
+    margin-bottom: 30px;
+}
+
+.loader {
+    width: 15px;
+    height: 15px;
+    background-color: #00f2fe; /* Azul néon da tua marca */
+    border-radius: 50%;
+    animation: pulse-loader 1s infinite alternate;
+}
+
+@keyframes pulse-loader {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(1.5); opacity: 1; }
+}
+
+.hide-splash {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}

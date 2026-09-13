@@ -8,10 +8,16 @@
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="./bingo-icon.png">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <link rel="stylesheet" href="style.css?v=10">
+    <link rel="stylesheet" href="style.css?v=11">
 </head>
 
 <body>
+
+    <!-- Ecrã de Carregamento Personalizado -->
+    <div id="custom-splash">
+        <img src="./logo-tourismup.svg" alt="TourismUP" class="splash-logo">
+        <div class="loader"></div>
+    </div>
 
     <!-- ECRÃ DE BLOQUEIO DE BROWSER (PORTÃO CAMALEÃO) -->
     <div id="install-gate" class="modal hidden">
@@ -76,7 +82,9 @@
                 <div class="onboard-card">
                     <div class="onboard-icon">📍</div>
                     <h2 id="ob-t2">Radar GPS</h2>
-                    <p id="ob-d2">Fica atento às cores: laranja é perto, vermelho a pulsar é quase lá! <span style="display: block; margin-top: 15px; font-size: 0.9em; opacity: 0.9;">(Dica: Mantém o jogo aberto enquanto caminhas)</span></p>
+                    <p id="ob-d2">Fica atento às cores: laranja é perto, vermelho a pulsar é quase lá! <span
+                            style="display: block; margin-top: 15px; font-size: 0.9em; opacity: 0.9;">(Dica: Mantém o
+                            jogo aberto enquanto caminhas)</span></p>
                 </div>
                 <div class="onboard-card">
                     <div class="onboard-icon">🔓</div>
@@ -220,7 +228,7 @@
                 <div id="tab-curiosidades" class="tab-content">
                     <p id="modal-curio"></p>
                 </div>
-                
+
                 <!-- O Ícone Flutuante (Aponta para cima por defeito) -->
                 <div class="expand-hint-icon" id="expand-icon">👆</div>
             </div>

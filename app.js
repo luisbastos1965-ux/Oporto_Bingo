@@ -350,13 +350,19 @@ function openModal(loc) {
 
     if (speechSynthesis.speaking) speechSynthesis.cancel();
 
+    // VARIÁVEIS (Passo 2A já incluído aqui)
     const tabsContainer = document.getElementById('modal-tabs');
     const btnAudio = document.getElementById('btn-audio');
     const actionsBar = document.getElementById('modal-actions');
     const miniPill = document.getElementById('miniIconPillContainer');
     const btnMap = document.getElementById('btn-map');
     const expandIcon = document.getElementById('expand-icon');
-    currentTabIndex = 0; // Faz reset ao carrossel
+    const textWrapper = document.getElementById('text-wrapper'); // <-- 2A AQUI
+
+    // Faz reset ao carrossel e garante que o texto recolhe ao abrir novo local
+    currentTabIndex = 0; 
+    const modalContentWrapper = document.querySelector('#location-modal .modal-content');
+    if (modalContentWrapper) modalContentWrapper.classList.remove('text-expanded');
 
     if (loc.unlocked) {
         // MODO DESBLOQUEADO
@@ -368,8 +374,15 @@ function openModal(loc) {
         modalCurio.innerText = loc.curio[currentLang];
 
         if (tabsContainer) tabsContainer.classList.remove('hidden');
-        if (btnAudio) btnAudio.classList.remove('hidden'); // MOSTRA O ÁUDIO AQUI
+        if (btnAudio) btnAudio.classList.remove('hidden');
         if (actionsBar) actionsBar.classList.remove('locked-actions');
+        
+        if (textWrapper) textWrapper.classList.remove('hidden'); // <-- 2B AQUI (Mostra a caixa)
+
+        // Mostra o dedo neon e atualiza o nome do carrossel
+        if (expandIcon) expandIcon.classList.remove('hidden');
+        const nameDisplay = document.getElementById('carousel-tab-name');
+        if (nameDisplay) nameDisplay.innerText = uiTexts[currentLang].tab1;
 
         if (miniPill) miniPill.classList.add('hidden');
         if (btnMap) {
@@ -378,8 +391,12 @@ function openModal(loc) {
             if (btnMap.dataset.originalHtml) delete btnMap.dataset.originalHtml;
         }
 
-        const firstTabBtn = document.querySelector('.tab-btn');
-        if (firstTabBtn) firstTabBtn.click();
+        // Ativação manual da aba Resumo (já não tenta clicar nos botões antigos)
+        const tabContents = document.getElementsByClassName("tab-content");
+        for (let i = 0; i < tabContents.length; i++) tabContents[i].classList.remove("active");
+        const tabResumo = document.getElementById("tab-resumo");
+        if (tabResumo) tabResumo.classList.add("active");
+
     } else {
         // MODO BLOQUEADO
         modalImg.src = loc.imgUrl;
@@ -395,8 +412,11 @@ function openModal(loc) {
         modalDesc.innerHTML = '';
 
         if (tabsContainer) tabsContainer.classList.add('hidden');
-        if (btnAudio) btnAudio.classList.add('hidden'); // OCULTA O ÁUDIO AQUI
+        if (btnAudio) btnAudio.classList.add('hidden');
         if (actionsBar) actionsBar.classList.add('locked-actions');
+        
+        if (textWrapper) textWrapper.classList.add('hidden'); // <-- 2C AQUI (Mata os fantasmas e a caixa branca)
+        if (expandIcon) expandIcon.classList.add('hidden'); // Esconde o dedo no modo bloqueado
 
         if (miniPill) miniPill.classList.remove('hidden');
         if (btnMap) {
@@ -407,7 +427,6 @@ function openModal(loc) {
 
         const tabContents = document.getElementsByClassName("tab-content");
         for (let i = 0; i < tabContents.length; i++) tabContents[i].classList.remove("active");
-        
     }
 
     if (modal) modal.classList.remove('hidden');
@@ -509,41 +528,34 @@ function showMetric(type) {
     const btnMap = document.getElementById('btn-map');
     if (!btnMap) return;
 
-    // Cancela imediatamente qualquer temporizador anterior
     if (metricTimeout) {
         clearTimeout(metricTimeout);
         metricTimeout = null;
     }
 
-    // Se ainda não guardou o HTML original, guarda agora ("Direções")
-    if (!btnMap.dataset.originalHtml || btnMap.dataset.originalHtml.includes('min') || btnMap.dataset.originalHtml.includes('km') || btnMap.dataset.originalHtml.includes('m')) {
+    if (!btnMap.dataset.originalHtml || btnMap.dataset.originalHtml.includes('km') || btnMap.dataset.originalHtml.includes('min')) {
         btnMap.dataset.originalHtml = uiTexts[currentLang].map;
     }
 
-    // Atualiza a distância se houver coordenadas
+    // Marca no botão exatamente o que o utilizador pediu para o GPS não se confundir
+    btnMap.dataset.currentMetric = type;
+
     if (currentLocation && userLat && userLon) {
         currentDistanceMeters = getDistanceFromLatLonInM(userLat, userLon, currentLocation.lat, currentLocation.lon);
     }
 
     const { distText, timeText } = formatDistanceAndDuration(currentDistanceMeters);
 
-    if (type === 'dist') {
-        if (!userLat || !userLon) {
-            btnMap.innerHTML = `<span style="color: #ffffff; font-weight: 700; font-size: 0.95rem;">A procurar GPS...</span>`;
-        } else {
-            // Mostra EXCLUSIVAMENTE a distância
+    if (!userLat || !userLon) {
+        btnMap.innerHTML = `<span style="color: #ffffff; font-weight: 700; font-size: 0.95rem;">A procurar GPS...</span>`;
+    } else {
+        if (type === 'dist') {
             btnMap.innerHTML = `<span style="color: #ffffff; font-weight: 800;">${distText}</span>`;
-        }
-    } else if (type === 'time') {
-        if (!userLat || !userLon) {
-            btnMap.innerHTML = `<span style="color: #ffffff; font-weight: 700; font-size: 0.95rem;">A procurar GPS...</span>`;
-        } else {
-            // Mostra EXCLUSIVAMENTE o tempo
+        } else if (type === 'time') {
             btnMap.innerHTML = `<span style="color: #ffffff; font-weight: 700;">${timeText}</span>`;
         }
     }
 
-    // Programa o retorno limpo ao texto "Direções" após exatamente 2 segundos
     metricTimeout = setTimeout(() => {
         resetButtonMap();
         metricTimeout = null;
@@ -554,6 +566,7 @@ function resetButtonMap() {
     const btnMap = document.getElementById('btn-map');
     if (btnMap) {
         btnMap.innerHTML = uiTexts[currentLang].map;
+        delete btnMap.dataset.currentMetric; // Limpa a etiqueta
         if (btnMap.dataset.originalHtml) delete btnMap.dataset.originalHtml;
     }
 }
@@ -646,19 +659,15 @@ function initGPS() {
                 // Atualiza a distância global para a mini-pílula usar
                 currentDistanceMeters = getDistanceFromLatLonInM(userLat, userLon, currentLocation.lat, currentLocation.lon);
 
-                // Se o botão estiver a mostrar uma métrica ativa, atualiza o valor dinamicamente ao caminhar
+                // Atualiza o valor dinamicamente ao caminhar SEM trocar de métrica (Usa o dataset exato)
                 const btnMap = document.getElementById('btn-map');
-                if (btnMap && btnMap.dataset.originalHtml && btnMap.innerHTML !== btnMap.dataset.originalHtml) {
+                if (btnMap && btnMap.dataset.currentMetric) {
                     const { distText, timeText } = formatDistanceAndDuration(currentDistanceMeters);
-
-                    // Identifica se o botão estava a mostrar a distância ou o tempo (verificando o valor atual ou a estrutura)
-                    if (btnMap.innerHTML.includes('km') || btnMap.innerHTML.includes('m')) {
-                        // Verifica se é o bloco de distância (não tem formato de minutos/horas)
-                        if (!btnMap.innerHTML.includes('min') && !btnMap.innerHTML.includes('h')) {
-                            btnMap.innerHTML = `<span style="color: #ffffff; font-weight: 800;">${distText}</span>`;
-                        } else {
-                            btnMap.innerHTML = `<span style="color: #ffffff; font-weight: 700;">${timeText}</span>`;
-                        }
+                    
+                    if (btnMap.dataset.currentMetric === 'dist') {
+                        btnMap.innerHTML = `<span style="color: #ffffff; font-weight: 800;">${distText}</span>`;
+                    } else if (btnMap.dataset.currentMetric === 'time') {
+                        btnMap.innerHTML = `<span style="color: #ffffff; font-weight: 700;">${timeText}</span>`;
                     }
                 }
             }
@@ -677,7 +686,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_56') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_57') === 'true') {
             initGPS();
         }
     }

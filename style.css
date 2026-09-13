@@ -1632,24 +1632,43 @@ body.day-mode .actions-bar #btn-audio.icon-only-btn {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* O ÍCONE DO DEDO (AGORA EM AZUL NEON!) */
+/* =========================================
+   O ÍCONE DO DEDO NEON (A PULSAR SUAVEMENTE)
+   ========================================= */
 .expand-hint-icon {
     position: absolute;
     bottom: 8px;
     right: 15px;
     font-size: 1.5rem;
-    animation: bounce-finger 1.5s infinite ease-in-out;
+    animation: pulse-finger 2s infinite cubic-bezier(0.4, 0, 0.2, 1); /* Animação de pulsar */
     pointer-events: none;
     z-index: 10;
-    transition: transform 0.3s ease;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     
-    /* A MAGIA: Transforma o amarelo do emoji num azul brilhante */
+    /* Filtro Mágico: Amarelo para Azul Neon */
     filter: sepia(100%) hue-rotate(170deg) saturate(500%) drop-shadow(0 0 8px #00f2fe);
 }
 
-@keyframes bounce-finger {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
+@keyframes pulse-finger {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); } /* Aumenta 15% e volta ao normal */
+}
+
+/* =========================================
+   TRANSIÇÕES 100% FLUIDAS (SEM ENGASGOS)
+   ========================================= */
+/* 1. Preparamos o carrossel, a imagem e a caixa com a mesma curva de velocidade (bezier) */
+.tabs-carousel {
+    transition: max-height 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease, margin 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+#modal-image {
+    transition: max-height 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease, margin 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.tab-content {
+    /* REMOVIDO o font-size daqui. O texto mantém-se igual para não "tremer" a tentar quebrar linhas */
+    transition: max-height 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
 
 /* =========================================
@@ -1660,7 +1679,7 @@ body.day-mode .actions-bar #btn-audio.icon-only-btn {
     opacity: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
-    transform: scale(0.8); /* Encolhe e desaparece em vez de cortar */
+    transform: scale(0.9); /* Encolhe subtilmente em vez de saltar */
 }
 
 .modal-content.text-expanded .tabs-carousel {
@@ -1670,15 +1689,15 @@ body.day-mode .actions-bar #btn-audio.icon-only-btn {
 }
 
 .modal-content.text-expanded .tab-content {
-    max-height: 55vh !important; /* Estica elegantemente */
-    font-size: 1.05rem !important; /* Aumenta a letra para leitura confortável */
-    overflow-y: auto !important; /* Ativa scroll natural */
+    max-height: 55vh !important; 
+    overflow-y: auto !important; 
+    /* Já não aumentamos a fonte. Mantém o mesmo tamanho (0.95rem) para evitar o reflow gago! */
 }
 
 /* Inverte o dedo para apontar para baixo quando expandido (👇) */
 .modal-content.text-expanded .expand-hint-icon {
     transform: rotate(180deg);
-    animation: none; /* Pára de saltar para não chatear durante a leitura */
+    animation: none; /* Pára de pulsar para não distrair a leitura */
 }
 
 /* --- ADAPTAÇÕES MODO DIURNO --- */

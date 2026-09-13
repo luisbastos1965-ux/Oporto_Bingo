@@ -13,7 +13,10 @@ const uiTexts = {
     pt: {
         map: "Direções", audio: "🔊", stopAudio: "⏸️", tab1: "Resumo", tab2: "História", tab3: "Curiosidades",
         locked: "Aproxima-te a menos de 50 metros para revelar os segredos deste local histórico!",
-        winLine: "Parabéns! Conseguiste completar uma linha!", winFull: "EXTRAORDINÁRIO! Completaste todo o mapa!", ttsLang: "pt-PT",
+        winLineTitle: "PARABÉNS!!!",
+        winLine: "Conseguiste completar uma linha!",
+        winFullTitle: "EXTRAORDINÁRIO!",
+        winFull: "Completaste todo o cartão!",
         obT1: "Explora o Porto", obD1: "Caminha pela cidade e descobre os locais históricos escondidos.",
         obD2: "Fica atento às cores: laranja é perto, vermelho a pulsar é quase lá! <span style=\"display: block; margin-top: 15px; font-size: 0.9em; opacity: 0.9;\">(Dica: Mantém o jogo aberto enquanto caminhas)</span>",
         obT3: "Desbloqueia a História", obD3: "Aproxima-te a 50 metros para revelar os segredos e ouvir o áudio guia.", obBtn: "Começar",
@@ -31,7 +34,9 @@ const uiTexts = {
     en: {
         map: "Directions", audio: "🔊", stopAudio: "⏸️", tab1: "Summary", tab2: "History", tab3: "Trivia",
         locked: "Get closer than 50 meters to reveal the secrets of this historic location!",
-        winLine: "Congratulations! You completed a line!", winFull: "EXTRAORDINARY! You completed the entire map!", ttsLang: "en-GB",
+        winLineTitle: "CONGRATULATIONS!",
+        winLine: "You completed a line!", winFullTitle: "EXTRAORDINARY!",
+        winFull: "You completed the entire card!", ttsLang: "en-GB",
         obT1: "Explore Porto", obD1: "Walk around the city and discover hidden historic locations.",
         obD2: "Watch the colors: orange is close, pulsing red is almost there! <span style=\"display: block; margin-top: 15px; font-size: 0.9em; opacity: 0.9;\">(Hint: Keep the game open while walking)</span>",
         obT3: "Unlock History", obD3: "Get closer than 50 meters to reveal secrets and hear our audio guide.", obBtn: "Start",
@@ -49,7 +54,9 @@ const uiTexts = {
     es: {
         map: "Direcciones", audio: "🔊", stopAudio: "⏸️", tab1: "Resumen", tab2: "Historia", tab3: "Curiosidades",
         locked: "¡Acércate a menos de 50 metros para revelar los secretos de este lugar histórico!",
-        winLine: "¡Felicidades! ¡Has completado una línea!", winFull: "¡EXTRAORDINARIO! ¡Has completado todo el mapa!", ttsLang: "es-ES",
+        winLineTitle: "¡FELICIDADES!",
+        winLine: "¡Has completado una línea!", winFullTitle: "¡EXTRAORDINARIO!",
+        winFull: "¡Has completado todo el cartón!", ttsLang: "es-ES",
         obT1: "Explora Oporto", obD1: "Camina por la ciudad y descubre lugares históricos ocultos.",
         obD2: "Presta atención a los colores: ¡naranja es cerca, rojo parpadeante es casi ahí! <span style=\"display: block; margin-top: 15px; font-size: 0.9em; opacity: 0.9;\">(Consejo: Mantén el juego abierto mientras caminas)</span>",
         obT3: "Desbloquea la Historia", obD3: "Acércate a 50 metros para revelar secretos y escuchar la audioguía.", obBtn: "Comenzar",
@@ -67,7 +74,9 @@ const uiTexts = {
     fr: {
         map: "Itinéraire", audio: "🔊", stopAudio: "⏸️", tab1: "Résumé", tab2: "Histoire", tab3: "Anecdotes",
         locked: "Approchez-vous à moins de 50 mètres pour révéler les secrets de ce lieu !",
-        winLine: "Félicitations ! Ligne complétée !", winFull: "EXTRAORDINAIRE ! Carte complétée !", ttsLang: "fr-FR",
+        winLineTitle: "FÉLICITATIONS !",
+        winLine: "Ligne complétée !", winFullTitle: "EXTRAORDINAIRE !",
+        winFull: "Carte complétée !", ttsLang: "fr-FR",
         obT1: "Explorez Porto", obD1: "Promenez-vous dans la ville et découvrez des lieux historiques cachés.",
         obD2: "Faites attention aux couleurs : orange c'est proche, rouge clignotant c'est presque ça ! <span style=\"display: block; margin-top: 15px; font-size: 0.9em; opacity: 0.9;\">(Astuce : Laissez le jeu ouvert pendant que vous marchez)</span>",
         obT3: "Débloquez l'Histoire", obD3: "Approchez à moins de 50m pour révéler les secrets et écouter le guide.", obBtn: "Commencer",
@@ -85,7 +94,9 @@ const uiTexts = {
     de: {
         map: "Route", audio: "🔊", stopAudio: "⏸️", tab1: "Zusammenfassung", tab2: "Geschichte", tab3: "Fakten",
         locked: "Nähern Sie sich auf weniger als 50 Meter, um die Geheimnisse zu enthüllen!",
-        winLine: "Glückwunsch! Linie vervollständigt!", winFull: "AUSSERGEWÖHNLICH! Karte vervollständigt!", ttsLang: "de-DE",
+        winLineTitle: "GLÜCKWUNSCH!",
+        winLine: "Linie vervollständigt!", winFullTitle: "AUSSERGEWÖHNLICH!",
+        winFull: "Karte vervollständigt!", ttsLang: "de-DE",
         obT1: "Entdecke Porto", obD1: "Spaziere durch die Stadt und entdecke verborgene historische Orte.",
         obT2: "GPS-Radar", obD2: "Achte auf die Farben: Orange ist nah, pulsierendes Rot bedeutet fast da! <span style=\"display: block; margin-top: 15px; font-size: 0.9em; opacity: 0.9;\">(Tipp: Lass die App beim Gehen offen)</span>",
         obT3: "Geschichte freischalten", obD3: "Nähere dich auf 50m, um Geheimnisse zu enthüllen und den Audioguide zu hören.", obBtn: "Starten",
@@ -103,7 +114,9 @@ const uiTexts = {
     it: {
         map: "Indicazioni", audio: "🔊", stopAudio: "⏸️", tab1: "Riassunto", tab2: "Storia", tab3: "Curiosità",
         locked: "Avvicinati a meno di 50 metri per revelar i segreti di questo luogo!",
-        winLine: "Congratulazioni! Linea completata!", winFull: "STRAORDINARIO! Mappa completata!", ttsLang: "it-IT",
+        winLineTitle: "CONGRATULAZIONI!",
+        winLine: "Linea completata!", winFullTitle: "STRAORDINARIO!",
+        winFull: "Mappa completata!", ttsLang: "it-IT",
         obT1: "Esplora Porto", obD1: "Passeggia per la città e scopri luoghi storici nascosti.",
         obT2: "Radar GPS", obD2: "Guarda i colori: arancione è vicino, rosso lampeggiante è quasi arrivato! <span style=\"display: block; margin-top: 15px; font-size: 0.9em; opacity: 0.9;\">(Consiglio: Tieni l'app aperta mentre cammini)</span>",
         obT3: "Sblocca la Storia", obD3: "Avvicinati a 50m per svelare segreti e ascoltare l'audioguida.", obBtn: "Inizia",
@@ -121,7 +134,9 @@ const uiTexts = {
     zh: {
         map: "路线", audio: "🔊", stopAudio: "⏸️", tab1: "总结", tab2: "历史", tab3: "趣闻",
         locked: "靠近50米以内，揭开这个历史名胜的秘密！",
-        winLine: "恭喜！您完成了一条线！", winFull: "🏆 太棒了！您完成了整个地图！", ttsLang: "zh-CN",
+        winLineTitle: "恭喜！",
+        winLine: "您完成了一条线！", winFullTitle: "🏆 太棒了！",
+        winFull: "您完成了整个地图！", ttsLang: "zh-CN",
         obT1: "探索波尔图", obD1: "在城市中漫步，发现隐藏的历史古迹。",
         obD2: "注意颜色：橙色代表很近，闪烁的红色代表快到了！ <span style=\"display: block; margin-top: 15px; font-size: 0.9em; opacity: 0.9;\">(提示：步行时请保持游戏处于打开状态)</span>",
         obT3: "解锁历史", obD3: "靠近50米以内，揭开秘密并收听我们的语音导览。", obBtn: "开始",
@@ -257,7 +272,7 @@ titleElement.addEventListener('click', () => {
             showCustomAlert("Dev Mode", "A simular GPS para: " + nextLocked.name, "🛠️");
             checkProximity(nextLocked.lat, nextLocked.lon);
         } else {
-            showCustomAlert("Dev Mode", "Já tens o mapa todo desbloqueado!", "🛠️");
+            showCustomAlert("Dev Mode", "Já tens o cartão todo desbloqueado!", "🛠️");
         }
     }
 });
@@ -360,7 +375,7 @@ function openModal(loc) {
     const textWrapper = document.getElementById('text-wrapper'); // <-- 2A AQUI
 
     // Faz reset ao carrossel e garante que o texto recolhe ao abrir novo local
-    currentTabIndex = 0; 
+    currentTabIndex = 0;
     const modalContentWrapper = document.querySelector('#location-modal .modal-content');
     if (modalContentWrapper) modalContentWrapper.classList.remove('text-expanded');
 
@@ -376,7 +391,7 @@ function openModal(loc) {
         if (tabsContainer) tabsContainer.classList.remove('hidden');
         if (btnAudio) btnAudio.classList.remove('hidden');
         if (actionsBar) actionsBar.classList.remove('locked-actions');
-        
+
         if (textWrapper) textWrapper.classList.remove('hidden'); // <-- 2B AQUI (Mostra a caixa)
 
         // Mostra o dedo neon e atualiza o nome do carrossel
@@ -414,7 +429,7 @@ function openModal(loc) {
         if (tabsContainer) tabsContainer.classList.add('hidden');
         if (btnAudio) btnAudio.classList.add('hidden');
         if (actionsBar) actionsBar.classList.add('locked-actions');
-        
+
         if (textWrapper) textWrapper.classList.add('hidden'); // <-- 2C AQUI (Mata os fantasmas e a caixa branca)
         if (expandIcon) expandIcon.classList.add('hidden'); // Esconde o dedo no modo bloqueado
 
@@ -448,13 +463,13 @@ let currentTabIndex = 0;
 
 function navigateTab(direction) {
     if (navigator.vibrate) navigator.vibrate(30);
-    
+
     currentTabIndex += direction;
     if (currentTabIndex < 0) currentTabIndex = tabList.length - 1;
     if (currentTabIndex >= tabList.length) currentTabIndex = 0;
 
     const nameDisplay = document.getElementById('carousel-tab-name');
-    
+
     // 1. Anima a palavra a sair
     nameDisplay.style.opacity = 0;
     nameDisplay.style.transform = direction > 0 ? 'translateX(-15px)' : 'translateX(15px)';
@@ -463,14 +478,14 @@ function navigateTab(direction) {
         // 2. Troca o conteúdo da caixa
         const tabContents = document.getElementsByClassName("tab-content");
         for (let i = 0; i < tabContents.length; i++) tabContents[i].classList.remove("active");
-        
+
         const newTabId = tabList[currentTabIndex];
         document.getElementById(newTabId).classList.add("active");
 
         // 3. Troca a palavra traduzida
-        let tabNameKey = 'tab1'; 
-        if(newTabId === 'tab-historia') tabNameKey = 'tab2';
-        if(newTabId === 'tab-curiosidades') tabNameKey = 'tab3';
+        let tabNameKey = 'tab1';
+        if (newTabId === 'tab-historia') tabNameKey = 'tab2';
+        if (newTabId === 'tab-curiosidades') tabNameKey = 'tab3';
         nameDisplay.innerText = uiTexts[currentLang][tabNameKey];
 
         // 4. Anima a palavra a entrar
@@ -663,7 +678,7 @@ function initGPS() {
                 const btnMap = document.getElementById('btn-map');
                 if (btnMap && btnMap.dataset.currentMetric) {
                     const { distText, timeText } = formatDistanceAndDuration(currentDistanceMeters);
-                    
+
                     if (btnMap.dataset.currentMetric === 'dist') {
                         btnMap.innerHTML = `<span style="color: #ffffff; font-weight: 800;">${distText}</span>`;
                     } else if (btnMap.dataset.currentMetric === 'time') {
@@ -686,7 +701,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_62') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_63') === 'true') {
             initGPS();
         }
     }
@@ -714,7 +729,7 @@ function checkWinConditions() {
     if (unlockedArr.every(v => v === true)) {
         fireConfetti(true);
         setTimeout(() => {
-            showCustomAlert(uiTexts[currentLang].alertTitle, uiTexts[currentLang].winFull, "🏆");
+            showCustomAlert(uiTexts[currentLang].winFullTitle, uiTexts[currentLang].winFull, "🏆");
         }, 1200);
     }
     else if (!lineWon) {
@@ -723,7 +738,7 @@ function checkWinConditions() {
             lineWon = true;
             fireConfetti(false);
             setTimeout(() => {
-                showCustomAlert(uiTexts[currentLang].alertTitle, uiTexts[currentLang].winLine, "🎉");
+                showCustomAlert(uiTexts[currentLang].winLineTitle, uiTexts[currentLang].winLine, "🎉");
             }, 1200);
         }
     }
@@ -761,8 +776,8 @@ function toggleAudio() {
     const utterance = new SpeechSynthesisUtterance(activeTabContent);
     utterance.lang = uiTexts[currentLang].ttsLang;
 
-    utterance.rate = 0.92; 
-    utterance.pitch = 1.05; 
+    utterance.rate = 0.92;
+    utterance.pitch = 1.05;
 
     // O BLOQUEIO ANTI-PT-BR
     const voices = speechSynthesis.getVoices();

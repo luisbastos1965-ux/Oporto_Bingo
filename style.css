@@ -1704,3 +1704,26 @@ body.day-mode .actions-bar #btn-audio.icon-only-btn {
 body.day-mode .carousel-btn { background: #ffffff; border-color: rgba(0, 114, 255, 0.3); color: #0072ff; }
 body.day-mode .carousel-name { color: #0072ff; }
 body.day-mode .tab-content { background: #f8fafc !important; border-color: #e2e8f0 !important; color: #334155 !important; }
+
+/* =========================================
+   AFINAÇÕES FINAIS DE UX / UI
+   ========================================= */
+
+/* 1. Remove a margem automática das tags <p> dentro das abas */
+.tab-content p {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* 2. Reduz o tamanho do ícone do dedo para ficar mais subtil */
+.expand-hint-icon {
+    font-size: 1.2rem !important; /* Reduzido de 1.5rem */
+}
+
+/* 3. Bloqueia a seleção com o cursor nos pontos do tutorial */
+.onboard-dots, .dot {
+    -webkit-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+    pointer-events: none !important;
+}

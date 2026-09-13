@@ -15,7 +15,7 @@ const uiTexts = {
         locked: "Aproxima-te a menos de 50 metros para revelar os segredos deste local histórico!",
         winLine: "Parabéns! Conseguiste completar uma linha!", winFull: "EXTRAORDINÁRIO! Completaste todo o mapa!", ttsLang: "pt-PT",
         obT1: "Explora o Porto", obD1: "Caminha pela cidade e descobre os locais históricos escondidos.",
-        obT2: "Radar GPS", obD2: "Fica atento às cores: laranja é perto, vermelho a pulsar é quase lá!\n\n(Dica: Mantém o jogo aberto enquanto caminhas)",
+        obT2: "Radar GPS", obD2: "Fica atento às cores: laranja é perto, vermelho a pulsar é quase lá!<br><br>(Dica: Mantém o jogo aberto enquanto caminhas)",
         obT3: "Desbloqueia a História", obD3: "Aproxima-te a 50 metros para revelar os segredos e ouvir o áudio guia.", obBtn: "Começar",
         helpTitle: "COMO JOGAR",
         helpT1: "Explorar", help1: "Caminha pela cidade para descobrir.",
@@ -33,7 +33,7 @@ const uiTexts = {
         locked: "Get closer than 50 meters to reveal the secrets of this historic location!",
         winLine: "Congratulations! You completed a line!", winFull: "EXTRAORDINARY! You completed the entire map!", ttsLang: "en-GB",
         obT1: "Explore Porto", obD1: "Walk around the city and discover hidden historic locations.",
-        obT2: "GPS Radar", obD2: "Watch the colors: orange is close, pulsing red means you are almost there!\n\n(Tip: Keep the app open while walking)",
+        obT2: "GPS Radar", obD2: "Watch the colors: orange is close, pulsing red means you are almost there!<br><br>(Tip: Keep the app open while walking)",
         obT3: "Unlock History", obD3: "Get closer than 50 meters to reveal secrets and hear our audio guide.", obBtn: "Start",
         helpTitle: "HOW TO PLAY",
         helpT1: "Explore", help1: "Walk around the city to discover.",
@@ -51,7 +51,7 @@ const uiTexts = {
         locked: "¡Acércate a menos de 50 metros para revelar los secretos de este lugar histórico!",
         winLine: "¡Felicidades! ¡Has completado una línea!", winFull: "¡EXTRAORDINARIO! ¡Has completado todo el mapa!", ttsLang: "es-ES",
         obT1: "Explora Oporto", obD1: "Camina por la ciudad y descubre lugares históricos ocultos.",
-        obT2: "Radar GPS", obD2: "Atento a los colores: naranja es cerca, rojo parpadeando es casi allí.\n\n(Consejo: Mantén la app abierta al caminar)",
+        obT2: "Radar GPS", obD2: "Atento a los colores: naranja es cerca, rojo parpadeando es casi allí.<br><br>(Consejo: Mantén la app abierta al caminar)",
         obT3: "Desbloquea la Historia", obD3: "Acércate a 50 metros para revelar secretos y escuchar la audioguía.", obBtn: "Comenzar",
         helpTitle: "CÓMO JUGAR",
         helpT1: "Explorar", help1: "Camina por la ciudad para descubrir.",
@@ -69,7 +69,7 @@ const uiTexts = {
         locked: "Approchez-vous à moins de 50 mètres pour révéler les secrets de ce lieu !",
         winLine: "Félicitations ! Ligne complétée !", winFull: "EXTRAORDINAIRE ! Carte complétée !", ttsLang: "fr-FR",
         obT1: "Explorez Porto", obD1: "Promenez-vous dans la ville et découvrez des lieux historiques cachés.",
-        obT2: "Radar GPS", obD2: "Surveillez les couleurs : orange c'est près, rouge clignotant c'est tout près !\n\n(Astuce : Gardez l'app ouverte en marchant)",
+        obT2: "Radar GPS", obD2: "Surveillez les couleurs : orange c'est près, rouge clignotant c'est tout près !<br><br>(Astuce : Gardez l'app ouverte en marchant)",
         obT3: "Débloquez l'Histoire", obD3: "Approchez à moins de 50m pour révéler les secrets et écouter le guide.", obBtn: "Commencer",
         helpTitle: "COMMENT JOUER",
         helpT1: "Explorer", help1: "Promenez-vous pour découvrir.",
@@ -87,7 +87,7 @@ const uiTexts = {
         locked: "Nähern Sie sich auf weniger als 50 Meter, um die Geheimnisse zu enthüllen!",
         winLine: "Glückwunsch! Linie vervollständigt!", winFull: "AUSSERGEWÖHNLICH! Karte vervollständigt!", ttsLang: "de-DE",
         obT1: "Entdecke Porto", obD1: "Spaziere durch die Stadt und entdecke verborgene historische Orte.",
-        obT2: "GPS-Radar", obD2: "Achte auf die Farben: Orange ist nah, pulsierendes Rot bedeutet fast da!\n\n(Tipp: Lass die App beim Gehen offen)",
+        obT2: "GPS-Radar", obD2: "Achte auf die Farben: Orange ist nah, pulsierendes Rot bedeutet fast da!<br><br>(Tipp: Lass die App beim Gehen offen)",
         obT3: "Geschichte freischalten", obD3: "Nähere dich auf 50m, um Geheimnisse zu enthüllen und den Audioguide zu hören.", obBtn: "Starten",
         helpTitle: "SPIELANLEITUNG",
         helpT1: "Erkunden", help1: "Spaziere durch die Stadt zum Entdecken.",
@@ -105,7 +105,7 @@ const uiTexts = {
         locked: "Avvicinati a meno di 50 metri per revelar i segreti di questo luogo!",
         winLine: "Congratulazioni! Linea completata!", winFull: "STRAORDINARIO! Mappa completata!", ttsLang: "it-IT",
         obT1: "Esplora Porto", obD1: "Passeggia per la città e scopri luoghi storici nascosti.",
-        obT2: "Radar GPS", obD2: "Guarda i colori: arancione è vicino, rosso lampeggiante è quasi arrivato!\n\n(Consiglio: Tieni l'app aperta mentre cammini)",
+        obT2: "Radar GPS", obD2: "Guarda i colori: arancione è vicino, rosso lampeggiante è quasi arrivato!<br><br>(Consiglio: Tieni l'app aperta mentre cammini)",
         obT3: "Sblocca la Storia", obD3: "Avvicinati a 50m per svelare segreti e ascoltare l'audioguida.", obBtn: "Inizia",
         helpTitle: "COME GIOCARE",
         helpT1: "Esplorare", help1: "Passeggia per la città per scoprire.",
@@ -123,7 +123,7 @@ const uiTexts = {
         locked: "靠近50米以内，揭开这个历史名胜的秘密！",
         winLine: "恭喜！您完成了一条线！", winFull: "🏆 太棒了！您完成了整个地图！", ttsLang: "zh-CN",
         obT1: "探索波尔图", obD1: "在城市中漫步，发现隐藏的历史古迹。",
-        obT2: "GPS雷达", obD2: "观察颜色：橙色代表接近，闪烁的红色表示即将到达！\n\n（提示：走路时请保持应用开启）",
+        obT2: "GPS雷达", obD2: "观察颜色：橙色代表接近，闪烁的红色表示即将到达！<br><br>（提示：走路时请保持应用开启）",
         obT3: "解锁历史", obD3: "靠近50米以内，揭开秘密并收听我们的语音导览。", obBtn: "开始",
         helpTitle: "怎么玩",
         helpT1: "探索", help1: "在城市中漫步以发现。",
@@ -189,11 +189,11 @@ function updateUILanguage() {
 
     if (document.getElementById('ob-t1')) {
         document.getElementById('ob-t1').innerText = uiTexts[currentLang].obT1;
-        document.getElementById('ob-d1').innerText = uiTexts[currentLang].obD1;
+        document.getElementById('ob-d1').innerHTML = uiTexts[currentLang].obD1; // <- innerHTML aqui
         document.getElementById('ob-t2').innerText = uiTexts[currentLang].obT2;
-        document.getElementById('ob-d2').innerText = uiTexts[currentLang].obD2;
+        document.getElementById('ob-d2').innerHTML = uiTexts[currentLang].obD2; // <- innerHTML aqui
         document.getElementById('ob-t3').innerText = uiTexts[currentLang].obT3;
-        document.getElementById('ob-d3').innerText = uiTexts[currentLang].obD3;
+        document.getElementById('ob-d3').innerHTML = uiTexts[currentLang].obD3; // <- innerHTML aqui
         document.getElementById('ob-btn-text').innerText = uiTexts[currentLang].obBtn;
     }
 
@@ -686,7 +686,7 @@ function initGPS() {
 
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
-        if (localStorage.getItem('oportoBingoIntroSeen_58') === 'true') {
+        if (localStorage.getItem('oportoBingoIntroSeen_59') === 'true') {
             initGPS();
         }
     }
